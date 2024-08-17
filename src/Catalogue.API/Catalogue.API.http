@@ -1,0 +1,6 @@
+@Catalogue.API_HostAddress = http://localhost:5086
+
+GET {{Catalogue.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

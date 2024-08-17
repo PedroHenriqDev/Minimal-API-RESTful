@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    ports:
+      - ${CAT_DATABASE_PORT:-5432}:5432
+    environment:
+      POSTGRES_DB: ${CAT_DATABASE_NAME}
+      POSTGRES_USER: ${CAT_DATABASE_USER}
+      POSTGRES_PASSWORD: ${CAT_DATABASE_PASSWORD}
+    volumes:
+      - db:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    restart: unless-stopped
+    depends_on: 
+     - db
+    ports:
+      - ${PGADMIN_PORT:-8081}:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+
+volumes:
+  db:
+    driver: local
+  pgadmin:
+    driver: local
