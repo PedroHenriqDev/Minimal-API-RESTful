@@ -1,11 +1,13 @@
 ﻿using Catalogue.Domain.Entities;
+using System.Linq.Expressions;
 
 namespace Catalogue.Domain.Interfaces;
 
 public interface IRepository<TEntity> where TEntity : Entity 
 {
-    Task<Product> GetAllAsync();
-    Task<Product> AddAsync(TEntity entity);
-    Task<Product> DeleteAsync(int id);
-    Task<Product> UpdateAsync(Product entity);
+    IQueryable<TEntity> GetAll();
+    Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate);
+    Task<TEntity> AddAsync(TEntity entity);
+    void Delete(TEntity entity);
+    void Update(TEntity entity);
 }
