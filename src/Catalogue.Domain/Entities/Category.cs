@@ -7,7 +7,6 @@ public sealed class Category : Entity
 {
     public string? Description { get; set; }
 
-    [JsonIgnore]
     public ICollection<Product>? Products { get; set; }
 
     public Category()
@@ -43,10 +42,6 @@ public sealed class Category : Entity
         DomainValidation.When(
             (Description is null || string.IsNullOrWhiteSpace(Description)),
             ValidationMessagesResource.DESCRIPTION_INVALID);
-
-        DomainValidation.When(
-            (Id <= 0),
-            ValidationMessagesResource.ID_INVALID);
 
         DomainValidation.When(
             (CreatedAt >= DateTime.UtcNow),

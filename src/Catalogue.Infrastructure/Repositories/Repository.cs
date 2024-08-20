@@ -14,6 +14,7 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
     {
         _context = context;
     }
+    
     public IQueryable<TEntity> GetAll()
     {
         return _context.Set<TEntity>();

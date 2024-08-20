@@ -1,15 +1,21 @@
-﻿using Catalogue.Domain.Interfaces;
+﻿using FluentValidation.AspNetCore;
+using FluentValidation;
+using Catalogue.Application.Categories.Commands.Requests;
+using Catalogue.Application.Categories.Commands.Validations;
+using Catalogue.Application.Mappings.Profiles;
+using Catalogue.Domain.Interfaces;
 using Catalogue.Infrastructure.Context;
 using Catalogue.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+
 namespace Catalogue.CrossCutting.AppDependencies;
 
 public static class DepedencyInjection
 {
-    public static IServiceCollection AddPersistence(this IServiceCollection svc, IConfiguration configuration) 
+    public static IServiceCollection AddInfrastructure(this IServiceCollection svc, IConfiguration configuration)
     {
         string connectionString = configuration.GetConnectionString("DefaultConnection")
             ?? throw new ArgumentNullException();
@@ -17,6 +23,15 @@ public static class DepedencyInjection
         svc.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
         svc.AddScoped<IUnitOfWork, UnitOfWork>();
+        svc.AddScoped<CreateCategoryCommandValidator>();
+
+        svc.AddFluentValidationAutoValidation();
+        svc.AddValidatorsFromAssemblyContaining<CreateCategoryCommandRequest>();
+
+        svc.AddAutoMapper(typeof(MappingProfile));
+
+        var myHandlers = AppDomain.CurrentDomain.Load("Catalogue.Application");
+        svc.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(myHandlers));
 
         return svc;
     }

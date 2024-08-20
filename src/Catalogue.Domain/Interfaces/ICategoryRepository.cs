@@ -1,5 +1,7 @@
-﻿namespace Catalogue.Domain.Interfaces;
+﻿using Catalogue.Domain.Entities;
 
-public interface ICategoryRepository
+namespace Catalogue.Domain.Interfaces;
+
+public interface ICategoryRepository : IRepository<Category>
 {
 }

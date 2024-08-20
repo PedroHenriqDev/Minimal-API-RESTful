@@ -1,5 +1,7 @@
-﻿namespace Catalogue.Domain.Interfaces;
+﻿using Catalogue.Domain.Entities;
 
-public interface IProductRepository
+namespace Catalogue.Domain.Interfaces;
+
+public interface IProductRepository : IRepository<Product>
 {
 }

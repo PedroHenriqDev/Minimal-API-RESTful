@@ -7,7 +7,7 @@ public sealed class Product : Entity
 {
     public string? Description { get; set; }
     public string? ImageUrl { get; set; }
-    public Decimal? Price { get; set; }
+    public decimal? Price { get; set; }
 
     public int CategoryId { get; set; }
 

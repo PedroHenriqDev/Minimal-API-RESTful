@@ -1,3 +1,6 @@
+using Catalogue.API.Endpoints;
+using Catalogue.API.Extensions;
+using Catalogue.API.Filters;
 using Catalogue.CrossCutting.AppDependencies;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddScoped<GlobalExceptionFilter>();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
@@ -16,6 +20,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapPostCategory();
+
+app.UseGlobalExceptionFilter();
 app.UseHttpsRedirection();
 
 app.Run();
