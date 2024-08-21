@@ -20,7 +20,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapPostCategory();
+app.MapPostCategoryEndpoints();
+app.MapDeleteCategoryEndpoints();
 
 app.UseGlobalExceptionFilter();
 app.UseHttpsRedirection();

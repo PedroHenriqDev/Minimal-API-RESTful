@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
 using Catalogue.Application.Categories.Commands.Requests;
 using Catalogue.Application.Categories.Commands.Response;
-using Catalogue.Application.Categories.Commands.Validations;
 using Catalogue.Application.Exceptions;
 using Catalogue.Domain.Entities;
 using Catalogue.Domain.Interfaces;
 using FluentValidation;
 using MediatR;
 
-namespace Catalogue.Application.Categories.Handlers;
+namespace Catalogue.Application.Categories.Commands.Handlers;
 
 public class CreateCategoryCommandHandler
     : IRequestHandler<CreateCategoryCommandRequest, CreateCategoryCommandResponse>
@@ -27,7 +26,7 @@ public class CreateCategoryCommandHandler
     }
 
     public async Task<CreateCategoryCommandResponse> Handle(CreateCategoryCommandRequest request,
-                                                             CancellationToken cancellationToken)
+                                                            CancellationToken cancellationToken)
     {
         Validate(request);
         var categoryToAdd = _mapper.Map<Category>(request);

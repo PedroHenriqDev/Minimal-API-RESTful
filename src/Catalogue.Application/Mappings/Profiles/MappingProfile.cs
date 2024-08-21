@@ -11,5 +11,6 @@ public class MappingProfile : Profile
     {
         CreateMap<Category, CreateCategoryCommandRequest>().ReverseMap();
         CreateMap<Category, CreateCategoryCommandResponse>().ReverseMap();
+        CreateMap<Category, DeleteCategoryCommandResponse>().ReverseMap();
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Catalogue.Domain.Validation;
-using System.Text.Json.Serialization;
 
 namespace Catalogue.Domain.Entities;
 
@@ -10,9 +9,7 @@ public sealed class Category : Entity
     public ICollection<Product>? Products { get; set; }
 
     public Category()
-    {
-        ValidateDomain();
-    }
+    {}
 
     public Category(int id, string name, string description, DateTime createdAt) 
     {

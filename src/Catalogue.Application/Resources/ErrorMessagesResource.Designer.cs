@@ -61,6 +61,15 @@ namespace Catalogue.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not found category with id = {0}.
+        /// </summary>
+        public static string NOT_FOUND_CATEGORY_MESSAGE {
+            get {
+                return ResourceManager.GetString("NOT_FOUND_CATEGORY_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An unexpected server error occurred.
         /// </summary>
         public static string SERVER_ERROR_MESSAGE {
