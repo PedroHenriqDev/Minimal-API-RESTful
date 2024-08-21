@@ -1,15 +1,14 @@
-﻿using FluentValidation.AspNetCore;
-using FluentValidation;
-using Catalogue.Application.Categories.Commands.Requests;
+﻿using Catalogue.Application.Categories.Commands.Requests;
 using Catalogue.Application.Categories.Commands.Validations;
 using Catalogue.Application.Mappings.Profiles;
 using Catalogue.Domain.Interfaces;
 using Catalogue.Infrastructure.Context;
 using Catalogue.Infrastructure.Repositories;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
 
 namespace Catalogue.CrossCutting.AppDependencies;
 
@@ -24,6 +23,7 @@ public static class DepedencyInjection
 
         svc.AddScoped<IUnitOfWork, UnitOfWork>();
         svc.AddScoped<CreateCategoryCommandValidator>();
+        svc.AddScoped<UpdateCategoryCommandValidator>();
 
         svc.AddFluentValidationAutoValidation();
         svc.AddValidatorsFromAssemblyContaining<CreateCategoryCommandRequest>();

@@ -6,7 +6,4 @@ public abstract class CategoryCommandBase
 {
     public string? Description { get; set; }
     public string? Name { get; set; }
-
-    [JsonIgnore]
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }

@@ -22,8 +22,18 @@ if (app.Environment.IsDevelopment())
 
 app.MapPostCategoryEndpoints();
 app.MapDeleteCategoryEndpoints();
+app.MapUpdateCategoryEndpoints();
 
 app.UseGlobalExceptionFilter();
 app.UseHttpsRedirection();
 
 app.Run();
+
+
+
+string email = string.Empty;
+
+bool IsEmail(string email) 
+{
+    return email.Contains("@");
+}

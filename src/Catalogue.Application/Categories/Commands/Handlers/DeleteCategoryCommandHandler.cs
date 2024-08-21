@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Catalogue.Application.Categories.Commands.Requests;
-using Catalogue.Application.Categories.Commands.Response;
+using Catalogue.Application.Categories.Commands.Responses;
 using Catalogue.Application.Exceptions;
 using Catalogue.Application.Resources;
 using Catalogue.Domain.Entities;
@@ -9,7 +9,8 @@ using MediatR;
 
 namespace Catalogue.Application.Categories.Commands.Handlers;
 
-public class DeleteCategoryCommandHandler : IRequestHandler<DeleteCategoryCommandRequest, DeleteCategoryCommandResponse>
+public class DeleteCategoryCommandHandler :
+    IRequestHandler<DeleteCategoryCommandRequest, DeleteCategoryCommandResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;

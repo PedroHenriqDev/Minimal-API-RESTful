@@ -22,8 +22,12 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
 
     public async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate)
     {
-        var entity = await _context.Set<TEntity>().FirstOrDefaultAsync(predicate);
-        return entity;
+        return await _context.Set<TEntity>().FirstOrDefaultAsync(predicate);
+    }
+
+    public async Task<TEntity?> GetAsNoTrackingAsync(Expression<Func<TEntity, bool>> predicate)
+    {
+        return await _context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(predicate);
     }
 
     public async Task<TEntity> AddAsync(TEntity entity)

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Catalogue.Application.Categories.Commands.Requests;
-using Catalogue.Application.Categories.Commands.Response;
+using Catalogue.Application.Categories.Commands.Responses;
 using Catalogue.Application.Exceptions;
 using Catalogue.Domain.Entities;
 using Catalogue.Domain.Interfaces;

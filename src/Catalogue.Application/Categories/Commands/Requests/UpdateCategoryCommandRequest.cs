@@ -5,8 +5,11 @@ using System.Text.Json.Serialization;
 
 namespace Catalogue.Application.Categories.Commands.Requests;
 
-public class CreateCategoryCommandRequest : CategoryCommandBase, IRequest<CreateCategoryCommandResponse>
+public class UpdateCategoryCommandRequest : CategoryCommandBase, IRequest<UpdateCategoryCommandResponse>
 {
     [JsonIgnore]
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public int Id { get; set; }
+
+    [JsonIgnore]
+    public DateTime CreatedAt { get; set; }
 }

@@ -1,13 +1,12 @@
 ﻿using Catalogue.Application.Categories.Commands.Requests;
-
 using Catalogue.Application.Resources;
 using FluentValidation;
 
 namespace Catalogue.Application.Categories.Commands.Validations;
 
-public class CreateCategoryCommandValidator : AbstractValidator<CreateCategoryCommandRequest>
+public class UpdateCategoryCommandValidator : AbstractValidator<UpdateCategoryCommandRequest>
 {
-    public CreateCategoryCommandValidator()
+    public UpdateCategoryCommandValidator()
     {
         const int nameMaxLength = 120;
         string nameMessage =
