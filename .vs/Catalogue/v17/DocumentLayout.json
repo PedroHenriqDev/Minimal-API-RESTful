@@ -3,6 +3,34 @@
   "WorkspaceRootPath": "C:\\Projects\\Minimal\\Catalogue\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\responses\\updatecategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\responses\\updatecategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\responses\\deletecategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\responses\\deletecategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\responses\\createcategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\responses\\createcategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\requests\\createcategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\requests\\createcategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\requests\\updatecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\requests\\updatecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\abstractions\\categorycommandbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\abstractions\\categorycommandbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\requests\\deletecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\requests\\deletecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\handlers\\updatecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\handlers\\updatecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,18 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\validations\\createcategorycommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\validations\\createcategorycommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\responses\\createcategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\responses\\createcategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\responses\\deletecategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\responses\\deletecategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\responses\\updatecategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\responses\\updatecategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\handlers\\deletecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -57,22 +73,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{150C8701-E1E6-4EA8-816B-6D9C59215DBD}|src\\Catalogue.Domain\\Catalogue.Domain.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.domain\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{150C8701-E1E6-4EA8-816B-6D9C59215DBD}|src\\Catalogue.Domain\\Catalogue.Domain.csproj|solutionrelative:src\\catalogue.domain\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\requests\\createcategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\requests\\createcategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\requests\\deletecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\requests\\deletecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\requests\\updatecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\requests\\updatecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\abstractions\\categorycommandbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\abstractions\\categorycommandbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{150C8701-E1E6-4EA8-816B-6D9C59215DBD}|src\\Catalogue.Domain\\Catalogue.Domain.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.domain\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -222,46 +222,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "CategoriesEndpoints.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
-              "RelativeToolTip": "src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAADgvzEAAAAAAAAA",
+              "DocumentIndex": 3,
+              "Title": "CreateCategoryCommandRequest.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\CreateCategoryCommandRequest.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\CreateCategoryCommandRequest.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\CreateCategoryCommandRequest.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\CreateCategoryCommandRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAkAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T00:22:41.806Z",
+              "WhenOpened": "2024-08-19T23:40:47.324Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "UpdateCategoryCommandResponse.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "CategoryCommandBase.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Abstractions\\CategoryCommandBase.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Abstractions\\CategoryCommandBase.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Abstractions\\CategoryCommandBase.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Abstractions\\CategoryCommandBase.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAcAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T01:59:43.668Z",
+              "WhenOpened": "2024-08-19T23:44:07.54Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DeleteCategoryCommandRequest.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-21T02:05:32.6Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "DeleteCategoryCommandResponse.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwgAAAAAAAAA",
+              "Title": "UpdateCategoryCommandRequest.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T01:59:45.297Z",
+              "WhenOpened": "2024-08-21T02:05:20.275Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "CreateCategoryCommandResponse.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\CreateCategoryCommandResponse.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\CreateCategoryCommandResponse.cs",
@@ -274,20 +287,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CreateCategoryCommandValidator.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Validations\\CreateCategoryCommandValidator.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Validations\\CreateCategoryCommandValidator.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Validations\\CreateCategoryCommandValidator.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Validations\\CreateCategoryCommandValidator.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAIAAAA",
+              "DocumentIndex": 1,
+              "Title": "DeleteCategoryCommandResponse.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T01:16:10.857Z",
+              "WhenOpened": "2024-08-21T01:59:45.297Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "UpdateCategoryCommandResponse.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-21T01:59:43.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UpdateCategoryCommandHandler.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-21T01:59:47.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "UpdateCategoryCommandValidator.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Validations\\UpdateCategoryCommandValidator.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Validations\\UpdateCategoryCommandValidator.cs",
@@ -300,20 +339,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UpdateCategoryCommandHandler.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
-              "ViewState": "AQIAACAAAAAAAAAAAAArwDgAAAAFAAAA",
+              "DocumentIndex": 9,
+              "Title": "CreateCategoryCommandValidator.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Validations\\CreateCategoryCommandValidator.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Validations\\CreateCategoryCommandValidator.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Validations\\CreateCategoryCommandValidator.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Validations\\CreateCategoryCommandValidator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T01:59:47.919Z",
+              "WhenOpened": "2024-08-20T01:16:10.857Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 13,
+              "Title": "CategoriesEndpoints.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
+              "RelativeToolTip": "src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAADgvzEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-20T00:22:41.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "DeleteCategoryCommandHandler.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
@@ -326,7 +378,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "ValidationCategoryMessagesResource.resx",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Resources\\ValidationCategoryMessagesResource.resx",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Resources\\ValidationCategoryMessagesResource.resx",
@@ -338,7 +390,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "CreateCategoryCommandHandler.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
@@ -351,7 +403,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "FilterExtension.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Extensions\\FilterExtension.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.API\\Extensions\\FilterExtension.cs",
@@ -364,7 +416,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "Repository.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Infrastructure\\Repositories\\Repository.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Infrastructure\\Repositories\\Repository.cs",
@@ -377,7 +429,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "IRepository.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Domain\\Interfaces\\IRepository.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Domain\\Interfaces\\IRepository.cs",
@@ -390,43 +442,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "DeleteCategoryCommandRequest.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T02:05:32.6Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "CreateCategoryCommandRequest.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\CreateCategoryCommandRequest.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\CreateCategoryCommandRequest.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\CreateCategoryCommandRequest.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\CreateCategoryCommandRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T23:40:47.324Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 17,
-              "Title": "CategoryCommandBase.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Abstractions\\CategoryCommandBase.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Abstractions\\CategoryCommandBase.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Abstractions\\CategoryCommandBase.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Abstractions\\CategoryCommandBase.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T23:44:07.54Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "IUnitOfWork.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Domain\\Interfaces\\IUnitOfWork.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Domain\\Interfaces\\IUnitOfWork.cs",
@@ -436,18 +452,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-17T21:57:04.413Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "UpdateCategoryCommandRequest.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-21T02:05:20.275Z"
             },
             {
               "$type": "Document",

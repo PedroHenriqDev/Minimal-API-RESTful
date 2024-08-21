@@ -4,5 +4,5 @@ namespace Catalogue.Application.Categories.Commands.Responses;
 
 public class UpdateCategoryCommandResponse : CategoryCommandBase
 {
-    int Id { get; set; }
+    public int Id { get; set; }
 }
