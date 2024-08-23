@@ -3,88 +3,48 @@
   "WorkspaceRootPath": "C:\\Projects\\Minimal\\Catalogue\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\commands\\handlers\\createcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\handlers\\createcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\queries\\handlers\\getcategoryqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\queries\\handlers\\getcategoryqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\queries\\requests\\getcategoryqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\queries\\requests\\getcategoryqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\queries\\responses\\getcategoryqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\queries\\responses\\getcategoryqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\queries\\handlers\\getcategoriesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\queries\\handlers\\getcategoriesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.api\\endpoints\\categoriesendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\endpoints\\categoriesendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{20F3D41D-2953-44C5-922D-CA68787AB5F3}|src\\Catalogue.Infrastructure\\Catalogue.Infrastructure.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.infrastructure\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20F3D41D-2953-44C5-922D-CA68787AB5F3}|src\\Catalogue.Infrastructure\\Catalogue.Infrastructure.csproj|solutionrelative:src\\catalogue.infrastructure\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{150C8701-E1E6-4EA8-816B-6D9C59215DBD}|src\\Catalogue.Domain\\Catalogue.Domain.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.domain\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{150C8701-E1E6-4EA8-816B-6D9C59215DBD}|src\\Catalogue.Domain\\Catalogue.Domain.csproj|solutionrelative:src\\catalogue.domain\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20F3D41D-2953-44C5-922D-CA68787AB5F3}|src\\Catalogue.Infrastructure\\Catalogue.Infrastructure.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.infrastructure\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20F3D41D-2953-44C5-922D-CA68787AB5F3}|src\\Catalogue.Infrastructure\\Catalogue.Infrastructure.csproj|solutionrelative:src\\catalogue.infrastructure\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20F3D41D-2953-44C5-922D-CA68787AB5F3}|src\\Catalogue.Infrastructure\\Catalogue.Infrastructure.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.infrastructure\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20F3D41D-2953-44C5-922D-CA68787AB5F3}|src\\Catalogue.Infrastructure\\Catalogue.Infrastructure.csproj|solutionrelative:src\\catalogue.infrastructure\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{20F3D41D-2953-44C5-922D-CA68787AB5F3}|src\\Catalogue.Infrastructure\\Catalogue.Infrastructure.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.infrastructure\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{20F3D41D-2953-44C5-922D-CA68787AB5F3}|src\\Catalogue.Infrastructure\\Catalogue.Infrastructure.csproj|solutionrelative:src\\catalogue.infrastructure\\repositories\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\queries\\responses\\getcategoryqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\queries\\responses\\getcategoryqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\queries\\responses\\getcategoriesqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\queries\\responses\\getcategoriesqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\queries\\requests\\getcategoriesqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\queries\\requests\\getcategoriesqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\queries\\handlers\\getcategoriesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\queries\\handlers\\getcategoriesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\mappings\\automapper\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\mappings\\automapper\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\mappings\\automapper\\converts\\pagedlistconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\mappings\\automapper\\converts\\pagedlistconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\pagination\\parameters\\queryparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\pagination\\parameters\\queryparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\pagination\\pagedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\pagination\\pagedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.api\\extensions\\filterextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.api\\extensions\\filterextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\extensions\\filterextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\interfaces\\pagination\\ipagedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\interfaces\\pagination\\ipagedlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\mappings\\automapper\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\mappings\\automapper\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{150C8701-E1E6-4EA8-816B-6D9C59215DBD}|src\\Catalogue.Domain\\Catalogue.Domain.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.domain\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{150C8701-E1E6-4EA8-816B-6D9C59215DBD}|src\\Catalogue.Domain\\Catalogue.Domain.csproj|solutionrelative:src\\catalogue.domain\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\queries\\requests\\getcategoriesqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\queries\\requests\\getcategoriesqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\dtos\\errorsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\dtos\\errorsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\commands\\handlers\\deletecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\handlers\\deletecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\dtos\\paginationmetadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\dtos\\paginationmetadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\commands\\handlers\\createcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\handlers\\createcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -94,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -106,262 +66,146 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CreateCategoryCommandHandler.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T21:06:42.137Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IUnitOfWork.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Domain\\Interfaces\\IUnitOfWork.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Domain\\Interfaces\\IUnitOfWork.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Domain\\Interfaces\\IUnitOfWork.cs",
-              "RelativeToolTip": "src\\Catalogue.Domain\\Interfaces\\IUnitOfWork.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAcAAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T20:58:33.876Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CategoryRepository.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Infrastructure\\Repositories\\CategoryRepository.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Infrastructure\\Repositories\\CategoryRepository.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Infrastructure\\Repositories\\CategoryRepository.cs",
-              "RelativeToolTip": "src\\Catalogue.Infrastructure\\Repositories\\CategoryRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T20:53:20.807Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "ProductRepository.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Infrastructure\\Repositories\\ProductRepository.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Infrastructure\\Repositories\\ProductRepository.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Infrastructure\\Repositories\\ProductRepository.cs",
-              "RelativeToolTip": "src\\Catalogue.Infrastructure\\Repositories\\ProductRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T20:53:20.178Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Infrastructure\\Repositories\\UnitOfWork.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Infrastructure\\Repositories\\UnitOfWork.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Infrastructure\\Repositories\\UnitOfWork.cs",
-              "RelativeToolTip": "src\\Catalogue.Infrastructure\\Repositories\\UnitOfWork.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAywCUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T20:52:53.039Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Repository.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Infrastructure\\Repositories\\Repository.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Infrastructure\\Repositories\\Repository.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Infrastructure\\Repositories\\Repository.cs",
-              "RelativeToolTip": "src\\Catalogue.Infrastructure\\Repositories\\Repository.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAYwDAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T20:52:48.575Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "PagedListConverter.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Mappings\\AutoMapper\\Converts\\PagedListConverter.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Mappings\\AutoMapper\\Converts\\PagedListConverter.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Mappings\\AutoMapper\\Converts\\PagedListConverter.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Mappings\\AutoMapper\\Converts\\PagedListConverter.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T00:22:55.518Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "GetCategoriesQueryHandler.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesQueryHandler.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesQueryHandler.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesQueryHandler.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesQueryHandler.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAYwBUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T23:41:04.133Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "QueryParameters.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Pagination\\Parameters\\QueryParameters.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Pagination\\Parameters\\QueryParameters.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Pagination\\Parameters\\QueryParameters.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Pagination\\Parameters\\QueryParameters.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T23:48:01.984Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "MappingProfile.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T00:15:22.06Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CategoriesEndpoints.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
-              "RelativeToolTip": "src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAywCwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T22:42:04.1Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "GetCategoriesQueryRequest.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoriesQueryRequest.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoriesQueryRequest.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoriesQueryRequest.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoriesQueryRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABNAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T23:37:11.819Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "GetCategoriesQueryResponse.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoriesQueryResponse.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoriesQueryResponse.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoriesQueryResponse.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoriesQueryResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T00:13:52.743Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GetCategoryQueryResponse.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoryQueryResponse.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoryQueryResponse.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoryQueryResponse.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoryQueryResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T00:12:31.589Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "PagedList.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Pagination\\PagedList.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Pagination\\PagedList.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Pagination\\PagedList.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Pagination\\PagedList.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAkwAsAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T22:38:45.696Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Program.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.API\\Program.cs",
               "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Program.cs",
               "RelativeToolTip": "src\\Catalogue.API\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T22:44:57.45Z"
+              "WhenOpened": "2024-08-23T23:34:16.17Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 6,
               "Title": "FilterExtension.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Extensions\\FilterExtension.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.API\\Extensions\\FilterExtension.cs",
               "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Extensions\\FilterExtension.cs",
               "RelativeToolTip": "src\\Catalogue.API\\Extensions\\FilterExtension.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAewBIAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T23:55:30.479Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "IPagedList.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Interfaces\\Pagination\\IPagedList.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Interfaces\\Pagination\\IPagedList.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Interfaces\\Pagination\\IPagedList.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Interfaces\\Pagination\\IPagedList.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-22T22:40:54.468Z"
+              "WhenOpened": "2024-08-23T23:34:13.957Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Category.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Domain\\Entities\\Category.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Domain\\Entities\\Category.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Domain\\Entities\\Category.cs",
-              "RelativeToolTip": "src\\Catalogue.Domain\\Entities\\Category.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA3AAAA",
+              "DocumentIndex": 4,
+              "Title": "CategoriesEndpoints.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
+              "RelativeToolTip": "src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAUwBIAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T00:11:27.853Z"
+              "WhenOpened": "2024-08-23T23:22:02.928Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "PaginationMetadata.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\DTOs\\PaginationMetadata.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\DTOs\\PaginationMetadata.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\DTOs\\PaginationMetadata.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\DTOs\\PaginationMetadata.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAqAAAA",
+              "DocumentIndex": 3,
+              "Title": "GetCategoriesQueryHandler.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesQueryHandler.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesQueryHandler.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesQueryHandler.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesQueryHandler.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAYwBkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T01:03:50.348Z"
+              "WhenOpened": "2024-08-23T23:21:23.743Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "ErrorsDto.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\DTOs\\ErrorsDto.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\DTOs\\ErrorsDto.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\DTOs\\ErrorsDto.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\DTOs\\ErrorsDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAdAAAA",
+              "DocumentIndex": 7,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAADwvwsAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-23T01:06:32.044Z"
+              "WhenOpened": "2024-08-23T23:21:12.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GetCategoryQueryHandler.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoryQueryHandler.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoryQueryHandler.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoryQueryHandler.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoryQueryHandler.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAA4wCMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T23:14:32.43Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GetCategoryQueryRequest.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoryQueryRequest.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoryQueryRequest.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoryQueryRequest.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoryQueryRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T23:13:25.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GetCategoryQueryResponse.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoryQueryResponse.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoryQueryResponse.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoryQueryResponse.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoryQueryResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T23:12:47.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GetCategoriesQueryRequest.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoriesQueryRequest.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoriesQueryRequest.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoriesQueryRequest.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoriesQueryRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T22:26:50.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CreateCategoryCommandHandler.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T22:20:25.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DeleteCategoryCommandHandler.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-23T22:05:35.903Z",
+              "EditorCaption": ""
             }
           ]
         }

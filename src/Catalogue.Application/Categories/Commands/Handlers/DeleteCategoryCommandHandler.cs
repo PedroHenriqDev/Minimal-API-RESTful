@@ -21,7 +21,7 @@ public class DeleteCategoryCommandHandler :
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
-
+        
     public async Task<DeleteCategoryCommandResponse> Handle(DeleteCategoryCommandRequest request,
                                                             CancellationToken cancellationToken)
     {

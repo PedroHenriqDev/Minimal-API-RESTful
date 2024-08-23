@@ -7,7 +7,6 @@ using Catalogue.Domain.Interfaces;
 using MediatR;
 
 namespace Catalogue.Application.Categories.Queries.Handlers;
-
 public class GetCategoriesQueryHandler
     : IRequestHandler<GetCategoriesQueryRequest, GetCategoriesQueryResponse>
 {
@@ -26,7 +25,7 @@ public class GetCategoriesQueryHandler
         IQueryable<Category>? categories = _unitOfWork.CategoryRepository.GetAll();
 
         var categoriesPaged = await PagedList<GetCategoryQueryResponse>.ToPagedListAsync(
-            request.Parameters.PageNumber,
+            request.Parameters!.PageNumber,
             request.Parameters.PageSize,
             categories.Select(c => _mapper.Map<GetCategoryQueryResponse>(c))
         );

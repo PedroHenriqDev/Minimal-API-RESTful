@@ -22,14 +22,23 @@ public static class CategoriesEndpoints
         {
             GetCategoriesQueryResponse response = await mediator.Send(new GetCategoriesQueryRequest(parameters));
 
-            AddCategoriesMetaData(httpContext, response.CategoriesPaged);
+            AppendCategoriesMetaData(httpContext, response.CategoriesPaged);
 
             return Results.Ok(response.CategoriesPaged);
         }).Produces<PagedList<GetCategoryQueryResponse>>(StatusCodes.Status200OK)
           .Produces<ErrorsDto>(StatusCodes.Status400BadRequest);
+
+
+        app.MapGet("Categories/{id:int}", async ([FromRoute] int id, [FromServices] IMediator mediator) =>
+        {
+            GetCategoryQueryResponse response = await mediator.Send(new GetCategoryQueryRequest(id));
+
+            return Results.Ok(response);
+        }).Produces<GetCategoryQueryResponse>(StatusCodes.Status200OK)
+          .Produces<ErrorsDto>(StatusCodes.Status404NotFound);
     }
 
-    private static void AddCategoriesMetaData(HttpContext httpContext, IPagedList<GetCategoryQueryResponse>? categoriesPaged) 
+    private static void AppendCategoriesMetaData(HttpContext httpContext, IPagedList<GetCategoryQueryResponse>? categoriesPaged) 
     {
         var metaData = new PaginationMetadata
         {
@@ -39,7 +48,7 @@ public static class CategoriesEndpoints
             HasNext = categoriesPaged?.HasNextPage ?? false,
             TotalItems = categoriesPaged?.ItemsCount ?? 0
         };
-
+        
         httpContext.Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(metaData));
     }
 
