@@ -19,7 +19,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.MapGetCategoryEndpoints();
 app.MapPostCategoryEndpoints();
 app.MapDeleteCategoryEndpoints();
 app.MapUpdateCategoryEndpoints();
@@ -29,11 +29,3 @@ app.UseHttpsRedirection();
 
 app.Run();
 
-
-
-string email = string.Empty;
-
-bool IsEmail(string email) 
-{
-    return email.Contains("@");
-}

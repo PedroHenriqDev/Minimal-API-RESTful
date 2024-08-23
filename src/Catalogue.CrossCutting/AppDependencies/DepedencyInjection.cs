@@ -1,6 +1,6 @@
 ﻿using Catalogue.Application.Categories.Commands.Requests;
 using Catalogue.Application.Categories.Commands.Validations;
-using Catalogue.Application.Mappings.Profiles;
+using Catalogue.Application.Mappings.AutoMapper.Profiles;
 using Catalogue.Domain.Interfaces;
 using Catalogue.Infrastructure.Context;
 using Catalogue.Infrastructure.Repositories;

@@ -12,8 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Categories\Queries\Responses\" />
-    <Folder Include="Categories\Queries\Requests\" />
     <Folder Include="Products\Commands\" />
     <Folder Include="Products\Handlers\" />
     <Folder Include="Products\Queries\" />

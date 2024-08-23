@@ -15,4 +15,19 @@
     <ProjectReference Include="..\Catalogue.CrossCutting\Catalogue.CrossCutting.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Resources\ApiErrorMessagesResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ApiErrorMessagesResource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\ApiErrorMessagesResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApiErrorMessagesResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

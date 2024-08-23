@@ -1,4 +1,4 @@
-﻿using Catalogue.Application.Categories.Commands.Abstractions;
+﻿using Catalogue.Application.Categories.Abstractions.Commands;
 using Catalogue.Application.Categories.Commands.Responses;
 using MediatR;
 using System.Text.Json.Serialization;

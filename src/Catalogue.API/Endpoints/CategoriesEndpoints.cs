@@ -1,20 +1,55 @@
 ﻿using Catalogue.Application.Categories.Commands.Requests;
 using Catalogue.Application.Categories.Commands.Responses;
+using Catalogue.Application.Categories.Queries.Requests;
+using Catalogue.Application.Categories.Queries.Responses;
 using Catalogue.Application.DTOs;
+using Catalogue.Application.Interfaces;
+using Catalogue.Application.Pagination;
+using Catalogue.Application.Pagination.Parameters;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace Catalogue.API.Endpoints;
 
 public static class CategoriesEndpoints
 {
+    public static void MapGetCategoryEndpoints(this WebApplication app)
+    {
+        app.MapGet("Categories", async (HttpContext httpContext,
+                                        [AsParameters] QueryParameters parameters,
+                                        [FromServices] IMediator mediator) =>
+        {
+            GetCategoriesQueryResponse response = await mediator.Send(new GetCategoriesQueryRequest(parameters));
+
+            AddCategoriesMetaData(httpContext, response.CategoriesPaged);
+
+            return Results.Ok(response.CategoriesPaged);
+        }).Produces<PagedList<GetCategoryQueryResponse>>(StatusCodes.Status200OK)
+          .Produces<ErrorsDto>(StatusCodes.Status400BadRequest);
+    }
+
+    private static void AddCategoriesMetaData(HttpContext httpContext, IPagedList<GetCategoryQueryResponse>? categoriesPaged) 
+    {
+        var metaData = new PaginationMetadata
+        {
+            PageSize = categoriesPaged?.PageSize ?? 0,
+            PageCount = categoriesPaged?.PageCount ?? 0,
+            HasPrevious = categoriesPaged?.HasPreviousPage ?? false,
+            HasNext = categoriesPaged?.HasNextPage ?? false,
+            TotalItems = categoriesPaged?.ItemsCount ?? 0
+        };
+
+        httpContext.Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(metaData));
+    }
+
     public static void MapPostCategoryEndpoints(this WebApplication app)
     {
         app.MapPost("Categories", async ([FromBody] CreateCategoryCommandRequest request,
                                          [FromServices] IMediator mediator) =>
         {
             CreateCategoryCommandResponse response = await mediator.Send(request);
-
             return Results.Created(string.Empty, response);
         }).Produces<CreateCategoryCommandResponse>(StatusCodes.Status201Created)
           .Produces<ErrorsDto>(StatusCodes.Status500InternalServerError);
@@ -22,11 +57,10 @@ public static class CategoriesEndpoints
 
     public static void MapDeleteCategoryEndpoints(this WebApplication app)
     {
-        app.MapDelete("Categories/{id:int}", async ([FromBody] DeleteCategoryCommandRequest request,
-                                                    [FromRoute] int id,
+        app.MapDelete("Categories/{id:int}", async ([FromRoute] int id,
                                                     [FromServices] IMediator mediator) =>
         {
-            request.Id = id;
+            var request = new DeleteCategoryCommandRequest { Id = id };
             DeleteCategoryCommandResponse response = await mediator.Send(request);
             return Results.Ok(response);
         }).Produces<DeleteCategoryCommandResponse>(StatusCodes.Status200OK)
@@ -35,8 +69,8 @@ public static class CategoriesEndpoints
 
     public static void MapUpdateCategoryEndpoints(this WebApplication app)
     {
-        app.MapPut("Categories/{id:int}", async ([FromBody] UpdateCategoryCommandRequest request,
-                                                 [FromRoute] int id,
+        app.MapPut("Categories/{id:int}", async ([FromRoute] int id,
+                                                 [FromBody] UpdateCategoryCommandRequest request,
                                                  [FromServices] IMediator mediator) =>
         {
             request.Id = id;

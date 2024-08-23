@@ -9,22 +9,22 @@ public class CreateCategoryCommandValidator : AbstractValidator<CreateCategoryCo
 {
     public CreateCategoryCommandValidator()
     {
-        const int nameMaxLength = 120;
+        const int NAME_MAX_LENGTH = 120;
         string nameMessage =
-            string.Format(ValidationCategoryMessagesResource.NAME_INVALID, nameMaxLength);
+            string.Format(ValidationCategoryMessagesResource.NAME_INVALID, NAME_MAX_LENGTH);
 
         RuleFor(c => c.Name)
             .NotEmpty()
-            .MaximumLength(nameMaxLength)
+            .MaximumLength(NAME_MAX_LENGTH)
             .WithMessage(nameMessage);
 
-        const int descriptionMaxLenght = 255;
+        const int DESCRIPTION_MAX_LENGTH = 255;
         string descriptionMessage =
-            string.Format(ValidationCategoryMessagesResource.DESCRIPTION_INVALID, descriptionMaxLenght);
+            string.Format(ValidationCategoryMessagesResource.DESCRIPTION_INVALID, DESCRIPTION_MAX_LENGTH);
 
         RuleFor(c => c.Description)
             .NotEmpty()
-            .MaximumLength(descriptionMaxLenght)
+            .MaximumLength(DESCRIPTION_MAX_LENGTH)
             .WithMessage(descriptionMessage);
     }
 }

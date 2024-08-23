@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Catalogue.Application.Categories.Commands.Abstractions;
+﻿namespace Catalogue.Application.Categories.Abstractions.Commands;
 
 public abstract class CategoryCommandBase
 {
