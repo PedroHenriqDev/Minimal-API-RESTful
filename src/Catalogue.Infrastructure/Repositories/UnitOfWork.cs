@@ -1,5 +1,6 @@
 ﻿using Catalogue.Domain.Interfaces;
 using Catalogue.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Catalogue.Infrastructure.Repositories;
 
@@ -14,17 +15,17 @@ public class UnitOfWork : IUnitOfWork
         _context = context;
     }
 
-    public ICategoryRepository CategoryRepository 
+    public ICategoryRepository CategoryRepository
     {
-        get 
+        get
         {
             return _categoryRepository ?? new CategoryRepository(_context);
         }
     }
 
-    public IProductRepository ProductRepository 
+    public IProductRepository ProductRepository
     {
-        get 
+        get
         {
             return _productRepository ?? new ProductRepository(_context);
         }
@@ -33,5 +34,10 @@ public class UnitOfWork : IUnitOfWork
     public async Task CommitAsync()
     {
         await _context.SaveChangesAsync();
+    }
+
+    public async Task<TTransaction> BeginTransactionAsync<TTransaction>()
+    {
+        return (TTransaction)await _context.Database.BeginTransactionAsync();
     }
 }

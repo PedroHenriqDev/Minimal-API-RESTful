@@ -7,7 +7,6 @@ using Catalogue.Application.Interfaces;
 using Catalogue.Application.Pagination;
 using Catalogue.Application.Pagination.Parameters;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
@@ -45,7 +44,7 @@ public static class CategoriesEndpoints
     }
 
     public static void MapPostCategoryEndpoints(this WebApplication app)
-    {
+    { 
         app.MapPost("Categories", async ([FromBody] CreateCategoryCommandRequest request,
                                          [FromServices] IMediator mediator) =>
         {

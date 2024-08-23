@@ -40,7 +40,7 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
     {
         _context.Set<TEntity>().Remove(entity);
     }
-  
+
     public void Update(TEntity entity)
     {
         _context.Set<TEntity>().Update(entity);
