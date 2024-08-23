@@ -19,11 +19,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 app.MapGetCategoryEndpoints();
 app.MapPostCategoryEndpoints();
 app.MapDeleteCategoryEndpoints();
 app.MapUpdateCategoryEndpoints();
 
+app.UseCors(builder.Configuration["Cors:PolicyName"]!);
 app.UseGlobalExceptionFilter();
 app.UseHttpsRedirection();
 

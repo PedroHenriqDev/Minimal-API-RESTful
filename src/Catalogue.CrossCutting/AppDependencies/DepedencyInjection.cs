@@ -17,8 +17,8 @@ public static class DepedencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection svc, IConfiguration configuration)
     {
         string connectionString = configuration.GetConnectionString("DefaultConnection")
-            ?? throw new ArgumentNullException();
-
+            ?? throw new ArgumentNullException(nameof(connectionString));
+     
         svc.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
         svc.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -27,6 +27,17 @@ public static class DepedencyInjection
 
         svc.AddFluentValidationAutoValidation();
         svc.AddValidatorsFromAssemblyContaining<CreateCategoryCommandRequest>();
+
+        string? corsPolicyName = configuration["Cors:PolicyName"]
+         ?? throw new ArgumentNullException(nameof(corsPolicyName));
+
+        svc.AddCors(opt =>
+        {
+            opt.AddPolicy(corsPolicyName, policy =>
+            {
+                policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+            });
+        });
 
         svc.AddAutoMapper(typeof(MappingProfile));
 
