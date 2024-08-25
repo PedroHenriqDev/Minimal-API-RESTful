@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Catalogue.Application.Categories.Queries.Requests;
 using Catalogue.Application.Categories.Queries.Responses;
 using Catalogue.Application.Pagination;
@@ -24,11 +25,10 @@ public class GetCategoriesQueryHandler
     {
         IQueryable<Category>? categories = _unitOfWork.CategoryRepository.GetAll();
 
-        var categoriesPaged = await PagedList<GetCategoryQueryResponse>.ToPagedListAsync(
-            request.Parameters!.PageNumber,
-            request.Parameters.PageSize,
-            categories.Select(c => _mapper.Map<GetCategoryQueryResponse>(c))
-        );
+        var categoriesPaged = await PagedList<GetCategoryQueryResponse>
+            .ToPagedListAsync(request.Parameters!.PageNumber,
+                              request.Parameters.PageSize,
+                              categories.ProjectTo<GetCategoryQueryResponse>(_mapper.ConfigurationProvider));
 
         return new GetCategoriesQueryResponse(categoriesPaged);
     }

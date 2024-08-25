@@ -14,6 +14,20 @@ namespace Catalogue.API.Endpoints;
 
 public static class CategoriesEndpoints
 {
+    private static void AppendCategoriesMetaData<T>(HttpContext httpContext, IPagedList<T>? categoriesPaged)
+    {
+        var metaData = new PaginationMetadata
+        {
+            PageSize = categoriesPaged?.PageSize ?? 0,
+            PageCount = categoriesPaged?.PageCount ?? 0,
+            HasPrevious = categoriesPaged?.HasPreviousPage ?? false,
+            HasNext = categoriesPaged?.HasNextPage ?? false,
+            TotalItems = categoriesPaged?.ItemsCount ?? 0
+        };
+
+        httpContext.Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(metaData));
+    }
+
     public static void MapGetCategoryEndpoints(this WebApplication app)
     {
         app.MapGet("Categories", async (HttpContext httpContext,
@@ -28,6 +42,21 @@ public static class CategoriesEndpoints
         }).Produces<PagedList<GetCategoryQueryResponse>>(StatusCodes.Status200OK)
           .Produces<ErrorsDto>(StatusCodes.Status400BadRequest);
 
+        app.MapGet("Categories/Products", async (HttpContext httpContext,
+                                                 [AsParameters] QueryParameters parameters,
+                                                 [FromServices] IMediator mediator) =>
+        {
+            GetCategoriesWithProductsQueryResponse response = await mediator.Send
+            (
+                new GetCategoriesWithProductsQueryRequest(parameters)
+            );
+
+            AppendCategoriesMetaData(httpContext, response.CategoriesPaged);
+
+            return Results.Ok(response.CategoriesPaged);
+        }).Produces<PagedList<GetCategoryWithProductsQueryResponse>>(StatusCodes.Status200OK)
+          .Produces<ErrorsDto>(StatusCodes.Status400BadRequest);
+
 
         app.MapGet("Categories/{id:int}", async ([FromRoute] int id, [FromServices] IMediator mediator) =>
         {
@@ -38,22 +67,8 @@ public static class CategoriesEndpoints
           .Produces<ErrorsDto>(StatusCodes.Status404NotFound);
     }
 
-    private static void AppendCategoriesMetaData(HttpContext httpContext, IPagedList<GetCategoryQueryResponse>? categoriesPaged) 
-    {
-        var metaData = new PaginationMetadata
-        {
-            PageSize = categoriesPaged?.PageSize ?? 0,
-            PageCount = categoriesPaged?.PageCount ?? 0,
-            HasPrevious = categoriesPaged?.HasPreviousPage ?? false,
-            HasNext = categoriesPaged?.HasNextPage ?? false,
-            TotalItems = categoriesPaged?.ItemsCount ?? 0
-        };
-        
-        httpContext.Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(metaData));
-    }
-
     public static void MapPostCategoryEndpoints(this WebApplication app)
-    { 
+    {
         app.MapPost("Categories", async ([FromBody] CreateCategoryCommandRequest request,
                                          [FromServices] IMediator mediator) =>
         {

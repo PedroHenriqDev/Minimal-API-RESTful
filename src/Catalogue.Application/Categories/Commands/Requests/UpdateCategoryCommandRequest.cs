@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace Catalogue.Application.Categories.Commands.Requests;
 
-public class UpdateCategoryCommandRequest : CategoryCommandBase, IRequest<UpdateCategoryCommandResponse>
+public sealed class UpdateCategoryCommandRequest : CategoryCommandBase, IRequest<UpdateCategoryCommandResponse>
 {
     [JsonIgnore]
     public int Id { get; set; }

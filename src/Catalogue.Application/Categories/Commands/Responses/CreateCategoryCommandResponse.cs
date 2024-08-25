@@ -2,6 +2,6 @@
 
 namespace Catalogue.Application.Categories.Commands.Responses;
 
-public class CreateCategoryCommandResponse : CategoryCommandBase
+public sealed class CreateCategoryCommandResponse : CategoryCommandBase
 {
 }

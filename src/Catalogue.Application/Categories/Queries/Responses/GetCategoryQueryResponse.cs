@@ -1,6 +1,4 @@
-﻿using Catalogue.Domain.Entities;
-
-namespace Catalogue.Application.Categories.Queries.Responses;
+﻿namespace Catalogue.Application.Categories.Queries.Responses;
 
 public class GetCategoryQueryResponse
 {
@@ -8,5 +6,4 @@ public class GetCategoryQueryResponse
     public string? Name { get; set; }
     public DateTime CreatedAt { get; set; }
     public string? Description { get; set; }
-    public ICollection<Product>? Products { get; set; }
 }
