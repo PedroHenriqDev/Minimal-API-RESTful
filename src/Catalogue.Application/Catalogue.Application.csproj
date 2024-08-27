@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Products\Commands\" />
     <Folder Include="Products\Handlers\" />
     <Folder Include="Products\Queries\Requests\" />
   </ItemGroup>
@@ -31,10 +30,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ErrorMessagesResource.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\ValidationCategoryMessagesResource.Designer.cs">
+    <Compile Update="Resources\ProductValidationMessagesResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ValidationCategoryMessagesResource.resx</DependentUpon>
+      <DependentUpon>ProductValidationMessagesResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\CategoryValidationMessagesResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CategoryValidationMessagesResource.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -43,9 +47,13 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ErrorMessagesResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\ValidationCategoryMessagesResource.resx">
+    <EmbeddedResource Update="Resources\ProductValidationMessagesResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ValidationCategoryMessagesResource.Designer.cs</LastGenOutput>
+      <LastGenOutput>ProductValidationMessagesResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CategoryValidationMessagesResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CategoryValidationMessagesResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

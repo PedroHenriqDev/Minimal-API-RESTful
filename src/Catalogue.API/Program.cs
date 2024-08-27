@@ -20,10 +20,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapGetCategoryEndpoints();
-app.MapPostCategoryEndpoints();
-app.MapDeleteCategoryEndpoints();
-app.MapUpdateCategoryEndpoints();
+app.MapGetCategoriesEndpoints();
+app.MapPostCategoriesEndpoints();
+app.MapDeleteCategoriesEndpoints();
+app.MapUpdateCategoriesEndpoints();
+
+app.MapPostProductsEndpoints();
 
 app.UseCors(builder.Configuration["Cors:PolicyName"]!);
 app.UseGlobalExceptionFilter();

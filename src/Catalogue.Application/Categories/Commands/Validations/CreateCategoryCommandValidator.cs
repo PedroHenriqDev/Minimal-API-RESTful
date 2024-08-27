@@ -11,7 +11,7 @@ public class CreateCategoryCommandValidator : AbstractValidator<CreateCategoryCo
     {
         const int NAME_MAX_LENGTH = 120;
         string nameMessage =
-            string.Format(ValidationCategoryMessagesResource.NAME_INVALID, NAME_MAX_LENGTH);
+            string.Format(CategoryValidationMessagesResource.NAME_INVALID, NAME_MAX_LENGTH);
 
         RuleFor(c => c.Name)
             .NotEmpty()
@@ -20,7 +20,7 @@ public class CreateCategoryCommandValidator : AbstractValidator<CreateCategoryCo
 
         const int DESCRIPTION_MAX_LENGTH = 255;
         string descriptionMessage =
-            string.Format(ValidationCategoryMessagesResource.DESCRIPTION_INVALID, DESCRIPTION_MAX_LENGTH);
+            string.Format(CategoryValidationMessagesResource.DESCRIPTION_INVALID, DESCRIPTION_MAX_LENGTH);
 
         RuleFor(c => c.Description)
             .NotEmpty()
