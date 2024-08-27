@@ -8,7 +8,7 @@ namespace Catalogue.API.Endpoints;
 
 public static class ProductsEndpoints
 {
-    const string endpointsTag = "Products";
+    const string endpointTag = "Products";
 
     public static void MapPostProductsEndpoints(this WebApplication app) 
     {
@@ -22,6 +22,19 @@ public static class ProductsEndpoints
         }).Produces<CreateProductCommandResponse>(StatusCodes.Status201Created)
           .Produces<ErrorsDto>(StatusCodes.Status400BadRequest)
           .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
-          .WithTags(endpointsTag);
+          .WithTags(endpointTag);
+    }
+
+    public static void MapDeleteProductsEndpoints(this WebApplication app) 
+    {
+        app.MapDelete("products/{id:int}", async ([FromRoute] int id,
+                                                  [FromServices] IMediator mediator) =>
+        {
+            DeleteProductCommandResponse response = await mediator.Send(new DeleteProductCommandRequest(id));
+
+            return Results.Ok(response);
+        }).Produces<DeleteProductCommandResponse>(StatusCodes.Status200OK)
+          .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
+          .WithTags(endpointTag);
     }
 }

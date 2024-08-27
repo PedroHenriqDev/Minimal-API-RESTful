@@ -26,6 +26,7 @@ app.MapDeleteCategoriesEndpoints();
 app.MapUpdateCategoriesEndpoints();
 
 app.MapPostProductsEndpoints();
+app.MapDeleteProductsEndpoints();
 
 app.UseCors(builder.Configuration["Cors:PolicyName"]!);
 app.UseGlobalExceptionFilter();

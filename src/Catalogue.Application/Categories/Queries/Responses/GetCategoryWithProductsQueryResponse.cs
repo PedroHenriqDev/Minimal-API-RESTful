@@ -1,5 +1,4 @@
 ﻿using Catalogue.Application.Products.Queries.Responses;
-using Catalogue.Domain.Entities;
 
 namespace Catalogue.Application.Categories.Queries.Responses;
 

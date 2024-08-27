@@ -1,5 +1,6 @@
 ﻿using Catalogue.Domain.Entities;
 using Catalogue.Domain.Interfaces;
+using Catalogue.Infrastructure.Abstractions;
 using Catalogue.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 

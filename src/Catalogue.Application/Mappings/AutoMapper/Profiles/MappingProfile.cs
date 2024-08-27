@@ -35,5 +35,6 @@ public class MappingProfile : Profile
 
         CreateMap<Product, CreateProductCommandResponse>().ReverseMap();
         CreateMap<Product, GetProductQueryResponse>().ReverseMap();
+        CreateMap<Product, DeleteProductCommandResponse>().ReverseMap();
     }
 }

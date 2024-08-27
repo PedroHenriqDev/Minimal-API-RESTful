@@ -123,6 +123,9 @@
   <data name="NOT_FOUND_CATEGORY_NAME" xml:space="preserve">
     <value>Not found category name is '{0}'</value>
   </data>
+  <data name="NOT_FOUND_PRODUCT_MESSAGE" xml:space="preserve">
+    <value>Not found product with id= {0}</value>
+  </data>
   <data name="SERVER_ERROR_MESSAGE" xml:space="preserve">
     <value>An unexpected server error occurred</value>
   </data>

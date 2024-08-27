@@ -4,17 +4,18 @@ using Catalogue.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace Catalogue.Infrastructure.Repositories;
+namespace Catalogue.Infrastructure.Abstractions;
 
 public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
 {
-    protected readonly AppDbContext _context;
+    protected DbSet<TEntity> set => _context.Set<TEntity>();
+    private readonly AppDbContext _context;
 
     public Repository(AppDbContext context)
     {
         _context = context;
     }
-    
+
     public IQueryable<TEntity> GetAll()
     {
         return _context.Set<TEntity>();
