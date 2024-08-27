@@ -22,14 +22,14 @@ namespace Catalogue.Application.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ErrorMessagesResource {
+    public class ProductValidationMessagesResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ErrorMessagesResource() {
+        internal ProductValidationMessagesResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Catalogue.Application.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Catalogue.Application.Resources.ErrorMessagesResource", typeof(ErrorMessagesResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Catalogue.Application.Resources.ProductValidationMessagesResource", typeof(ProductValidationMessagesResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,38 @@ namespace Catalogue.Application.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not found category with id = {0}.
+        ///   Looks up a localized string similar to The description cannot be null and must be less than {0} characters.
         /// </summary>
-        public static string NOT_FOUND_CATEGORY_MESSAGE {
+        public static string DESCRIPTION_INVALID {
             get {
-                return ResourceManager.GetString("NOT_FOUND_CATEGORY_MESSAGE", resourceCulture);
+                return ResourceManager.GetString("DESCRIPTION_INVALID", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not found category name is &apos;{0}&apos;.
+        ///   Looks up a localized string similar to The image cannot be null.
         /// </summary>
-        public static string NOT_FOUND_CATEGORY_NAME {
+        public static string IMAGE_URL_INVALID {
             get {
-                return ResourceManager.GetString("NOT_FOUND_CATEGORY_NAME", resourceCulture);
+                return ResourceManager.GetString("IMAGE_URL_INVALID", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An unexpected server error occurred.
+        ///   Looks up a localized string similar to The name cannot be null and must be less than {0} characters.
         /// </summary>
-        public static string SERVER_ERROR_MESSAGE {
+        public static string NAME_INVALID {
             get {
-                return ResourceManager.GetString("SERVER_ERROR_MESSAGE", resourceCulture);
+                return ResourceManager.GetString("NAME_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The price must be between {0} and {1}.
+        /// </summary>
+        public static string PRICE_INVALID {
+            get {
+                return ResourceManager.GetString("PRICE_INVALID", resourceCulture);
             }
         }
     }

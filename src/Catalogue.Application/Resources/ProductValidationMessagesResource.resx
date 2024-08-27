@@ -117,13 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NOT_FOUND_CATEGORY_MESSAGE" xml:space="preserve">
-    <value>Not found category with id = {0}</value>
+  <data name="DESCRIPTION_INVALID" xml:space="preserve">
+    <value>The description cannot be null and must be less than {0} characters</value>
   </data>
-  <data name="NOT_FOUND_CATEGORY_NAME" xml:space="preserve">
-    <value>Not found category name is '{0}'</value>
+  <data name="IMAGE_URL_INVALID" xml:space="preserve">
+    <value>The image cannot be null</value>
   </data>
-  <data name="SERVER_ERROR_MESSAGE" xml:space="preserve">
-    <value>An unexpected server error occurred</value>
+  <data name="NAME_INVALID" xml:space="preserve">
+    <value>The name cannot be null and must be less than {0} characters</value>
+  </data>
+  <data name="PRICE_INVALID" xml:space="preserve">
+    <value>The price must be between {0} and {1}</value>
   </data>
 </root>
