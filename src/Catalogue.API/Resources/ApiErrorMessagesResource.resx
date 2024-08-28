@@ -117,7 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ID_PROPERTY_NOT_EQUAL_ERROR" xml:space="preserve">
+    <value>The type of the 'Id' property in the request object does not match the type of the 'id' value from the route. Expected type: {0}, Actual type: {1}. Ensure that the 'Id' property and route value types are consistent.</value>
+  </data>
+  <data name="ID_PROPERTY_NULL_ERROR" xml:space="preserve">
+    <value>The 'Id' property is null or not found in the request object. Ensure that the request object contains a public property named 'Id' and that it is properly initialized.</value>
+  </data>
   <data name="QUERY_INVALID" xml:space="preserve">
     <value>Query Invalid</value>
+  </data>
+  <data name="REQUEST_NULL_FILTER_ERROR" xml:space="preserve">
+    <value>The request object is missing. Ensure that the request object is the first parameter in the endpoint configuration and verify that it is being correctly passed.</value>
   </data>
 </root>

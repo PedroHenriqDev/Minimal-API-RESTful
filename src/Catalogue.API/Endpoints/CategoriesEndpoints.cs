@@ -1,4 +1,5 @@
-﻿using Catalogue.Application.Categories.Commands.Requests;
+﻿using Catalogue.API.Filters;
+using Catalogue.Application.Categories.Commands.Requests;
 using Catalogue.Application.Categories.Commands.Responses;
 using Catalogue.Application.Categories.Queries.Requests;
 using Catalogue.Application.Categories.Queries.Responses;
@@ -77,14 +78,14 @@ public static class CategoriesEndpoints
                                                           [FromServices] IMediator mediator) =>
         {
             GetCategoryWithProductsQueryResponse response = await mediator.Send
-            ( 
+            (
                 new GetCategoryWithProductsQueryRequest(id)
             );
 
             return Results.Ok(response);
         })
           .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
-          .WithTags(endpointTag); 
+          .WithTags(endpointTag);
     }
 
     public static void MapPostCategoriesEndpoints(this WebApplication app)
@@ -113,14 +114,15 @@ public static class CategoriesEndpoints
 
     public static void MapPutCategoriesEndpoints(this WebApplication app)
     {
-        app.MapPut("categories/{id:int}", async ([FromRoute] int id,
-                                                 [FromBody] UpdateCategoryCommandRequest request,
+        app.MapPut("categories/{id:int}", async ([FromBody] UpdateCategoryCommandRequest request,
+                                                 [FromRoute] int id,
                                                  [FromServices] IMediator mediator) =>
         {
-            request.Id = id;
             UpdateCategoryCommandResponse response = await mediator.Send(request);
             return Results.Ok(response);
-        }).Produces<UpdateCategoryCommandResponse>(StatusCodes.Status200OK)
+
+        }).AddEndpointFilter<InjectIdFilter>()
+          .Produces<UpdateCategoryCommandResponse>(StatusCodes.Status200OK)
           .Produces<ErrorsDto>(StatusCodes.Status400BadRequest)
           .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
           .WithTags(endpointTag);

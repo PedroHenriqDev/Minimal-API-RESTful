@@ -1,5 +1,4 @@
 using Catalogue.API.Endpoints;
-using Catalogue.API.Extensions;
 using Catalogue.API.Filters;
 using Catalogue.CrossCutting.AppDependencies;
 

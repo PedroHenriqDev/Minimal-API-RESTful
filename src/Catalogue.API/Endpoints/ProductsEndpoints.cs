@@ -1,4 +1,5 @@
-﻿using Catalogue.Application.DTOs;
+﻿using Catalogue.API.Filters;
+using Catalogue.Application.DTOs;
 using Catalogue.Application.Products.Commands.Requests;
 using Catalogue.Application.Products.Commands.Responses;
 using MediatR;
@@ -26,18 +27,19 @@ public static class ProductsEndpoints
 
     public static void MapPutProductsEndpoints(this WebApplication app) 
     {
-        app.MapPut("products/{id:int}", async ([FromRoute] int id,
-                                               [FromBody] UpdateProductCommandRequest request,
+        app.MapPut("products/{id:int}", async ([FromBody] UpdateProductCommandRequest request,
+                                               [FromRoute] int id,
                                                [FromServices] IMediator mediator) =>
         {
-            request.Id = id;
             UpdateProductCommandResponse response = await mediator.Send(request);
             return Results.Ok(response);
 
-        }).Produces<UpdateProductCommandResponse>(StatusCodes.Status200OK)
+        })
+          .AddEndpointFilter<InjectIdFilter>()
+          .Produces<UpdateProductCommandResponse>(StatusCodes.Status200OK)
           .Produces<ErrorsDto>(StatusCodes.Status400BadRequest)
           .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
-          .WithTags(endpointTag);
+          .WithTags(endpointTag);                    
     }
 
     public static void MapDeleteProductsEndpoints(this WebApplication app) 

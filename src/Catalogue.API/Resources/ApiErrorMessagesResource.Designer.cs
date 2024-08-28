@@ -61,11 +61,38 @@ namespace Catalogue.API.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The type of the &apos;Id&apos; property in the request object does not match the type of the &apos;id&apos; value from the route. Expected type: {0}, Actual type: {1}. Ensure that the &apos;Id&apos; property and route value types are consistent..
+        /// </summary>
+        public static string ID_PROPERTY_NOT_EQUAL_ERROR {
+            get {
+                return ResourceManager.GetString("ID_PROPERTY_NOT_EQUAL_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The &apos;Id&apos; property is null or not found in the request object. Ensure that the request object contains a public property named &apos;Id&apos; and that it is properly initialized..
+        /// </summary>
+        public static string ID_PROPERTY_NULL_ERROR {
+            get {
+                return ResourceManager.GetString("ID_PROPERTY_NULL_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Query Invalid.
         /// </summary>
         public static string QUERY_INVALID {
             get {
                 return ResourceManager.GetString("QUERY_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The request object is missing. Ensure that the request object is the first parameter in the endpoint configuration and verify that it is being correctly passed..
+        /// </summary>
+        public static string REQUEST_NULL_FILTER_ERROR {
+            get {
+                return ResourceManager.GetString("REQUEST_NULL_FILTER_ERROR", resourceCulture);
             }
         }
     }
