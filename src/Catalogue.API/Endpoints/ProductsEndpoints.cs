@@ -13,7 +13,18 @@ public static class ProductsEndpoints
 
     public static void MapPostProductsEndpoints(this WebApplication app) 
     {
-        app.MapPost("products", async ([FromBody] CreateProductCommandRequest request,
+        app.MapPost("products", async ([FromBody] CreateProductCommandRequest request, 
+                                       [FromServices] IMediator mediator) =>
+        {
+            CreateProductCommandResponse response = await mediator.Send(request);
+
+            return Results.Created(string.Empty, response);
+        }).Produces<CreateProductCommandResponse>(StatusCodes.Status200OK)
+          .Produces<ErrorsDto>(StatusCodes.Status400BadRequest)
+          .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
+          .WithTags(endpointTag);
+        
+        app.MapPost("products/category-name", async ([FromBody] CreateProductByCatNameCommandRequest request,
                                        [FromServices] IMediator mediator) =>
         {
             CreateProductCommandResponse response = await mediator.Send(request);

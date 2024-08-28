@@ -28,10 +28,11 @@ public class MappingProfile : Profile
 
         CreateMap(typeof(PagedList<>), typeof(PagedList<>)).ConvertUsing(typeof(PagedListConverter<,>));
 
-        CreateMap<Product, CreateProductCommandRequest>()
+        CreateMap<Product, CreateProductByCatNameCommandRequest>()
             .ForMember(dest => dest.CategoryName, opt => opt.Ignore())
             .ReverseMap();
 
+        CreateMap<Product, CreateProductCommandRequest>().ReverseMap();
         CreateMap<Product, CreateProductCommandResponse>().ReverseMap();
         CreateMap<Product, GetProductQueryResponse>().ReverseMap();
         CreateMap<Product, UpdateProductCommandRequest>().ReverseMap();

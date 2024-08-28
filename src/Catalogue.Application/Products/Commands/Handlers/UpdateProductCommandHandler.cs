@@ -33,8 +33,6 @@ public class UpdateProductCommandHandler :
             _validator.EnsureValid(request);
 
             _mapper.Map(request, productToUpdate);
-
-            _unitOfWork.ProductRepository.Update(productToUpdate);
             await _unitOfWork.CommitAsync();
 
             return _mapper.Map<UpdateProductCommandResponse>(productToUpdate);

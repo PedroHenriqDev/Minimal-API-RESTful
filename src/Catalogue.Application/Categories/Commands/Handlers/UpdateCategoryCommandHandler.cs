@@ -35,8 +35,6 @@ public class UpdateCategoryCommandHandler :
             _validator.EnsureValid(request);
 
             _mapper.Map(request, categoryToUpdate);
-
-            _unitOfWork.CategoryRepository.Update(categoryToUpdate);
             await _unitOfWork.CommitAsync();
 
             return _mapper.Map<UpdateCategoryCommandResponse>(categoryToUpdate);

@@ -31,10 +31,9 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
         return await _context.Set<TEntity>().AsNoTracking().FirstOrDefaultAsync(predicate);
     }
 
-    public async Task<TEntity> AddAsync(TEntity entity)
+    public async Task AddAsync(TEntity entity)
     {
         await _context.Set<TEntity>().AddAsync(entity);
-        return entity;
     }
 
     public void Delete(TEntity entity)

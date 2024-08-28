@@ -61,6 +61,15 @@ namespace Catalogue.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The name &apos;{0}&apos; already exists.
+        /// </summary>
+        public static string NAME_EXISTS_MESSAGE {
+            get {
+                return ResourceManager.GetString("NAME_EXISTS_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not found category name is &apos;{0}&apos;.
         /// </summary>
         public static string NOT_FOUND_CATEGORY_NAME {

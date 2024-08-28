@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Catalogue.Application.Categories.Commands.Requests;
 using Catalogue.Application.Categories.Commands.Responses;
+using Catalogue.Application.Exceptions;
 using Catalogue.Application.FluentValidation;
+using Catalogue.Application.Resources;
 using Catalogue.Domain.Entities;
 using Catalogue.Domain.Interfaces;
 using FluentValidation;
@@ -28,12 +30,18 @@ public class CreateCategoryCommandHandler
     public async Task<CreateCategoryCommandResponse> Handle(CreateCategoryCommandRequest request,
                                                             CancellationToken cancellationToken)
     {
+        if (await _unitOfWork.CategoryRepository.GetAsNoTrackingAsync(c => c.Name == request.Name) is not null)
+        {
+            string existsMessage = string.Format(ErrorMessagesResource.NAME_EXISTS_MESSAGE, request.Name);
+            throw new ExistsValueException(existsMessage);
+        }
+
         _validator.EnsureValid(request);
         var categoryToAdd = _mapper.Map<Category>(request);
 
-        Category categoryAdded = await _unitOfWork.CategoryRepository.AddAsync(categoryToAdd);
+        await _unitOfWork.CategoryRepository.AddAsync(categoryToAdd);
         await _unitOfWork.CommitAsync();
 
-        return _mapper.Map<CreateCategoryCommandResponse>(categoryAdded);
+        return _mapper.Map<CreateCategoryCommandResponse>(categoryToAdd);
     }
 }

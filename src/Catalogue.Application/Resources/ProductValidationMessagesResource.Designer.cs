@@ -61,6 +61,15 @@ namespace Catalogue.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The category name cannot be null.
+        /// </summary>
+        public static string CATEGORY_NAME_INVALID {
+            get {
+                return ResourceManager.GetString("CATEGORY_NAME_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The description cannot be null and must be less than {0} characters.
         /// </summary>
         public static string DESCRIPTION_INVALID {

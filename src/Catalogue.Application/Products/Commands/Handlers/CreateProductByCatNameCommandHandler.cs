@@ -11,27 +11,31 @@ using MediatR;
 
 namespace Catalogue.Application.Products.Commands.Handlers;
 
-public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, CreateProductCommandResponse>
+public class CreateProductByCatNameCommandHandler : 
+    IRequestHandler<CreateProductByCatNameCommandRequest, CreateProductCommandResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
-    private readonly IValidator<CreateProductCommandRequest> _validator;
+    private readonly IValidator<CreateProductByCatNameCommandRequest> _validator;
 
-    public CreateProductCommandHandler(IUnitOfWork unitOfWork,
+    public CreateProductByCatNameCommandHandler(IUnitOfWork unitOfWork,
                                        IMapper mapper, 
-                                       IValidator<CreateProductCommandRequest> validator)
+                                       IValidator<CreateProductByCatNameCommandRequest> validator)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
         _validator = validator;
     }
 
-    public async Task<CreateProductCommandResponse> Handle(CreateProductCommandRequest request,
+    public async Task<CreateProductCommandResponse> Handle(CreateProductByCatNameCommandRequest request, 
                                                            CancellationToken cancellationToken)
     {
-        if(await _unitOfWork.CategoryRepository.GetAsNoTrackingAsync(c => c.Id == request.CategoryId) is Category) 
+        if (await _unitOfWork.CategoryRepository.GetAsNoTrackingAsync(c => 
+            c.Name.ToLower() == request.CategoryName.ToLower()) is Category category) 
         {
             _validator.EnsureValid(request);
+
+            request.CategoryId = category.Id;
 
             var productToAdd = _mapper.Map<Product>(request);
 
@@ -41,9 +45,7 @@ public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandR
             return _mapper.Map<CreateProductCommandResponse>(productToAdd);
         }
 
-        string notFoundMessage =
-            string.Format(ErrorMessagesResource.NOT_FOUND_ID_MESSAGE, typeof(Category).Name, request.CategoryId);
-
-        throw new NotFoundException(notFoundMessage); 
+        string notFoundMessage = string.Format(ErrorMessagesResource.NOT_FOUND_CATEGORY_NAME, request.CategoryName);
+        throw new NotFoundException(notFoundMessage);
     }
 }

@@ -3,35 +3,119 @@
   "WorkspaceRootPath": "C:\\Projects\\Minimal\\Catalogue\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.api\\endpoints\\productsendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\endpoints\\productsendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\products\\commands\\handlers\\createproductbycatnamecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\handlers\\createproductbycatnamecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.api\\filters\\filterextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\filters\\filterextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.api\\filters\\globalexceptionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\filters\\globalexceptionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\products\\commands\\handlers\\createproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\handlers\\createproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.api\\endpoints\\categoriesendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\endpoints\\categoriesendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.api\\filters\\injectidfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.api\\endpoints\\productsendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\endpoints\\productsendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\products\\commands\\requests\\createproductcommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\requests\\createproductcommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\products\\commands\\requests\\createproductbycatnamecommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\requests\\createproductbycatnamecommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\products\\commands\\handlers\\deleteproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\handlers\\deleteproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\products\\commands\\validations\\createproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\validations\\createproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\products\\commands\\validations\\createproductbycatnamecommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\validations\\createproductbycatnamecommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\mappings\\automapper\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\mappings\\automapper\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\products\\commands\\validations\\updateproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\validations\\updateproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\resources\\productvalidationmessagesresource.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\resources\\productvalidationmessagesresource.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.api\\filters\\injectidfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\filters\\injectidfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\products\\commands\\responses\\updateproductcommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\responses\\updateproductcommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\handlers\\createcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\handlers\\createcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\products\\commands\\handlers\\updateproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\handlers\\updateproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\abstractions\\commands\\categorycommandbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{20F3D41D-2953-44C5-922D-CA68787AB5F3}|src\\Catalogue.Infrastructure\\Catalogue.Infrastructure.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.infrastructure\\abstractions\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{20F3D41D-2953-44C5-922D-CA68787AB5F3}|src\\Catalogue.Infrastructure\\Catalogue.Infrastructure.csproj|solutionrelative:src\\catalogue.infrastructure\\abstractions\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{150C8701-E1E6-4EA8-816B-6D9C59215DBD}|src\\Catalogue.Domain\\Catalogue.Domain.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.domain\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{150C8701-E1E6-4EA8-816B-6D9C59215DBD}|src\\Catalogue.Domain\\Catalogue.Domain.csproj|solutionrelative:src\\catalogue.domain\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\handlers\\deletecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\handlers\\deletecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\exceptions\\existsvalueexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\exceptions\\existsvalueexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\exceptions\\httpinvalidqueryexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\exceptions\\httpinvalidqueryexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\handlers\\updatecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\handlers\\updatecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.api\\filters\\filterextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\filters\\filterextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.api\\filters\\globalexceptionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\filters\\globalexceptionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\resources\\errormessagesresource.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\resources\\errormessagesresource.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\requests\\createcategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\requests\\createcategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\requests\\updatecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\requests\\updatecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\requests\\deletecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\requests\\deletecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\products\\commands\\responses\\updateproductcommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\responses\\updateproductcommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\abstractions\\commands\\categorycommandbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\abstractions\\commands\\categorycommandbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -39,72 +123,28 @@
       "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\responses\\updatecategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\requests\\updatecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\requests\\updatecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.api\\resources\\apierrormessagesresource.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
+      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.api\\resources\\apierrormessagesresource.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
       "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\resources\\apierrormessagesresource.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\mappings\\automapper\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\mappings\\automapper\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\commands\\requests\\deletecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\requests\\deletecategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\products\\commands\\requests\\updateproductcommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\requests\\updateproductcommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\handlers\\updatecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\handlers\\updatecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\handlers\\deletecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\handlers\\deletecategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\commands\\handlers\\createcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\handlers\\createcategorycommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\commands\\responses\\deletecategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\responses\\deletecategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\responses\\deletecategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\commands\\responses\\createcategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\responses\\createcategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\responses\\createcategorycommandresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\products\\commands\\handlers\\deleteproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\handlers\\deleteproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\products\\commands\\handlers\\createproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\handlers\\createproductcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\commands\\requests\\createcategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\commands\\requests\\createcategorycommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\products\\commands\\requests\\deleteproductcommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\products\\commands\\requests\\deleteproductcommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\requests\\deleteproductcommandrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\products\\commands\\validations\\updateproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\validations\\updateproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\products\\commands\\validations\\createproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\commands\\validations\\createproductcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\categories\\commands\\validations\\updatecategorycommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -130,7 +170,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -142,266 +182,85 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "InjectIdFilter.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Filters\\InjectIdFilter.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.API\\Filters\\InjectIdFilter.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Filters\\InjectIdFilter.cs",
-              "RelativeToolTip": "src\\Catalogue.API\\Filters\\InjectIdFilter.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC8AAAAFAAAA",
+              "DocumentIndex": 0,
+              "Title": "CreateProductByCatNameCommandHandler.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductByCatNameCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductByCatNameCommandHandler.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductByCatNameCommandHandler.cs*",
+              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductByCatNameCommandHandler.cs*",
+              "ViewState": "AQIAABEAAAAAAAAAAAAYwCEAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T01:21:57.706Z",
+              "WhenOpened": "2024-08-28T00:19:39.372Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CreateProductCommandHandler.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductCommandHandler.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductCommandHandler.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductCommandHandler.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAYwB8AAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T22:15:44.654Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CategoriesEndpoints.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
-              "RelativeToolTip": "src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
-              "ViewState": "AQIAAGgAAAAAAAAAAAAawHsAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T23:35:15.419Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "ProductsEndpoints.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\ProductsEndpoints.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.API\\Endpoints\\ProductsEndpoints.cs",
               "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\ProductsEndpoints.cs",
               "RelativeToolTip": "src\\Catalogue.API\\Endpoints\\ProductsEndpoints.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAzwBcAAAAsAAAA",
+              "ViewState": "AQIAABwAAAAAAAAAAAAowBgAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-27T23:35:11.538Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CategoryCommandBase.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Abstractions\\Commands\\CategoryCommandBase.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Abstractions\\Commands\\CategoryCommandBase.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Abstractions\\Commands\\CategoryCommandBase.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Abstractions\\Commands\\CategoryCommandBase.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAgAAAA",
+              "DocumentIndex": 4,
+              "Title": "CreateProductCommandRequest.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Requests\\CreateProductCommandRequest.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Requests\\CreateProductCommandRequest.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Requests\\CreateProductCommandRequest.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Requests\\CreateProductCommandRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T00:53:46.768Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UpdateProductCommandHandler.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Handlers\\UpdateProductCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Handlers\\UpdateProductCommandHandler.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Handlers\\UpdateProductCommandHandler.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Handlers\\UpdateProductCommandHandler.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAADgvywAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T23:50:53.02Z",
+              "WhenOpened": "2024-08-28T22:13:22.071Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "UpdateProductCommandResponse.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Responses\\UpdateProductCommandResponse.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Responses\\UpdateProductCommandResponse.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Responses\\UpdateProductCommandResponse.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Responses\\UpdateProductCommandResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAgAAAA",
+              "Title": "CreateProductByCatNameCommandRequest.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Requests\\CreateProductByCatNameCommandRequest.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Requests\\CreateProductByCatNameCommandRequest.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Requests\\CreateProductByCatNameCommandRequest.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Requests\\CreateProductByCatNameCommandRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T23:46:28.2Z",
+              "WhenOpened": "2024-08-28T22:09:06.179Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "GlobalExceptionFilter.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Filters\\GlobalExceptionFilter.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.API\\Filters\\GlobalExceptionFilter.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Filters\\GlobalExceptionFilter.cs",
-              "RelativeToolTip": "src\\Catalogue.API\\Filters\\GlobalExceptionFilter.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAcwAwAAAAuAAAA",
+              "Title": "CategoriesEndpoints.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
+              "RelativeToolTip": "src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAYwHsAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T01:33:04.08Z",
+              "WhenOpened": "2024-08-27T23:35:15.419Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FilterExtension.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Filters\\FilterExtension.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.API\\Filters\\FilterExtension.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Filters\\FilterExtension.cs",
-              "RelativeToolTip": "src\\Catalogue.API\\Filters\\FilterExtension.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABsAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T01:33:03.375Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UpdateCategoryCommandResponse.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T23:49:59.157Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Program.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.API\\Program.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Program.cs",
-              "RelativeToolTip": "src\\Catalogue.API\\Program.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABMAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T00:13:27.449Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "MappingProfile.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAQwCkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T23:59:57.619Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UpdateCategoryCommandRequest.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T23:49:57.419Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ApiErrorMessagesResource.resx",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Resources\\ApiErrorMessagesResource.resx",
-              "RelativeDocumentMoniker": "src\\Catalogue.API\\Resources\\ApiErrorMessagesResource.resx",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Resources\\ApiErrorMessagesResource.resx",
-              "RelativeToolTip": "src\\Catalogue.API\\Resources\\ApiErrorMessagesResource.resx",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2024-08-28T02:07:09.668Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DeleteCategoryCommandRequest.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T00:18:25.182Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "UpdateProductCommandRequest.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Requests\\UpdateProductCommandRequest.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Requests\\UpdateProductCommandRequest.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Requests\\UpdateProductCommandRequest.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Requests\\UpdateProductCommandRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T23:48:40.789Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "DeleteCategoryCommandHandler.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAswA0AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T23:54:52.354Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "UpdateCategoryCommandHandler.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAYwB0AAABYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T23:55:01Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "CreateCategoryCommandHandler.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvxMAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T00:53:40.351Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "DeleteCategoryCommandResponse.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T00:48:08.49Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "CreateCategoryCommandResponse.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\CreateCategoryCommandResponse.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\CreateCategoryCommandResponse.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\CreateCategoryCommandResponse.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\CreateCategoryCommandResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T00:48:09.149Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 6,
               "Title": "DeleteProductCommandHandler.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Handlers\\DeleteProductCommandHandler.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Handlers\\DeleteProductCommandHandler.cs",
@@ -414,20 +273,226 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "CreateProductCommandHandler.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductCommandHandler.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductCommandHandler.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductCommandHandler.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductCommandHandler.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAADwvyEAAAAiAAAA",
+              "DocumentIndex": 7,
+              "Title": "CreateProductCommandValidator.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductCommandValidator.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductCommandValidator.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductCommandValidator.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductCommandValidator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAABOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T00:19:39.372Z",
+              "WhenOpened": "2024-08-27T23:56:09.587Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CreateProductByCatNameCommandValidator.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductByCatNameCommandValidator.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductByCatNameCommandValidator.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductByCatNameCommandValidator.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductByCatNameCommandValidator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAABgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T23:29:14.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAowAsAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T23:59:57.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UpdateProductCommandValidator.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Validations\\UpdateProductCommandValidator.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Validations\\UpdateProductCommandValidator.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Validations\\UpdateProductCommandValidator.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Validations\\UpdateProductCommandValidator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T23:56:33.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ProductValidationMessagesResource.resx",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Resources\\ProductValidationMessagesResource.resx",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Resources\\ProductValidationMessagesResource.resx",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Resources\\ProductValidationMessagesResource.resx",
+              "RelativeToolTip": "src\\Catalogue.Application\\Resources\\ProductValidationMessagesResource.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2024-08-28T23:30:57.688Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "InjectIdFilter.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Filters\\InjectIdFilter.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.API\\Filters\\InjectIdFilter.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Filters\\InjectIdFilter.cs",
+              "RelativeToolTip": "src\\Catalogue.API\\Filters\\InjectIdFilter.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAA/wC0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T01:21:57.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UpdateProductCommandHandler.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Handlers\\UpdateProductCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Handlers\\UpdateProductCommandHandler.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Handlers\\UpdateProductCommandHandler.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Handlers\\UpdateProductCommandHandler.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAADgvyoAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T23:50:53.02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CreateCategoryCommandHandler.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAqwCkAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T00:53:40.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "DeleteCategoryCommandHandler.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAswA0AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T23:54:52.354Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Domain\\Interfaces\\IRepository.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Domain\\Interfaces\\IRepository.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Domain\\Interfaces\\IRepository.cs",
+              "RelativeToolTip": "src\\Catalogue.Domain\\Interfaces\\IRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T19:44:01.066Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Infrastructure\\Abstractions\\Repository.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Infrastructure\\Abstractions\\Repository.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Infrastructure\\Abstractions\\Repository.cs",
+              "RelativeToolTip": "src\\Catalogue.Infrastructure\\Abstractions\\Repository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T22:51:28.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ExistsValueException.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Exceptions\\ExistsValueException.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Exceptions\\ExistsValueException.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Exceptions\\ExistsValueException.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Exceptions\\ExistsValueException.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T22:34:12.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "HttpInvalidQueryException.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Exceptions\\HttpInvalidQueryException.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Exceptions\\HttpInvalidQueryException.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Exceptions\\HttpInvalidQueryException.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Exceptions\\HttpInvalidQueryException.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T22:38:48.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "FilterExtension.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Filters\\FilterExtension.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.API\\Filters\\FilterExtension.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Filters\\FilterExtension.cs",
+              "RelativeToolTip": "src\\Catalogue.API\\Filters\\FilterExtension.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABsAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T01:33:03.375Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 22,
+              "Title": "GlobalExceptionFilter.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Filters\\GlobalExceptionFilter.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.API\\Filters\\GlobalExceptionFilter.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Filters\\GlobalExceptionFilter.cs",
+              "RelativeToolTip": "src\\Catalogue.API\\Filters\\GlobalExceptionFilter.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAcwAwAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T01:33:04.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "UpdateCategoryCommandHandler.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABoAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T23:55:01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ErrorMessagesResource.resx",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Resources\\ErrorMessagesResource.resx",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Resources\\ErrorMessagesResource.resx",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Resources\\ErrorMessagesResource.resx",
+              "RelativeToolTip": "src\\Catalogue.Application\\Resources\\ErrorMessagesResource.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2024-08-28T22:36:21.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
               "Title": "CreateCategoryCommandRequest.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\CreateCategoryCommandRequest.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\CreateCategoryCommandRequest.cs",
@@ -440,7 +505,128 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
+              "Title": "UpdateCategoryCommandRequest.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T23:49:57.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "DeleteCategoryCommandRequest.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T00:18:25.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "UpdateProductCommandResponse.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Responses\\UpdateProductCommandResponse.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Responses\\UpdateProductCommandResponse.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Responses\\UpdateProductCommandResponse.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Responses\\UpdateProductCommandResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T23:46:28.2Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "CategoryCommandBase.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Abstractions\\Commands\\CategoryCommandBase.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Abstractions\\Commands\\CategoryCommandBase.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Abstractions\\Commands\\CategoryCommandBase.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Abstractions\\Commands\\CategoryCommandBase.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T00:53:46.768Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "UpdateCategoryCommandResponse.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T23:49:59.157Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Program.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.API\\Program.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Program.cs",
+              "RelativeToolTip": "src\\Catalogue.API\\Program.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABMAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T00:13:27.449Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "ApiErrorMessagesResource.resx",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Resources\\ApiErrorMessagesResource.resx",
+              "RelativeDocumentMoniker": "src\\Catalogue.API\\Resources\\ApiErrorMessagesResource.resx",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Resources\\ApiErrorMessagesResource.resx",
+              "RelativeToolTip": "src\\Catalogue.API\\Resources\\ApiErrorMessagesResource.resx",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
+              "WhenOpened": "2024-08-28T02:07:09.668Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "UpdateProductCommandRequest.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Requests\\UpdateProductCommandRequest.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Requests\\UpdateProductCommandRequest.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Requests\\UpdateProductCommandRequest.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Requests\\UpdateProductCommandRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T23:48:40.789Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "DeleteCategoryCommandResponse.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T00:48:08.49Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "CreateCategoryCommandResponse.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\CreateCategoryCommandResponse.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\CreateCategoryCommandResponse.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\CreateCategoryCommandResponse.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\CreateCategoryCommandResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T00:48:09.149Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
               "Title": "DeleteProductCommandRequest.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Requests\\DeleteProductCommandRequest.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Requests\\DeleteProductCommandRequest.cs",
@@ -448,36 +634,11 @@
               "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Requests\\DeleteProductCommandRequest.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T00:18:51.613Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-28T00:18:51.613Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "UpdateProductCommandValidator.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Validations\\UpdateProductCommandValidator.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Validations\\UpdateProductCommandValidator.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Validations\\UpdateProductCommandValidator.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Validations\\UpdateProductCommandValidator.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T23:56:33.026Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "CreateProductCommandValidator.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductCommandValidator.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductCommandValidator.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductCommandValidator.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductCommandValidator.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAADwvwgAAAAGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T23:56:09.587Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 36,
               "Title": "UpdateCategoryCommandValidator.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Validations\\UpdateCategoryCommandValidator.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Validations\\UpdateCategoryCommandValidator.cs",
@@ -489,7 +650,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 37,
               "Title": "CreateCategoryCommandValidator.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Validations\\CreateCategoryCommandValidator.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Validations\\CreateCategoryCommandValidator.cs",
@@ -501,7 +662,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 38,
               "Title": "IProductRepository.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Domain\\Interfaces\\IProductRepository.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Domain\\Interfaces\\IProductRepository.cs",
@@ -513,7 +674,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 39,
               "Title": "DeleteProductCommandResponse.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Responses\\DeleteProductCommandResponse.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Responses\\DeleteProductCommandResponse.cs",
