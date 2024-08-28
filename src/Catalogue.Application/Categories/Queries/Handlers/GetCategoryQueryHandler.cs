@@ -9,7 +9,7 @@ using MediatR;
 
 namespace Catalogue.Application.Categories.Queries.Handlers;
 
-public class GetCategoryQueryHandler 
+public class GetCategoryQueryHandler
     : IRequestHandler<GetCategoryQueryRequest, GetCategoryQueryResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
@@ -22,14 +22,14 @@ public class GetCategoryQueryHandler
     }
 
     public async Task<GetCategoryQueryResponse> Handle(GetCategoryQueryRequest request,
-                                                       CancellationToken cancellationToken) 
+                                                       CancellationToken cancellationToken)
     {
-        if(await _unitOfWork.CategoryRepository.GetAsync(c => c.Id == request.Id) is not Category category) 
+        if (await _unitOfWork.CategoryRepository.GetAsync(c => c.Id == request.Id) is Category category)
         {
-            string errorMessage = string.Format(ErrorMessagesResource.NOT_FOUND_CATEGORY_MESSAGE, request.Id);
-            throw new NotFoundException(errorMessage);
+            return _mapper.Map<GetCategoryQueryResponse>(category);
         }
 
-        return _mapper.Map<GetCategoryQueryResponse>(category);
+        string errorMessage = string.Format(ErrorMessagesResource.NOT_FOUND_ID_MESSAGE, typeof(Category).Name, request.Id);
+        throw new NotFoundException(errorMessage);
     }
 }

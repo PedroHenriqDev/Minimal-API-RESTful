@@ -23,10 +23,11 @@ if (app.Environment.IsDevelopment())
 app.MapGetCategoriesEndpoints();
 app.MapPostCategoriesEndpoints();
 app.MapDeleteCategoriesEndpoints();
-app.MapUpdateCategoriesEndpoints();
+app.MapPutCategoriesEndpoints();
 
 app.MapPostProductsEndpoints();
 app.MapDeleteProductsEndpoints();
+app.MapPutProductsEndpoints();
 
 app.UseCors(builder.Configuration["Cors:PolicyName"]!);
 app.UseGlobalExceptionFilter();

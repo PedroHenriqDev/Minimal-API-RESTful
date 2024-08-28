@@ -9,7 +9,4 @@ public sealed class UpdateCategoryCommandRequest : CategoryCommandBase, IRequest
 {
     [JsonIgnore]
     public int Id { get; set; }
-
-    [JsonIgnore]
-    public DateTime CreatedAt { get; set; }
 }

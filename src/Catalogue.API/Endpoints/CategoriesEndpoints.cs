@@ -111,7 +111,7 @@ public static class CategoriesEndpoints
           .WithTags(endpointTag);
     }
 
-    public static void MapUpdateCategoriesEndpoints(this WebApplication app)
+    public static void MapPutCategoriesEndpoints(this WebApplication app)
     {
         app.MapPut("categories/{id:int}", async ([FromRoute] int id,
                                                  [FromBody] UpdateCategoryCommandRequest request,

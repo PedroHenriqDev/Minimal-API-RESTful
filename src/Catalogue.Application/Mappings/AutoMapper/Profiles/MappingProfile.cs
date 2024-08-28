@@ -8,7 +8,6 @@ using Catalogue.Application.Products.Commands.Requests;
 using Catalogue.Application.Products.Commands.Responses;
 using Catalogue.Application.Products.Queries.Responses;
 using Catalogue.Domain.Entities;
-using Microsoft.AspNetCore.Routing.Constraints;
 
 namespace Catalogue.Application.Mappings.AutoMapper.Profiles;
 
@@ -35,6 +34,8 @@ public class MappingProfile : Profile
 
         CreateMap<Product, CreateProductCommandResponse>().ReverseMap();
         CreateMap<Product, GetProductQueryResponse>().ReverseMap();
+        CreateMap<Product, UpdateProductCommandRequest>().ReverseMap();
+        CreateMap<Product, UpdateProductCommandResponse>().ReverseMap();
         CreateMap<Product, DeleteProductCommandResponse>().ReverseMap();
     }
 }

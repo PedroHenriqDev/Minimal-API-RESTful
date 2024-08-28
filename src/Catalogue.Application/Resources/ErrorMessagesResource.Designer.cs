@@ -61,15 +61,6 @@ namespace Catalogue.Application.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not found category with id = {0}.
-        /// </summary>
-        public static string NOT_FOUND_CATEGORY_MESSAGE {
-            get {
-                return ResourceManager.GetString("NOT_FOUND_CATEGORY_MESSAGE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Not found category name is &apos;{0}&apos;.
         /// </summary>
         public static string NOT_FOUND_CATEGORY_NAME {
@@ -79,11 +70,11 @@ namespace Catalogue.Application.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not found product with id= {0}.
+        ///   Looks up a localized string similar to Not found {0} with id = &apos;{1}&apos;.
         /// </summary>
-        public static string NOT_FOUND_PRODUCT_MESSAGE {
+        public static string NOT_FOUND_ID_MESSAGE {
             get {
-                return ResourceManager.GetString("NOT_FOUND_PRODUCT_MESSAGE", resourceCulture);
+                return ResourceManager.GetString("NOT_FOUND_ID_MESSAGE", resourceCulture);
             }
         }
         

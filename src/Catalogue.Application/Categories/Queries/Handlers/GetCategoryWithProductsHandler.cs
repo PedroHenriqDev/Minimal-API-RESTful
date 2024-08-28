@@ -6,7 +6,6 @@ using Catalogue.Application.Resources;
 using Catalogue.Domain.Entities;
 using Catalogue.Domain.Interfaces;
 using MediatR;
-using System.Text.Json;
 
 namespace Catalogue.Application.Categories.Queries.Handlers;
 
@@ -25,12 +24,12 @@ public class GetCategoryWithProductsHandler
     public async Task<GetCategoryWithProductsQueryResponse> Handle(GetCategoryWithProductsQueryRequest request,
                                        CancellationToken cancellationToken)
     {
-        if(await _unitOfWork.CategoryRepository.GetByIdWithProductsAsync(request.Id) is not Category category) 
+        if (await _unitOfWork.CategoryRepository.GetByIdWithProductsAsync(request.Id) is Category category)
         {
-            var errorMessage = string.Format(ErrorMessagesResource.NOT_FOUND_CATEGORY_MESSAGE, request.Id);
-            throw new NotFoundException(errorMessage);
+            return _mapper.Map<GetCategoryWithProductsQueryResponse>(category);
         }
 
-        return _mapper.Map<GetCategoryWithProductsQueryResponse>(category);
+        string errorMessage = string.Format(ErrorMessagesResource.NOT_FOUND_ID_MESSAGE, typeof(Category).Name, request.Id);
+        throw new NotFoundException(errorMessage);
     }
 }

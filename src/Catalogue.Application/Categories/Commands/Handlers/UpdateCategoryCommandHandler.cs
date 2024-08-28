@@ -2,6 +2,7 @@
 using Catalogue.Application.Categories.Commands.Requests;
 using Catalogue.Application.Categories.Commands.Responses;
 using Catalogue.Application.Exceptions;
+using Catalogue.Application.FluentValidation;
 using Catalogue.Application.Resources;
 using Catalogue.Domain.Entities;
 using Catalogue.Domain.Interfaces;
@@ -29,30 +30,19 @@ public class UpdateCategoryCommandHandler :
     public async Task<UpdateCategoryCommandResponse> Handle(UpdateCategoryCommandRequest request,
                                                             CancellationToken cancellationToken)
     {
-        if (await _unitOfWork.CategoryRepository.GetAsNoTrackingAsync(c => c.Id == request.Id) is not Category category)
+        if (await _unitOfWork.CategoryRepository.GetAsync(c => c.Id == request.Id) is Category categoryToUpdate)
         {
-            string errorMessage = string.Format(ErrorMessagesResource.NOT_FOUND_CATEGORY_MESSAGE, request.Id);
-            throw new NotFoundException(errorMessage);
+            _validator.EnsureValid(request);
+
+            _mapper.Map(request, categoryToUpdate);
+
+            _unitOfWork.CategoryRepository.Update(categoryToUpdate);
+            await _unitOfWork.CommitAsync();
+
+            return _mapper.Map<UpdateCategoryCommandResponse>(categoryToUpdate);
         }
-        request.CreatedAt = category.CreatedAt;
-        Validate(request);
 
-        Category categoryToUpdate = _mapper.Map<Category>(request);
-
-        _unitOfWork.CategoryRepository.Update(categoryToUpdate);
-        await _unitOfWork.CommitAsync();
-
-        return _mapper.Map<UpdateCategoryCommandResponse>(categoryToUpdate);
-    }
-
-    public void Validate(UpdateCategoryCommandRequest request) 
-    {
-        var result = _validator.Validate(request);
-        
-        if(!result.IsValid) 
-        {
-            IList<string> errorMessages = result.Errors.Select(error => error.ErrorMessage).ToList();
-            throw new ErrorOnValidationException(errorMessages);
-        }
+        string errorMessage = string.Format(ErrorMessagesResource.NOT_FOUND_ID_MESSAGE, typeof(Category).Name, request.Id);
+        throw new NotFoundException(errorMessage);
     }
 }

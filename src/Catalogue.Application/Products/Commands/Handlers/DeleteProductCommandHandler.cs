@@ -30,7 +30,7 @@ public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommandR
             return _mapper.Map<DeleteProductCommandResponse>(product);
         }
 
-        string notFoundMessage = string.Format(ErrorMessagesResource.NOT_FOUND_PRODUCT_MESSAGE, request.Id);
+        string notFoundMessage = string.Format(ErrorMessagesResource.NOT_FOUND_ID_MESSAGE, typeof(Product).Name, request.Id);
         throw new NotFoundException(notFoundMessage);
     }
 }

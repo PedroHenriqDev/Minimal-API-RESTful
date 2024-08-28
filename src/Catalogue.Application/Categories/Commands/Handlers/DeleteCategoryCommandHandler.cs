@@ -21,21 +21,19 @@ public class DeleteCategoryCommandHandler :
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
-        
+
     public async Task<DeleteCategoryCommandResponse> Handle(DeleteCategoryCommandRequest request,
                                                             CancellationToken cancellationToken)
     {
-        Category? categoryToDelete = await _unitOfWork.CategoryRepository.GetAsync(c => c.Id == request.Id);
-        
-        if(categoryToDelete is null) 
+        if (await _unitOfWork.CategoryRepository.GetAsync(c => c.Id == request.Id) is Category category)
         {
-            string errorMessage = string.Format(ErrorMessagesResource.NOT_FOUND_CATEGORY_MESSAGE, request.Id);
-            throw new NotFoundException(errorMessage);
+            _unitOfWork.CategoryRepository.Delete(category);
+            await _unitOfWork.CommitAsync();
+
+            return _mapper.Map<DeleteCategoryCommandResponse>(category);
         }
 
-        _unitOfWork.CategoryRepository.Delete(categoryToDelete);
-        await _unitOfWork.CommitAsync();
-
-        return _mapper.Map<DeleteCategoryCommandResponse>(categoryToDelete);
+        string errorMessage = string.Format(ErrorMessagesResource.NOT_FOUND_ID_MESSAGE, typeof(Category).Name, request.Id);
+        throw new NotFoundException(errorMessage);
     }
 }

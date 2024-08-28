@@ -16,10 +16,25 @@ public static class ProductsEndpoints
                                        [FromServices] IMediator mediator) =>
         {
             CreateProductCommandResponse response = await mediator.Send(request);
-
             return Results.Created(string.Empty, response);
 
         }).Produces<CreateProductCommandResponse>(StatusCodes.Status201Created)
+          .Produces<ErrorsDto>(StatusCodes.Status400BadRequest)
+          .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
+          .WithTags(endpointTag);
+    }
+
+    public static void MapPutProductsEndpoints(this WebApplication app) 
+    {
+        app.MapPut("products/{id:int}", async ([FromRoute] int id,
+                                               [FromBody] UpdateProductCommandRequest request,
+                                               [FromServices] IMediator mediator) =>
+        {
+            request.Id = id;
+            UpdateProductCommandResponse response = await mediator.Send(request);
+            return Results.Ok(response);
+
+        }).Produces<UpdateProductCommandResponse>(StatusCodes.Status200OK)
           .Produces<ErrorsDto>(StatusCodes.Status400BadRequest)
           .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
           .WithTags(endpointTag);
@@ -31,8 +46,8 @@ public static class ProductsEndpoints
                                                   [FromServices] IMediator mediator) =>
         {
             DeleteProductCommandResponse response = await mediator.Send(new DeleteProductCommandRequest(id));
-
             return Results.Ok(response);
+
         }).Produces<DeleteProductCommandResponse>(StatusCodes.Status200OK)
           .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
           .WithTags(endpointTag);
