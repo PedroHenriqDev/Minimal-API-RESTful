@@ -5,6 +5,7 @@ using Catalogue.Application.Categories.Queries.Requests;
 using Catalogue.Application.Categories.Queries.Responses;
 using Catalogue.Application.DTOs;
 using Catalogue.Application.DTOs.Responses;
+using Catalogue.Application.Extensions;
 using Catalogue.Application.Interfaces;
 using Catalogue.Application.Pagination;
 using Catalogue.Application.Pagination.Parameters;
@@ -18,36 +19,19 @@ public static class CategoriesEndpoints
 {
     const string endpointTag = "Categories";
 
-    private static void AppendCategoriesMetaData<T>(HttpContext httpContext, IPagedList<T>? categoriesPaged)
-    {
-        var metaData = new PaginationMetadata
-        {
-            PageSize = categoriesPaged?.PageSize ?? 0,
-            PageCount = categoriesPaged?.PageCount ?? 0,
-            HasPrevious = categoriesPaged?.HasPreviousPage ?? false,
-            HasNext = categoriesPaged?.HasNextPage ?? false,
-            TotalItems = categoriesPaged?.ItemsCount ?? 0
-        };
-
-        httpContext.Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(metaData));
-    }
-
     public static void MapGetCategoriesEndpoints(this WebApplication app)
     {
         app.MapGet("categories", async (HttpContext httpContext,
                                         [AsParameters] QueryParameters parameters,
                                         [FromServices] IMediator mediator) =>
         {
-            GetCategoriesQueryResponse response = await mediator.Send
-            (
-                new GetCategoriesQueryRequest(parameters)
-            );
+            GetCategoriesQueryResponse response =
+                        await mediator.Send(new GetCategoriesQueryRequest(parameters));
 
-            AppendCategoriesMetaData(httpContext, response.CategoriesPaged);
+            httpContext.AppendCategoriesMetaData(response.CategoriesPaged);
 
             return Results.Ok(response.CategoriesPaged);
         }).Produces<PagedList<GetCategoryQueryResponse>>(StatusCodes.Status200OK)
-          .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .WithTags(endpointTag);
 
         app.MapGet("categories/{id:int}", async ([FromRoute] int id, [FromServices] IMediator mediator) =>
@@ -68,7 +52,7 @@ public static class CategoriesEndpoints
                 new GetCategoriesWithProductsQueryRequest(parameters)
             );
 
-            AppendCategoriesMetaData(httpContext, response.CategoriesPaged);
+            httpContext.AppendCategoriesMetaData(response.CategoriesPaged);
 
             return Results.Ok(response.CategoriesPaged);
         }).Produces<PagedList<GetCategoryWithProductsQueryResponse>>(StatusCodes.Status200OK)

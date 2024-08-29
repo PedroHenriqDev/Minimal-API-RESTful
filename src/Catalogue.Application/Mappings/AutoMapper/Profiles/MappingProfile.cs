@@ -24,7 +24,6 @@ public class MappingProfile : Profile
         CreateMap<Category, UpdateCategoryCommandResponse>().ReverseMap();
         CreateMap<Category, GetCategoryQueryResponse>().ReverseMap();
 
-
         CreateMap<Category, CreateCategoryWithProdsCommandRequest>()
             .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.Products))
             .ReverseMap();

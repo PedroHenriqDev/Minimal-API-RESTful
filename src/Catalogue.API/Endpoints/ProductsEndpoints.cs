@@ -1,7 +1,12 @@
 ﻿using Catalogue.API.Filters;
 using Catalogue.Application.DTOs.Responses;
+using Catalogue.Application.Extensions;
+using Catalogue.Application.Pagination;
+using Catalogue.Application.Pagination.Parameters;
 using Catalogue.Application.Products.Commands.Requests;
 using Catalogue.Application.Products.Commands.Responses;
+using Catalogue.Application.Products.Queries.Requests;
+using Catalogue.Application.Products.Queries.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +15,22 @@ namespace Catalogue.API.Endpoints;
 public static class ProductsEndpoints
 {
     const string endpointTag = "Products";
+
+    public static void MapGetProductsEndpoints(this WebApplication app) 
+    {
+        app.MapGet("products", async (HttpContext httpContext, 
+                                      [AsParameters] QueryParameters parameters,
+                                      [FromServices] IMediator mediator) =>
+        {
+            GetProductsQueryResponse response =
+                        await mediator.Send(new GetProductsQueryRequest(parameters));
+
+            httpContext.AppendCategoriesMetaData(response.ProductsPaged);
+
+            return Results.Ok(response.ProductsPaged);
+        }).Produces<PagedList<GetProductQueryResponse>>(StatusCodes.Status200OK)
+          .WithTags(endpointTag);
+    }
 
     public static void MapPostProductsEndpoints(this WebApplication app) 
     {

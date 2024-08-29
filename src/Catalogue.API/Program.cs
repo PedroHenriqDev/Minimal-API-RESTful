@@ -24,6 +24,7 @@ app.MapPostCategoriesEndpoints();
 app.MapDeleteCategoriesEndpoints();
 app.MapPutCategoriesEndpoints();
 
+app.MapGetProductsEndpoints();
 app.MapPostProductsEndpoints();
 app.MapDeleteProductsEndpoints();
 app.MapPutProductsEndpoints();
