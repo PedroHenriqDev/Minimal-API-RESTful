@@ -1,6 +1,6 @@
-﻿namespace Catalogue.Application.Abstractions.Commands;
+﻿namespace Catalogue.Application.Abstractions;
 
-public abstract class ProductCommandBase
+public abstract class ProductBase
 {
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;

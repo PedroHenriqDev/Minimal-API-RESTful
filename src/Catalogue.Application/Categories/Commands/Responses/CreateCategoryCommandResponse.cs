@@ -1,7 +1,7 @@
-﻿using Catalogue.Application.Categories.Abstractions.Commands;
+﻿using Catalogue.Application.Abstractions;
 
 namespace Catalogue.Application.Categories.Commands.Responses;
 
-public sealed class CreateCategoryCommandResponse : CategoryCommandBase
+public sealed class CreateCategoryCommandResponse : CategoryBase
 {
 }

@@ -1,4 +1,4 @@
-﻿using Catalogue.Application.Abstractions.DTOs;
+﻿using Catalogue.Application.Abstractions;
 using System.Text.Json.Serialization;
 
 namespace Catalogue.Application.DTOs.Responses;

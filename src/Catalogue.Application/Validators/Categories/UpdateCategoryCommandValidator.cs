@@ -1,29 +1,8 @@
-﻿using Catalogue.Application.Categories.Commands.Requests;
-using Catalogue.Application.Resources;
-using FluentValidation;
+﻿using Catalogue.Application.Abstractions.Validators;
+using Catalogue.Application.Categories.Commands.Requests;
 
 namespace Catalogue.Application.Validators.Categories;
 
-public class UpdateCategoryCommandValidator : AbstractValidator<UpdateCategoryCommandRequest>
+public class UpdateCategoryCommandValidator : CategoryBaseValidator<UpdateCategoryCommandRequest>
 {
-    public UpdateCategoryCommandValidator()
-    {
-        const int nameMaxLength = 120;
-        string nameMessage =
-            string.Format(CategoryValidationMessagesResource.NAME_INVALID, nameMaxLength);
-
-        RuleFor(c => c.Name)
-            .NotEmpty()
-            .MaximumLength(nameMaxLength)
-            .WithMessage(nameMessage);
-
-        const int descriptionMaxLenght = 255;
-        string descriptionMessage =
-            string.Format(CategoryValidationMessagesResource.DESCRIPTION_INVALID, descriptionMaxLenght);
-
-        RuleFor(c => c.Description)
-            .NotEmpty()
-            .MaximumLength(descriptionMaxLenght)
-            .WithMessage(descriptionMessage);
-    }
 }

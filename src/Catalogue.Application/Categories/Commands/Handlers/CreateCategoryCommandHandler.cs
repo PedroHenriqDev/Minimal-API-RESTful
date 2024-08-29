@@ -11,8 +11,8 @@ using MediatR;
 
 namespace Catalogue.Application.Categories.Commands.Handlers;
 
-public class CreateCategoryCommandHandler
-    : IRequestHandler<CreateCategoryCommandRequest, CreateCategoryCommandResponse>
+public class CreateCategoryCommandHandler :
+    IRequestHandler<CreateCategoryCommandRequest, CreateCategoryCommandResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;

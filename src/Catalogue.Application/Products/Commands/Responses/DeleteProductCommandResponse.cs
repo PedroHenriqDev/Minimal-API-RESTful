@@ -1,8 +1,8 @@
-﻿using Catalogue.Application.Abstractions.Commands;
+﻿using Catalogue.Application.Abstractions;
 
 namespace Catalogue.Application.Products.Commands.Responses;
 
-public class DeleteProductCommandResponse : ProductCommandBase
+public class DeleteProductCommandResponse : ProductBase
 {
     public int Id { get; set; }
     public string? CategoryName { get; set; }
