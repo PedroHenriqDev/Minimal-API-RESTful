@@ -1,4 +1,5 @@
 ﻿using Catalogue.Application.DTOs;
+using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Exceptions.Abstractions;
 using Catalogue.Application.Resources;
 using Microsoft.AspNetCore.Mvc;
@@ -24,14 +25,14 @@ public class GlobalExceptionFilter : IExceptionFilter
             var exception = (ExceptionBase)context.Exception;
             context.HttpContext.Response.StatusCode = (int)exception.GetStatusCodes();
 
-            var result = new ErrorsDto(exception.GetMessages());
+            var result = new ErrorResponse(exception.GetMessages());
             context.HttpContext.Response.WriteAsJsonAsync(result);
         }
         else 
         {
             context.HttpContext.Response.StatusCode = (int)StatusCodes.Status500InternalServerError;
 
-            var result = new ErrorsDto(new List<string>
+            var result = new ErrorResponse(new List<string>
             {
                 ErrorMessagesResource.SERVER_ERROR_MESSAGE
             });

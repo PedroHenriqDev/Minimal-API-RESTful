@@ -4,6 +4,7 @@ using Catalogue.Application.Categories.Commands.Responses;
 using Catalogue.Application.Categories.Queries.Requests;
 using Catalogue.Application.Categories.Queries.Responses;
 using Catalogue.Application.DTOs;
+using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Interfaces;
 using Catalogue.Application.Pagination;
 using Catalogue.Application.Pagination.Parameters;
@@ -46,7 +47,7 @@ public static class CategoriesEndpoints
 
             return Results.Ok(response.CategoriesPaged);
         }).Produces<PagedList<GetCategoryQueryResponse>>(StatusCodes.Status200OK)
-          .Produces<ErrorsDto>(StatusCodes.Status400BadRequest)
+          .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .WithTags(endpointTag);
 
         app.MapGet("categories/{id:int}", async ([FromRoute] int id, [FromServices] IMediator mediator) =>
@@ -55,7 +56,7 @@ public static class CategoriesEndpoints
 
             return Results.Ok(response);
         }).Produces<GetCategoryQueryResponse>(StatusCodes.Status200OK)
-          .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
+          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
           .WithTags(endpointTag);
 
         app.MapGet("categories/products", async (HttpContext httpContext,
@@ -71,7 +72,7 @@ public static class CategoriesEndpoints
 
             return Results.Ok(response.CategoriesPaged);
         }).Produces<PagedList<GetCategoryWithProductsQueryResponse>>(StatusCodes.Status200OK)
-          .Produces<ErrorsDto>(StatusCodes.Status400BadRequest)
+          .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .WithTags(endpointTag);
 
         app.MapGet("categories/{id:int}/products", async ([FromRoute] int id,
@@ -84,7 +85,7 @@ public static class CategoriesEndpoints
 
             return Results.Ok(response);
         })
-          .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
+          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
           .WithTags(endpointTag);
     }
 
@@ -96,7 +97,18 @@ public static class CategoriesEndpoints
             CreateCategoryCommandResponse response = await mediator.Send(request);
             return Results.Created(string.Empty, response);
         }).Produces<CreateCategoryCommandResponse>(StatusCodes.Status201Created)
-          .Produces<ErrorsDto>(StatusCodes.Status500InternalServerError)
+          .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
+          .WithTags(endpointTag);
+
+        app.MapPost("categories/products", async ([FromBody] CreateCategoryWithProdsCommandRequest request,
+                                                  [FromServices] IMediator mediator) =>
+        {
+
+            CreateCategoryWithProdsCommandResponse response = await mediator.Send(request);
+            return Results.Created(string.Empty, response);
+
+        }).Produces<CreateCategoryWithProdsCommandResponse>(StatusCodes.Status201Created)
+          .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .WithTags(endpointTag);
     }
 
@@ -108,7 +120,7 @@ public static class CategoriesEndpoints
             DeleteCategoryCommandResponse response = await mediator.Send(new DeleteCategoryCommandRequest(id));
             return Results.Ok(response);
         }).Produces<DeleteCategoryCommandResponse>(StatusCodes.Status200OK)
-          .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
+          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
           .WithTags(endpointTag);
     }
 
@@ -123,8 +135,8 @@ public static class CategoriesEndpoints
 
         }).AddEndpointFilter<InjectIdFilter>()
           .Produces<UpdateCategoryCommandResponse>(StatusCodes.Status200OK)
-          .Produces<ErrorsDto>(StatusCodes.Status400BadRequest)
-          .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
+          .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
+          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
           .WithTags(endpointTag);
     }
 }

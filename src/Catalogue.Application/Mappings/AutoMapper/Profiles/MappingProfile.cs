@@ -2,6 +2,8 @@
 using Catalogue.Application.Categories.Commands.Requests;
 using Catalogue.Application.Categories.Commands.Responses;
 using Catalogue.Application.Categories.Queries.Responses;
+using Catalogue.Application.DTOs.Requests;
+using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Mappings.AutoMapper.Converts;
 using Catalogue.Application.Pagination;
 using Catalogue.Application.Products.Commands.Requests;
@@ -22,6 +24,15 @@ public class MappingProfile : Profile
         CreateMap<Category, UpdateCategoryCommandResponse>().ReverseMap();
         CreateMap<Category, GetCategoryQueryResponse>().ReverseMap();
 
+
+        CreateMap<Category, CreateCategoryWithProdsCommandRequest>()
+            .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.Products))
+            .ReverseMap();
+
+        CreateMap<Category, CreateCategoryWithProdsCommandResponse>()
+            .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.Products))
+            .ReverseMap();
+
         CreateMap<Category, GetCategoryWithProductsQueryResponse>()
             .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.Products))
             .ReverseMap();
@@ -32,6 +43,8 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.CategoryName, opt => opt.Ignore())
             .ReverseMap();
 
+        CreateMap<Product, ProductRequest>().ReverseMap();
+        CreateMap<Product, ProductResponse>().ReverseMap();
         CreateMap<Product, CreateProductCommandRequest>().ReverseMap();
         CreateMap<Product, CreateProductCommandResponse>().ReverseMap();
         CreateMap<Product, GetProductQueryResponse>().ReverseMap();

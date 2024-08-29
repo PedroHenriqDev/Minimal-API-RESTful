@@ -132,4 +132,7 @@
   <data name="PRICE_INVALID" xml:space="preserve">
     <value>The price must be between {0} and {1}</value>
   </data>
+  <data name="PRODUCTS_INVALID" xml:space="preserve">
+    <value>One or more products are invalid.</value>
+  </data>
 </root>

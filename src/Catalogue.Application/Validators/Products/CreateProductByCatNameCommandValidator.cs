@@ -2,9 +2,11 @@
 using Catalogue.Application.Resources;
 using FluentValidation;
 
-public class CreateProductCommandValidator : AbstractValidator<CreateProductCommandRequest>
+namespace Catalogue.Application.Validators.Products;
+
+public class CreateProductByCatNameCommandValidator : AbstractValidator<CreateProductByCatNameCommandRequest>
 {
-    public CreateProductCommandValidator()
+    public CreateProductByCatNameCommandValidator()
     {
         const int MAX_NAME = 120;
         string nameMessage = string.Format(ProductValidationMessagesResource.NAME_INVALID, MAX_NAME);
@@ -31,5 +33,10 @@ public class CreateProductCommandValidator : AbstractValidator<CreateProductComm
             .GreaterThan(MIN_PRICE)
             .LessThan(MAX_PRICE)
             .WithMessage(priceMessage);
+
+        RuleFor(p => p.CategoryName)
+            .NotEmpty()
+            .NotNull()
+            .WithMessage(ProductValidationMessagesResource.CATEGORY_NAME_INVALID);
     }
 }

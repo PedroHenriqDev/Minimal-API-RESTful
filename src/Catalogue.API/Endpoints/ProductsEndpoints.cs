@@ -1,5 +1,5 @@
 ﻿using Catalogue.API.Filters;
-using Catalogue.Application.DTOs;
+using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Products.Commands.Requests;
 using Catalogue.Application.Products.Commands.Responses;
 using MediatR;
@@ -19,9 +19,9 @@ public static class ProductsEndpoints
             CreateProductCommandResponse response = await mediator.Send(request);
 
             return Results.Created(string.Empty, response);
-        }).Produces<CreateProductCommandResponse>(StatusCodes.Status200OK)
-          .Produces<ErrorsDto>(StatusCodes.Status400BadRequest)
-          .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
+        }).Produces<CreateProductCommandResponse>(StatusCodes.Status201Created)
+          .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
+          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
           .WithTags(endpointTag);
         
         app.MapPost("products/category-name", async ([FromBody] CreateProductByCatNameCommandRequest request,
@@ -31,8 +31,8 @@ public static class ProductsEndpoints
             return Results.Created(string.Empty, response);
 
         }).Produces<CreateProductCommandResponse>(StatusCodes.Status201Created)
-          .Produces<ErrorsDto>(StatusCodes.Status400BadRequest)
-          .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
+          .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
+          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
           .WithTags(endpointTag);
     }
 
@@ -48,8 +48,8 @@ public static class ProductsEndpoints
         })
           .AddEndpointFilter<InjectIdFilter>()
           .Produces<UpdateProductCommandResponse>(StatusCodes.Status200OK)
-          .Produces<ErrorsDto>(StatusCodes.Status400BadRequest)
-          .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
+          .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
+          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
           .WithTags(endpointTag);                    
     }
 
@@ -62,7 +62,7 @@ public static class ProductsEndpoints
             return Results.Ok(response);
 
         }).Produces<DeleteProductCommandResponse>(StatusCodes.Status200OK)
-          .Produces<ErrorsDto>(StatusCodes.Status404NotFound)
+          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
           .WithTags(endpointTag);
     }
 }

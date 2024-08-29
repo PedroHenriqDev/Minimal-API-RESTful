@@ -104,5 +104,14 @@ namespace Catalogue.Application.Resources {
                 return ResourceManager.GetString("PRICE_INVALID", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One or more products are invalid..
+        /// </summary>
+        public static string PRODUCTS_INVALID {
+            get {
+                return ResourceManager.GetString("PRODUCTS_INVALID", resourceCulture);
+            }
+        }
     }
 }

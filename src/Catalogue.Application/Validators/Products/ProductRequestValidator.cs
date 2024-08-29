@@ -1,12 +1,12 @@
-﻿using Catalogue.Application.Products.Commands.Requests;
+﻿using Catalogue.Application.DTOs.Requests;
 using Catalogue.Application.Resources;
 using FluentValidation;
 
-namespace Catalogue.Application.Products.Commands.Validations;
+namespace Catalogue.Application.Validators.Products;
 
-public class UpdateProductCommandValidator : AbstractValidator<UpdateProductCommandRequest>
+public class ProductRequestValidator : AbstractValidator<ProductRequest>
 {
-    public UpdateProductCommandValidator()
+    public ProductRequestValidator()
     {
         const int MAX_NAME = 120;
         string nameMessage = string.Format(ProductValidationMessagesResource.NAME_INVALID, MAX_NAME);

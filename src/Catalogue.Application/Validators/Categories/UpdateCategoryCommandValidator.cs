@@ -2,7 +2,7 @@
 using Catalogue.Application.Resources;
 using FluentValidation;
 
-namespace Catalogue.Application.Categories.Commands.Validations;
+namespace Catalogue.Application.Validators.Categories;
 
 public class UpdateCategoryCommandValidator : AbstractValidator<UpdateCategoryCommandRequest>
 {

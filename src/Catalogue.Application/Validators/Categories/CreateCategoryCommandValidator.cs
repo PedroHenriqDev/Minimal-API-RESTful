@@ -1,9 +1,8 @@
 ﻿using Catalogue.Application.Categories.Commands.Requests;
-
 using Catalogue.Application.Resources;
 using FluentValidation;
 
-namespace Catalogue.Application.Categories.Commands.Validations;
+namespace Catalogue.Application.Validators.Categories;
 
 public class CreateCategoryCommandValidator : AbstractValidator<CreateCategoryCommandRequest>
 {

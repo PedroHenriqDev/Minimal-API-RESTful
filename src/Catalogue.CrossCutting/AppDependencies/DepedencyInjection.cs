@@ -1,5 +1,4 @@
 ﻿using Catalogue.Application.Categories.Commands.Requests;
-using Catalogue.Application.Categories.Commands.Validations;
 using Catalogue.Application.Mappings.AutoMapper.Profiles;
 using Catalogue.Domain.Interfaces;
 using Catalogue.Infrastructure.Context;
@@ -22,8 +21,6 @@ public static class DepedencyInjection
         svc.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 
         svc.AddScoped<IUnitOfWork, UnitOfWork>();
-        svc.AddScoped<CreateCategoryCommandValidator>();
-        svc.AddScoped<UpdateCategoryCommandValidator>();
 
         svc.AddFluentValidationAutoValidation();
         svc.AddValidatorsFromAssemblyContaining<CreateCategoryCommandRequest>();
