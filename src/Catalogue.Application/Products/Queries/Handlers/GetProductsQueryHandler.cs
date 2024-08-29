@@ -8,13 +8,13 @@ using MediatR;
 
 namespace Catalogue.Application.Products.Queries.Handlers;
 
-public class GetProductsQueryResponseHandler :
+public class GetProductsQueryHandler :
     IRequestHandler<GetProductsQueryRequest, GetProductsQueryResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public GetProductsQueryResponseHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    public GetProductsQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
@@ -23,11 +23,11 @@ public class GetProductsQueryResponseHandler :
     public async Task<GetProductsQueryResponse> Handle(GetProductsQueryRequest request, 
                                                        CancellationToken cancellationToken) 
     {
-         var productsPaged = await PagedList<GetProductQueryResponse>.ToPagedListAsync(request.Parameters.PageNumber, 
-                                                             request.Parameters.PageSize, 
-                                                             _unitOfWork.ProductRepository.GetAll()
-                                                             .ProjectTo<GetProductQueryResponse>(_mapper.ConfigurationProvider));
-
+         var productsPaged = await PagedList<GetProductQueryResponse>
+              .ToPagedListAsync(request.Parameters.PageNumber, 
+                                request.Parameters.PageSize, 
+                                _unitOfWork.ProductRepository.GetAll()
+                                .ProjectTo<GetProductQueryResponse>(_mapper.ConfigurationProvider));
 
         return new GetProductsQueryResponse(productsPaged);
     }

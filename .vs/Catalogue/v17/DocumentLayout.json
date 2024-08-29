@@ -3,6 +3,42 @@
   "WorkspaceRootPath": "C:\\Projects\\Minimal\\Catalogue\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\products\\queries\\handlers\\getproductqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\queries\\handlers\\getproductqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.api\\endpoints\\productsendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\endpoints\\productsendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\products\\queries\\handlers\\getproductsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\queries\\handlers\\getproductsqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\queries\\handlers\\getcategoryqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\queries\\handlers\\getcategoryqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\queries\\handlers\\getcategorieswithproductshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\queries\\handlers\\getcategorieswithproductshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\queries\\handlers\\getcategoriesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\queries\\handlers\\getcategoriesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.api\\endpoints\\categoriesendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\endpoints\\categoriesendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\products\\queries\\requests\\getproductqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\queries\\requests\\getproductqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\products\\queries\\requests\\getproductsqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\queries\\requests\\getproductsqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.application\\mappings\\automapper\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\mappings\\automapper\\profiles\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,36 +51,16 @@
       "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\extensions\\httpcontextextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.api\\endpoints\\productsendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\endpoints\\productsendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.api\\endpoints\\categoriesendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\endpoints\\categoriesendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\products\\queries\\responses\\getproductsqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\queries\\responses\\getproductsqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\products\\queries\\handlers\\getproductsqueryresponsehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\queries\\handlers\\getproductsqueryresponsehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\products\\queries\\responses\\getproductqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\queries\\responses\\getproductqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\products\\queries\\requests\\getproductsqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\products\\queries\\requests\\getproductsqueryrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|C:\\Projects\\Minimal\\Catalogue\\src\\catalogue.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6D34890D-806C-4529-9778-26DF4225B727}|src\\Catalogue.API\\Catalogue.API.csproj|solutionrelative:src\\catalogue.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\queries\\handlers\\getcategoriesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|solutionrelative:src\\catalogue.application\\categories\\queries\\handlers\\getcategoriesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B247CD34-6FC4-4953-A481-63EDBA0F17B0}|src\\Catalogue.Application\\Catalogue.Application.csproj|c:\\projects\\minimal\\catalogue\\src\\catalogue.application\\categories\\queries\\responses\\getcategoriesqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -214,7 +230,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -226,7 +242,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
+              "Title": "GetCategoryQueryHandler.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoryQueryHandler.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoryQueryHandler.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoryQueryHandler.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoryQueryHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-29T23:33:39.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GetCategoriesWithProductsHandler.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesWithProductsHandler.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesWithProductsHandler.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesWithProductsHandler.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesWithProductsHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-29T23:33:38.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GetProductQueryHandler.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Handlers\\GetProductQueryHandler.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Queries\\Handlers\\GetProductQueryHandler.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Handlers\\GetProductQueryHandler.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Queries\\Handlers\\GetProductQueryHandler.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-29T23:19:54.094Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "HttpContextExtension.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Extensions\\HttpContextExtension.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Extensions\\HttpContextExtension.cs",
@@ -239,7 +294,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 10,
               "Title": "ValidatorExtension.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Extensions\\ValidatorExtension.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Extensions\\ValidatorExtension.cs",
@@ -252,106 +307,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "GetProductsQueryResponseHandler.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Handlers\\GetProductsQueryResponseHandler.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Queries\\Handlers\\GetProductsQueryResponseHandler.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Handlers\\GetProductsQueryResponseHandler.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Queries\\Handlers\\GetProductsQueryResponseHandler.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAYwBkAAAAJAAAA",
+              "DocumentIndex": 2,
+              "Title": "GetProductsQueryHandler.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Handlers\\GetProductsQueryHandler.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Queries\\Handlers\\GetProductsQueryHandler.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Handlers\\GetProductsQueryHandler.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Queries\\Handlers\\GetProductsQueryHandler.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAQwBcAAABLAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-29T22:15:34.719Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "CategoriesEndpoints.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
               "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
               "RelativeToolTip": "src\\Catalogue.API\\Endpoints\\CategoriesEndpoints.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAowDcAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-27T23:35:15.419Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "ProductsEndpoints.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\ProductsEndpoints.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.API\\Endpoints\\ProductsEndpoints.cs",
               "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Endpoints\\ProductsEndpoints.cs",
               "RelativeToolTip": "src\\Catalogue.API\\Endpoints\\ProductsEndpoints.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAANAAAA",
+              "ViewState": "AQIAABEAAAAAAAAAAAAYwCMAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-27T23:35:11.538Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Program.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.API\\Program.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Program.cs",
-              "RelativeToolTip": "src\\Catalogue.API\\Program.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABsAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T00:13:27.449Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "GetProductsQueryResponse.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductsQueryResponse.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductsQueryResponse.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductsQueryResponse.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductsQueryResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAoAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-29T22:10:50.958Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MappingProfile.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAowBoAAABEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-27T23:59:57.619Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GetProductQueryResponse.cs",
-              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductQueryResponse.cs",
-              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductQueryResponse.cs",
-              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductQueryResponse.cs",
-              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductQueryResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-29T22:09:23.56Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
               "Title": "GetCategoriesQueryHandler.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesQueryHandler.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesQueryHandler.cs",
               "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesQueryHandler.cs",
               "RelativeToolTip": "src\\Catalogue.Application\\Categories\\Queries\\Handlers\\GetCategoriesQueryHandler.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAcwBkAAAAIAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAcwCMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-29T22:48:36.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GetProductQueryRequest.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Requests\\GetProductQueryRequest.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Queries\\Requests\\GetProductQueryRequest.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Requests\\GetProductQueryRequest.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Queries\\Requests\\GetProductQueryRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-29T23:14:43.568Z",
               "EditorCaption": ""
             },
             {
@@ -369,7 +385,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Program.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.API\\Program.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Program.cs",
+              "RelativeToolTip": "src\\Catalogue.API\\Program.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAABsAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-28T00:13:27.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "GetProductsQueryResponse.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductsQueryResponse.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductsQueryResponse.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductsQueryResponse.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductsQueryResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAoAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-29T22:10:50.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Mappings\\AutoMapper\\Profiles\\MappingProfile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-27T23:59:57.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "GetProductQueryResponse.cs",
+              "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductQueryResponse.cs",
+              "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductQueryResponse.cs",
+              "ToolTip": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductQueryResponse.cs",
+              "RelativeToolTip": "src\\Catalogue.Application\\Products\\Queries\\Responses\\GetProductQueryResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-29T22:09:23.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "GetCategoriesQueryResponse.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoriesQueryResponse.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoriesQueryResponse.cs",
@@ -382,7 +450,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "GetCategoriesWithProductsQueryResponse.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoriesWithProductsQueryResponse.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Responses\\GetCategoriesWithProductsQueryResponse.cs",
@@ -395,7 +463,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "GetCategoriesWithProductsQueryRequest.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoriesWithProductsQueryRequest.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoriesWithProductsQueryRequest.cs",
@@ -408,7 +476,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "GetCategoriesQueryRequest.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoriesQueryRequest.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Queries\\Requests\\GetCategoriesQueryRequest.cs",
@@ -421,7 +489,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "CreateProductByCatNameCommandHandler.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductByCatNameCommandHandler.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductByCatNameCommandHandler.cs",
@@ -434,7 +502,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "CreateProductCommandHandler.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductCommandHandler.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Handlers\\CreateProductCommandHandler.cs",
@@ -446,7 +514,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "CreateProductCommandRequest.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Requests\\CreateProductCommandRequest.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Requests\\CreateProductCommandRequest.cs",
@@ -458,7 +526,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 22,
               "Title": "CreateProductByCatNameCommandRequest.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Requests\\CreateProductByCatNameCommandRequest.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Requests\\CreateProductByCatNameCommandRequest.cs",
@@ -470,7 +538,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 23,
               "Title": "DeleteProductCommandHandler.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Handlers\\DeleteProductCommandHandler.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Handlers\\DeleteProductCommandHandler.cs",
@@ -483,7 +551,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 49,
               "Title": "CreateProductCommandValidator.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductCommandValidator.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductCommandValidator.cs",
@@ -495,7 +563,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 50,
               "Title": "CreateProductByCatNameCommandValidator.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductByCatNameCommandValidator.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Validations\\CreateProductByCatNameCommandValidator.cs",
@@ -507,7 +575,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 51,
               "Title": "UpdateProductCommandValidator.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Validations\\UpdateProductCommandValidator.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Validations\\UpdateProductCommandValidator.cs",
@@ -519,7 +587,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 24,
               "Title": "ProductValidationMessagesResource.resx",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Resources\\ProductValidationMessagesResource.resx",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Resources\\ProductValidationMessagesResource.resx",
@@ -530,7 +598,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 25,
               "Title": "InjectIdFilter.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Filters\\InjectIdFilter.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.API\\Filters\\InjectIdFilter.cs",
@@ -542,7 +610,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 27,
               "Title": "UpdateProductCommandHandler.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Handlers\\UpdateProductCommandHandler.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Handlers\\UpdateProductCommandHandler.cs",
@@ -554,7 +622,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 26,
               "Title": "CreateCategoryCommandHandler.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\CreateCategoryCommandHandler.cs",
@@ -566,7 +634,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 30,
               "Title": "DeleteCategoryCommandHandler.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\DeleteCategoryCommandHandler.cs",
@@ -578,7 +646,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 29,
               "Title": "IRepository.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Domain\\Interfaces\\IRepository.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Domain\\Interfaces\\IRepository.cs",
@@ -590,7 +658,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 28,
               "Title": "Repository.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Infrastructure\\Abstractions\\Repository.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Infrastructure\\Abstractions\\Repository.cs",
@@ -602,7 +670,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 31,
               "Title": "ExistsValueException.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Exceptions\\ExistsValueException.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Exceptions\\ExistsValueException.cs",
@@ -614,7 +682,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 32,
               "Title": "HttpInvalidQueryException.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Exceptions\\HttpInvalidQueryException.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Exceptions\\HttpInvalidQueryException.cs",
@@ -626,7 +694,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 34,
               "Title": "FilterExtension.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Filters\\FilterExtension.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.API\\Filters\\FilterExtension.cs",
@@ -638,7 +706,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 35,
               "Title": "GlobalExceptionFilter.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Filters\\GlobalExceptionFilter.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.API\\Filters\\GlobalExceptionFilter.cs",
@@ -650,7 +718,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 33,
               "Title": "UpdateCategoryCommandHandler.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Handlers\\UpdateCategoryCommandHandler.cs",
@@ -662,7 +730,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 36,
               "Title": "ErrorMessagesResource.resx",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Resources\\ErrorMessagesResource.resx",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Resources\\ErrorMessagesResource.resx",
@@ -673,7 +741,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 37,
               "Title": "CreateCategoryCommandRequest.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\CreateCategoryCommandRequest.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\CreateCategoryCommandRequest.cs",
@@ -685,7 +753,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 38,
               "Title": "UpdateCategoryCommandRequest.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\UpdateCategoryCommandRequest.cs",
@@ -697,7 +765,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 39,
               "Title": "DeleteCategoryCommandRequest.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Requests\\DeleteCategoryCommandRequest.cs",
@@ -709,7 +777,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 40,
               "Title": "UpdateProductCommandResponse.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Responses\\UpdateProductCommandResponse.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Responses\\UpdateProductCommandResponse.cs",
@@ -721,7 +789,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 52,
               "Title": "CategoryCommandBase.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Abstractions\\Commands\\CategoryCommandBase.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Abstractions\\Commands\\CategoryCommandBase.cs",
@@ -733,7 +801,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 41,
               "Title": "UpdateCategoryCommandResponse.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\UpdateCategoryCommandResponse.cs",
@@ -745,7 +813,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 42,
               "Title": "ApiErrorMessagesResource.resx",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.API\\Resources\\ApiErrorMessagesResource.resx",
               "RelativeDocumentMoniker": "src\\Catalogue.API\\Resources\\ApiErrorMessagesResource.resx",
@@ -756,7 +824,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 43,
               "Title": "UpdateProductCommandRequest.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Requests\\UpdateProductCommandRequest.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Requests\\UpdateProductCommandRequest.cs",
@@ -768,7 +836,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 44,
               "Title": "DeleteCategoryCommandResponse.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\DeleteCategoryCommandResponse.cs",
@@ -780,7 +848,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 45,
               "Title": "CreateCategoryCommandResponse.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Responses\\CreateCategoryCommandResponse.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Responses\\CreateCategoryCommandResponse.cs",
@@ -792,7 +860,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 46,
               "Title": "DeleteProductCommandRequest.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Requests\\DeleteProductCommandRequest.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Requests\\DeleteProductCommandRequest.cs",
@@ -804,7 +872,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 53,
               "Title": "UpdateCategoryCommandValidator.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Validations\\UpdateCategoryCommandValidator.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Validations\\UpdateCategoryCommandValidator.cs",
@@ -816,7 +884,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 54,
               "Title": "CreateCategoryCommandValidator.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Categories\\Commands\\Validations\\CreateCategoryCommandValidator.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Categories\\Commands\\Validations\\CreateCategoryCommandValidator.cs",
@@ -828,7 +896,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 47,
               "Title": "IProductRepository.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Domain\\Interfaces\\IProductRepository.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Domain\\Interfaces\\IProductRepository.cs",
@@ -840,7 +908,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 48,
               "Title": "DeleteProductCommandResponse.cs",
               "DocumentMoniker": "C:\\Projects\\Minimal\\Catalogue\\src\\Catalogue.Application\\Products\\Commands\\Responses\\DeleteProductCommandResponse.cs",
               "RelativeDocumentMoniker": "src\\Catalogue.Application\\Products\\Commands\\Responses\\DeleteProductCommandResponse.cs",

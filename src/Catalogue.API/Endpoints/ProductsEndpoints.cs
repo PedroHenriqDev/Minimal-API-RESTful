@@ -14,7 +14,7 @@ namespace Catalogue.API.Endpoints;
 
 public static class ProductsEndpoints
 {
-    const string endpointTag = "Products";
+    const string productsTag = "Products";
 
     public static void MapGetProductsEndpoints(this WebApplication app) 
     {
@@ -24,12 +24,21 @@ public static class ProductsEndpoints
         {
             GetProductsQueryResponse response =
                         await mediator.Send(new GetProductsQueryRequest(parameters));
-
             httpContext.AppendCategoriesMetaData(response.ProductsPaged);
 
             return Results.Ok(response.ProductsPaged);
         }).Produces<PagedList<GetProductQueryResponse>>(StatusCodes.Status200OK)
-          .WithTags(endpointTag);
+          .WithTags(productsTag);
+
+        app.MapGet("products/{id:int}", async ([FromRoute] int id, 
+                                               [FromServices] IMediator mediator) =>
+        {
+            GetProductQueryResponse response = await mediator.Send(new GetProductQueryRequest(id));
+            return Results.Ok(response);
+
+        }).Produces<GetProductQueryResponse>(StatusCodes.Status200OK)
+          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+          .WithTags(productsTag);
     }
 
     public static void MapPostProductsEndpoints(this WebApplication app) 
@@ -38,15 +47,15 @@ public static class ProductsEndpoints
                                        [FromServices] IMediator mediator) =>
         {
             CreateProductCommandResponse response = await mediator.Send(request);
-
             return Results.Created(string.Empty, response);
+
         }).Produces<CreateProductCommandResponse>(StatusCodes.Status201Created)
           .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .WithTags(endpointTag);
+          .WithTags(productsTag);
         
         app.MapPost("products/category-name", async ([FromBody] CreateProductByCatNameCommandRequest request,
-                                       [FromServices] IMediator mediator) =>
+                                                     [FromServices] IMediator mediator) =>
         {
             CreateProductCommandResponse response = await mediator.Send(request);
             return Results.Created(string.Empty, response);
@@ -54,7 +63,7 @@ public static class ProductsEndpoints
         }).Produces<CreateProductCommandResponse>(StatusCodes.Status201Created)
           .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .WithTags(endpointTag);
+          .WithTags(productsTag);
     }
 
     public static void MapPutProductsEndpoints(this WebApplication app) 
@@ -71,7 +80,7 @@ public static class ProductsEndpoints
           .Produces<UpdateProductCommandResponse>(StatusCodes.Status200OK)
           .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .WithTags(endpointTag);                    
+          .WithTags(productsTag);                    
     }
 
     public static void MapDeleteProductsEndpoints(this WebApplication app) 
@@ -84,6 +93,6 @@ public static class ProductsEndpoints
 
         }).Produces<DeleteProductCommandResponse>(StatusCodes.Status200OK)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .WithTags(endpointTag);
+          .WithTags(productsTag);
     }
 }
