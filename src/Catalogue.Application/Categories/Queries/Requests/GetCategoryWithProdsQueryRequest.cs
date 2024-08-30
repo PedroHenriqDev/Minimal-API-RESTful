@@ -4,11 +4,11 @@ using MediatR;
 
 namespace Catalogue.Application.Categories.Queries.Requests;
 
-public class GetCategoryWithProductsQueryRequest : IRequest<GetCategoryWithProductsQueryResponse>
+public class GetCategoryWithProdsQueryRequest : IRequest<GetCategoryWithProdsQueryResponse>
 {
     public int Id { get; set; }
 
-    public GetCategoryWithProductsQueryRequest(int id)
+    public GetCategoryWithProdsQueryRequest(int id)
     {
         Id = id;
     }

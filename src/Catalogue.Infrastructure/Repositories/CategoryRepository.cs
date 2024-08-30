@@ -11,11 +11,6 @@ public sealed class CategoryRepository : Repository<Category>, ICategoryReposito
     public CategoryRepository(AppDbContext context) : base(context)
     {}
 
-    public IQueryable<Category> GetAllWithProducts()
-    {
-        return GetAll().Include(c => c.Products);
-    }
-
     public async Task<Category?> GetByIdWithProductsAsync(int id)
     {
         return await GetAll().Select(c => new Category 

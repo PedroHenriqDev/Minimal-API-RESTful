@@ -10,7 +10,7 @@ using MediatR;
 namespace Catalogue.Application.Categories.Queries.Handlers;
 
 public class GetCategoryWithProductsHandler
-    : IRequestHandler<GetCategoryWithProductsQueryRequest, GetCategoryWithProductsQueryResponse>
+    : IRequestHandler<GetCategoryWithProdsQueryRequest, GetCategoryWithProdsQueryResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
@@ -21,12 +21,12 @@ public class GetCategoryWithProductsHandler
         _mapper = mapper;
     }
 
-    public async Task<GetCategoryWithProductsQueryResponse> Handle(GetCategoryWithProductsQueryRequest request,
+    public async Task<GetCategoryWithProdsQueryResponse> Handle(GetCategoryWithProdsQueryRequest request,
                                        CancellationToken cancellationToken)
     {
         if (await _unitOfWork.CategoryRepository.GetByIdWithProductsAsync(request.Id) is Category category)
         {
-            return _mapper.Map<GetCategoryWithProductsQueryResponse>(category);
+            return _mapper.Map<GetCategoryWithProdsQueryResponse>(category);
         }
 
         string errorMessage = string.Format(ErrorMessagesResource.NOT_FOUND_ID_MESSAGE, typeof(Category).Name, request.Id);

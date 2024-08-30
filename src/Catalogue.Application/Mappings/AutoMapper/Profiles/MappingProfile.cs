@@ -23,6 +23,7 @@ public class MappingProfile : Profile
         CreateMap<Category, UpdateCategoryCommandRequest>().ReverseMap();
         CreateMap<Category, UpdateCategoryCommandResponse>().ReverseMap();
         CreateMap<Category, GetCategoryQueryResponse>().ReverseMap();
+        CreateMap<Category, CategoryResponse>().ReverseMap();
 
         CreateMap<Category, CreateCategoryWithProdsCommandRequest>()
             .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.Products))
@@ -32,7 +33,7 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.Products))
             .ReverseMap();
 
-        CreateMap<Category, GetCategoryWithProductsQueryResponse>()
+        CreateMap<Category, GetCategoryWithProdsQueryResponse>()
             .ForMember(dest => dest.Products, opt => opt.MapFrom(src => src.Products))
             .ReverseMap();
 
@@ -50,5 +51,7 @@ public class MappingProfile : Profile
         CreateMap<Product, UpdateProductCommandRequest>().ReverseMap();
         CreateMap<Product, UpdateProductCommandResponse>().ReverseMap();
         CreateMap<Product, DeleteProductCommandResponse>().ReverseMap();
+
+        CreateMap<Product, GetProductWithCatQueryResponse>().ReverseMap();
     }
 }

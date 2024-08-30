@@ -2,7 +2,7 @@
 
 namespace Catalogue.Application.Categories.Queries.Responses;
 
-public class GetCategoryWithProductsQueryResponse 
+public class GetCategoryWithProdsQueryResponse 
 {
     public int Id { get; set; }
     public string? Name { get; set; }

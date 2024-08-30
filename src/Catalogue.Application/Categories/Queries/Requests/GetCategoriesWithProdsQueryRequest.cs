@@ -4,11 +4,11 @@ using MediatR;
 
 namespace Catalogue.Application.Categories.Queries.Requests;
 
-public class GetCategoriesWithProductsQueryRequest : IRequest<GetCategoriesWithProductsQueryResponse>
+public class GetCategoriesWithProdsQueryRequest : IRequest<GetCategoriesWithProdsQueryResponse>
 {
     public QueryParameters? Parameters { get; set; }
 
-    public GetCategoriesWithProductsQueryRequest(QueryParameters parameters)
+    public GetCategoriesWithProdsQueryRequest(QueryParameters parameters)
     {
         Parameters = parameters;
     }

@@ -45,21 +45,21 @@ public static class CategoriesEndpoints
                                                  [AsParameters] QueryParameters parameters,
                                                  [FromServices] IMediator mediator) =>
         {
-            GetCategoriesWithProductsQueryResponse response = 
-                           await mediator.Send(new GetCategoriesWithProductsQueryRequest(parameters));
+            GetCategoriesWithProdsQueryResponse response = 
+                           await mediator.Send(new GetCategoriesWithProdsQueryRequest(parameters));
             httpContext.AppendCategoriesMetaData(response.CategoriesPaged);
 
             return Results.Ok(response.CategoriesPaged);
 
-        }).Produces<PagedList<GetCategoryWithProductsQueryResponse>>(StatusCodes.Status200OK)
+        }).Produces<PagedList<GetCategoryWithProdsQueryResponse>>(StatusCodes.Status200OK)
           .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .WithTags(categoriesTag);
 
         app.MapGet("categories/{id:int}/products", async ([FromRoute] int id,
                                                           [FromServices] IMediator mediator) =>
         {
-            GetCategoryWithProductsQueryResponse response =
-                           await mediator.Send(new GetCategoryWithProductsQueryRequest(id));
+            GetCategoryWithProdsQueryResponse response =
+                           await mediator.Send(new GetCategoryWithProdsQueryRequest(id));
 
             return Results.Ok(response);
 

@@ -6,10 +6,11 @@ using Catalogue.Application.Pagination;
 using Catalogue.Domain.Entities;
 using Catalogue.Domain.Interfaces;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Catalogue.Application.Categories.Queries.Handlers;
 
-public class GetCategoriesWithProductsHandler : IRequestHandler<GetCategoriesWithProductsQueryRequest, GetCategoriesWithProductsQueryResponse>
+public class GetCategoriesWithProductsHandler : IRequestHandler<GetCategoriesWithProdsQueryRequest, GetCategoriesWithProdsQueryResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
@@ -20,16 +21,16 @@ public class GetCategoriesWithProductsHandler : IRequestHandler<GetCategoriesWit
         _mapper = mapper;
     }
 
-    public async Task<GetCategoriesWithProductsQueryResponse> Handle(GetCategoriesWithProductsQueryRequest request,
+    public async Task<GetCategoriesWithProdsQueryResponse> Handle(GetCategoriesWithProdsQueryRequest request,
                                                                      CancellationToken cancellationToken) 
     {
-        IQueryable<Category>? categories = _unitOfWork.CategoryRepository.GetAllWithProducts();
+        IQueryable<Category>? categories = _unitOfWork.CategoryRepository.GetAll().Include(c => c.Products);
 
-        var categoriesPaged = await PagedList<GetCategoryWithProductsQueryResponse>
+        var categoriesPaged = await PagedList<GetCategoryWithProdsQueryResponse>
             .ToPagedListAsync(request.Parameters.PageNumber,
                               request.Parameters.PageSize,
-                              categories.ProjectTo<GetCategoryWithProductsQueryResponse>(_mapper.ConfigurationProvider));
+                              categories.ProjectTo<GetCategoryWithProdsQueryResponse>(_mapper.ConfigurationProvider));
 
-        return new GetCategoriesWithProductsQueryResponse(categoriesPaged);
+        return new GetCategoriesWithProdsQueryResponse(categoriesPaged);
     }
 }

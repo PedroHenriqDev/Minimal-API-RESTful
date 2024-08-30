@@ -39,6 +39,19 @@ public static class ProductsEndpoints
         }).Produces<GetProductQueryResponse>(StatusCodes.Status200OK)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
           .WithTags(productsTag);
+
+        app.MapGet("products/category", async (HttpContext httpContext,
+                                               [AsParameters] QueryParameters parameters,
+                                               [FromServices] IMediator mediator) =>
+        {
+            GetProductsWithCatQueryResponse response =
+                        await mediator.Send(new GetProductsWithCatQueryRequest(parameters));
+            httpContext.AppendCategoriesMetaData(response.ProductsPaged);
+
+            return Results.Ok(response.ProductsPaged);
+            
+        }).Produces<PagedList<GetProductWithCatQueryResponse>>(StatusCodes.Status200OK)
+          .WithTags(productsTag);
     }
 
     public static void MapPostProductsEndpoints(this WebApplication app) 
