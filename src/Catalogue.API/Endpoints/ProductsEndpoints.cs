@@ -16,9 +16,9 @@ public static class ProductsEndpoints
 {
     const string productsTag = "Products";
 
-    public static void MapGetProductsEndpoints(this WebApplication app) 
+    public static void MapGetProductsEndpoints(this WebApplication app)
     {
-        app.MapGet("products", async (HttpContext httpContext, 
+        app.MapGet("products", async (HttpContext httpContext,
                                       [AsParameters] QueryParameters parameters,
                                       [FromServices] IMediator mediator) =>
         {
@@ -30,7 +30,7 @@ public static class ProductsEndpoints
         }).Produces<PagedList<GetProductQueryResponse>>(StatusCodes.Status200OK)
           .WithTags(productsTag);
 
-        app.MapGet("products/{id:int}", async ([FromRoute] int id, 
+        app.MapGet("products/{id:int}", async ([FromRoute] int id,
                                                [FromServices] IMediator mediator) =>
         {
             GetProductQueryResponse response = await mediator.Send(new GetProductQueryRequest(id));
@@ -49,8 +49,18 @@ public static class ProductsEndpoints
             httpContext.AppendCategoriesMetaData(response.ProductsPaged);
 
             return Results.Ok(response.ProductsPaged);
-            
+
         }).Produces<PagedList<GetProductWithCatQueryResponse>>(StatusCodes.Status200OK)
+          .WithTags(productsTag);
+
+        app.MapGet("products/{id:int}/category", async ([FromRoute] int id,
+                                                        [FromServices] IMediator mediator) => 
+        {
+            GetProductWithCatQueryResponse response = await mediator.Send(new GetProductWithCatQueryRequest(id));
+            return Results.Ok(response);
+
+        }).Produces<GetProductWithCatQueryResponse>(StatusCodes.Status200OK)
+          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
           .WithTags(productsTag);
     }
 

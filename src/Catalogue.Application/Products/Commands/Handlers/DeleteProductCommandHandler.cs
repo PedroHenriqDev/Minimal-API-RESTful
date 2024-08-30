@@ -22,7 +22,7 @@ public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommandR
 
     public async Task<DeleteProductCommandResponse> Handle(DeleteProductCommandRequest request, CancellationToken cancellationToken) 
     {
-        if (await _unitOfWork.ProductRepository.GetByIdWithCategoryAsync(request.Id) is Product product)
+        if (await _unitOfWork.ProductRepository.GetAsync(p => p.Id == request.Id) is Product product)
         {
             _unitOfWork.ProductRepository.Delete(product);
             await _unitOfWork.CommitAsync();
