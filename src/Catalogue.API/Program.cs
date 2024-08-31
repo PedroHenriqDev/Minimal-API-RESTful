@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<GlobalExceptionFilter>();
-builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddDependencies(builder.Configuration);
 
 var app = builder.Build();
 
@@ -30,8 +30,11 @@ app.MapDeleteProductsEndpoints();
 app.MapPutProductsEndpoints();
 
 app.UseCors(builder.Configuration["Cors:PolicyName"]!);
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseGlobalExceptionFilter();
 app.UseHttpsRedirection();
 
 app.Run();
-
