@@ -398,3 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 .env
 src/Catalogue.API/appsettings.json
+.vs

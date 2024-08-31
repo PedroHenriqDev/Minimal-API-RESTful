@@ -1,4 +1,6 @@
-﻿namespace Catalogue.Domain.Entities;
+﻿using Catalogue.Domain.Enums;
+
+namespace Catalogue.Domain.Entities;
 
 public class User
 {
@@ -7,7 +9,7 @@ public class User
     public string? Email { get; set; }   
     public string? Password { get; set; }
     public DateTime BirthDate { get; set; }
-    public string? Role { get; set; }
+    public Role Role { get; set; }
 
     public void AssignNewId() 
     {

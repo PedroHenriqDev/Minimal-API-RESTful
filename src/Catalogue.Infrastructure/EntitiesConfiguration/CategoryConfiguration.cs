@@ -10,6 +10,9 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
         builder.HasKey(c => c.Id);
 
+        builder.Property(u => u.Id)
+            .ValueGeneratedOnAdd();
+
         builder.Property(c => c.Name)
                .HasMaxLength(120)
                .IsRequired();

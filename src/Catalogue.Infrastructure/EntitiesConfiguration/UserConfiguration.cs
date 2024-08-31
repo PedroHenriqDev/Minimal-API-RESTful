@@ -1,4 +1,5 @@
 ﻿using Catalogue.Domain.Entities;
+using Catalogue.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,11 +11,13 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
     {
         builder.HasKey(u => u.Id);
 
+        builder.Property(u => u.Id).ValueGeneratedOnAdd();
+
         builder.Property(u => u.Name).HasMaxLength(255).IsRequired();
 
         builder.Property(u => u.Email).HasMaxLength(256).IsRequired();
 
-        builder.Property(u => u.Role).HasMaxLength(128).IsRequired();
+        builder.Property(u => u.Role).HasDefaultValue(Role.User).HasConversion<string>().IsRequired();
 
         builder.Property(u => u.Password).HasMaxLength(256).IsRequired();
     }
