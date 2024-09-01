@@ -23,7 +23,6 @@ public abstract class ProductBaseValidator<T> : AbstractValidator<T> where T : P
             .MaximumLength(MAX_DESCRIPTION)
             .WithMessage(descriptionMessage);
 
-
         const int MAX_PRICE = 99999999;
         const int MIN_PRICE = 0;
         string priceMessage = string.Format(ProductValidationMessagesResource.PRICE_INVALID, MIN_PRICE, MAX_PRICE);

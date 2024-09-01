@@ -14,7 +14,7 @@ namespace Catalogue.API.Endpoints;
 
 public static class CategoriesEndpoints
 {
-    const string categoriesTag = "Categories";
+    private const string categoriesTag = "Categories";
 
     public static void MapGetCategoriesEndpoints(this WebApplication app)
     {

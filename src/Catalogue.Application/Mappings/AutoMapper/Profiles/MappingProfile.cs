@@ -9,6 +9,8 @@ using Catalogue.Application.Pagination;
 using Catalogue.Application.Products.Commands.Requests;
 using Catalogue.Application.Products.Commands.Responses;
 using Catalogue.Application.Products.Queries.Responses;
+using Catalogue.Application.Users.Commands.Requests;
+using Catalogue.Application.Users.Commands.Responses;
 using Catalogue.Domain.Entities;
 
 namespace Catalogue.Application.Mappings.AutoMapper.Profiles;
@@ -51,7 +53,9 @@ public class MappingProfile : Profile
         CreateMap<Product, UpdateProductCommandRequest>().ReverseMap();
         CreateMap<Product, UpdateProductCommandResponse>().ReverseMap();
         CreateMap<Product, DeleteProductCommandResponse>().ReverseMap();
-
         CreateMap<Product, GetProductWithCatQueryResponse>().ReverseMap();
+
+        CreateMap<User, RegisterUserCommandRequest>().ReverseMap();
+        CreateMap<User, RegisterUserCommandResponse>().ReverseMap();
     }
 }

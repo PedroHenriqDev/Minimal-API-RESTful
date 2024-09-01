@@ -2,6 +2,6 @@
 
 namespace Catalogue.Domain.Interfaces;
 
-public class IUserRepository
+public interface IUserRepository : IRepository<User>
 {
 }

@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Users\Queries\" />
     <Folder Include="Interfaces\Categories\" />
     <Folder Include="Interfaces\Products\" />
   </ItemGroup>
@@ -41,6 +42,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>CategoryValidationMessagesResource.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\UserValidationMessagesResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UserValidationMessagesResource.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -55,6 +61,10 @@
     <EmbeddedResource Update="Resources\CategoryValidationMessagesResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>CategoryValidationMessagesResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\UserValidationMessagesResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserValidationMessagesResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

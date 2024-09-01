@@ -19,15 +19,20 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//Categories Endpoints
 app.MapGetCategoriesEndpoints();
 app.MapPostCategoriesEndpoints();
 app.MapDeleteCategoriesEndpoints();
 app.MapPutCategoriesEndpoints();
 
+//Products Endpoints
 app.MapGetProductsEndpoints();
 app.MapPostProductsEndpoints();
 app.MapDeleteProductsEndpoints();
 app.MapPutProductsEndpoints();
+
+//Users Endpoints
+app.MapPostAuthEndpoints();
 
 app.UseCors(builder.Configuration["Cors:PolicyName"]!);
 

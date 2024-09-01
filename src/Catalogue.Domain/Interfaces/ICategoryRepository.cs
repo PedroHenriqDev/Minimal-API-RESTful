@@ -4,5 +4,5 @@ namespace Catalogue.Domain.Interfaces;
 
 public interface ICategoryRepository : IRepository<Category>
 {
-    public Task<Category?> GetByIdWithProductsAsync(int id);
+    Task<Category?> GetByIdWithProductsAsync(int id);
 }

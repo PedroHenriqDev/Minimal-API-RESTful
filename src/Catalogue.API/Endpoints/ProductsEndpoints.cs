@@ -14,7 +14,7 @@ namespace Catalogue.API.Endpoints;
 
 public static class ProductsEndpoints
 {
-    const string productsTag = "Products";
+    private const string productsTag = "Products";
 
     public static void MapGetProductsEndpoints(this WebApplication app)
     {

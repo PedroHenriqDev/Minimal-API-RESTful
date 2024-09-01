@@ -1,35 +1,27 @@
 ﻿using Catalogue.Domain.Interfaces;
 using Catalogue.Infrastructure.Context;
-using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Catalogue.Infrastructure.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {
     private readonly AppDbContext _context;
-    private ICategoryRepository? _categoryRepository;
-    private IProductRepository? _productRepository;
+    private ICategoryRepository? categoryRepository;
+    private IProductRepository? productRepository;
+    private IUserRepository? userRepository;
 
     public UnitOfWork(AppDbContext context)
     {
         _context = context;
     }
 
-    public ICategoryRepository CategoryRepository
-    {
-        get
-        {
-            return _categoryRepository ?? new CategoryRepository(_context);
-        }
-    }
+    public ICategoryRepository CategoryRepository =>
+        categoryRepository ?? new CategoryRepository(_context);
 
-    public IProductRepository ProductRepository
-    {
-        get
-        {
-            return _productRepository ?? new ProductRepository(_context);
-        }
-    }
+    public IProductRepository ProductRepository =>
+             productRepository ?? new ProductRepository(_context);
+    public IUserRepository UserRepository 
+        => userRepository ?? new UserRepository(_context);
 
     public async Task CommitAsync()
     {

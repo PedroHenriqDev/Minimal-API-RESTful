@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Catalogue.Infrastructure.Abstractions;
 
-public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
+public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 {
     protected DbSet<TEntity> set => _context.Set<TEntity>();
     private readonly AppDbContext _context;
