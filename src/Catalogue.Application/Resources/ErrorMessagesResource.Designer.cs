@@ -61,6 +61,24 @@ namespace Catalogue.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The key must be 32 bytes and the IV must be 16 bytes..
+        /// </summary>
+        public static string ENV_VARIABLE_INVALID {
+            get {
+                return ResourceManager.GetString("ENV_VARIABLE_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The encryption key and IV must be defined in the environment variables..
+        /// </summary>
+        public static string ENV_VARIABLES_NULL {
+            get {
+                return ResourceManager.GetString("ENV_VARIABLES_NULL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The name &apos;{0}&apos; already exists.
         /// </summary>
         public static string NAME_EXISTS_MESSAGE {

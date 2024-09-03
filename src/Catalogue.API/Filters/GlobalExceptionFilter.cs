@@ -1,5 +1,4 @@
-﻿using Catalogue.Application.DTOs;
-using Catalogue.Application.DTOs.Responses;
+﻿using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Exceptions.Abstractions;
 using Catalogue.Application.Resources;
 using Microsoft.AspNetCore.Mvc;
@@ -10,35 +9,38 @@ namespace Catalogue.API.Filters;
 public class GlobalExceptionFilter : IExceptionFilter
 {
     private readonly ILogger<GlobalExceptionFilter> _logger;
+    private ErrorResponse response;
 
     public GlobalExceptionFilter(ILogger<GlobalExceptionFilter> logger)
     {
         _logger = logger;
+        response = new ErrorResponse();
+
     }
 
     public void OnException(ExceptionContext context)
     {
         _logger.LogError(context.Exception.Message);
-
         if (context.Exception is ExceptionBase) 
         {
             var exception = (ExceptionBase)context.Exception;
             context.HttpContext.Response.StatusCode = (int)exception.GetStatusCodes();
 
-            var result = new ErrorResponse(exception.GetMessages());
-            context.HttpContext.Response.WriteAsJsonAsync(result);
+            response = new ErrorResponse(exception.GetMessages());
+            context.HttpContext.Response.WriteAsJsonAsync(response);
+            return;
         }
         else 
         {
             context.HttpContext.Response.StatusCode = (int)StatusCodes.Status500InternalServerError;
 
-            var result = new ErrorResponse(new List<string>
+            response = new ErrorResponse(new List<string>
             {
                 ErrorMessagesResource.SERVER_ERROR_MESSAGE
             });
 
-            context.Result = new ObjectResult(result);
-            context.HttpContext.Response.WriteAsJsonAsync(result);
+            context.Result = new ObjectResult(response);
+            context.HttpContext.Response.WriteAsJsonAsync(response);
         }
     }
 }

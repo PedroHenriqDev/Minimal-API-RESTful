@@ -8,4 +8,8 @@ public class ErrorResponse
     {
         ErrorMessages = errorMessages;
     }
+
+    public ErrorResponse()
+    {
+    }
 }

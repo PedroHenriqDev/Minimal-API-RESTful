@@ -64,6 +64,7 @@ public static class CategoriesEndpoints
             return Results.Ok(response);
 
         })
+          .Produces<GetCategoryWithProdsQueryResponse>(StatusCodes.Status200OK)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
           .WithTags(categoriesTag);
     }

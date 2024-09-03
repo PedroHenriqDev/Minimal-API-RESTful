@@ -11,6 +11,8 @@ using Catalogue.Application.Products.Commands.Responses;
 using Catalogue.Application.Products.Queries.Responses;
 using Catalogue.Application.Users.Commands.Requests;
 using Catalogue.Application.Users.Commands.Responses;
+using Catalogue.Application.Users.Queries.Responses;
+using Catalogue.Application.Utils;
 using Catalogue.Domain.Entities;
 
 namespace Catalogue.Application.Mappings.AutoMapper.Profiles;
@@ -55,7 +57,14 @@ public class MappingProfile : Profile
         CreateMap<Product, DeleteProductCommandResponse>().ReverseMap();
         CreateMap<Product, GetProductWithCatQueryResponse>().ReverseMap();
 
-        CreateMap<User, RegisterUserCommandRequest>().ReverseMap();
+        CreateMap<RegisterUserCommandRequest, User>()
+             .AfterMap((src, dest) => dest.Password = Crypto.Encrypt(src.Password))
+             .ReverseMap();
+
+        CreateMap<User, UserResponse>().ReverseMap();
         CreateMap<User, RegisterUserCommandResponse>().ReverseMap();
+
+        CreateMap<User, LoginQueryResponse>()
+            .ForMember(dest => dest.User, opt => opt.MapFrom(src => src));
     }
 }

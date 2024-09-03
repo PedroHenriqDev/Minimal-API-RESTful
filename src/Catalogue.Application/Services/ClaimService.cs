@@ -1,5 +1,5 @@
-﻿using Catalogue.Application.Interfaces.Services;
-using Catalogue.Domain.Entities;
+﻿using Catalogue.Application.Abstractions;
+using Catalogue.Application.Interfaces.Services;
 using Microsoft.Extensions.Logging;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -32,7 +32,7 @@ public class ClaimService : IClaimService
         claims.AddRange(roles.Select(r => new Claim(ClaimTypes.Role, r)));
     }
 
-    public List<Claim> CreateAuthClaims(User user)
+    public IList<Claim> CreateAuthClaims<TUser>(TUser user) where TUser : UserBase
     {
         if(user == null) 
         {
@@ -43,7 +43,6 @@ public class ClaimService : IClaimService
         return new List<Claim>
         {
             new Claim(ClaimTypes.Name, user.Name!),
-            new Claim(ClaimTypes.Email, user.Email!),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
     }

@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ENV_VARIABLES_NULL" xml:space="preserve">
+    <value>The encryption key and IV must be defined in the environment variables.</value>
+  </data>
+  <data name="ENV_VARIABLE_INVALID" xml:space="preserve">
+    <value>The key must be 32 bytes and the IV must be 16 bytes.</value>
+  </data>
   <data name="NAME_EXISTS_MESSAGE" xml:space="preserve">
     <value>The name '{0}' already exists</value>
     <comment>'</comment>

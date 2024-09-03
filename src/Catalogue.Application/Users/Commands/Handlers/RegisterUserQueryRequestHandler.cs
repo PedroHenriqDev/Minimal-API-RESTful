@@ -8,16 +8,17 @@ using FluentValidation;
 using MediatR;
 using Catalogue.Application.Resources;
 using Catalogue.Application.Exceptions;
+using Catalogue.Application.Utils;
 
 namespace Catalogue.Application.Users.Commands.Handlers;
 
-public class RegisterUserRequestHandler : IRequestHandler<RegisterUserCommandRequest, RegisterUserCommandResponse>
+public class RegisterUserQueryRequestHandler : IRequestHandler<RegisterUserCommandRequest, RegisterUserCommandResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
     private readonly IValidator<RegisterUserCommandRequest> _validator;
 
-    public RegisterUserRequestHandler(IUnitOfWork unitOfWork,
+    public RegisterUserQueryRequestHandler(IUnitOfWork unitOfWork,
                                       IMapper mapper,
                                       IValidator<RegisterUserCommandRequest> validator)
     {

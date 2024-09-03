@@ -1,6 +1,9 @@
 ﻿using Catalogue.Application.DTOs.Responses;
+using Catalogue.Application.Interfaces.Services;
 using Catalogue.Application.Users.Commands.Requests;
 using Catalogue.Application.Users.Commands.Responses;
+using Catalogue.Application.Users.Queries.Requests;
+using Catalogue.Application.Users.Queries.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +15,7 @@ public static class AuthenticationEndpoints
     
     public static void MapPostAuthEndpoints(this WebApplication app) 
     {
-        app.MapPost("register", async ([FromBody] RegisterUserCommandRequest request,
+        app.MapPost("auth/register", async ([FromBody] RegisterUserCommandRequest request,
                                        [FromServices] IMediator mediator) =>
         {
 
@@ -21,6 +24,28 @@ public static class AuthenticationEndpoints
 
         })
         .Produces<RegisterUserCommandResponse>(StatusCodes.Status201Created)
-        .Produces<ErrorResponse>(StatusCodes.Status400BadRequest).WithTags(authEndpoint);
+        .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
+        .WithTags(authEndpoint);
+
+        app.MapPost("auth/login", async ([FromBody] LoginQueryRequest request,
+                                    [FromServices] IMediator mediator,
+                                    [FromServices] ITokenService tokenService,
+                                    [FromServices] IClaimService claimService,
+                                    [FromServices] IConfiguration configuration) =>
+        {
+            LoginQueryResponse response = await mediator.Send(request);
+
+            if (response.Success)
+            {
+                var authClaims = claimService.CreateAuthClaims(response.User!);
+                response.Token = tokenService.GenerateToken(authClaims, configuration);
+                return Results.Ok(response);
+            }
+
+            return Results.Unauthorized();
+
+        }).Produces<LoginQueryResponse>(StatusCodes.Status200OK)
+          .Produces(StatusCodes.Status401Unauthorized)
+          .WithTags(authEndpoint);
     }
 }

@@ -1,8 +1,11 @@
 using Catalogue.API.Endpoints;
 using Catalogue.API.Filters;
 using Catalogue.CrossCutting.AppDependencies;
+using dotenv.net;
 
 var builder = WebApplication.CreateBuilder(args);
+
+DotEnv.Load(options: new DotEnvOptions(envFilePaths: new[] { builder.Configuration["Env:Path"], ".env" }));
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
