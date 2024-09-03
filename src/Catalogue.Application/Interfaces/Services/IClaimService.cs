@@ -5,7 +5,7 @@ namespace Catalogue.Application.Interfaces.Services;
 
 public interface IClaimService
 {
-    public void AddRolesToClaims(IEnumerable<string> roles, List<Claim> claims);
-    public IList<Claim> CreateAuthClaims<TUser>(TUser user) where TUser : UserBase; 
+    public void AddRoleToClaims(string role, List<Claim> claims);
+    public List<Claim> CreateAuthClaims<TUser>(TUser user) where TUser : UserBase;
 }
 

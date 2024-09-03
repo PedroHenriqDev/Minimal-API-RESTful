@@ -15,24 +15,24 @@ public class ClaimService : IClaimService
         _logger = logger;
     }
 
-    public void AddRolesToClaims(IEnumerable<string> roles, List<Claim> claims)
+    public void AddRoleToClaims(string role, List<Claim> claims)
     {
-        if (roles == null)
+        if (string.IsNullOrEmpty(role))
         {
             _logger.LogError("Roles null");
-            throw new ArgumentNullException(nameof(roles));
+            throw new ArgumentNullException(nameof(role));
         }
 
-        if (claims == null)
+        if (string.IsNullOrEmpty(role))
         {
             _logger.LogError("Claims null");
             throw new ArgumentNullException(nameof(claims));
         }
 
-        claims.AddRange(roles.Select(r => new Claim(ClaimTypes.Role, r)));
+        claims.Add(new Claim(ClaimTypes.Role, role));
     }
 
-    public IList<Claim> CreateAuthClaims<TUser>(TUser user) where TUser : UserBase
+    public List<Claim> CreateAuthClaims<TUser>(TUser user) where TUser : UserBase
     {
         if(user == null) 
         {

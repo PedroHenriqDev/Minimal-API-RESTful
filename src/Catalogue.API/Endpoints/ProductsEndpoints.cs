@@ -8,6 +8,7 @@ using Catalogue.Application.Products.Commands.Responses;
 using Catalogue.Application.Products.Queries.Requests;
 using Catalogue.Application.Products.Queries.Responses;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalogue.API.Endpoints;
@@ -115,8 +116,8 @@ public static class ProductsEndpoints
 
     public static void MapDeleteProductsEndpoints(this WebApplication app) 
     {
-        app.MapDelete("products/{id:int}", async ([FromRoute] int id,
-                                                  [FromServices] IMediator mediator) =>
+        app.MapDelete("products/{id:int}", [Authorize(Policy = "AdminOnly")] async ([FromRoute] int id,
+                                                                                    [FromServices] IMediator mediator) =>
         {
             DeleteProductCommandResponse response = await mediator.Send(new DeleteProductCommandRequest(id));
             return Results.Ok(response);

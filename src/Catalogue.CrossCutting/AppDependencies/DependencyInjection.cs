@@ -2,6 +2,7 @@
 using Catalogue.Application.Interfaces.Services;
 using Catalogue.Application.Mappings.AutoMapper.Profiles;
 using Catalogue.Application.Services;
+using Catalogue.Domain.Enums;
 using Catalogue.Domain.Interfaces;
 using Catalogue.Infrastructure.Context;
 using Catalogue.Infrastructure.Repositories;
@@ -39,7 +40,9 @@ public static class DependencyInjection
         {
             opt.AddPolicy(corsPolicyName, policy =>
             {
-                policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                policy.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
             });
         });
 
@@ -63,7 +66,11 @@ public static class DependencyInjection
             };
         });
 
-        svc.AddAuthorization();
+        svc.AddAuthorization(opt => 
+        {
+            opt.AddPolicy(name: "AdminOnly", policy =>
+                policy.RequireRole(Role.Admin.ToString()));
+        });
 
         svc.AddAutoMapper(typeof(MappingProfile));
 

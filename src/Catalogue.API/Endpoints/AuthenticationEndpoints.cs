@@ -16,7 +16,7 @@ public static class AuthenticationEndpoints
     public static void MapPostAuthEndpoints(this WebApplication app) 
     {
         app.MapPost("auth/register", async ([FromBody] RegisterUserCommandRequest request,
-                                       [FromServices] IMediator mediator) =>
+                                            [FromServices] IMediator mediator) =>
         {
 
             RegisterUserCommandResponse response = await mediator.Send(request);
@@ -28,21 +28,23 @@ public static class AuthenticationEndpoints
         .WithTags(authEndpoint);
 
         app.MapPost("auth/login", async ([FromBody] LoginQueryRequest request,
-                                    [FromServices] IMediator mediator,
-                                    [FromServices] ITokenService tokenService,
-                                    [FromServices] IClaimService claimService,
-                                    [FromServices] IConfiguration configuration) =>
+                                         [FromServices] IMediator mediator,
+                                         [FromServices] ITokenService tokenService,
+                                         [FromServices] IClaimService claimService,
+                                         [FromServices] IConfiguration configuration) =>
         {
             LoginQueryResponse response = await mediator.Send(request);
 
-            if (response.Success)
+            if (!response.Success)
             {
-                var authClaims = claimService.CreateAuthClaims(response.User!);
-                response.Token = tokenService.GenerateToken(authClaims, configuration);
-                return Results.Ok(response);
+                return Results.Unauthorized();
             }
 
-            return Results.Unauthorized();
+            var authClaims = claimService.CreateAuthClaims(response.User!);
+            claimService.AddRoleToClaims(response.User.RoleName, authClaims);
+            response.Token = tokenService.GenerateToken(authClaims, configuration);
+
+            return Results.Ok(response);
 
         }).Produces<LoginQueryResponse>(StatusCodes.Status200OK)
           .Produces(StatusCodes.Status401Unauthorized)
