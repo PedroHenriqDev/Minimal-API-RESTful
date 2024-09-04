@@ -1,4 +1,5 @@
 ﻿using Catalogue.API.Resources;
+using Catalogue.Domain.Enums;
 using MediatR;
 
 namespace Catalogue.API.Filters;
@@ -36,7 +37,14 @@ public class InjectIdFilter : IEndpointFilter
         // Try set property in request 
         try
         {
-            idProperty!.SetValue(request, Convert.ChangeType(idValue, idProperty.PropertyType));
+            if (idProperty!.PropertyType == typeof(Guid))
+            {
+                idProperty!.SetValue(request, Guid.Parse(idValue!.ToString()!));
+            }
+            else
+            {
+                idProperty!.SetValue(request, Convert.ChangeType(idValue, idProperty.PropertyType));
+            }
         }
         catch (Exception ex) 
         {

@@ -1,6 +1,7 @@
 using Catalogue.API.Endpoints;
 using Catalogue.API.Filters;
 using Catalogue.CrossCutting.AppDependencies;
+using Catalogue.Domain.Enums;
 using dotenv.net;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,6 +37,7 @@ app.MapPutProductsEndpoints();
 
 //Users Endpoints
 app.MapPostAuthEndpoints();
+app.MapPutAuthEndpoints();
 
 app.UseCors(builder.Configuration["Cors:PolicyName"]!);
 

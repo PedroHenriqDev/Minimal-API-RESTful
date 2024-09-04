@@ -29,8 +29,8 @@ public static class ProductsEndpoints
 
             return Results.Ok(response.ProductsPaged);
         }).Produces<PagedList<GetProductQueryResponse>>(StatusCodes.Status200OK)
-          .WithTags(productsTag)
-          .RequireAuthorization(); 
+          .RequireAuthorization()
+          .WithTags(productsTag);
 
         app.MapGet("products/{id:int}", async ([FromRoute] int id,
                                                [FromServices] IMediator mediator) =>
@@ -40,8 +40,8 @@ public static class ProductsEndpoints
 
         }).Produces<GetProductQueryResponse>(StatusCodes.Status200OK)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .WithTags(productsTag)
-          .RequireAuthorization(); 
+          .RequireAuthorization()
+          .WithTags(productsTag);
 
         app.MapGet("products/category", async (HttpContext httpContext,
                                                [AsParameters] QueryParameters parameters,
@@ -54,8 +54,8 @@ public static class ProductsEndpoints
             return Results.Ok(response.ProductsPaged);
 
         }).Produces<PagedList<GetProductWithCatQueryResponse>>(StatusCodes.Status200OK)
-          .WithTags(productsTag)
-          .RequireAuthorization(); 
+          .RequireAuthorization()
+          .WithTags(productsTag);
 
         app.MapGet("products/{id:int}/category", async ([FromRoute] int id,
                                                         [FromServices] IMediator mediator) => 
@@ -65,8 +65,8 @@ public static class ProductsEndpoints
 
         }).Produces<GetProductWithCatQueryResponse>(StatusCodes.Status200OK)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .WithTags(productsTag)
-          .RequireAuthorization(); 
+          .RequireAuthorization()
+          .WithTags(productsTag);
     }
 
     public static void MapPostProductsEndpoints(this WebApplication app) 
@@ -80,8 +80,8 @@ public static class ProductsEndpoints
         }).Produces<CreateProductCommandResponse>(StatusCodes.Status201Created)
           .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .WithTags(productsTag)
-          .RequireAuthorization();
+          .RequireAuthorization()
+          .WithTags(productsTag);
 
         app.MapPost("products/category-name", async ([FromBody] CreateProductByCatNameCommandRequest request,
                                                      [FromServices] IMediator mediator) =>
@@ -92,8 +92,8 @@ public static class ProductsEndpoints
         }).Produces<CreateProductCommandResponse>(StatusCodes.Status201Created)
           .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .WithTags(productsTag)
-          .RequireAuthorization();
+          .RequireAuthorization()
+          .WithTags(productsTag);
     }
 
     public static void MapPutProductsEndpoints(this WebApplication app) 
@@ -110,13 +110,13 @@ public static class ProductsEndpoints
           .Produces<UpdateProductCommandResponse>(StatusCodes.Status200OK)
           .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .WithTags(productsTag)
-          .RequireAuthorization();
+          .RequireAuthorization()
+          .WithTags(productsTag);
     }
 
     public static void MapDeleteProductsEndpoints(this WebApplication app) 
     {
-        app.MapDelete("products/{id:int}", [Authorize(Policy = "AdminOnly")] async ([FromRoute] int id,
+        app.MapDelete("products/{id:int}", async ([FromRoute] int id,
                                                                                     [FromServices] IMediator mediator) =>
         {
             DeleteProductCommandResponse response = await mediator.Send(new DeleteProductCommandRequest(id));
@@ -124,7 +124,7 @@ public static class ProductsEndpoints
 
         }).Produces<DeleteProductCommandResponse>(StatusCodes.Status200OK)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .WithTags(productsTag)
-          .RequireAuthorization();
+          .RequireAuthorization()
+          .WithTags(productsTag);
     }
 }

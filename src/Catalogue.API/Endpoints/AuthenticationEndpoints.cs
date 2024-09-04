@@ -1,10 +1,12 @@
-﻿using Catalogue.Application.DTOs.Responses;
+﻿using Catalogue.API.Filters;
+using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Interfaces.Services;
 using Catalogue.Application.Users.Commands.Requests;
 using Catalogue.Application.Users.Commands.Responses;
 using Catalogue.Application.Users.Queries.Requests;
 using Catalogue.Application.Users.Queries.Responses;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalogue.API.Endpoints;
@@ -12,8 +14,8 @@ namespace Catalogue.API.Endpoints;
 public static class AuthenticationEndpoints
 {
     private const string authEndpoint = "Authentication";
-    
-    public static void MapPostAuthEndpoints(this WebApplication app) 
+
+    public static void MapPostAuthEndpoints(this WebApplication app)
     {
         app.MapPost("auth/register", async ([FromBody] RegisterUserCommandRequest request,
                                             [FromServices] IMediator mediator) =>
@@ -48,6 +50,25 @@ public static class AuthenticationEndpoints
 
         }).Produces<LoginQueryResponse>(StatusCodes.Status200OK)
           .Produces(StatusCodes.Status401Unauthorized)
+          .WithTags(authEndpoint);
+    }
+
+    public static void MapPutAuthEndpoints(this WebApplication app)
+    {
+        app.MapPut("auth/role/{id:guid}",
+            [Authorize(Policy = "AdminOnly")]
+             async ([FromRoute] Guid id,
+                   [FromBody] UpdateUserRoleCommandRequest request,
+                   [FromServices] IMediator mediator) =>
+        {
+
+            UpdateUserRoleCommandResponse response = await mediator.Send(request);
+            return Results.Ok(response);
+
+        }).AddEndpointFilter<InjectIdFilter>()
+          .Produces<UpdateUserRoleCommandRequest>(StatusCodes.Status200OK)
+          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+          .RequireAuthorization()
           .WithTags(authEndpoint);
     }
 }

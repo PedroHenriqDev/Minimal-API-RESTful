@@ -133,6 +133,9 @@
   <data name="NOT_FOUND_ID_MESSAGE" xml:space="preserve">
     <value>Not found {0} with id = '{1}'</value>
   </data>
+  <data name="NOT_FOUND_ROLE" xml:space="preserve">
+    <value>Not found role = {0}</value>
+  </data>
   <data name="SERVER_ERROR_MESSAGE" xml:space="preserve">
     <value>An unexpected server error occurred</value>
   </data>

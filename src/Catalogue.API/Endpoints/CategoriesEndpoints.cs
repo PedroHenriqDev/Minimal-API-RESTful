@@ -75,7 +75,7 @@ public static class CategoriesEndpoints
                                          [FromServices] IMediator mediator) =>
         {
             CreateCategoryCommandResponse response = await mediator.Send(request);
-            return Results.Cresated(string.Empty, response);
+            return Results.Created(string.Empty, response);
 
         }).Produces<CreateCategoryCommandResponse>(StatusCodes.Status201Created)
           .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)

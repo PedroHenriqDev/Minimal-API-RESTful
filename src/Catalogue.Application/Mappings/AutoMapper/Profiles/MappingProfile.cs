@@ -66,5 +66,9 @@ public class MappingProfile : Profile
 
         CreateMap<User, LoginQueryResponse>()
             .ForMember(dest => dest.User, opt => opt.MapFrom(src => src));
+
+        CreateMap<User, UpdateUserRoleCommandResponse>()
+            .ForMember(dest => dest.User, opt => opt.MapFrom(src => src))
+            .ReverseMap();    
     }
 }

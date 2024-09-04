@@ -106,6 +106,15 @@ namespace Catalogue.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not found role = {0}.
+        /// </summary>
+        public static string NOT_FOUND_ROLE {
+            get {
+                return ResourceManager.GetString("NOT_FOUND_ROLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An unexpected server error occurred.
         /// </summary>
         public static string SERVER_ERROR_MESSAGE {
