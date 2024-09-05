@@ -1,6 +1,7 @@
 ﻿using Catalogue.Application.Users.Commands.Requests;
 using Catalogue.Application.Resources;
 using FluentValidation;
+using Catalogue.Application.Settings;
 
 namespace Catalogue.Application.Validators.Users;
 
@@ -8,13 +9,12 @@ public class RegisterUserCommandValidator : AbstractValidator<RegisterUserComman
 {
     public RegisterUserCommandValidator()
     {
-        const int MAX_NAME_LENGTH = 255;
-        string nameMessage = string.Format(UserValidationMessagesResource.NAME_INVALID, MAX_NAME_LENGTH);
+        string nameMessage = string.Format(UserValidationMessagesResource.NAME_INVALID, UserSettings.MaxName);
 
         RuleFor(u => u.Name)
             .NotNull()
             .NotEmpty()
-            .MaximumLength(MAX_NAME_LENGTH)
+            .MaximumLength(UserSettings.MaxName)
             .WithMessage(nameMessage)
             .Custom((name, context) =>
         {
@@ -24,13 +24,11 @@ public class RegisterUserCommandValidator : AbstractValidator<RegisterUserComman
             }
         });
 
-        const int MAX_PASSWORD_LENGTH = 256;
-        string passwordMessage = string.Format(UserValidationMessagesResource.PASSWORD_INVALID, MAX_PASSWORD_LENGTH);
-
+        string passwordMessage = string.Format(UserValidationMessagesResource.PASSWORD_INVALID, UserSettings.MaxPassword);
         RuleFor(u => u.Password)
             .NotNull()
             .NotEmpty()
-            .MaximumLength(MAX_PASSWORD_LENGTH)
+            .MaximumLength(UserSettings.MaxPassword)
             .WithMessage(passwordMessage)
             .Custom((password, context) => 
             {

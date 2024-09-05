@@ -1,4 +1,5 @@
 ﻿using Catalogue.Application.Resources;
+using Catalogue.Application.Settings;
 using FluentValidation;
 
 namespace Catalogue.Application.Abstractions.Validators;
@@ -7,23 +8,20 @@ public class CategoryBaseValidator<T> : AbstractValidator<T> where T : CategoryB
 {
     public CategoryBaseValidator()
     {
-
-        const int NAME_MAX_LENGTH = 120;
         string nameMessage =
-            string.Format(CategoryValidationMessagesResource.NAME_INVALID, NAME_MAX_LENGTH);
+            string.Format(CategoryValidationMessagesResource.NAME_INVALID, CategorySettings.NameMax);
 
         RuleFor(c => c.Name)
                 .NotEmpty()
-                .MaximumLength(NAME_MAX_LENGTH)
+                .MaximumLength(CategorySettings.NameMax)
                 .WithMessage(nameMessage);
 
-        const int DESCRIPTION_MAX_LENGTH = 255;
         string descriptionMessage =
-            string.Format(CategoryValidationMessagesResource.DESCRIPTION_INVALID, DESCRIPTION_MAX_LENGTH);
+            string.Format(CategoryValidationMessagesResource.DESCRIPTION_INVALID, CategorySettings.DescriptionMax);
 
         RuleFor(c => c.Description)
                 .NotEmpty()
-                .MaximumLength(DESCRIPTION_MAX_LENGTH)
+                .MaximumLength(CategorySettings.DescriptionMax)
                 .WithMessage(descriptionMessage);
     }
 }

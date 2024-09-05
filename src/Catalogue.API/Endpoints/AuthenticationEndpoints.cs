@@ -8,7 +8,6 @@ using Catalogue.Application.Users.Queries.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace Catalogue.API.Endpoints;
 

@@ -9,13 +9,12 @@ public class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommandReq
 {
     public UpdateUserCommandValidator()
     {
-        const int MAX_NAME_LENGTH = 255;
-        string nameMessage = string.Format(UserValidationMessagesResource.NAME_INVALID, MAX_NAME_LENGTH);
+        string nameMessage = string.Format(UserValidationMessagesResource.NAME_INVALID, UserSettings.MaxName);
 
-        RuleFor(u => u.Name)
+        RuleFor(u => u.NameNew)
             .NotNull()
             .NotEmpty()
-            .MaximumLength(MAX_NAME_LENGTH)
+            .MaximumLength(UserSettings.MaxName)
             .WithMessage(nameMessage)
             .Custom((name, context) =>
             {
@@ -25,23 +24,22 @@ public class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommandReq
                 }
             });
 
-        const int MAX_EMAIL_LENGTH = 256;
-        string emailMessage = string.Format(UserValidationMessagesResource.EMAIL_INVALID, MAX_EMAIL_LENGTH);
+        string emailMessage = string.Format(UserValidationMessagesResource.EMAIL_INVALID, UserSettings.MaxEmail);
         RuleFor(u => u.Email)
             .NotNull()
             .NotEmpty()
             .EmailAddress()
-            .MaximumLength(MAX_EMAIL_LENGTH)
+            .MaximumLength(UserSettings.MaxEmail)
             .WithMessage(emailMessage);
 
         string birthDateMessage = string.Format(ErrorMessagesResource.BIRTH_DATE_INVALID,
-            DateSettings.MaxDate.ToShortTimeString(),
-            DateSettings.MinDate.ToShortTimeString());
+           UserSettings.MaxDate.ToShortTimeString(),
+           UserSettings.MinDate.ToShortTimeString());
 
         RuleFor(u => u.BirthDate)
             .NotNull()
-            .GreaterThanOrEqualTo(DateSettings.MinDate)
-            .LessThanOrEqualTo(DateSettings.MaxDate)
+            .GreaterThanOrEqualTo(UserSettings.MinDate)
+            .LessThanOrEqualTo(UserSettings.MaxDate)
             .WithMessage(birthDateMessage);
     }
 }

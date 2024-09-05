@@ -1,4 +1,5 @@
 ﻿using Catalogue.Application.Resources;
+using Catalogue.Application.Settings;
 using FluentValidation;
 
 namespace Catalogue.Application.Abstractions.Validators;
@@ -7,29 +8,25 @@ public abstract class ProductBaseValidator<T> : AbstractValidator<T> where T : P
 {
     protected ProductBaseValidator()
     {
-        const int MAX_NAME = 120;
-        string nameMessage = string.Format(ProductValidationMessagesResource.NAME_INVALID, MAX_NAME);
+        string nameMessage = string.Format(ProductValidationMessagesResource.NAME_INVALID, ProductSettings.MaxName);
 
         RuleFor(p => p.Name)
             .NotEmpty()
-            .MaximumLength(MAX_NAME)
+            .MaximumLength(ProductSettings.MaxName)
             .WithMessage(nameMessage);
 
-        const int MAX_DESCRIPTION = 255;
-        string descriptionMessage = string.Format(ProductValidationMessagesResource.DESCRIPTION_INVALID, MAX_DESCRIPTION);
+        string descriptionMessage = string.Format(ProductValidationMessagesResource.DESCRIPTION_INVALID, ProductSettings.MaxDescription);
 
         RuleFor(p => p.Description)
             .NotEmpty()
-            .MaximumLength(MAX_DESCRIPTION)
+            .MaximumLength(ProductSettings.MaxDescription)
             .WithMessage(descriptionMessage);
 
-        const int MAX_PRICE = 99999999;
-        const int MIN_PRICE = 0;
-        string priceMessage = string.Format(ProductValidationMessagesResource.PRICE_INVALID, MIN_PRICE, MAX_PRICE);
+        string priceMessage = string.Format(ProductValidationMessagesResource.PRICE_INVALID, ProductSettings.MinPrice, ProductSettings.MaxPrice);
 
         RuleFor(p => p.Price)
-            .GreaterThan(MIN_PRICE)
-            .LessThan(MAX_PRICE)
+            .GreaterThan(ProductSettings.MinPrice)
+            .LessThan(ProductSettings.MaxPrice)
             .WithMessage(priceMessage);
     }
 }
