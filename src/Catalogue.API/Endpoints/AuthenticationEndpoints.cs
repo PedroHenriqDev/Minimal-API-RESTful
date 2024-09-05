@@ -8,6 +8,7 @@ using Catalogue.Application.Users.Queries.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Catalogue.API.Endpoints;
 
@@ -72,9 +73,16 @@ public static class AuthenticationEndpoints
           .WithTags(authEndpoint);
 
         app.MapPut("auth/update-user", async ([FromBody] UpdateUserCommandRequest request,
-                                              [FromServices] IMediator mediator) =>
+                                              [FromServices] IMediator mediator,
+                                              [FromServices] ITokenService tokenService,
+                                              [FromServices] IClaimService claimService,
+                                              [FromServices] IConfiguration configuration) =>
         {
             UpdateUserCommandResponse response = await mediator.Send(request);
+
+            List<Claim> authClaims = claimService.CreateAuthClaims(response.User!);
+            response.NewToken = tokenService.GenerateToken(authClaims, configuration);
+
             return Results.Ok(response);
 
         }).AddEndpointFilter<InjectNameFilter>()
