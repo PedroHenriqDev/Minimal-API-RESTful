@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Catalogue.Application.Products.Queries.Requests;
 
-public class GetProductsQueryRequest : IRequest<GetProductsQueryResponse>
+public sealed class GetProductsQueryRequest : IRequest<GetProductsQueryResponse>
 {
     public QueryParameters? Parameters { get; set; }
     

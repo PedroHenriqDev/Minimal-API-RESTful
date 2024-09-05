@@ -63,6 +63,15 @@ namespace Catalogue.Application.Resources {
         /// <summary>
         ///   Looks up a localized string similar to The name cannot be null or empty, and must be less than {0} characters..
         /// </summary>
+        public static string EMAIL_INVALID {
+            get {
+                return ResourceManager.GetString("EMAIL_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name cannot be null or empty, and must be less than {0} characters..
+        /// </summary>
         public static string NAME_INVALID {
             get {
                 return ResourceManager.GetString("NAME_INVALID", resourceCulture);

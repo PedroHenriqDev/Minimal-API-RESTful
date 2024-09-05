@@ -9,7 +9,7 @@ using MediatR;
 
 namespace Catalogue.Application.Categories.Commands.Handlers;
 
-public class DeleteCategoryCommandHandler :
+public sealed class DeleteCategoryCommandHandler :
     IRequestHandler<DeleteCategoryCommandRequest, DeleteCategoryCommandResponse>
 {
     private readonly IUnitOfWork _unitOfWork;

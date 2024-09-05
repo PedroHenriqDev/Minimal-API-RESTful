@@ -10,7 +10,7 @@ using MediatR;
 
 namespace Catalogue.Application.Users.Commands.Handlers;
 
-internal class UpdateUserRoleCommandRequestHandler :
+public sealed class UpdateUserRoleCommandRequestHandler :
     IRequestHandler<UpdateUserRoleCommandRequest, UpdateUserRoleCommandResponse>
 {
     private readonly IUnitOfWork _unitOfWork;

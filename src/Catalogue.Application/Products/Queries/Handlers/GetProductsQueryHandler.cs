@@ -8,7 +8,7 @@ using MediatR;
 
 namespace Catalogue.Application.Products.Queries.Handlers;
 
-public class GetProductsQueryHandler :
+public sealed class GetProductsQueryHandler :
     IRequestHandler<GetProductsQueryRequest, GetProductsQueryResponse>
 {
     private readonly IUnitOfWork _unitOfWork;

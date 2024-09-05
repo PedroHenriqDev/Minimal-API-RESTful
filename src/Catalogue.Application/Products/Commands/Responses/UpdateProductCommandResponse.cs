@@ -2,7 +2,7 @@
 
 namespace Catalogue.Application.Products.Commands.Responses;
 
-public class UpdateProductCommandResponse : ProductBase
+public sealed class UpdateProductCommandResponse : ProductBase
 {
     public int Id { get; set; }
     public DateTime CreatedAt { get; set; }

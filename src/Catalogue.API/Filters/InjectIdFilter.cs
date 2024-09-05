@@ -1,6 +1,8 @@
 ﻿using Catalogue.API.Resources;
-using Catalogue.Domain.Enums;
+using Catalogue.Application.Exceptions;
+using Catalogue.Application.Extensions;
 using MediatR;
+using System.Reflection;
 
 namespace Catalogue.API.Filters;
 
@@ -18,20 +20,20 @@ public class InjectIdFilter : IEndpointFilter
     {
         var request = context.Arguments.OfType<IRequest<object>>().FirstOrDefault();
 
-        if (request is null)
+        if (request == null)
         {
-            LogAndThrow(nameof(context), ApiErrorMessagesResource.REQUEST_NULL_FILTER_ERROR);
+            _logger.LogAndThrow(ApiErrorMessagesResource.REQUEST_NULL_FILTER_ERROR, nameof(context));
         }
 
         context.HttpContext.Request.RouteValues.TryGetValue("id", out var idValue);
 
         // Get property type with name is 'id'
-        var idProperty = request!.GetType().GetProperties()
+        PropertyInfo? idProperty = request!.GetType().GetProperties()
                    .FirstOrDefault(p => p.Name.Equals("Id", StringComparison.OrdinalIgnoreCase));
 
-        if (idProperty is null)
+        if (idProperty == null)
         {
-            LogAndThrow(nameof(idProperty), ApiErrorMessagesResource.ID_PROPERTY_NULL_ERROR);
+            _logger.LogAndThrow(ApiErrorMessagesResource.REQUEST_NULL_FILTER_ERROR, nameof(idProperty));
         }
 
         // Try set property in request 
@@ -46,18 +48,18 @@ public class InjectIdFilter : IEndpointFilter
                 idProperty!.SetValue(request, Convert.ChangeType(idValue, idProperty.PropertyType));
             }
         }
-        catch (Exception ex) 
+        catch (Exception ex)
         {
-            string logMessage = string.Format(ApiErrorMessagesResource.ID_PROPERTY_NOT_EQUAL_ERROR, idProperty!.PropertyType, idValue!.GetType());
-            LogAndThrow(ex.Message, logMessage);
+            string message = string.Format
+                (
+                    ApiErrorMessagesResource.NAME_PROPERTY_NOT_EQUAL_ERROR,
+                    idProperty!.PropertyType,
+                    idValue!.GetType()
+                );
+
+            _logger.LogAndThrow(message, ex.Message);
         }
 
         return await next(context);
-    }
-
-    private void LogAndThrow(string exceptionMessage, string logMessage)
-    {
-        _logger.LogError(logMessage);
-        throw new ArgumentNullException(exceptionMessage);
     }
 }

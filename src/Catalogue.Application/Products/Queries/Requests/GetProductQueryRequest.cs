@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Catalogue.Application.Products.Queries.Requests;
 
-public class GetProductQueryRequest : IRequest<GetProductQueryResponse>
+public sealed class GetProductQueryRequest : IRequest<GetProductQueryResponse>
 {
     public int Id { get; set; }
     

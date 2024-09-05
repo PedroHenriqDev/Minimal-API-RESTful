@@ -12,7 +12,7 @@ using Catalogue.Application.Utils;
 
 namespace Catalogue.Application.Users.Commands.Handlers;
 
-public class RegisterUserQueryRequestHandler : IRequestHandler<RegisterUserCommandRequest, RegisterUserCommandResponse>
+public sealed class RegisterUserQueryRequestHandler : IRequestHandler<RegisterUserCommandRequest, RegisterUserCommandResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;

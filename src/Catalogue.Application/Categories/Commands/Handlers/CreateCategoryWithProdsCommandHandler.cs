@@ -12,7 +12,7 @@ using MediatR;
 
 namespace Catalogue.Application.Categories.Commands.Handlers;
 
-public class CreateCategoryWithProdsCommandHandler :
+public sealed class CreateCategoryWithProdsCommandHandler :
     IRequestHandler<CreateCategoryWithProdsCommandRequest, CreateCategoryWithProdsCommandResponse>
 {
     private readonly IUnitOfWork _unitOfWork;

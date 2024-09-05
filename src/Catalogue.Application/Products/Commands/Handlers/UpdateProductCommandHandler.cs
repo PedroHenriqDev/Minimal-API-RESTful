@@ -11,7 +11,7 @@ using MediatR;
 
 namespace Catalogue.Application.Products.Commands.Handlers;
 
-public class UpdateProductCommandHandler :
+public sealed class UpdateProductCommandHandler :
     IRequestHandler<UpdateProductCommandRequest, UpdateProductCommandResponse>
 {
     private readonly IUnitOfWork _unitOfWork;

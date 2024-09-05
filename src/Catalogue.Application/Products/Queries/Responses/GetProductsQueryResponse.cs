@@ -2,7 +2,7 @@
 
 namespace Catalogue.Application.Products.Queries.Responses;
  
-public class GetProductsQueryResponse
+public sealed class GetProductsQueryResponse
 {
     public IPagedList<GetProductQueryResponse>? ProductsPaged { get; set; }
 

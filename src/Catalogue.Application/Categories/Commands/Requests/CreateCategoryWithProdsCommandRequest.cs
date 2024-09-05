@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace Catalogue.Application.Categories.Commands.Requests;
 
-public class CreateCategoryWithProdsCommandRequest
+public sealed class CreateCategoryWithProdsCommandRequest
     : CategoryBase, IRequest<CreateCategoryWithProdsCommandResponse>
 {
     [JsonIgnore]

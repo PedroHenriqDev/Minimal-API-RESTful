@@ -2,7 +2,7 @@
 
 namespace Catalogue.Application.DTOs.Responses;
 
-public class CategoryResponse : CategoryBase
+public sealed class CategoryResponse : CategoryBase
 {
     public DateTime CreatedAt { get; set; }
 }

@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Catalogue.Application.Categories.Commands.Requests;
 
-public class DeleteCategoryCommandRequest : IRequest<DeleteCategoryCommandResponse>
+public sealed class DeleteCategoryCommandRequest : IRequest<DeleteCategoryCommandResponse>
 {
     public int Id { get; set; }
 

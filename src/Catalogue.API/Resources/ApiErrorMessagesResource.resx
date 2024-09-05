@@ -123,6 +123,9 @@
   <data name="ID_PROPERTY_NULL_ERROR" xml:space="preserve">
     <value>The 'Id' property is null or not found in the request object. Ensure that the request object contains a public property named 'Id' and that it is properly initialized.</value>
   </data>
+  <data name="NAME_PROPERTY_NOT_EQUAL_ERROR" xml:space="preserve">
+    <value>The type of the 'Name' property in the request object does not match the type of the 'Name' value from the route. Expected type: {0}, Actual type: {1}. Ensure that the 'Name' property and route value types are consistent.</value>
+  </data>
   <data name="QUERY_INVALID" xml:space="preserve">
     <value>Query Invalid</value>
   </data>

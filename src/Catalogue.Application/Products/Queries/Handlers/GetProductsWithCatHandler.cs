@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Catalogue.Application.Products.Queries.Handlers;
 
-public class GetProductsWithCatHandler : 
+public sealed class GetProductsWithCatHandler : 
         IRequestHandler<GetProductsWithCatQueryRequest, GetProductsWithCatQueryResponse>
 {
     private readonly IUnitOfWork _unitOfWork;

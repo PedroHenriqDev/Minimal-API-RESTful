@@ -61,6 +61,24 @@ namespace Catalogue.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occurred in the user information transmitted to the server.
+        /// </summary>
+        public static string AUTHENTICATION_ERROR {
+            get {
+                return ResourceManager.GetString("AUTHENTICATION_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The date of birth must be greater than {0} and less than {1}.
+        /// </summary>
+        public static string BIRTH_DATE_INVALID {
+            get {
+                return ResourceManager.GetString("BIRTH_DATE_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The key must be 32 bytes and the IV must be 16 bytes..
         /// </summary>
         public static string ENV_VARIABLE_INVALID {

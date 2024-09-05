@@ -11,7 +11,7 @@ using MediatR;
 
 namespace Catalogue.Application.Products.Commands.Handlers;
 
-public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, CreateProductCommandResponse>
+public sealed class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, CreateProductCommandResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;

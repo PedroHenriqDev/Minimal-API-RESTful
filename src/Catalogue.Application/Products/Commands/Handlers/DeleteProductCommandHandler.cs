@@ -9,7 +9,7 @@ using MediatR;
 
 namespace Catalogue.Application.Products.Commands.Handlers;
 
-public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommandRequest, DeleteProductCommandResponse>
+public sealed class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommandRequest, DeleteProductCommandResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;

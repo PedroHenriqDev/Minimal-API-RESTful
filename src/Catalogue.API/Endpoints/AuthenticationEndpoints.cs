@@ -8,6 +8,7 @@ using Catalogue.Application.Users.Queries.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Catalogue.API.Endpoints;
 
@@ -58,8 +59,8 @@ public static class AuthenticationEndpoints
         app.MapPut("auth/role/{id:guid}",
             [Authorize(Policy = "AdminOnly")]
              async ([FromRoute] Guid id,
-                   [FromBody] UpdateUserRoleCommandRequest request,
-                   [FromServices] IMediator mediator) =>
+                    [FromBody] UpdateUserRoleCommandRequest request,
+                    [FromServices] IMediator mediator) =>
         {
 
             UpdateUserRoleCommandResponse response = await mediator.Send(request);
@@ -68,6 +69,19 @@ public static class AuthenticationEndpoints
         }).AddEndpointFilter<InjectIdFilter>()
           .Produces<UpdateUserRoleCommandRequest>(StatusCodes.Status200OK)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+          .RequireAuthorization()
+          .WithTags(authEndpoint);
+
+        app.MapPut("auth/update-user", async ([FromBody] UpdateUserCommandRequest request,
+                                              [FromServices] IMediator mediator) =>
+        {
+            UpdateUserCommandResponse response = await mediator.Send(request);
+            return Results.Ok(response);
+
+        }).AddEndpointFilter<InjectNameFilter>()
+          .Produces<UpdateUserRoleCommandRequest>(StatusCodes.Status200OK)
+          .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
+          .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError)
           .RequireAuthorization()
           .WithTags(authEndpoint);
     }
