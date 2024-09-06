@@ -1,16 +1,20 @@
 using Catalogue.API.Endpoints;
+using Catalogue.API.Extensions;
 using Catalogue.API.Filters;
 using Catalogue.CrossCutting.AppDependencies;
-using Catalogue.Domain.Enums;
 using dotenv.net;
 
 var builder = WebApplication.CreateBuilder(args);
 
-DotEnv.Load(options: new DotEnvOptions(envFilePaths: new[] { builder.Configuration["Env:Path"], ".env" }));
+DotEnv.Load(options: new DotEnvOptions(envFilePaths: new[] 
+{ 
+    builder.Configuration["Env:Path"], ".env" 
+}));
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerCustom();
+
 builder.Services.AddScoped<GlobalExceptionFilter>();
 builder.Services.AddDependencies(builder.Configuration);
 

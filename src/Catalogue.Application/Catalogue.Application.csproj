@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\Categories\" />
     <Folder Include="Interfaces\Products\" />
   </ItemGroup>
 

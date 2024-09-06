@@ -30,7 +30,8 @@ public sealed class CreateCategoryCommandHandler :
     public async Task<CreateCategoryCommandResponse> Handle(CreateCategoryCommandRequest request,
                                                             CancellationToken cancellationToken)
     {
-        if (await _unitOfWork.CategoryRepository.GetAsNoTrackingAsync(c => c.Name.ToLower() == request.Name.ToLower()) is not null)
+        if (await _unitOfWork.CategoryRepository.GetAsNoTrackingAsync(c =>
+            c.Name.ToLower() == request.Name.ToLower()) is not null)
         {
             string existsMessage = string.Format(ErrorMessagesResource.NAME_EXISTS_MESSAGE, request.Name);
             throw new ExistsValueException(existsMessage);
