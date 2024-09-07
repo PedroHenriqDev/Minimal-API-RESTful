@@ -1,4 +1,5 @@
 ﻿using Catalogue.Application.Abstractions;
+using Catalogue.Application.Extensions;
 using Catalogue.Application.Interfaces.Services;
 using Microsoft.Extensions.Logging;
 using System.IdentityModel.Tokens.Jwt;
@@ -19,14 +20,12 @@ public class ClaimService : IClaimService
     {
         if (string.IsNullOrEmpty(role))
         {
-            _logger.LogError("Roles null");
-            throw new ArgumentNullException(nameof(role));
+            _logger.LogAndThrow("Roles null", nameof(role));
         }
 
-        if (string.IsNullOrEmpty(role))
+        if (claims == null || !claims.Any())
         {
-            _logger.LogError("Claims null");
-            throw new ArgumentNullException(nameof(claims));
+            _logger.LogAndThrow("Claims null", nameof(claims));
         }
 
         claims.Add(new Claim(ClaimTypes.Role, role));
@@ -36,8 +35,7 @@ public class ClaimService : IClaimService
     {
         if(user == null) 
         {
-            _logger.LogError("User null");
-            throw new ArgumentNullException(nameof(user));
+            _logger.LogAndThrow("User null", nameof(user));
         }
 
         return new List<Claim>

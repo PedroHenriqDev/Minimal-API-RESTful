@@ -13,8 +13,11 @@ public class TokenTests
 {
     private readonly TokenService _tokenService;
     private readonly Mock<ILogger<TokenService>> _mockLogger;
-    private readonly IConfiguration _configuration;
     private readonly JwtSecurityTokenHandler _tokenHandler;
+
+    private IConfiguration configuration;
+    private const string userName = "Test_User";
+    private string jti = Guid.NewGuid().ToString();
 
     public TokenTests()
     {
@@ -28,26 +31,12 @@ public class TokenTests
             { "Jwt:ExpireMinutes", "60" }
         };
 
-        _configuration = new ConfigurationBuilder()
+        configuration = new ConfigurationBuilder()
             .AddInMemoryCollection(inMemorySettings)
             .Build();
 
         _tokenHandler = new JwtSecurityTokenHandler();
     }
-
-    public (List<Claim> authClaims, string userName, string jti) Arrange()
-    {
-        string userName = "Test_User";
-        string jti = Guid.NewGuid().ToString();
-        List<Claim> authClaims = new List<Claim>
-        {
-            new Claim(ClaimTypes.Name, userName),
-            new Claim(JwtRegisteredClaimNames.Jti, jti)
-        };
-
-        return (authClaims, userName, jti);
-    }
-
 
     /// <summary>
     /// Verifies that the token generation process correctly creates a valid token with the expected claims.
@@ -56,10 +45,14 @@ public class TokenTests
     public void WhenGenerateToken_GivenAuthClaimsAndConfiguration_ReturnWriteTokenValid()
     {
         //Arrange
-        (List<Claim> authClaims, string userName, string jti) = Arrange();
+        List<Claim> authClaims = new List<Claim>
+        {
+            new Claim(ClaimTypes.Name, userName),
+            new Claim(JwtRegisteredClaimNames.Jti, jti)
+        };
 
         //Act
-        string token = _tokenService.GenerateToken(authClaims, _configuration);
+        string token = _tokenService.GenerateToken(authClaims, configuration);
 
         var jwtToken = _tokenHandler.ReadJwtToken(token);
 
@@ -71,14 +64,49 @@ public class TokenTests
     }
 
     /// <summary>
+    /// Verifies that an 'ArgumentNullException' is thrown when the secret key is null or empty.
+    /// </summary>
+    ///<param name="secret">The secret key used for signing the token, which is either null or empty in this test case.</param>
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    public void WhenSecretIsNullOrEmpty_GivenAuthClaimsAndConfiguration_ThrowsArgumentNullException(string secret)
+    {
+        //Arrange
+        var inMemorySettings = new Dictionary<string, string>
+        {
+            { "Jwt:Secret", secret },
+            { "Jwt:ExpireMinutes", "60" }
+        };
+
+        configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(inMemorySettings)
+            .Build();
+
+        List<Claim> authClaims = new List<Claim>
+        {
+            new Claim(ClaimTypes.Name, userName),
+            new Claim(JwtRegisteredClaimNames.Jti, jti)
+        };
+
+        //Act & Assert
+        var exception = Assert.Throws<ArgumentNullException>(() => _tokenService.GenerateToken(authClaims, configuration));
+    }
+
+    /// <summary>
     /// Verifies that a generated token is valid according to the specified validation parameters.
     /// </summary>
     [Fact]
     public void WhenValidateToken_GivenValidToken_ReturnTrue()
     {
         //Arrange
-        byte[] secretKey = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]);
-        (List<Claim> authClaims, string userName, string jti) = Arrange();
+        byte[] secretKey = Encoding.ASCII.GetBytes(configuration["Jwt:Secret"]);
+
+        List<Claim> authClaims = new List<Claim>
+        {
+            new Claim(ClaimTypes.Name, userName),
+            new Claim(JwtRegisteredClaimNames.Jti, jti)
+        };
 
         var validationParameters = new TokenValidationParameters
         {
@@ -90,7 +118,7 @@ public class TokenTests
         };
 
         //Act
-        string token = _tokenService.GenerateToken(authClaims, _configuration);
+        string token = _tokenService.GenerateToken(authClaims, configuration);
 
         ClaimsPrincipal principal = _tokenHandler.ValidateToken(token, validationParameters, out var validatedToken);
 

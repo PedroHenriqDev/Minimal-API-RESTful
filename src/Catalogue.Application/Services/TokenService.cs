@@ -35,6 +35,11 @@ public class TokenService : ITokenService
     {
         byte[] secretKey = GetSecretKey(configuration);
 
+        if (authClaims == null || !authClaims.Any()) 
+        {
+            _logger.LogAndThrow("Claims null", nameof(authClaims));
+        }
+
         var signingCredentials = new SigningCredentials(new SymmetricSecurityKey(secretKey),
                                                         SecurityAlgorithms.HmacSha256Signature);
 
@@ -64,7 +69,7 @@ public class TokenService : ITokenService
             .GetSection("Jwt")
             .GetValue<string>("Secret");
 
-        if(secretKey == null) 
+        if(string.IsNullOrEmpty(secretKey)) 
         {
             _logger.LogAndThrow("Secret Null", nameof(secretKey));
         }
