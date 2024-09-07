@@ -16,22 +16,15 @@ public class ClaimService : IClaimService
         _logger = logger;
     }
 
-    public void AddRoleToClaims(string role, List<Claim> claims)
-    {
-        if (string.IsNullOrEmpty(role))
-        {
-            _logger.LogAndThrow("Roles null", nameof(role));
-        }
-
-        if (claims == null || !claims.Any())
-        {
-            _logger.LogAndThrow("Claims null", nameof(claims));
-        }
-
-        claims.Add(new Claim(ClaimTypes.Role, role));
-    }
-
-    public List<Claim> CreateAuthClaims<TUser>(TUser user) where TUser : UserBase
+    /// <summary>
+    /// Generates a list of authentication claims based on the provided user.
+    /// </summary>
+    /// <typeparam name="TUser">A generic type representing a user that inherits from 'UserBase'. 
+    /// This ensures that the necessary properties for creating authentication claims are available.</typeparam>
+    /// <param name="user">An instance of the user object used to generate the claims.</param>
+    /// <returns>A list of claims containing the user's authentication information.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the provided user object is null.</exception>
+    public List<Claim> CreateAuthClaims<TUser>(TUser user) where TUser : UserBase 
     {
         if(user == null) 
         {

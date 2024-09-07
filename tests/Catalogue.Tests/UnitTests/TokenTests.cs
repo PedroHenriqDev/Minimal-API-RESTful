@@ -12,7 +12,7 @@ namespace Catalogue.Tests.UnitTests;
 public class TokenTests
 {
     private readonly TokenService _tokenService;
-    private readonly Mock<ILogger<TokenService>> _mockLogger;
+    private readonly Mock<ILogger<TokenService>> _mockedLogger;
     private readonly JwtSecurityTokenHandler _tokenHandler;
 
     private IConfiguration configuration;
@@ -21,9 +21,9 @@ public class TokenTests
 
     public TokenTests()
     {
-        _mockLogger = new Mock<ILogger<TokenService>>();
+        _mockedLogger = new Mock<ILogger<TokenService>>();
 
-        _tokenService = new TokenService(_mockLogger.Object);
+        _tokenService = new TokenService(_mockedLogger.Object);
 
         var inMemorySettings = new Dictionary<string, string>
         {
@@ -42,7 +42,7 @@ public class TokenTests
     /// Verifies that the token generation process correctly creates a valid token with the expected claims.
     /// </summary>
     [Fact]
-    public void WhenGenerateToken_GivenAuthClaimsAndConfiguration_ReturnWriteTokenValid()
+    public void GenerateToken_GivenAuthClaimsAndConfiguration_ReturnWriteTokenValid()
     {
         //Arrange
         List<Claim> authClaims = new List<Claim>
@@ -70,7 +70,7 @@ public class TokenTests
     [Theory]
     [InlineData(null)]
     [InlineData("")]
-    public void WhenSecretIsNullOrEmpty_GivenAuthClaimsAndConfiguration_ThrowsArgumentNullException(string secret)
+    public void SecretIsNullOrEmpty_GivenAuthClaimsAndConfiguration_ThrowsArgumentNullException(string secret)
     {
         //Arrange
         var inMemorySettings = new Dictionary<string, string>
@@ -97,7 +97,7 @@ public class TokenTests
     /// Verifies that a generated token is valid according to the specified validation parameters.
     /// </summary>
     [Fact]
-    public void WhenValidateToken_GivenValidToken_ReturnTrue()
+    public void ValidateToken_GivenValidToken_ReturnTrue()
     {
         //Arrange
         byte[] secretKey = Encoding.ASCII.GetBytes(configuration["Jwt:Secret"]);
