@@ -1,11 +1,10 @@
 ﻿using Catalogue.Application.Resources;
-using Microsoft.Extensions.Configuration;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace Catalogue.Application.Utils;
 
-public static class Crypto
+public static class Crypto 
 {
     private static readonly byte[]? _key;
     private static readonly byte[]? _iv;

@@ -4,7 +4,7 @@ namespace Catalogue.Application.Extensions;
 
 public static class ClaimExtension
 {
-    public static void AddRoleToClaims(this List<Claim> claims, string role)
+    public static void AddRole(this List<Claim> claims, string role)
     {
         if (string.IsNullOrEmpty(role))
         {

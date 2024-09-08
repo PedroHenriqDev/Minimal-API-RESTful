@@ -21,7 +21,7 @@ public class ClaimTests
     }
 
     /// <summary>
-    /// Verifies that the generated authentication claims are valid based on the provided user information
+    /// Verifies that the generated authentication claims are valid based on the provided user information.
     /// </summary>
     [Fact]
     public void CreateAuthClaims_GivenUser_ReturnAuthClaimsValid() 

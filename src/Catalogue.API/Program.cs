@@ -1,24 +1,24 @@
 using Catalogue.API.Endpoints;
 using Catalogue.API.Extensions;
-using Catalogue.API.Filters;
 using Catalogue.CrossCutting.AppDependencies;
-using dotenv.net;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-DotEnv.Load(options: new DotEnvOptions(envFilePaths: new[] 
-{ 
-    builder.Configuration["Env:Path"], ".env" 
-}));
+IConfiguration cfg = builder.Configuration;
+
+cfg.LoadEnv();
 
 // Add services to the container.
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerCustom();
+builder.Services.AddApiSwagger()
+                .AddPersistence(cfg)
+                .AddApiAuthentication(cfg)
+                .AddApiAuthorization()
+                .AddDependencies()
+                .AddApiDefaultCors()
+                .AddApiServicesScoped()
+                .AddEndpointsApiExplorer();
 
-builder.Services.AddScoped<GlobalExceptionFilter>();
-builder.Services.AddDependencies(builder.Configuration);
-
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -27,6 +27,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+# region Endpoints
 //Categories Endpoints
 app.MapGetCategoriesEndpoints();
 app.MapPostCategoriesEndpoints();
@@ -39,16 +40,19 @@ app.MapPostProductsEndpoints();
 app.MapDeleteProductsEndpoints();
 app.MapPutProductsEndpoints();
 
-//Users Endpoints
+//Authentication Endpoints
 app.MapPostAuthEndpoints();
 app.MapPutAuthEndpoints();
 
-app.UseCors(builder.Configuration["Cors:PolicyName"]!);
+#endregion
 
-app.UseAuthentication();
-app.UseAuthorization();
-
-app.UseGlobalExceptionFilter();
-app.UseHttpsRedirection();
+//Middlewares
+app.UseSwaggerMiddleware()
+   .UseExceptionHandling(builder.Environment)
+   .UseCors()
+   .UseAuthentication()
+   .UseAuthorization()
+   .UseGlobalExcetionFilter()
+   .UseHttpsRedirection();
 
 app.Run();

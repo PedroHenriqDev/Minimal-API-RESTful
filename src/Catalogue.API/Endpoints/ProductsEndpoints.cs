@@ -116,7 +116,7 @@ public static class ProductsEndpoints
     public static void MapDeleteProductsEndpoints(this WebApplication app) 
     {
         app.MapDelete("products/{id:int}", async ([FromRoute] int id,
-                                                                                    [FromServices] IMediator mediator) =>
+                                                  [FromServices] IMediator mediator) =>
         {
             DeleteProductCommandResponse response = await mediator.Send(new DeleteProductCommandRequest(id));
             return Results.Ok(response);

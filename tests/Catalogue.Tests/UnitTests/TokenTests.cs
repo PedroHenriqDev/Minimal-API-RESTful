@@ -17,7 +17,7 @@ public class TokenTests
 
     private IConfiguration configuration;
     private const string userName = "Test_User";
-    private string jti = Guid.NewGuid().ToString();
+    private readonly string jti = Guid.NewGuid().ToString();
 
     public TokenTests()
     {
@@ -45,7 +45,7 @@ public class TokenTests
     public void GenerateToken_GivenAuthClaimsAndConfiguration_ReturnWriteTokenValid()
     {
         //Arrange
-        List<Claim> authClaims = new List<Claim>
+        var authClaims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, userName),
             new Claim(JwtRegisteredClaimNames.Jti, jti)
@@ -54,7 +54,7 @@ public class TokenTests
         //Act
         string token = _tokenService.GenerateToken(authClaims, configuration);
 
-        var jwtToken = _tokenHandler.ReadJwtToken(token);
+        JwtSecurityToken jwtToken = _tokenHandler.ReadJwtToken(token);
 
         //Assert
         Assert.NotNull(token);
@@ -83,7 +83,7 @@ public class TokenTests
             .AddInMemoryCollection(inMemorySettings)
             .Build();
 
-        List<Claim> authClaims = new List<Claim>
+        var authClaims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, userName),
             new Claim(JwtRegisteredClaimNames.Jti, jti)
@@ -102,11 +102,11 @@ public class TokenTests
         //Arrange
         byte[] secretKey = Encoding.ASCII.GetBytes(configuration["Jwt:Secret"]);
 
-        List<Claim> authClaims = new List<Claim>
+        var authClaims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, userName),
             new Claim(JwtRegisteredClaimNames.Jti, jti)
-        };
+        };            
 
         var validationParameters = new TokenValidationParameters
         {

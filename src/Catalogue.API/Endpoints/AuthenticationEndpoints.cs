@@ -1,5 +1,6 @@
 ﻿using Catalogue.API.Filters;
 using Catalogue.Application.DTOs.Responses;
+using Catalogue.Application.Extensions;
 using Catalogue.Application.Interfaces.Services;
 using Catalogue.Application.Users.Commands.Requests;
 using Catalogue.Application.Users.Commands.Responses;
@@ -12,7 +13,7 @@ using System.Security.Claims;
 
 namespace Catalogue.API.Endpoints;
 
-public static class AuthenticationEndpoints
+public static class AuthenticationEndpoints 
 {
     private const string authEndpoint = "Authentication";
 
@@ -44,7 +45,7 @@ public static class AuthenticationEndpoints
             }
 
             var authClaims = claimService.CreateAuthClaims(response.User!);
-            claimService.AddRoleToClaims(response.User.RoleName, authClaims);
+            authClaims.AddRole(response.User.RoleName);
             response.Token = tokenService.GenerateToken(authClaims, configuration);
 
             return Results.Ok(response);
