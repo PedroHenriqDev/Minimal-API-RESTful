@@ -8,6 +8,7 @@ namespace Catalogue.IntegrationTests.Fixtures;
 public class DatabaseFixture : IDisposable
 {
     public AppDbContext DbContext { get; set; }
+    public List<User> Users { get; } 
 
     /// <summary>
     ///  Initializes an instance of the 'AppDbContext' with sample data for testing.
@@ -23,7 +24,9 @@ public class DatabaseFixture : IDisposable
 
         var autoFaker = new AutoFaker<User>().RuleFor(u => u.Email, f => f.Internet.Email());
 
-        DbContext.Users.AddRange(autoFaker.Generate(10));
+        Users = new List<User>();
+        Users.AddRange(autoFaker.Generate(10));
+        DbContext.Users.AddRange(Users);
         DbContext.SaveChanges();
     }
 

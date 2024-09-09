@@ -34,6 +34,7 @@ public class Progam
         }
 
         #region Endpoints
+
         //Categories Endpoints
         app.MapGetCategoriesEndpoints();
         app.MapPostCategoriesEndpoints();
@@ -58,7 +59,7 @@ public class Progam
            .UseCors()
            .UseAuthentication()
            .UseAuthorization()
-           .UseGlobalExcetionFilter()
+           .UseGlobalExceptionFilter()
            .UseHttpsRedirection();
 
         return app;

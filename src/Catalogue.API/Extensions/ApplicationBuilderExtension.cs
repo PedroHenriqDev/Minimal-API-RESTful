@@ -24,7 +24,7 @@ public static class ApplicationBuilderExtension
         return app;
     }
 
-    public static IApplicationBuilder UseGlobalExcetionFilter(this IApplicationBuilder app) 
+    public static IApplicationBuilder UseGlobalExceptionFilter(this IApplicationBuilder app) 
     {
         app.Use(async (context, next) =>
         {

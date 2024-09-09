@@ -13,7 +13,7 @@ public sealed class CategoryRepository : Repository<Category>, ICategoryReposito
 
     public async Task<Category?> GetByIdWithProductsAsync(int id)
     {
-        return await GetAll().Select(c => new Category 
+        return await entities.Select(c => new Category 
         {
             Id = c.Id,
             CreatedAt = c.CreatedAt,
