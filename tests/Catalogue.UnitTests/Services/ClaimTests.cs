@@ -6,7 +6,7 @@ using Catalogue.Domain.Enums;
 using Catalogue.Application.DTOs.Responses;
 using System.Security.Claims;
 
-namespace Catalogue.Tests.UnitTests;
+namespace Catalogue.UnitTests.Services;
 
 public class ClaimTests
 {
@@ -24,7 +24,7 @@ public class ClaimTests
     /// Verifies that the generated authentication claims are valid based on the provided user information.
     /// </summary>
     [Fact]
-    public void CreateAuthClaims_GivenUser_ReturnAuthClaimsValid() 
+    public void CreateAuthClaims_GivenUser_ReturnAuthClaimsValid()
     {
         //Arrange
         string userName = "Test";

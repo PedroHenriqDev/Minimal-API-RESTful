@@ -55,7 +55,7 @@ public static class ServiceCollectionExtension
     public static IServiceCollection AddApiAuthentication(this IServiceCollection services, IConfiguration configuration) 
     {
         string secretKey = configuration["Jwt:Secret"] ??
-        throw new ArgumentNullException(nameof(secretKey));
+          throw new ArgumentNullException(nameof(secretKey));
 
         services.AddAuthentication(opt =>
         {
