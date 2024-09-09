@@ -9,6 +9,9 @@ public class DatabaseFixture : IDisposable
 {
     public AppDbContext DbContext { get; set; }
 
+    /// <summary>
+    ///  Initializes an instance of the 'AppDbContext' with sample data for testing.
+    /// </summary>
     public DatabaseFixture()
     {
         var options = new DbContextOptionsBuilder<AppDbContext>()

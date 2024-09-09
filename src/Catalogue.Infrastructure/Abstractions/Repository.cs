@@ -16,6 +16,10 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
         _context = context;
     }
 
+    /// <summary>
+    /// Retrives all entities from specified table of type 'TEntity'.
+    /// </summary>
+    /// <returns>An <see cref="IQueryable{TEntity}"> containg all entities from the table.</returns>
     public IQueryable<TEntity> GetAll()
     {
         return _context.Set<TEntity>();

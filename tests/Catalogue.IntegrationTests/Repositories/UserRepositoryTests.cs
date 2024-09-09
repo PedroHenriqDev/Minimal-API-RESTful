@@ -14,12 +14,17 @@ public class UserRepositoryTests : IClassFixture<DatabaseFixture>
         _userRepository = new UserRepository(databaseFixture.DbContext);
     }
 
+    /// <summary>
+    /// Tests that the 'GetAll' method of the 'UserRepository' returns a non-empty list of users.
+    /// </summary>
+    /// </summary>
     [Fact]
     public void GetAllUsers_ReturnUsers() 
     {
         //Act
-        List<User> users = _userRepository.GetAll().ToList();
+        IQueryable<User> users = _userRepository.GetAll();
 
+        Assert.NotNull(users);
         Assert.NotEmpty(users);
     }
 }
