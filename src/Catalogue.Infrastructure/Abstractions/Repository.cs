@@ -43,12 +43,17 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
     /// <summary>
     /// Add a new entity to the database context.
     /// </summary>
-    /// <param name="entity">The entity to be added to the database context.</param>
+    /// <param name="entity">The entity to be added to the database.</param>
     public async Task AddAsync(TEntity entity)
     {
         await entities.AddAsync(entity);
     }
 
+    /// <summary>
+    /// Removes the specified entity from the database.
+    /// Delete a user to the database context.
+    /// </summary>
+    /// <param name="entity">The entity to be removed from the database.</param>
     public void Delete(TEntity entity)
     {
         entities.Remove(entity);

@@ -16,11 +16,11 @@ public static class CategoriesEndpoints
 {
     private const string categoriesTag = "Categories";
 
-    public static void MapGetCategoriesEndpoints(this WebApplication app)
+    public static void MapGetCategoriesEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        app.MapGet("categories", async (HttpContext httpContext,
-                                        [AsParameters] QueryParameters parameters,
-                                        [FromServices] IMediator mediator) =>
+        endpoints.MapGet("categories", async (HttpContext httpContext,
+                                              [AsParameters] QueryParameters parameters,
+                                              [FromServices] IMediator mediator) =>
         {
             GetCategoriesQueryResponse response =
                         await mediator.Send(new GetCategoriesQueryRequest(parameters));
@@ -32,7 +32,8 @@ public static class CategoriesEndpoints
         }).Produces<PagedList<GetCategoryQueryResponse>>(StatusCodes.Status200OK)
           .WithTags(categoriesTag);
 
-        app.MapGet("categories/{id:int}", async ([FromRoute] int id, [FromServices] IMediator mediator) =>
+        endpoints.MapGet("categories/{id:int}", async ([FromRoute] int id, 
+                                                       [FromServices] IMediator mediator) =>
         {
             GetCategoryQueryResponse response = await mediator.Send(new GetCategoryQueryRequest(id));
             return Results.Ok(response);
@@ -41,9 +42,9 @@ public static class CategoriesEndpoints
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
           .WithTags(categoriesTag);
 
-        app.MapGet("categories/products", async (HttpContext httpContext,
-                                                 [AsParameters] QueryParameters parameters,
-                                                 [FromServices] IMediator mediator) =>
+        endpoints.MapGet("categories/products", async (HttpContext httpContext,
+                                                       [AsParameters] QueryParameters parameters,
+                                                       [FromServices] IMediator mediator) =>
         {
             GetCategoriesWithProdsQueryResponse response = 
                            await mediator.Send(new GetCategoriesWithProdsQueryRequest(parameters));
@@ -55,8 +56,8 @@ public static class CategoriesEndpoints
           .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .WithTags(categoriesTag);
 
-        app.MapGet("categories/{id:int}/products", async ([FromRoute] int id,
-                                                          [FromServices] IMediator mediator) =>
+        endpoints.MapGet("categories/{id:int}/products", async ([FromRoute] int id,
+                                                                [FromServices] IMediator mediator) =>
         {
             GetCategoryWithProdsQueryResponse response =
                            await mediator.Send(new GetCategoryWithProdsQueryRequest(id));
@@ -69,10 +70,10 @@ public static class CategoriesEndpoints
           .WithTags(categoriesTag);
     }
 
-    public static void MapPostCategoriesEndpoints(this WebApplication app)
+    public static void MapPostCategoriesEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        app.MapPost("categories", async ([FromBody] CreateCategoryCommandRequest request,
-                                         [FromServices] IMediator mediator) =>
+        endpoints.MapPost("categories", async ([FromBody] CreateCategoryCommandRequest request,
+                                               [FromServices] IMediator mediator) =>
         {
             CreateCategoryCommandResponse response = await mediator.Send(request);
             return Results.Created(string.Empty, response);
@@ -81,8 +82,8 @@ public static class CategoriesEndpoints
           .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .WithTags(categoriesTag);
 
-        app.MapPost("categories/products", async ([FromBody] CreateCategoryWithProdsCommandRequest request,
-                                                  [FromServices] IMediator mediator) =>
+        endpoints.MapPost("categories/products", async ([FromBody] CreateCategoryWithProdsCommandRequest request,
+                                                        [FromServices] IMediator mediator) =>
         {
 
             CreateCategoryWithProdsCommandResponse response = await mediator.Send(request);
@@ -93,10 +94,10 @@ public static class CategoriesEndpoints
           .WithTags(categoriesTag);
     }
 
-    public static void MapDeleteCategoriesEndpoints(this WebApplication app)
+    public static void MapDeleteCategoriesEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        app.MapDelete("categories/{id:int}", async ([FromRoute] int id,
-                                                    [FromServices] IMediator mediator) =>
+        endpoints.MapDelete("categories/{id:int}", async ([FromRoute] int id,
+                                                          [FromServices] IMediator mediator) =>
         {
             DeleteCategoryCommandResponse response = await mediator.Send(new DeleteCategoryCommandRequest(id));
             return Results.Ok(response);
@@ -107,11 +108,11 @@ public static class CategoriesEndpoints
           .WithTags(categoriesTag);
     }
 
-    public static void MapPutCategoriesEndpoints(this WebApplication app)
+    public static void MapPutCategoriesEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        app.MapPut("categories/{id:int}", async ([FromBody] UpdateCategoryCommandRequest request,
-                                                 [FromRoute] int id,
-                                                 [FromServices] IMediator mediator) =>
+        endpoints.MapPut("categories/{id:int}", async ([FromBody] UpdateCategoryCommandRequest request,
+                                                       [FromRoute] int id,
+                                                       [FromServices] IMediator mediator) =>
         {
             UpdateCategoryCommandResponse response = await mediator.Send(request);
             return Results.Ok(response);

@@ -17,10 +17,10 @@ public static class AuthenticationEndpoints
 {
     private const string authEndpoint = "Authentication";
 
-    public static void MapPostAuthEndpoints(this WebApplication app)
+    public static void MapPostAuthEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        app.MapPost("auth/register", async ([FromBody] RegisterUserCommandRequest request,
-                                            [FromServices] IMediator mediator) =>
+        endpoints.MapPost("auth/register", async ([FromBody] RegisterUserCommandRequest request,
+                                                  [FromServices] IMediator mediator) =>
         {
 
             RegisterUserCommandResponse response = await mediator.Send(request);
@@ -31,11 +31,11 @@ public static class AuthenticationEndpoints
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
         .WithTags(authEndpoint);
 
-        app.MapPost("auth/login", async ([FromBody] LoginQueryRequest request,
-                                         [FromServices] IMediator mediator,
-                                         [FromServices] ITokenService tokenService,
-                                         [FromServices] IClaimService claimService,
-                                         [FromServices] IConfiguration configuration) =>
+        endpoints.MapPost("auth/login", async ([FromBody] LoginQueryRequest request,
+                                               [FromServices] IMediator mediator,
+                                               [FromServices] ITokenService tokenService,
+                                               [FromServices] IClaimService claimService,
+                                               [FromServices] IConfiguration configuration) =>
         {
             LoginQueryResponse response = await mediator.Send(request);
 
@@ -55,9 +55,9 @@ public static class AuthenticationEndpoints
           .WithTags(authEndpoint);
     }
 
-    public static void MapPutAuthEndpoints(this WebApplication app)
+    public static void MapPutAuthEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        app.MapPut("auth/role/{id:guid}",
+        endpoints.MapPut("auth/role/{id:guid}",
             [Authorize(Policy = "AdminOnly")]
              async ([FromRoute] Guid id,
                     [FromBody] UpdateUserRoleCommandRequest request,
@@ -73,11 +73,11 @@ public static class AuthenticationEndpoints
           .RequireAuthorization()
           .WithTags(authEndpoint);
 
-        app.MapPut("auth/update-user", async ([FromBody] UpdateUserCommandRequest request,
-                                              [FromServices] IMediator mediator,
-                                              [FromServices] ITokenService tokenService,
-                                              [FromServices] IClaimService claimService,
-                                              [FromServices] IConfiguration configuration) =>
+        endpoints.MapPut("auth/update-user", async ([FromBody] UpdateUserCommandRequest request,
+                                                    [FromServices] IMediator mediator,
+                                                    [FromServices] ITokenService tokenService,
+                                                    [FromServices] IClaimService claimService,
+                                                    [FromServices] IConfiguration configuration) =>
         {
             UpdateUserCommandResponse response = await mediator.Send(request);
 

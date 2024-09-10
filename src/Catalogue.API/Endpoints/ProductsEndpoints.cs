@@ -16,9 +16,9 @@ public static class ProductsEndpoints
 {
     private const string productsTag = "Products";
 
-    public static void MapGetProductsEndpoints(this WebApplication app)
+    public static void MapGetProductsEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        app.MapGet("products", async (HttpContext httpContext,
+        endpoints.MapGet("products", async (HttpContext httpContext,
                                       [AsParameters] QueryParameters parameters,
                                       [FromServices] IMediator mediator) =>
         {
@@ -31,7 +31,7 @@ public static class ProductsEndpoints
           .RequireAuthorization()
           .WithTags(productsTag);
 
-        app.MapGet("products/{id:int}", async ([FromRoute] int id,
+        endpoints.MapGet("products/{id:int}", async ([FromRoute] int id,
                                                [FromServices] IMediator mediator) =>
         {
             GetProductQueryResponse response = await mediator.Send(new GetProductQueryRequest(id));
@@ -42,7 +42,7 @@ public static class ProductsEndpoints
           .RequireAuthorization()
           .WithTags(productsTag);
 
-        app.MapGet("products/category", async (HttpContext httpContext,
+        endpoints.MapGet("products/category", async (HttpContext httpContext,
                                                [AsParameters] QueryParameters parameters,
                                                [FromServices] IMediator mediator) =>
         {
@@ -56,7 +56,7 @@ public static class ProductsEndpoints
           .RequireAuthorization()
           .WithTags(productsTag);
 
-        app.MapGet("products/{id:int}/category", async ([FromRoute] int id,
+        endpoints.MapGet("products/{id:int}/category", async ([FromRoute] int id,
                                                         [FromServices] IMediator mediator) => 
         {
             GetProductWithCatQueryResponse response = await mediator.Send(new GetProductWithCatQueryRequest(id));
@@ -68,9 +68,9 @@ public static class ProductsEndpoints
           .WithTags(productsTag);
     }
 
-    public static void MapPostProductsEndpoints(this WebApplication app) 
+    public static void MapPostProductsEndpoints(this IEndpointRouteBuilder endpoints) 
     {
-        app.MapPost("products", async ([FromBody] CreateProductCommandRequest request, 
+        endpoints.MapPost("products", async ([FromBody] CreateProductCommandRequest request, 
                                        [FromServices] IMediator mediator) =>
         {
             CreateProductCommandResponse response = await mediator.Send(request);
@@ -82,7 +82,7 @@ public static class ProductsEndpoints
           .RequireAuthorization()
           .WithTags(productsTag);
 
-        app.MapPost("products/category-name", async ([FromBody] CreateProductByCatNameCommandRequest request,
+        endpoints.MapPost("products/category-name", async ([FromBody] CreateProductByCatNameCommandRequest request,
                                                      [FromServices] IMediator mediator) =>
         {
             CreateProductCommandResponse response = await mediator.Send(request);
@@ -95,9 +95,9 @@ public static class ProductsEndpoints
           .WithTags(productsTag);
     }
 
-    public static void MapPutProductsEndpoints(this WebApplication app) 
+    public static void MapPutProductsEndpoints(this IEndpointRouteBuilder endpoints) 
     {
-        app.MapPut("products/{id:int}", async ([FromBody] UpdateProductCommandRequest request,
+        endpoints.MapPut("products/{id:int}", async ([FromBody] UpdateProductCommandRequest request,
                                                [FromRoute] int id,
                                                [FromServices] IMediator mediator) =>
         {
@@ -113,9 +113,9 @@ public static class ProductsEndpoints
           .WithTags(productsTag);
     }
 
-    public static void MapDeleteProductsEndpoints(this WebApplication app) 
+    public static void MapDeleteProductsEndpoints(this IEndpointRouteBuilder endpoints) 
     {
-        app.MapDelete("products/{id:int}", async ([FromRoute] int id,
+        endpoints.MapDelete("products/{id:int}", async ([FromRoute] int id,
                                                   [FromServices] IMediator mediator) =>
         {
             DeleteProductCommandResponse response = await mediator.Send(new DeleteProductCommandRequest(id));
