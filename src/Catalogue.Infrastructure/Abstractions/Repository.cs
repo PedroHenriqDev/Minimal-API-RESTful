@@ -40,6 +40,10 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
         return await entities.AsNoTracking().FirstOrDefaultAsync(predicate);
     }
 
+    /// <summary>
+    /// Add a new entity to the database context.
+    /// </summary>
+    /// <param name="entity">The entity to be added to the database context.</param>
     public async Task AddAsync(TEntity entity)
     {
         await entities.AddAsync(entity);

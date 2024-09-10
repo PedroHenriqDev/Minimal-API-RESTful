@@ -1,4 +1,5 @@
-﻿using Catalogue.Domain.Entities;
+﻿using AutoBogus;
+using Catalogue.Domain.Entities;
 using Catalogue.Domain.Interfaces;
 using Catalogue.Infrastructure.Repositories;
 using Catalogue.IntegrationTests.Fixtures;
@@ -24,7 +25,7 @@ public class UserRepositoryTests : IClassFixture<DatabaseFixture>
     /// </summary>
     private void InitializeFirstUser()
     {
-        firstUser = _databaseFixture.Users.First();
+        firstUser = _userRepository.GetAll().ToList().First();;
     }
 
     /// <summary>
@@ -37,6 +38,7 @@ public class UserRepositoryTests : IClassFixture<DatabaseFixture>
         //Act
         IQueryable<User> users = _userRepository.GetAll();
 
+        //Assert
         Assert.NotNull(users);
         Assert.NotEmpty(users);
     }
@@ -47,14 +49,32 @@ public class UserRepositoryTests : IClassFixture<DatabaseFixture>
     /// <param name="predicate">The expression used to find the user.</param>
     [Theory]
     [MemberData(nameof(GetUserPredicates))]
-    public void GetUser_WhenCalledWithValidExpression_ReturnsMatchingUser(Expression<Func<User, bool>> predicate) 
+    public async Task GetUser_WhenCalledWithValidExpression_ReturnsMatchingUser(Expression<Func<User, bool>> predicate) 
     {
         //Act
-        User? userFound = _userRepository.GetAsync(predicate).GetAwaiter().GetResult();
+        User? userFound = await _userRepository.GetAsync(predicate);
 
-        //Arrange
+        //Assert
         Assert.NotNull(userFound);
         Assert.Equal(firstUser, userFound);
+    }
+
+    /// <summary>
+    /// Verifies that the 'AddAsync' method successfully inserts a new user into database and that the user.
+    /// is correcly persisted in the context after calling 'SaveChangesAsync'.
+    /// </summary>
+    [Fact]
+    public async Task AddUser_WhenCalledWithValidUser_ShouldSuccessfullyPersisted()
+    {
+        //Arrange
+        User user = new AutoFaker<User>().RuleFor(u => u.Email, f => f.Internet.Email()).Generate();
+
+        //Act
+        await _userRepository.AddAsync(user);
+        await _databaseFixture.DbContext.SaveChangesAsync();
+
+        //Assert
+        Assert.Contains(user, _userRepository.GetAll().ToList());
     }
 
     /// <summary>
