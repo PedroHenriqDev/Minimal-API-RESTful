@@ -1,5 +1,4 @@
 ﻿using Catalogue.Application.Services;
-using Catalogue.Domain.Entities;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Catalogue.Domain.Enums;

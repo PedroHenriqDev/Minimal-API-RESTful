@@ -8,7 +8,6 @@ namespace Catalogue.IntegrationTests.Fixtures;
 public class DatabaseFixture : IDisposable
 {
     public AppDbContext DbContext { get; set; }
-    public List<User> Users { get; } 
 
     /// <summary>
     ///  Initializes an instance of the 'AppDbContext' with sample data for testing.
@@ -22,11 +21,14 @@ public class DatabaseFixture : IDisposable
         DbContext = new AppDbContext(options);
 
 
-        var autoFaker = new AutoFaker<User>().RuleFor(u => u.Email, f => f.Internet.Email());
+        var userAutoFaker = new AutoFaker<User>().RuleFor(u => u.Email, f => f.Internet.Email());
+        var categoryAutoFaker = new AutoFaker<Category>();
+        var productAutoFaker = new AutoFaker<Product>();
 
-        Users = new List<User>();
-        Users.AddRange(autoFaker.Generate(10));
-        DbContext.Users.AddRange(Users);
+        DbContext.Users.AddRange(userAutoFaker.Generate(10));
+        DbContext.Categories.AddRange(categoryAutoFaker.Generate(10));
+        DbContext.Products.AddRange(productAutoFaker.Generate(10));
+
         DbContext.SaveChanges();
     }
 
