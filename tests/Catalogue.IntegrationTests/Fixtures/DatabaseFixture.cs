@@ -20,7 +20,6 @@ public class DatabaseFixture : IDisposable
 
         DbContext = new AppDbContext(options);
 
-
         var userAutoFaker = new AutoFaker<User>().RuleFor(u => u.Email, f => f.Internet.Email());
         var categoryAutoFaker = new AutoFaker<Category>();
         var productAutoFaker = new AutoFaker<Product>();

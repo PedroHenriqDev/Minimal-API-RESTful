@@ -1,11 +1,12 @@
-﻿using Catalogue.Domain.Interfaces;
+﻿using Catalogue.Domain.Entities;
+using Catalogue.Domain.Interfaces;
 using Catalogue.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace Catalogue.Infrastructure.Abstractions;
 
-public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
 {
     // Represents the set of entities of type 'TEntity' in the database context.
     protected readonly DbSet<TEntity> entities;
@@ -51,7 +52,6 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
 
     /// <summary>
     /// Removes the specified entity from the database.
-    /// Delete a user to the database context.
     /// </summary>
     /// <param name="entity">The entity to be removed from the database.</param>
     public void Delete(TEntity entity)
@@ -59,6 +59,10 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
         entities.Remove(entity);
     }
 
+    /// <summary>
+    /// Update the specifies entity from the database.
+    /// </summary>
+    /// <param name="entity">The entity to be update to the database.</param>
     public void Update(TEntity entity)
     {
         entities.Update(entity);

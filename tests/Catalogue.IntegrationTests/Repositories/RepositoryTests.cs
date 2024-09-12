@@ -3,6 +3,7 @@ using Catalogue.Domain.Entities;
 using Catalogue.Domain.Interfaces;
 using Catalogue.Infrastructure.Repositories;
 using Catalogue.IntegrationTests.Fixtures;
+using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace Catalogue.IntegrationTests.Repositories;
@@ -35,10 +36,10 @@ public class RepositoryTests
     /// <param name="repository">An instance of the repository implementing the IRepository interface.</param>
     [Theory]
     [MemberData(nameof(CreateRepositories))]
-    public void GetAllUsers_ReturnNonEmptyCollection<T>(IRepository<T> repository) where T : class
+    public void GetAllUsers_ReturnNonEmptyCollection<T>(IRepository<T> repository) where T : Entity
     {
         //Act
-        var entities = repository.GetAll();
+        IQueryable<T> entities = repository.GetAll();
 
         //Assert
         Assert.NotNull(entities);
@@ -54,14 +55,14 @@ public class RepositoryTests
     [Theory]
     [MemberData(nameof(ProvidesRepositoryAndPredicates))]
     public async Task GetEntity_WhenCalledWithValidExpression_ReturnsMatchingEntity<T>(IRepository<T> repository,
-                                                                                        Expression<Func<T, bool>> predicate) 
-        where T : class
+                                                                                       Expression<Func<T, bool>> predicate) 
+        where T : Entity
     {
         //Arrange
-        T entityExpected = repository.GetAll().First();
+        T? entityExpected = repository.GetAll().SingleOrDefault(predicate);
 
         //Act
-        T entity = await repository.GetAsync(predicate);
+        T? entity = await repository.GetAsync(predicate);
 
         //Assert
         Assert.NotNull(entity);
@@ -77,8 +78,8 @@ public class RepositoryTests
     /// <param name="repository">The repository used to perform the add operation for the entity.</param>
     [Theory]
     [MemberData(nameof(CreateRepositories))]
-    public async Task AddEntity_WhenCalledWithValidEntity_ShouldSuccessfullyPersisted<T>(IRepository<T> repository) where T
-        : class
+    public async Task AddEntity_WhenCalledWithValidEntity_ShouldSuccessfullyPersisted<T>(IRepository<T> repository) 
+        where T: Entity
     {
         //Arrange
         T entity = new AutoFaker<T>().Generate();
@@ -86,12 +87,11 @@ public class RepositoryTests
 
         //Act
         await repository.AddAsync(entity);
-        await _dbFixture.DbContext.SaveChangesAsync();
+        _dbFixture.DbContext.SaveChanges();
 
         //Assert
         Assert.Contains(entity, entities);
     }
-
 
     /// <summary>
     /// Verifies that the 'Delete' method successfully removes a entity from the database.
@@ -100,8 +100,8 @@ public class RepositoryTests
     /// <param name="repository">The repository used to perform the delete operation for the entity</param>
     [Theory]
     [MemberData(nameof(CreateRepositories))]
-    public async Task DeleteEntity_WhenGivenAEntity_ShouldRemoveItSuccessfully<T>(IRepository<T> repository) 
-        where T : class
+    public void DeleteEntity_WhenGivenAFirstEntity_ShouldRemoveItSuccessfully<T>(IRepository<T> repository) 
+        where T : Entity
     {
         //Arrange
         IQueryable<T> entities = repository.GetAll();
@@ -109,10 +109,50 @@ public class RepositoryTests
 
         //Act
         repository.Delete(entity);
-        await _dbFixture.DbContext.SaveChangesAsync();
+        _dbFixture.DbContext.SaveChanges();
 
         //Assert
         Assert.DoesNotContain(entity, entities);
+    }
+
+    /// <summary>
+    /// Verifies that the 'Update' method successfully updates an entity in the database.
+    /// </summary>
+    /// <typeparam name="T">The type of entity being operetaed on by the repository</typeparam>
+    /// <param name="repository">The repository to user to perform the update operation for the entity</param>
+    /// <param name="entityToUpdate">The entity with updated properties that should be saved to the database</param>
+    [Theory]
+    [MemberData(nameof(ProvideRepositoryAndEntityUpdated))]
+    public void UpdateEntity_WhenUpdated_ShouldSaveSuccessfully<T>(IRepository<T> repository,
+                                                                                            T entityToUpdate)
+        where T : Entity
+    {
+        //Arrange
+        T? entityUpdated = repository.GetAll().SingleOrDefault(x => x.Id == entityToUpdate.Id);
+
+        //Act
+        repository.Update(entityToUpdate);
+        _dbFixture.DbContext.SaveChanges();
+
+        //Assert
+        Assert.Equal(entityToUpdate.Name, entityUpdated.Name);
+    }
+
+    /// <summary>
+    /// Provides test data for repository instances and their associated updated entities.
+    /// Each entry consists of a repository and an updated entity instance, allowing for 
+    /// validation of repository behavior with modified entities.
+    /// </summary>
+    /// <returns>An enumerable of object arrays, where each array contains a repository instance and an updated entity.</returns>
+    public static IEnumerable<object[]> ProvideRepositoryAndEntityUpdated() 
+    {
+        _firstUser.Name = "Name Updated";
+        _firstCategory.Name = "Name Updated";
+        _firstProduct.Name = "Name Updated";
+
+        yield return new object[] { _userRepository, _firstUser };
+        yield return new object[] { _categoryRepository, _firstCategory };
+        yield return new object[] { _productRepository, _firstProduct };
     }
 
     /// <summary>
@@ -135,7 +175,7 @@ public class RepositoryTests
         yield return new object[] { _productRepository, (Expression<Func<Product, bool>>)(p => p.Id == _firstProduct.Id) };
         yield return new object[] { _productRepository, (Expression<Func<Product, bool>>)(p => p.Name == _firstProduct.Name) };
     }
-   
+
     /// <summary>
     /// Provides a collection of repository instances for testing.
     /// Each entry contains an instance of a repository for different entity types.
