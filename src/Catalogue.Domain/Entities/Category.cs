@@ -11,7 +11,7 @@ public sealed class Category : Entity
     public Category()
     {}
 
-    public Category(int id, string name, string description, DateTime createdAt) 
+    public Category(Guid id, string name, string description, DateTime createdAt) 
     {
         Id = id;
         Name = name;

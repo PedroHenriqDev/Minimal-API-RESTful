@@ -5,7 +5,7 @@ namespace Catalogue.Application.Products.Queries.Responses;
 
 public sealed class GetProductWithCatQueryResponse : ProductBase
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     public DateTime CreatedAt { get; set; }
     public CategoryResponse? Category { get; set; }
 }

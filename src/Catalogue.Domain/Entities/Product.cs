@@ -9,7 +9,7 @@ public sealed class Product : Entity
     public string? ImageUrl { get; set; }
     public decimal? Price { get; set; }
 
-    public int CategoryId { get; set; }
+    public Guid CategoryId { get; set; }
 
     [JsonIgnore]
     public Category? Category { get; set; }
@@ -17,7 +17,7 @@ public sealed class Product : Entity
     public Product()
     {}
 
-    public Product(int id, string name, string description, string imageUrl, DateTime createdAt)
+    public Product(Guid id, string name, string description, string imageUrl, DateTime createdAt)
     {
         Id = id;
         Name = name;
@@ -52,7 +52,7 @@ public sealed class Product : Entity
             ValidationMessagesResource.IMAGE_URL_INVALID);
 
         DomainValidation.When(
-            (Id <= 0),
+            (Equals(Guid.Empty == Id)),
             ValidationMessagesResource.ID_INVALID);
 
         DomainValidation.When((CreatedAt >= DateTime.UtcNow),

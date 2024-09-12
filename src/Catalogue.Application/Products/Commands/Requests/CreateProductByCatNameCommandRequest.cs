@@ -10,7 +10,7 @@ public sealed class CreateProductByCatNameCommandRequest : ProductBase, IRequest
     public string CategoryName { get; set; } = string.Empty;
 
     [JsonIgnore]
-    public int CategoryId { get; set; }
+    public Guid CategoryId { get; set; }
 
     [JsonIgnore]
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

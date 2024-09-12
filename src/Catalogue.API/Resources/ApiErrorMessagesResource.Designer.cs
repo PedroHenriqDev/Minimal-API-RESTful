@@ -79,11 +79,11 @@ namespace Catalogue.API.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The type of the &apos;Name&apos; property in the request object does not match the type of the &apos;Name&apos; value from the route. Expected type: {0}, Actual type: {1}. Ensure that the &apos;Name&apos; property and route value types are consistent..
+        ///   Looks up a localized string similar to The id type must be Guid.
         /// </summary>
-        public static string NAME_PROPERTY_NOT_EQUAL_ERROR {
+        public static string ID_TYPE_ERROR {
             get {
-                return ResourceManager.GetString("NAME_PROPERTY_NOT_EQUAL_ERROR", resourceCulture);
+                return ResourceManager.GetString("ID_TYPE_ERROR", resourceCulture);
             }
         }
         

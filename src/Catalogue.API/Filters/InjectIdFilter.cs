@@ -37,28 +37,20 @@ public class InjectIdFilter : IEndpointFilter
         }
 
         // Try set property in request 
-        try
-        {
-            if (idProperty!.PropertyType == typeof(Guid))
-            {
-                idProperty!.SetValue(request, Guid.Parse(idValue!.ToString()!));
-            }
-            else
-            {
-                idProperty!.SetValue(request, Convert.ChangeType(idValue, idProperty.PropertyType));
-            }
-        }
-        catch (Exception ex)
+
+        if (idProperty!.PropertyType != typeof(Guid))
         {
             string message = string.Format
-                (
-                    ApiErrorMessagesResource.NAME_PROPERTY_NOT_EQUAL_ERROR,
-                    idProperty!.PropertyType,
-                    idValue!.GetType()
-                );
+              (
+                  ApiErrorMessagesResource.ID_TYPE_ERROR,
+                  idProperty!.PropertyType,
+                  idValue!.GetType()
+              );
 
-            _logger.LogAndThrow(message, ex.Message);
+            _logger.LogAndThrow(message, message);
         }
+
+        idProperty!.SetValue(request, Guid.Parse(idValue!.ToString()!));
 
         return await next(context);
     }

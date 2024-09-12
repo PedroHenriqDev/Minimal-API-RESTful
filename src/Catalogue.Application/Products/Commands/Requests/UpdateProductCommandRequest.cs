@@ -8,5 +8,5 @@ namespace Catalogue.Application.Products.Commands.Requests;
 public sealed class UpdateProductCommandRequest : ProductBase, IRequest<UpdateProductCommandResponse>
 {
     [JsonIgnore]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 }

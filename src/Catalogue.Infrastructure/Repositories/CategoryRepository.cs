@@ -11,7 +11,12 @@ public sealed class CategoryRepository : Repository<Category>, ICategoryReposito
     public CategoryRepository(AppDbContext context) : base(context)
     {}
 
-    public async Task<Category?> GetByIdWithProductsAsync(int id)
+    public async Task<Category?> GetByIdAsync(Guid id)
+    {
+        return await entities.FindAsync(id);
+    }
+
+    public async Task<Category?> GetByIdWithProductsAsync(Guid id)
     {
         return await entities.Select(c => new Category 
         {

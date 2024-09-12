@@ -7,9 +7,9 @@ namespace Catalogue.Application.Products.Commands.Requests;
 public class DeleteProductCommandRequest : IRequest<DeleteProductCommandResponse>
 {
     [JsonIgnore]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
-    public DeleteProductCommandRequest(int id)
+    public DeleteProductCommandRequest(Guid id)
     {
         Id = id;
     }

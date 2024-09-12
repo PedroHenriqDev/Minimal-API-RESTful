@@ -32,7 +32,7 @@ public static class CategoriesEndpoints
         }).Produces<PagedList<GetCategoryQueryResponse>>(StatusCodes.Status200OK)
           .WithTags(categoriesTag);
 
-        endpoints.MapGet("categories/{id:int}", async ([FromRoute] int id, 
+        endpoints.MapGet("categories/{id:guid}", async ([FromRoute] Guid id, 
                                                        [FromServices] IMediator mediator) =>
         {
             GetCategoryQueryResponse response = await mediator.Send(new GetCategoryQueryRequest(id));
@@ -56,7 +56,7 @@ public static class CategoriesEndpoints
           .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .WithTags(categoriesTag);
 
-        endpoints.MapGet("categories/{id:int}/products", async ([FromRoute] int id,
+        endpoints.MapGet("categories/{id:Guid}/products", async ([FromRoute] Guid id,
                                                                 [FromServices] IMediator mediator) =>
         {
             GetCategoryWithProdsQueryResponse response =
@@ -85,7 +85,6 @@ public static class CategoriesEndpoints
         endpoints.MapPost("categories/products", async ([FromBody] CreateCategoryWithProdsCommandRequest request,
                                                         [FromServices] IMediator mediator) =>
         {
-
             CreateCategoryWithProdsCommandResponse response = await mediator.Send(request);
             return Results.Created(string.Empty, response);
 
@@ -96,12 +95,11 @@ public static class CategoriesEndpoints
 
     public static void MapDeleteCategoriesEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapDelete("categories/{id:int}", async ([FromRoute] int id,
+        endpoints.MapDelete("categories/{id:Guid}", async ([FromRoute] Guid id,
                                                           [FromServices] IMediator mediator) =>
         {
             DeleteCategoryCommandResponse response = await mediator.Send(new DeleteCategoryCommandRequest(id));
             return Results.Ok(response);
-
         })
           .Produces<DeleteCategoryCommandResponse>(StatusCodes.Status200OK)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
@@ -110,8 +108,8 @@ public static class CategoriesEndpoints
 
     public static void MapPutCategoriesEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapPut("categories/{id:int}", async ([FromBody] UpdateCategoryCommandRequest request,
-                                                       [FromRoute] int id,
+        endpoints.MapPut("categories/{id:Guid}", async ([FromBody] UpdateCategoryCommandRequest request,
+                                                       [FromRoute] Guid id,
                                                        [FromServices] IMediator mediator) =>
         {
             UpdateCategoryCommandResponse response = await mediator.Send(request);

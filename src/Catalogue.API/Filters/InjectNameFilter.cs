@@ -17,8 +17,8 @@ public class InjectNameFilter : IEndpointFilter
     public ValueTask<object?> InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next)
     {
         var request = context.Arguments.OfType<IRequest<object>>().FirstOrDefault();
-        
-        if (request == null) 
+
+        if (request == null)
         {
             _logger.LogAndThrow(nameof(request), ApiErrorMessagesResource.REQUEST_NULL_FILTER_ERROR);
         }
@@ -27,25 +27,12 @@ public class InjectNameFilter : IEndpointFilter
             .GetProperties()
             .FirstOrDefault(p => p.Name.Equals("Name", StringComparison.OrdinalIgnoreCase));
 
-        if(nameProperty == null) 
+        if (nameProperty == null)
         {
             _logger.LogAndThrow(nameof(nameProperty), ApiErrorMessagesResource.REQUEST_NULL_FILTER_ERROR);
         }
 
-        try 
-        {
-            nameProperty!.SetValue(request, context.HttpContext.User.Identity.Name);
-        }
-        catch(Exception ex) 
-        {
-            string message = string.Format
-                (
-                    ApiErrorMessagesResource.NAME_PROPERTY_NOT_EQUAL_ERROR,
-                    nameProperty!.PropertyType,
-                    context.HttpContext.User.Identity.Name!.GetType()
-                );
-            _logger.LogAndThrow(message, ex.Message);
-        }
+        nameProperty!.SetValue(request, context.HttpContext.User.Identity.Name);
 
         return next(context);
     }

@@ -8,5 +8,5 @@ namespace Catalogue.Application.Categories.Commands.Requests;
 public sealed class UpdateCategoryCommandRequest : CategoryBase, IRequest<UpdateCategoryCommandResponse>
 {
     [JsonIgnore]
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 }

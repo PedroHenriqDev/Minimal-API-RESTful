@@ -6,9 +6,9 @@ namespace Catalogue.Application.Categories.Queries.Requests;
 
 public class GetCategoryWithProdsQueryRequest : IRequest<GetCategoryWithProdsQueryResponse>
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
-    public GetCategoryWithProdsQueryRequest(int id)
+    public GetCategoryWithProdsQueryRequest(Guid id)
     {
         Id = id;
     }

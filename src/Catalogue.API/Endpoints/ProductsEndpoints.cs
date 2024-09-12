@@ -31,7 +31,7 @@ public static class ProductsEndpoints
           .RequireAuthorization()
           .WithTags(productsTag);
 
-        endpoints.MapGet("products/{id:int}", async ([FromRoute] int id,
+        endpoints.MapGet("products/{id:Guid}", async ([FromRoute] Guid id,
                                                [FromServices] IMediator mediator) =>
         {
             GetProductQueryResponse response = await mediator.Send(new GetProductQueryRequest(id));
@@ -56,7 +56,7 @@ public static class ProductsEndpoints
           .RequireAuthorization()
           .WithTags(productsTag);
 
-        endpoints.MapGet("products/{id:int}/category", async ([FromRoute] int id,
+        endpoints.MapGet("products/{id:Guid}/category", async ([FromRoute] Guid id,
                                                         [FromServices] IMediator mediator) => 
         {
             GetProductWithCatQueryResponse response = await mediator.Send(new GetProductWithCatQueryRequest(id));
@@ -97,8 +97,8 @@ public static class ProductsEndpoints
 
     public static void MapPutProductsEndpoints(this IEndpointRouteBuilder endpoints) 
     {
-        endpoints.MapPut("products/{id:int}", async ([FromBody] UpdateProductCommandRequest request,
-                                               [FromRoute] int id,
+        endpoints.MapPut("products/{id:Guid}", async ([FromBody] UpdateProductCommandRequest request,
+                                               [FromRoute] Guid id,
                                                [FromServices] IMediator mediator) =>
         {
             UpdateProductCommandResponse response = await mediator.Send(request);
@@ -115,7 +115,7 @@ public static class ProductsEndpoints
 
     public static void MapDeleteProductsEndpoints(this IEndpointRouteBuilder endpoints) 
     {
-        endpoints.MapDelete("products/{id:int}", async ([FromRoute] int id,
+        endpoints.MapDelete("products/{id:Guid}", async ([FromRoute] Guid id,
                                                   [FromServices] IMediator mediator) =>
         {
             DeleteProductCommandResponse response = await mediator.Send(new DeleteProductCommandRequest(id));

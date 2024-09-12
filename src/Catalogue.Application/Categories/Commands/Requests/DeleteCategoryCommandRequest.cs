@@ -5,9 +5,9 @@ namespace Catalogue.Application.Categories.Commands.Requests;
 
 public sealed class DeleteCategoryCommandRequest : IRequest<DeleteCategoryCommandResponse>
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
-    public DeleteCategoryCommandRequest(int id)
+    public DeleteCategoryCommandRequest(Guid id)
     {
         Id = id;
     }

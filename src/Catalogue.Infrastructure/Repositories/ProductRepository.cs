@@ -11,7 +11,12 @@ public sealed class ProductRepository : Repository<Product>, IProductRepository
     public ProductRepository(AppDbContext context) : base(context)
     {}
 
-    public async Task<Product?> GetByIdWithCategoryAsync(int id)
+    public async Task<Product?> GetByIdAsync(Guid id)
+    {
+        return await entities.FindAsync(id);
+    }
+
+    public async Task<Product?> GetByIdWithCategoryAsync(Guid id)
     {
         return await entities.Select(p => new Product 
         {

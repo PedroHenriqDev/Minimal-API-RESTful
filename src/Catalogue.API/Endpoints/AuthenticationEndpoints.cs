@@ -24,7 +24,7 @@ public static class AuthenticationEndpoints
         {
 
             RegisterUserCommandResponse response = await mediator.Send(request);
-            return Results.Created(string.Empty, response);
+            return Results.Created(response.Id.ToString(), response);
 
         })
         .Produces<RegisterUserCommandResponse>(StatusCodes.Status201Created)

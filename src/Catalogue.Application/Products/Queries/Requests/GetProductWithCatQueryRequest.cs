@@ -5,9 +5,9 @@ namespace Catalogue.Application.Products.Queries.Requests;
 
 public sealed class GetProductWithCatQueryRequest : IRequest<GetProductWithCatQueryResponse>
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
-    public GetProductWithCatQueryRequest(int id)
+    public GetProductWithCatQueryRequest(Guid id)
     {
         Id = id;
     }

@@ -4,6 +4,6 @@ namespace Catalogue.Application.Products.Commands.Responses;
 
 public sealed class UpdateProductCommandResponse : ProductBase
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     public DateTime CreatedAt { get; set; }
 }
