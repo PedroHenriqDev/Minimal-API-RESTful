@@ -28,7 +28,7 @@ public sealed class UpdateProductCommandHandler :
     public async Task<UpdateProductCommandResponse> Handle(UpdateProductCommandRequest request, 
                                                            CancellationToken cancellationToken)
     {
-        if(await _unitOfWork.ProductRepository.GetAsync(p => p.Id == request.Id) is Product productToUpdate) 
+        if(await _unitOfWork.ProductRepository.GetByIdAsync(request.Id) is Product productToUpdate) 
         {
             _validator.EnsureValid(request);
 

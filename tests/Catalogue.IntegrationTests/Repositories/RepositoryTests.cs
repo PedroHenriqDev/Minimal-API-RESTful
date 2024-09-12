@@ -3,7 +3,6 @@ using Catalogue.Domain.Entities;
 using Catalogue.Domain.Interfaces;
 using Catalogue.Infrastructure.Repositories;
 using Catalogue.IntegrationTests.Fixtures;
-using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace Catalogue.IntegrationTests.Repositories;
@@ -35,7 +34,7 @@ public class RepositoryTests
     /// <typeparam name="T">The type of the entities managed by the repository.</typeparam>
     /// <param name="repository">An instance of the repository implementing the IRepository interface.</param>
     [Theory]
-    [MemberData(nameof(CreateRepositories))]
+    [MemberData(nameof(ProvidesRepositories))]
     public void GetAllUsers_ReturnNonEmptyCollection<T>(IRepository<T> repository) where T : Entity
     {
         //Act
@@ -44,6 +43,19 @@ public class RepositoryTests
         //Assert
         Assert.NotNull(entities);
         Assert.NotEmpty(entities);
+    }
+
+    [Theory]
+    [MemberData(nameof(ProvidesRepositoriesAndEntities))]
+    public async Task GetEntityById_WhenCalledWithValidId_ReturnMatchingEntity<T>(IRepository<T> repository, T entity) 
+       where T : Entity
+    {
+        //Act 
+        T? entityFound = await repository.GetByIdAsync(entity.Id);
+
+        //Assert
+        Assert.NotNull(entityFound);
+        Assert.Equal(entity, entityFound);
     }
 
     /// <summary>
@@ -77,7 +89,7 @@ public class RepositoryTests
     /// <typeparam name="T">The type of the entity being operated on by the repository.</typeparam>
     /// <param name="repository">The repository used to perform the add operation for the entity.</param>
     [Theory]
-    [MemberData(nameof(CreateRepositories))]
+    [MemberData(nameof(ProvidesRepositories))]
     public async Task AddEntity_WhenCalledWithValidEntity_ShouldSuccessfullyPersisted<T>(IRepository<T> repository) 
         where T: Entity
     {
@@ -99,7 +111,7 @@ public class RepositoryTests
     /// <typeparam name="T">The type of entity being operated on by the repository.</typeparam>
     /// <param name="repository">The repository used to perform the delete operation for the entity</param>
     [Theory]
-    [MemberData(nameof(CreateRepositories))]
+    [MemberData(nameof(ProvidesRepositories))]
     public void DeleteEntity_WhenGivenAFirstEntity_ShouldRemoveItSuccessfully<T>(IRepository<T> repository) 
         where T : Entity
     {
@@ -122,13 +134,14 @@ public class RepositoryTests
     /// <param name="repository">The repository to user to perform the update operation for the entity</param>
     /// <param name="entityToUpdate">The entity with updated properties that should be saved to the database</param>
     [Theory]
-    [MemberData(nameof(ProvideRepositoryAndEntityUpdated))]
+    [MemberData(nameof(ProvidesRepositoriesAndEntities))]
     public void UpdateEntity_WhenUpdated_ShouldSaveSuccessfully<T>(IRepository<T> repository,
-                                                                                            T entityToUpdate)
+                                                                   T entityToUpdate)
         where T : Entity
     {
         //Arrange
         T? entityUpdated = repository.GetAll().SingleOrDefault(x => x.Id == entityToUpdate.Id);
+        entityToUpdate.Name = "Name Updated";
 
         //Act
         repository.Update(entityToUpdate);
@@ -144,12 +157,8 @@ public class RepositoryTests
     /// validation of repository behavior with modified entities.
     /// </summary>
     /// <returns>An enumerable of object arrays, where each array contains a repository instance and an updated entity.</returns>
-    public static IEnumerable<object[]> ProvideRepositoryAndEntityUpdated() 
+    public static IEnumerable<object[]> ProvidesRepositoriesAndEntities() 
     {
-        _firstUser.Name = "Name Updated";
-        _firstCategory.Name = "Name Updated";
-        _firstProduct.Name = "Name Updated";
-
         yield return new object[] { _userRepository, _firstUser };
         yield return new object[] { _categoryRepository, _firstCategory };
         yield return new object[] { _productRepository, _firstProduct };
@@ -181,7 +190,7 @@ public class RepositoryTests
     /// Each entry contains an instance of a repository for different entity types.
     /// </summary>
     /// <returns>A collection of object arrays where each array contains a repository instance.</returns>
-    public static IEnumerable<object[]> CreateRepositories()
+    public static IEnumerable<object[]> ProvidesRepositories()
     {
         yield return new object[] {_userRepository };
         yield return new object[] { _categoryRepository };

@@ -30,7 +30,7 @@ public sealed class UpdateCategoryCommandHandler :
     public async Task<UpdateCategoryCommandResponse> Handle(UpdateCategoryCommandRequest request,
                                                             CancellationToken cancellationToken)
     {
-        if (await _unitOfWork.CategoryRepository.GetAsync(c => c.Id == request.Id)
+        if (await _unitOfWork.CategoryRepository.GetByIdAsync(request.Id)
             is Category categoryToUpdate)
         {
             _validator.EnsureValid(request);

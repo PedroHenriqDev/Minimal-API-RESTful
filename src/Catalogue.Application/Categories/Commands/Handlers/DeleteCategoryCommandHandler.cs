@@ -25,7 +25,7 @@ public sealed class DeleteCategoryCommandHandler :
     public async Task<DeleteCategoryCommandResponse> Handle(DeleteCategoryCommandRequest request,
                                                             CancellationToken cancellationToken)
     {
-        if (await _unitOfWork.CategoryRepository.GetAsync(c => c.Id == request.Id) is Category category)
+        if (await _unitOfWork.CategoryRepository.GetByIdAsync(request.Id) is Category category)
         {
             _unitOfWork.CategoryRepository.Delete(category);
             await _unitOfWork.CommitAsync();

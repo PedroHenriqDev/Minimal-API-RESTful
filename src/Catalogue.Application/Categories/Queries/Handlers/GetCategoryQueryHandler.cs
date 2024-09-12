@@ -24,7 +24,7 @@ public class GetCategoryQueryHandler
     public async Task<GetCategoryQueryResponse> Handle(GetCategoryQueryRequest request,
                                                        CancellationToken cancellationToken)
     {
-        if (await _unitOfWork.CategoryRepository.GetAsync(c => c.Id == request.Id) is Category category)
+        if (await _unitOfWork.CategoryRepository.GetByIdAsync(request.Id) is Category category)
         {
             return _mapper.Map<GetCategoryQueryResponse>(category);
         }

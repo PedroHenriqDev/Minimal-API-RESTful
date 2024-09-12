@@ -26,6 +26,16 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
     }
 
     /// <summary>
+    /// Retrieves the entity of type 'TEntity' whose ID matches the specified parameter.
+    /// </summary>
+    /// <param name="id">The ID of the entity to retrieve.</param>
+    /// <returns>The entity with the matching ID, or null if not found.</returns>
+    public async Task<TEntity?> GetByIdAsync(Guid id)
+    {
+        return await entities.FindAsync(id);
+    }
+
+    /// <summary>
     /// Retrieves the first entity of type 'TEntity' that satisfies the specified expression.
     /// </summary>
     /// <param name="predicate">The expression used to filter the entities of type 'TEntity'.</param>
