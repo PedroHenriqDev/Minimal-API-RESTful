@@ -20,5 +20,4 @@ public static class HttpContextExtension
 
         httpContext.Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(metaData));
     }
-
 }

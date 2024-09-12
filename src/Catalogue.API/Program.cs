@@ -16,40 +16,31 @@ public class Progam
 
         // Add services to the container.
         builder.Services.AddApiSwagger()
+                        .ConfigureApiOptions()
                         .AddPersistence(cfg)
                         .AddApiAuthentication(cfg)
                         .AddApiAuthorization()
                         .AddDependencies()
                         .AddApiDefaultCors()
                         .AddApiServicesScoped()
-                        .AddEndpointsApiExplorer();
+                        .AddEndpointsApiExplorer()
+                        .AddVersioning();
 
         WebApplication app = builder.Build();
-
-        // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
+        RouteGroupBuilder appVersioned = app.UseApiVersioned().WithTags();
 
         #region Endpoints
+        //Middlewares
+
 
         //Categories Endpoints
-        app.MapGetCategoriesEndpoints();
-        app.MapPostCategoriesEndpoints();
-        app.MapDeleteCategoriesEndpoints();
-        app.MapPutCategoriesEndpoints();
+        appVersioned.MapCategoriesEndpoints();
 
         //Products Endpoints
-        app.MapGetProductsEndpoints();
-        app.MapPostProductsEndpoints();
-        app.MapDeleteProductsEndpoints();
-        app.MapPutProductsEndpoints();
+        appVersioned.MapProductsEndpoints();
 
         //Authentication Endpoints
-        app.MapPostAuthEndpoints();
-        app.MapPutAuthEndpoints();
+        appVersioned.MapAuthEndpoints();
 
         #endregion
 

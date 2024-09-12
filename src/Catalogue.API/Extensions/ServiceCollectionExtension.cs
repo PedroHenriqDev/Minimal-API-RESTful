@@ -1,4 +1,6 @@
-﻿using Catalogue.API.Filters;
+﻿using Asp.Versioning;
+using Catalogue.API.Filters;
+using Catalogue.API.OpenApi;
 using Catalogue.Domain.Enums;
 using Catalogue.Infrastructure.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -6,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+
 
 namespace Catalogue.API.Extensions;
 
@@ -15,8 +18,6 @@ public static class ServiceCollectionExtension
     {
         return services.AddSwaggerGen(c =>
         {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Catalogue API", Version = "v1" });
-
             c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
             {
                 Name = "Authorization",
@@ -73,6 +74,29 @@ public static class ServiceCollectionExtension
                 ValidateAudience = false
             };
         });
+
+        return services;
+    }
+
+    public static IServiceCollection ConfigureApiOptions(this IServiceCollection services) 
+    {
+        return services.ConfigureOptions<ConfigureSwaggerGenOptions>();
+    }
+
+    public static IServiceCollection AddVersioning(this IServiceCollection services) 
+    {
+        services.AddApiVersioning(options =>
+        {
+            options.DefaultApiVersion = new Asp.Versioning.ApiVersion(1);
+            options.ApiVersionReader = ApiVersionReader.Combine(new UrlSegmentApiVersionReader(), 
+                new HeaderApiVersionReader("X-ApiVersion"));
+       
+        }).AddApiExplorer(options =>
+        {
+            options.GroupNameFormat = "'v'VVV";
+            options.SubstituteApiVersionInUrl = true;
+        })
+        .EnableApiVersionBinding();
 
         return services;
     }

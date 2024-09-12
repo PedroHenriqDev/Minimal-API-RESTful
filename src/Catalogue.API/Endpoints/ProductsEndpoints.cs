@@ -16,20 +16,22 @@ public static class ProductsEndpoints
 {
     private const string productsTag = "Products";
 
-    public static void MapGetProductsEndpoints(this IEndpointRouteBuilder endpoints)
+    public static void MapProductsEndpoints(this IEndpointRouteBuilder endpoints)
     {
+        #region Get
         endpoints.MapGet("products", async (HttpContext httpContext,
-                                      [AsParameters] QueryParameters parameters,
-                                      [FromServices] IMediator mediator) =>
+                                            [AsParameters] QueryParameters parameters,
+                                            [FromServices] IMediator mediator) =>
         {
             GetProductsQueryResponse response =
                         await mediator.Send(new GetProductsQueryRequest(parameters));
             httpContext.AppendCategoriesMetaData(response.ProductsPaged);
 
             return Results.Ok(response.ProductsPaged);
-        }).Produces<PagedList<GetProductQueryResponse>>(StatusCodes.Status200OK)
-          .RequireAuthorization()
-          .WithTags(productsTag);
+        })
+        .Produces<PagedList<GetProductQueryResponse>>(StatusCodes.Status200OK)
+        .RequireAuthorization()
+        .WithTags(productsTag);
 
         endpoints.MapGet("products/{id:Guid}", async ([FromRoute] Guid id,
                                                [FromServices] IMediator mediator) =>
@@ -37,10 +39,11 @@ public static class ProductsEndpoints
             GetProductQueryResponse response = await mediator.Send(new GetProductQueryRequest(id));
             return Results.Ok(response);
 
-        }).Produces<GetProductQueryResponse>(StatusCodes.Status200OK)
-          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .RequireAuthorization()
-          .WithTags(productsTag);
+        })
+        .Produces<GetProductQueryResponse>(StatusCodes.Status200OK)
+        .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+        .RequireAuthorization()
+        .WithTags(productsTag);
 
         endpoints.MapGet("products/category", async (HttpContext httpContext,
                                                [AsParameters] QueryParameters parameters,
@@ -52,9 +55,10 @@ public static class ProductsEndpoints
 
             return Results.Ok(response.ProductsPaged);
 
-        }).Produces<PagedList<GetProductWithCatQueryResponse>>(StatusCodes.Status200OK)
-          .RequireAuthorization()
-          .WithTags(productsTag);
+        })
+        .Produces<PagedList<GetProductWithCatQueryResponse>>(StatusCodes.Status200OK)
+        .RequireAuthorization()
+        .WithTags(productsTag);
 
         endpoints.MapGet("products/{id:Guid}/category", async ([FromRoute] Guid id,
                                                         [FromServices] IMediator mediator) => 
@@ -62,68 +66,72 @@ public static class ProductsEndpoints
             GetProductWithCatQueryResponse response = await mediator.Send(new GetProductWithCatQueryRequest(id));
             return Results.Ok(response);
 
-        }).Produces<GetProductWithCatQueryResponse>(StatusCodes.Status200OK)
-          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .RequireAuthorization()
-          .WithTags(productsTag);
-    }
+        })
+        .Produces<GetProductWithCatQueryResponse>(StatusCodes.Status200OK)
+        .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+        .RequireAuthorization()
+        .WithTags(productsTag);
+        #endregion
 
-    public static void MapPostProductsEndpoints(this IEndpointRouteBuilder endpoints) 
-    {
+        #region Post
+
         endpoints.MapPost("products", async ([FromBody] CreateProductCommandRequest request, 
-                                       [FromServices] IMediator mediator) =>
+                                             [FromServices] IMediator mediator) =>
         {
-            CreateProductCommandResponse response = await mediator.Send(request);
-            return Results.Created(string.Empty, response);
+           CreateProductCommandResponse response = await mediator.Send(request);
+           return Results.Created(string.Empty, response);
 
-        }).Produces<CreateProductCommandResponse>(StatusCodes.Status201Created)
-          .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
-          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .RequireAuthorization()
-          .WithTags(productsTag);
+        })
+        .Produces<CreateProductCommandResponse>(StatusCodes.Status201Created)
+        .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
+        .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+        .RequireAuthorization()
+        .WithTags(productsTag);
 
         endpoints.MapPost("products/category-name", async ([FromBody] CreateProductByCatNameCommandRequest request,
-                                                     [FromServices] IMediator mediator) =>
+                                                      [FromServices] IMediator mediator) =>
         {
             CreateProductCommandResponse response = await mediator.Send(request);
             return Results.Created(string.Empty, response);
 
-        }).Produces<CreateProductCommandResponse>(StatusCodes.Status201Created)
+        })
+          .Produces<CreateProductCommandResponse>(StatusCodes.Status201Created)
           .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
           .RequireAuthorization()
           .WithTags(productsTag);
-    }
 
-    public static void MapPutProductsEndpoints(this IEndpointRouteBuilder endpoints) 
-    {
+        #endregion
+
+        #region Put
+
         endpoints.MapPut("products/{id:Guid}", async ([FromBody] UpdateProductCommandRequest request,
                                                [FromRoute] Guid id,
                                                [FromServices] IMediator mediator) =>
         {
             UpdateProductCommandResponse response = await mediator.Send(request);
             return Results.Ok(response);
-
         })
-          .AddEndpointFilter<InjectIdFilter>()
-          .Produces<UpdateProductCommandResponse>(StatusCodes.Status200OK)
-          .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
-          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .RequireAuthorization()
-          .WithTags(productsTag);
-    }
+        .AddEndpointFilter<InjectIdFilter>()
+        .Produces<UpdateProductCommandResponse>(StatusCodes.Status200OK)
+        .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
+        .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+        .RequireAuthorization()
+        .WithTags(productsTag);
 
-    public static void MapDeleteProductsEndpoints(this IEndpointRouteBuilder endpoints) 
-    {
+  
         endpoints.MapDelete("products/{id:Guid}", async ([FromRoute] Guid id,
                                                   [FromServices] IMediator mediator) =>
         {
             DeleteProductCommandResponse response = await mediator.Send(new DeleteProductCommandRequest(id));
             return Results.Ok(response);
 
-        }).Produces<DeleteProductCommandResponse>(StatusCodes.Status200OK)
-          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .RequireAuthorization()
-          .WithTags(productsTag);
+        })
+        .Produces<DeleteProductCommandResponse>(StatusCodes.Status200OK)
+        .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+        .RequireAuthorization()
+        .WithTags(productsTag);
+
+        #endregion
     }
 }

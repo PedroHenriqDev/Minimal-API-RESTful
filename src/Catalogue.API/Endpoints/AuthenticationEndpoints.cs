@@ -1,4 +1,5 @@
-﻿using Catalogue.API.Filters;
+﻿using Catalogue.API.Extensions;
+using Catalogue.API.Filters;
 using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Extensions;
 using Catalogue.Application.Interfaces.Services;
@@ -13,16 +14,16 @@ using System.Security.Claims;
 
 namespace Catalogue.API.Endpoints;
 
-public static class AuthenticationEndpoints 
+public static class AuthenticationEndpoints
 {
     private const string authEndpoint = "Authentication";
 
-    public static void MapPostAuthEndpoints(this IEndpointRouteBuilder endpoints)
+    public static void MapAuthEndpoints(this IEndpointRouteBuilder endpoints)
     {
+        #region Post
         endpoints.MapPost("auth/register", async ([FromBody] RegisterUserCommandRequest request,
                                                   [FromServices] IMediator mediator) =>
         {
-
             RegisterUserCommandResponse response = await mediator.Send(request);
             return Results.Created(response.Id.ToString(), response);
 
@@ -32,10 +33,10 @@ public static class AuthenticationEndpoints
         .WithTags(authEndpoint);
 
         endpoints.MapPost("auth/login", async ([FromBody] LoginQueryRequest request,
-                                               [FromServices] IMediator mediator,
-                                               [FromServices] ITokenService tokenService,
-                                               [FromServices] IClaimService claimService,
-                                               [FromServices] IConfiguration configuration) =>
+                                            [FromServices] IMediator mediator,
+                                            [FromServices] ITokenService tokenService,
+                                            [FromServices] IClaimService claimService,
+                                            [FromServices] IConfiguration configuration) =>
         {
             LoginQueryResponse response = await mediator.Send(request);
 
@@ -50,28 +51,29 @@ public static class AuthenticationEndpoints
 
             return Results.Ok(response);
 
-        }).Produces<LoginQueryResponse>(StatusCodes.Status200OK)
-          .Produces(StatusCodes.Status401Unauthorized)
-          .WithTags(authEndpoint);
-    }
+        })
+        .Produces<LoginQueryResponse>(StatusCodes.Status200OK)
+        .Produces(StatusCodes.Status401Unauthorized)
+        .WithTags(authEndpoint);
 
-    public static void MapPutAuthEndpoints(this IEndpointRouteBuilder endpoints)
-    {
-        endpoints.MapPut("auth/role/{id:guid}",
-            [Authorize(Policy = "AdminOnly")]
-             async ([FromRoute] Guid id,
-                    [FromBody] UpdateUserRoleCommandRequest request,
-                    [FromServices] IMediator mediator) =>
+        #endregion
+
+        #region Put
+        endpoints.MapPut("auth/role/{id:guid}", [Authorize(Policy = "AdminOnly")]
+                 async ([FromRoute] Guid id,
+                        [FromBody] UpdateUserRoleCommandRequest request,
+                        [FromServices] IMediator mediator) =>
         {
 
             UpdateUserRoleCommandResponse response = await mediator.Send(request);
             return Results.Ok(response);
 
-        }).AddEndpointFilter<InjectIdFilter>()
-          .Produces<UpdateUserRoleCommandRequest>(StatusCodes.Status200OK)
-          .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-          .RequireAuthorization()
-          .WithTags(authEndpoint);
+        })
+        .AddEndpointFilter<InjectIdFilter>()
+        .Produces<UpdateUserRoleCommandRequest>(StatusCodes.Status200OK)
+        .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+        .RequireAuthorization()
+        .WithTags(authEndpoint);
 
         endpoints.MapPut("auth/update-user", async ([FromBody] UpdateUserCommandRequest request,
                                                     [FromServices] IMediator mediator,
@@ -86,11 +88,13 @@ public static class AuthenticationEndpoints
 
             return Results.Ok(response);
 
-        }).AddEndpointFilter<InjectNameFilter>()
-          .Produces<UpdateUserRoleCommandRequest>(StatusCodes.Status200OK)
-          .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
-          .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError)
-          .RequireAuthorization()
-          .WithTags(authEndpoint);
+        })
+        .AddEndpointFilter<InjectNameFilter>()
+        .Produces<UpdateUserRoleCommandRequest>(StatusCodes.Status200OK)
+        .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
+        .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError)
+        .RequireAuthorization()
+        .WithTags(authEndpoint);
+     #endregion   
     }
 }

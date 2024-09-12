@@ -1,4 +1,7 @@
-﻿using Catalogue.API.Filters;
+﻿using Asp.Versioning;
+using Asp.Versioning.ApiExplorer;
+using Asp.Versioning.Builder;
+using Catalogue.API.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -7,10 +10,33 @@ namespace Catalogue.API.Extensions;
 
 public static class ApplicationBuilderExtension
 {
-    public static IApplicationBuilder UseSwaggerMiddleware(this IApplicationBuilder app)
+    public static IApplicationBuilder UseSwaggerMiddleware(this WebApplication app)
     {
         return app.UseSwagger()
-                  .UseSwaggerUI();
+                  .UseSwaggerUI(options => 
+                  {
+                      IReadOnlyList<ApiVersionDescription> descriptions = app.DescribeApiVersions();
+
+                      foreach(ApiVersionDescription description in descriptions) 
+                      {
+                          string url = $"/swagger/{description.GroupName}/swagger.json";
+                          string name = description.GroupName.ToUpperInvariant();
+
+                          options.SwaggerEndpoint(url, name);
+                      }
+                  });
+    }
+
+    public static RouteGroupBuilder UseApiVersioned(this WebApplication app)
+    {
+        ApiVersionSet versionSet = app.NewApiVersionSet()
+            .ReportApiVersions()
+            .HasApiVersion(new ApiVersion(1))
+            .Build();
+
+        RouteGroupBuilder appVersioned = app.MapGroup("api/v{apiVersion:apiVersion}/")
+                                            .WithApiVersionSet(versionSet);
+        return appVersioned;
     }
 
     public static IApplicationBuilder UseExceptionHandling(this IApplicationBuilder app,
