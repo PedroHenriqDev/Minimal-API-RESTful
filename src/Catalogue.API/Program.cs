@@ -14,7 +14,6 @@ public class Progam
 
         cfg.LoadEnv();
 
-        // Add services to the container.
         builder.Services.AddApiSwagger()
                         .ConfigureApiOptions()
                         .AddPersistence(cfg)
@@ -29,17 +28,12 @@ public class Progam
         WebApplication app = builder.Build();
         RouteGroupBuilder appVersioned = app.UseApiVersioned().WithTags();
 
-        #region Endpoints
-        //Middlewares
+        #region Map Endpoints
 
-
-        //Categories Endpoints
         appVersioned.MapCategoriesEndpoints();
 
-        //Products Endpoints
         appVersioned.MapProductsEndpoints();
 
-        //Authentication Endpoints
         appVersioned.MapAuthEndpoints();
 
         #endregion

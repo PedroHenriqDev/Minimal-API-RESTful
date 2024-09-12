@@ -43,7 +43,8 @@ public static class CategoriesEndpoints
         })
         .Produces<GetCategoryQueryResponse>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-        .WithTags(categoriesTag);
+        .WithTags(categoriesTag)
+        .WithName("GetCategoryById");
 
         endpoints.MapGet("categories/products", async (HttpContext httpContext,
                                                        [AsParameters] QueryParameters parameters,
@@ -79,7 +80,11 @@ public static class CategoriesEndpoints
                                                [FromServices] IMediator mediator) =>
         {
             CreateCategoryCommandResponse response = await mediator.Send(request);
-            return Results.Created(string.Empty, response);
+            
+            return Results.CreatedAtRoute(
+              routeName: "GetCategoryById",
+              routeValues: new {id = response.Id},
+              value: response);
 
         })
         .Produces<CreateCategoryCommandResponse>(StatusCodes.Status201Created)

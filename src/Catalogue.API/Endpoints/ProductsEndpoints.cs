@@ -43,7 +43,8 @@ public static class ProductsEndpoints
         .Produces<GetProductQueryResponse>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
         .RequireAuthorization()
-        .WithTags(productsTag);
+        .WithTags(productsTag)
+        .WithName("GetProductById");
 
         endpoints.MapGet("products/category", async (HttpContext httpContext,
                                                [AsParameters] QueryParameters parameters,
@@ -71,6 +72,7 @@ public static class ProductsEndpoints
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
         .RequireAuthorization()
         .WithTags(productsTag);
+        
         #endregion
 
         #region Post
@@ -79,7 +81,11 @@ public static class ProductsEndpoints
                                              [FromServices] IMediator mediator) =>
         {
            CreateProductCommandResponse response = await mediator.Send(request);
-           return Results.Created(string.Empty, response);
+
+           return Results.CreatedAtRoute(
+            routeName: "GetProductById",
+            routeValues: new {id = response.Id},
+            value: response);
 
         })
         .Produces<CreateProductCommandResponse>(StatusCodes.Status201Created)
@@ -92,7 +98,11 @@ public static class ProductsEndpoints
                                                       [FromServices] IMediator mediator) =>
         {
             CreateProductCommandResponse response = await mediator.Send(request);
-            return Results.Created(string.Empty, response);
+
+            return Results.CreatedAtRoute(
+              routeName: "GetProductById", 
+              routeValues: new { id = response.Id },
+              value: response);
 
         })
           .Produces<CreateProductCommandResponse>(StatusCodes.Status201Created)

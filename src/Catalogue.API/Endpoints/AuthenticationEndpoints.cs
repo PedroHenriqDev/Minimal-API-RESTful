@@ -1,5 +1,4 @@
-﻿using Catalogue.API.Extensions;
-using Catalogue.API.Filters;
+﻿using Catalogue.API.Filters;
 using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Extensions;
 using Catalogue.Application.Interfaces.Services;
@@ -33,10 +32,10 @@ public static class AuthenticationEndpoints
         .WithTags(authEndpoint);
 
         endpoints.MapPost("auth/login", async ([FromBody] LoginQueryRequest request,
-                                            [FromServices] IMediator mediator,
-                                            [FromServices] ITokenService tokenService,
-                                            [FromServices] IClaimService claimService,
-                                            [FromServices] IConfiguration configuration) =>
+                                               [FromServices] IMediator mediator,
+                                               [FromServices] ITokenService tokenService,
+                                               [FromServices] IClaimService claimService,
+                                               [FromServices] IConfiguration configuration) =>
         {
             LoginQueryResponse response = await mediator.Send(request);
 
@@ -50,7 +49,6 @@ public static class AuthenticationEndpoints
             response.Token = tokenService.GenerateToken(authClaims, configuration);
 
             return Results.Ok(response);
-
         })
         .Produces<LoginQueryResponse>(StatusCodes.Status200OK)
         .Produces(StatusCodes.Status401Unauthorized)
