@@ -21,11 +21,15 @@ public class DatabaseFixture : IDisposable
         DbContext = new AppDbContext(options);
 
         var userAutoFaker = new AutoFaker<User>().RuleFor(u => u.Email, f => f.Internet.Email());
-        var categoryAutoFaker = new AutoFaker<Category>();
-        var productAutoFaker = new AutoFaker<Product>();
+        var categories = new AutoFaker<Category>().Generate(10);
 
         DbContext.Users.AddRange(userAutoFaker.Generate(10));
-        DbContext.Categories.AddRange(categoryAutoFaker.Generate(10));
+        DbContext.Categories.AddRange(categories);
+        DbContext.SaveChanges();
+
+        var productAutoFaker = new AutoFaker<Product>()
+            .RuleFor(p => p.CategoryId, f => f.PickRandom(categories).Id);
+
         DbContext.Products.AddRange(productAutoFaker.Generate(10));
 
         DbContext.SaveChanges();
