@@ -1,6 +1,7 @@
 ﻿using AutoBogus;
 using Catalogue.Domain.Entities;
 using Catalogue.Infrastructure.Context;
+using MediatR.NotificationPublishers;
 using Microsoft.EntityFrameworkCore;
 
 namespace Catalogue.IntegrationTests.Fixtures;
@@ -31,7 +32,6 @@ public class DatabaseFixture : IDisposable
             .RuleFor(p => p.CategoryId, f => f.PickRandom(categories).Id);
 
         DbContext.Products.AddRange(productAutoFaker.Generate(10));
-
         DbContext.SaveChanges();
     }
 

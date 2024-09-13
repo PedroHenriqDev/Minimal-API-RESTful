@@ -10,13 +10,11 @@ public class ProductRepositoryTests : IClassFixture<DatabaseFixture>
 {
     private readonly DatabaseFixture _dbFixture;
     private readonly IProductRepository _productRepository;
-    private readonly Product firstProduct;
 
     public ProductRepositoryTests(DatabaseFixture dbFixture)
     {
         _dbFixture = dbFixture;
         _productRepository = new ProductRepository(_dbFixture.DbContext);
-        firstProduct = _productRepository.GetAll().Include(p => p.Category).First();
     }
 
     /// <summary>
@@ -27,14 +25,14 @@ public class ProductRepositoryTests : IClassFixture<DatabaseFixture>
     public async Task GetByIdProductWithCategory_WhenProductIdExists_ReturnProductWithExpectedCategory()
     {
         //Arrange
-        Guid productId = firstProduct.Id; 
+        Product productExists = _productRepository.GetAll().First(); 
 
         //Act
-        Product? product = await _productRepository.GetByIdWithCategoryAsync(productId);
+        Product? product = await _productRepository.GetByIdWithCategoryAsync(productExists.Id);
 
         //Assert
         Assert.NotNull(product);
         Assert.NotNull(product.Category);
-        Assert.Equal(product.Category.Name, firstProduct.Category.Name);
+        Assert.Equal(product.Category.Name, productExists.Category.Name);
     }
 }

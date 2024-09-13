@@ -13,9 +13,9 @@ public class RepositoryTests
     private static readonly UserRepository _userRepository;
     private static readonly CategoryRepository _categoryRepository;
     private static readonly ProductRepository _productRepository;
-    private static readonly User _firstUser;
-    private static readonly Category _firstCategory;
-    private static readonly Product _firstProduct;
+    private static readonly User _userExists;
+    private static readonly Category _categoryExists;
+    private static readonly Product _productExists;
 
     static RepositoryTests() 
     {
@@ -23,9 +23,9 @@ public class RepositoryTests
         _userRepository = new UserRepository(_dbFixture.DbContext);
         _categoryRepository = new CategoryRepository(_dbFixture.DbContext);
         _productRepository = new ProductRepository(_dbFixture.DbContext);
-        _firstUser = _dbFixture.DbContext.Users.First();
-        _firstCategory = _dbFixture.DbContext.Categories.First();
-        _firstProduct = _dbFixture.DbContext.Products.First();
+        _userExists = _dbFixture.DbContext.Users.First();
+        _categoryExists = _dbFixture.DbContext.Categories.First();
+        _productExists = _dbFixture.DbContext.Products.First();
     }
 
     /// <summary>
@@ -159,9 +159,9 @@ public class RepositoryTests
     /// <returns>An enumerable of object arrays, where each array contains a repository instance and an updated entity.</returns>
     public static IEnumerable<object[]> ProvidesRepositoriesAndEntities() 
     {
-        yield return new object[] { _userRepository, _firstUser };
-        yield return new object[] { _categoryRepository, _firstCategory };
-        yield return new object[] { _productRepository, _firstProduct };
+        yield return new object[] { _userRepository, _userExists };
+        yield return new object[] { _categoryRepository, _categoryExists };
+        yield return new object[] { _productRepository, _productExists };
     }
 
     /// <summary>
@@ -177,12 +177,12 @@ public class RepositoryTests
     /// </returns>
     public static IEnumerable<object[]> ProvidesRepositoryAndPredicates()
     {
-        yield return new object[] { _userRepository, (Expression<Func<User, bool>>)(u => u.Id == _firstUser.Id) };
-        yield return new object[] { _userRepository, (Expression<Func<User, bool>>)(u => u.Name == _firstUser.Name) };
-        yield return new object[] { _categoryRepository, (Expression<Func<Category, bool>>)(c => c.Id == _firstCategory.Id) };
-        yield return new object[] { _categoryRepository, (Expression<Func<Category, bool>>)(c => c.Name == _firstCategory.Name) };
-        yield return new object[] { _productRepository, (Expression<Func<Product, bool>>)(p => p.Id == _firstProduct.Id) };
-        yield return new object[] { _productRepository, (Expression<Func<Product, bool>>)(p => p.Name == _firstProduct.Name) };
+        yield return new object[] { _userRepository, (Expression<Func<User, bool>>)(u => u.Id == _userExists.Id) };
+        yield return new object[] { _userRepository, (Expression<Func<User, bool>>)(u => u.Name == _userExists.Name) };
+        yield return new object[] { _categoryRepository, (Expression<Func<Category, bool>>)(c => c.Id == _categoryExists.Id) };
+        yield return new object[] { _categoryRepository, (Expression<Func<Category, bool>>)(c => c.Name == _categoryExists.Name) };
+        yield return new object[] { _productRepository, (Expression<Func<Product, bool>>)(p => p.Id == _productExists.Id) };
+        yield return new object[] { _productRepository, (Expression<Func<Product, bool>>)(p => p.Name == _productExists.Name) };
     }
 
     /// <summary>
