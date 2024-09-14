@@ -10,7 +10,7 @@ public class Progam
     {
         WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-        IConfiguration cfg = builder.Configuration;
+        IConfiguration cfg = builder    .Configuration;
 
         cfg.LoadEnv();
 
