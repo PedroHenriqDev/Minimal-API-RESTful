@@ -20,6 +20,16 @@ public static class AuthenticationEndpoints
     public static void MapAuthEndpoints(this IEndpointRouteBuilder endpoints)
     {
         #region Post
+
+        /// <summary>
+        /// Registers a new user in the system.
+        /// </summary>
+        /// <param name="request">The <see cref="RegisterUserCommandRequest"/> object containing the user's registration data.</param>
+        /// <param name="mediator">The <see cref="IMediator"/> service used to send the registration request to its handler.</param>
+        /// <returns>
+        /// Returns a <see cref="RegisterUserCommandResponse"/> containing the details of the newly registered user, 
+        /// or an appropriate error response in case of a bad request.
+        /// </returns>
         endpoints.MapPost("auth/register", async ([FromBody] RegisterUserCommandRequest request,
                                                   [FromServices] IMediator mediator) =>
         {
@@ -29,8 +39,27 @@ public static class AuthenticationEndpoints
         })
         .Produces<RegisterUserCommandResponse>(StatusCodes.Status201Created)
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
-        .WithTags(authEndpoint);
+        .WithTags(authEndpoint)
+        .WithMetadata(new EndpointNameMetadata("Register a new user"));
 
+        /// <summary>
+        /// Authenticates a user and generates a JWT token if the login is successful.
+        /// </summary>
+        /// <param name="request">The <see cref="LoginQueryRequest"/>
+        /// object containing the user's login credentials.</param>
+        /// <param name="mediator">The <see cref="IMediator"/>
+        /// service used to send the login request to the appropriate handler.</param>
+        /// <param name="tokenService">The <see cref="ITokenService"/>
+        /// service responsible for generating the JWT token.</param>
+        /// <param name="claimService">The <see cref="IClaimService"/>
+        /// service used to create authentication claims, including user roles.</param>
+        /// <param name="configuration">The <see cref="IConfiguration"/>
+        /// service used to access configuration settings, such as the JWT secret key.</param>
+        /// <returns>
+        /// Returns a <see cref="LoginQueryResponse"/> 
+        /// containing the authentication details, including the JWT token,
+        /// or a 401 Unauthorized response if the login credentials are invalid.
+        /// </returns>     
         endpoints.MapPost("auth/login", async ([FromBody] LoginQueryRequest request,
                                                [FromServices] IMediator mediator,
                                                [FromServices] ITokenService tokenService,
@@ -71,7 +100,6 @@ public static class AuthenticationEndpoints
         .Produces<UpdateUserRoleCommandRequest>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
         .RequireAuthorization()
-        .WithTags(authEndpoint);
 
         endpoints.MapPut("auth/update-user", async ([FromBody] UpdateUserCommandRequest request,
                                                     [FromServices] IMediator mediator,
