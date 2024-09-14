@@ -21,8 +21,14 @@ public static class AuthenticationEndpoints
     public static void MapAuthEndpoints(this IEndpointRouteBuilder endpoints)
     {
         #region Post
+<<<<<<< HEAD
         /// <summary>
         /// Registers a new user.
+=======
+
+        /// <summary>
+        /// Registers a new user in the system.
+>>>>>>> d8677b55647a7f5920ccf42d19e36ce8bf76832b
         /// </summary>
         /// <param name="request">The <see cref="RegisterUserCommandRequest"/> object containing the user's registration data.</param>
         /// <param name="mediator">The <see cref="IMediator"/> service used to send the registration request to its handler.</param>
@@ -40,7 +46,11 @@ public static class AuthenticationEndpoints
         .Produces<RegisterUserCommandResponse>(StatusCodes.Status201Created)
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
         .WithTags(authEndpoint)
+<<<<<<< HEAD
         .WithRegisterDoc();
+=======
+        .WithMetadata(new EndpointNameMetadata("Register a new user"));
+>>>>>>> d8677b55647a7f5920ccf42d19e36ce8bf76832b
 
         /// <summary>
         /// Authenticates a user and generates a JWT token if the login is successful.
@@ -101,7 +111,6 @@ public static class AuthenticationEndpoints
         .Produces<UpdateUserRoleCommandRequest>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
         .RequireAuthorization()
-        .WithTags(authEndpoint);
 
         endpoints.MapPut("auth/update-user", async ([FromBody] UpdateUserCommandRequest request,
                                                     [FromServices] IMediator mediator,
