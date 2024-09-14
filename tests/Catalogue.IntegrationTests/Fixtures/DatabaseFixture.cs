@@ -1,7 +1,6 @@
 ﻿using AutoBogus;
 using Catalogue.Domain.Entities;
 using Catalogue.Infrastructure.Context;
-using MediatR.NotificationPublishers;
 using Microsoft.EntityFrameworkCore;
 
 namespace Catalogue.IntegrationTests.Fixtures;

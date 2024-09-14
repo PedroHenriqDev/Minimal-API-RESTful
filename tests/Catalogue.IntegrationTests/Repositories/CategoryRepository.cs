@@ -17,7 +17,7 @@ public class CategoryRepositoryTests : IClassFixture<DatabaseFixture>
     }
 
     /// <summary>
-    /// Verifies that the method 'GetCategoryByIdWithProducts' correctly retrieves a category
+    /// Verifies that the method 'GetCategoryByIdWithProductsAsync' correctly retrieves a category
     /// along with its associated products when a valid category ID is provided.
     /// </summary>
     [Fact]

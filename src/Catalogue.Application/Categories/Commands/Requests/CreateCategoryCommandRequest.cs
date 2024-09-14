@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace Catalogue.Application.Categories.Commands.Requests;
 
-public sealed class CreateCategoryCommandRequest : CategoryBase, IRequest<CreateCategoryCommandResponse>
+public class CreateCategoryCommandRequest : CategoryBase, IRequest<CreateCategoryCommandResponse>
 {
     [JsonIgnore]
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

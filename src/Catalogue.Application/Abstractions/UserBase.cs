@@ -2,7 +2,7 @@
 
 namespace Catalogue.Application.Abstractions;
 
-public class UserBase
+public abstract class UserBase
 {
     public string? Name { get; set; }
     public string? Email { get; set; }

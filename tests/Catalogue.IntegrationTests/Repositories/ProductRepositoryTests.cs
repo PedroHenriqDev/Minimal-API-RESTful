@@ -2,7 +2,6 @@ using Catalogue.Domain.Entities;
 using Catalogue.Domain.Interfaces;
 using Catalogue.Infrastructure.Repositories;
 using Catalogue.IntegrationTests.Fixtures;
-using Microsoft.EntityFrameworkCore;
 
 namespace Catalogue.IntegrationTests.Repositories;
 
@@ -18,7 +17,7 @@ public class ProductRepositoryTests : IClassFixture<DatabaseFixture>
     }
 
     /// <summary>
-    /// Verifies that the 'GetByIdWithCategories' method retrieves the correct 'Product' 
+    /// Verifies that the 'GetByIdWithCategoriesAsync' method retrieves the correct 'Product' 
     /// along with its associated 'Category'.
     /// </summary>
     [Fact]

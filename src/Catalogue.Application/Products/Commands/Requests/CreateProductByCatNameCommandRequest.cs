@@ -11,7 +11,7 @@ public sealed class CreateProductByCatNameCommandRequest : ProductBase, IRequest
 
     [JsonIgnore]
     public Guid CategoryId { get; set; }
-
+    
     [JsonIgnore]
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
