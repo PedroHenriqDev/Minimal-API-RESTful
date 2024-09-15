@@ -26,14 +26,12 @@ public class Progam
                         .AddVersioning();
 
         WebApplication app = builder.Build();
-        RouteGroupBuilder appVersioned = app.UseApiVersioned().WithTags();
+        RouteGroupBuilder appVersioned = app.UseApiVersioned();
 
         #region Map Endpoints
 
         appVersioned.MapCategoriesEndpoints();
-
         appVersioned.MapProductsEndpoints();
-
         appVersioned.MapAuthEndpoints();
 
         #endregion

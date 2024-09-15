@@ -7,22 +7,23 @@ using Catalogue.Application.Users.Commands.Requests;
 using Catalogue.Application.Users.Commands.Responses;
 using Catalogue.Application.Users.Queries.Requests;
 using Catalogue.Application.Users.Queries.Responses;
+using Catalogue.IntegrationTests.Fixtures;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Catalogue.IntegrationTests.Endpoints;
 
-public class AuthEndpointsTests : IClassFixture<WebApplicationFactory<Progam>>, IAsyncLifetime
+public class AuthEndpointsTests : IClassFixture<CustomWebAppFixture>, IAsyncLifetime
 {
     private readonly HttpClient _httpClient;
     private const string url = "https://localhost:7140/api/v1/auth/";
     private readonly JsonSerializerOptions _options;
     private RegisterUserCommandRequest userRegistered;
 
-    public AuthEndpointsTests(WebApplicationFactory<Progam> factory)
+    public AuthEndpointsTests(CustomWebAppFixture app)
     {
-        _httpClient = factory.CreateClient();
+        _httpClient = app.CreateClient();
         _options = new JsonSerializerOptions{ PropertyNameCaseInsensitive = true };
     }
 
@@ -33,6 +34,11 @@ public class AuthEndpointsTests : IClassFixture<WebApplicationFactory<Progam>>, 
     public async Task RegisterUser_WhenGivenValidUser_ReturnStatusCodes201Created()
     {
         //Arrange
+        userRegistered = new AutoFaker<RegisterUserCommandRequest>()
+        .RuleFor(s => s.Password, f => f.Internet.Password()).Generate();
+        userRegistered.Password += "1";
+
+
         var content = new StringContent
         (
          JsonConvert.SerializeObject(userRegistered),
@@ -84,10 +90,6 @@ public class AuthEndpointsTests : IClassFixture<WebApplicationFactory<Progam>>, 
     /// </summary>
     public async Task InitializeAsync()
     {
-        userRegistered = new AutoFaker<RegisterUserCommandRequest>()
-            .RuleFor(s => s.Password, f => f.Internet.Password()).Generate();
-        userRegistered.Password += "1";
-
         await RegisterUser_WhenGivenValidUser_ReturnStatusCodes201Created();
     }
 

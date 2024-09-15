@@ -100,7 +100,7 @@ public static class AuthenticationEndpoints
         .AddEndpointFilter<InjectIdFilter>()
         .Produces<UpdateUserRoleCommandRequest>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-        .RequireAuthorization()
+        .RequireAuthorization();
 
         endpoints.MapPut("auth/update-user", async ([FromBody] UpdateUserCommandRequest request,
                                                     [FromServices] IMediator mediator,
