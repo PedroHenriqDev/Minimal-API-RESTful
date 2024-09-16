@@ -1,4 +1,4 @@
-﻿using Catalogue.Domain.Entities;
+﻿using Catalogue.Domain.Abstractions;
 using System.Linq.Expressions;
 
 namespace Catalogue.Domain.Interfaces;

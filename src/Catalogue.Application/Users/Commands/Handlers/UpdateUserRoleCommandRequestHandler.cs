@@ -21,7 +21,6 @@ public sealed class UpdateUserRoleCommandRequestHandler :
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
-
     }
 
     public async Task<UpdateUserRoleCommandResponse> Handle(UpdateUserRoleCommandRequest request, 

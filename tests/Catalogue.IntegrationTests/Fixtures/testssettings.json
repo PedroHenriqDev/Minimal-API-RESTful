@@ -1,5 +1,0 @@
-{
-    "ConnectionStrings": {
-        "TestConnection": "Server=localhost;Database=catalogue_tests_db;Password=123;Username=postgres"
-    }
-}

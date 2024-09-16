@@ -1,9 +1,10 @@
-﻿using AutoBogus;
-using Catalogue.Domain.Entities;
+﻿using Catalogue.Domain.Entities;
+using Catalogue.Domain.Abstractions;
 using Catalogue.Domain.Interfaces;
 using Catalogue.Infrastructure.Repositories;
-using Catalogue.IntegrationTests.Fixtures;
 using System.Linq.Expressions;
+using Catalogue.IntegrationTests.Fixtures;
+using AutoBogus;
 
 namespace Catalogue.IntegrationTests.Repositories;
 
@@ -19,7 +20,7 @@ public class RepositoryTests
 
     static RepositoryTests() 
     {
-        _dbFixture = new DatabaseFixture();
+        _dbFixture = new();
         _userRepository = new UserRepository(_dbFixture.DbContext);
         _categoryRepository = new CategoryRepository(_dbFixture.DbContext);
         _productRepository = new ProductRepository(_dbFixture.DbContext);
@@ -105,6 +106,31 @@ public class RepositoryTests
         Assert.Contains(entity, entities);
     }
 
+ /// <summary>
+    /// Verifies that the 'Update' method successfully updates an entity in the database.
+    /// </summary>
+    /// <typeparam name="T">The type of entity being operetaed on by the repository</typeparam>
+    /// <param name="repository">The repository to user to perform the update operation for the entity</param>
+    /// <param name="entityToUpdate">The entity with updated properties that should be saved to the database</param>
+    [Theory]
+    [MemberData(nameof(ProvidesRepositoriesAndEntities))]
+    public void UpdateAndDeleteEntity_WhenEntityExists_ShouldSaveSuccessfully<T>(IRepository<T> repository,
+                                                                   T entity)
+        where T : Entity
+    {
+        //Arrange - Update
+        T? entityUpdated = repository.GetAll().SingleOrDefault(x => x.Id == entity.Id);
+        entity.Name = "Name Updated";
+
+        //Act - Update
+        repository.Update(entity);
+        _dbFixture.DbContext.SaveChanges();
+
+        //Assert - Update
+        Assert.Equal(entity.Name, entityUpdated.Name);
+    }
+
+
     /// <summary>
     /// Verifies that the 'Delete' method successfully removes a entity from the database.
     /// </summary>
@@ -117,7 +143,7 @@ public class RepositoryTests
     {
         //Arrange
         IQueryable<T> entities = repository.GetAll();
-        T entity = repository.GetAll().First();
+        T entity = repository.GetAll().Skip(1).First();
 
         //Act
         repository.Delete(entity);
@@ -126,31 +152,7 @@ public class RepositoryTests
         //Assert
         Assert.DoesNotContain(entity, entities);
     }
-
-    /// <summary>
-    /// Verifies that the 'Update' method successfully updates an entity in the database.
-    /// </summary>
-    /// <typeparam name="T">The type of entity being operetaed on by the repository</typeparam>
-    /// <param name="repository">The repository to user to perform the update operation for the entity</param>
-    /// <param name="entityToUpdate">The entity with updated properties that should be saved to the database</param>
-    [Theory]
-    [MemberData(nameof(ProvidesRepositoriesAndEntities))]
-    public void UpdateEntity_WhenUpdated_ShouldSaveSuccessfully<T>(IRepository<T> repository,
-                                                                   T entityToUpdate)
-        where T : Entity
-    {
-        //Arrange
-        T? entityUpdated = repository.GetAll().SingleOrDefault(x => x.Id == entityToUpdate.Id);
-        entityToUpdate.Name = "Name Updated";
-
-        //Act
-        repository.Update(entityToUpdate);
-        _dbFixture.DbContext.SaveChanges();
-
-        //Assert
-        Assert.Equal(entityToUpdate.Name, entityUpdated.Name);
-    }
-
+   
     /// <summary>
     /// Provides test data for repository instances and their associated updated entities.
     /// Each entry consists of a repository and an updated entity instance, allowing for 

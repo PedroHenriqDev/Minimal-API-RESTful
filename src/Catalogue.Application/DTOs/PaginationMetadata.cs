@@ -6,5 +6,5 @@ public class PaginationMetadata
     public int PageCount { get; set; }
     public bool HasPrevious {  get; set; }
     public bool HasNext { get; set; }
-    public int  TotalItems { get; set; }
+    public int TotalItems { get; set; }
 }

@@ -1,4 +1,4 @@
-﻿using Catalogue.Domain.Entities;
+﻿using Catalogue.Domain.Abstractions;
 using Catalogue.Domain.Interfaces;
 using Catalogue.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;

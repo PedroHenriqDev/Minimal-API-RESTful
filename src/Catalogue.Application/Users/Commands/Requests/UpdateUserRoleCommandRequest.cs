@@ -8,5 +8,5 @@ public sealed class UpdateUserRoleCommandRequest : IRequest<UpdateUserRoleComman
 {
     [JsonIgnore]
     public Guid Id { get; set; }
-    public string? RoleName {  get; set; }
+    public string RoleName {  get; set; } = string.Empty;
 }

@@ -32,7 +32,7 @@ public class InjectNameFilter : IEndpointFilter
             _logger.LogAndThrow(nameof(nameProperty), ApiErrorMessagesResource.REQUEST_NULL_FILTER_ERROR);
         }
 
-        nameProperty!.SetValue(request, context.HttpContext.User.Identity.Name);
+        nameProperty!.SetValue(request, context.HttpContext.User.Identity?.Name);
 
         return next(context);
     }

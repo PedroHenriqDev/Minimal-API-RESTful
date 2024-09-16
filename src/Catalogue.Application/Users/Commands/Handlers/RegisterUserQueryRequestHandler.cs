@@ -8,7 +8,6 @@ using FluentValidation;
 using MediatR;
 using Catalogue.Application.Resources;
 using Catalogue.Application.Exceptions;
-using Catalogue.Application.Utils;
 
 namespace Catalogue.Application.Users.Commands.Handlers;
 

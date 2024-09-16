@@ -1,14 +1,14 @@
-﻿using Catalogue.Domain.Validation;
+﻿using Catalogue.Domain.Abstractions;
+using Catalogue.Domain.Validation;
 using System.Text.Json.Serialization;
 
 namespace Catalogue.Domain.Entities;
 
 public sealed class Product : Entity
 {
-    public string? Description { get; set; }
-    public string? ImageUrl { get; set; }
-    public decimal? Price { get; set; }
-
+    public string Description { get; set; } = string.Empty;
+    public string? ImageUrl { get; set; } 
+    public decimal Price { get; set; }
     public Guid CategoryId { get; set; }
 
     [JsonIgnore]

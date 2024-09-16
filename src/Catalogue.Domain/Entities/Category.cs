@@ -1,10 +1,11 @@
-﻿using Catalogue.Domain.Validation;
+﻿using Catalogue.Domain.Abstractions;
+using Catalogue.Domain.Validation;
 
 namespace Catalogue.Domain.Entities;
 
 public sealed class Category : Entity
 {
-    public string? Description { get; set; }
+    public string Description { get; set; } = string.Empty;
 
     public ICollection<Product>? Products { get; set; }
 

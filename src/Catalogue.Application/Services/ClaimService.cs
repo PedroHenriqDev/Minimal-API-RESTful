@@ -33,7 +33,7 @@ public class ClaimService : IClaimService
 
         return new List<Claim>
         {
-            new Claim(ClaimTypes.Name, user.Name!),
+            new Claim(ClaimTypes.Name, user.Name),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
     }

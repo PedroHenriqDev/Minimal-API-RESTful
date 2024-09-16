@@ -4,5 +4,5 @@ namespace Catalogue.Application.Users.Commands.Responses;
 
 public sealed class UpdateUserRoleCommandResponse
 {
-    public UserResponse? User { get; set; }
+    public UserResponse User { get; set; } = new();
 }

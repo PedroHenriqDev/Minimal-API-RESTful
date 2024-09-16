@@ -25,7 +25,6 @@ public class DatabaseFixture : IDisposable
 
         DbContext.Users.AddRange(userAutoFaker.Generate(10));
         DbContext.Categories.AddRange(categories);
-        DbContext.SaveChanges();
 
         var productAutoFaker = new AutoFaker<Product>()
             .RuleFor(p => p.CategoryId, f => f.PickRandom(categories).Id);
