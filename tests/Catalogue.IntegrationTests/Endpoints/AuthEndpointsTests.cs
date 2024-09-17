@@ -2,29 +2,31 @@ using System.Net;
 using System.Text;
 using System.Text.Json;
 using AutoBogus;
-using Catalogue.API;
 using Catalogue.Application.Users.Commands.Requests;
 using Catalogue.Application.Users.Commands.Responses;
 using Catalogue.Application.Users.Queries.Requests;
 using Catalogue.Application.Users.Queries.Responses;
 using Catalogue.IntegrationTests.Fixtures;
-using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Catalogue.IntegrationTests.Endpoints;
 
-public class AuthEndpointsTests : IClassFixture<CustomWebAppFixture>, IAsyncLifetime
+[Collection(nameof(CustomWebAppFixture))]
+public class AuthEndpointsTests : IAsyncLifetime
 {
+    private readonly CustomWebAppFixture _fixture;
     private readonly HttpClient _httpClient;
-    private const string url = "https://localhost:7140/api/v1/auth/";
     private readonly JsonSerializerOptions _options;
+    private const string url = "https://localhost:7140/api/v1/auth/";
     private RegisterUserCommandRequest userRegistered;
-
-    public AuthEndpointsTests(CustomWebAppFixture app)
+    
+    public AuthEndpointsTests(CustomWebAppFixture app, CustomWebAppFixture fixture)
     {
+        _fixture = fixture;
         _httpClient = app.CreateClient();
         _options = new JsonSerializerOptions{ PropertyNameCaseInsensitive = true };
+
     }
 
     /// <summary>
@@ -38,11 +40,10 @@ public class AuthEndpointsTests : IClassFixture<CustomWebAppFixture>, IAsyncLife
         .RuleFor(s => s.Password, f => f.Internet.Password()).Generate();
         userRegistered.Password += "1";
 
-
         var content = new StringContent
         (
          JsonConvert.SerializeObject(userRegistered),
-         System.Text.Encoding.UTF8, "application/json"
+         Encoding.UTF8, "application/json"
         );
 
         //Act
@@ -72,17 +73,36 @@ public class AuthEndpointsTests : IClassFixture<CustomWebAppFixture>, IAsyncLife
         var content = new StringContent(JsonSerializer.Serialize(login), Encoding.UTF8, "application/json");
 
         //Act
-        HttpResponseMessage response = await _httpClient.PostAsync(url + "login", content);
+        HttpResponseMessage httpResponse = await _httpClient.PostAsync(url + "login", content);
 
-        Stream responseContentAsStream = await response.Content.ReadAsStreamAsync();
-        var loginResponse = await JsonSerializer.DeserializeAsync<LoginQueryResponse>(responseContentAsStream, _options);
+        Stream responseContentStream = await httpResponse.Content.ReadAsStreamAsync();
+        var loginResponse = await JsonSerializer.DeserializeAsync<LoginQueryResponse>(responseContentStream, _options);
         
         //Assert
-        Assert.NotNull(response);
+        Assert.NotNull(httpResponse);
         Assert.NotNull(loginResponse);
         Assert.True(loginResponse.Success);
         Assert.NotNull(loginResponse.Token);
         Assert.Equal(loginResponse.User.Name, login.Name);
+    }
+
+    /// <summary>
+    /// Verifies that 'Login' returns a 401 Unauthorized status when a invalid login request is provided.
+    /// </summary>
+    [Fact]
+    public async Task Login_GivenLoginInvalid_ReturnStatusCodes401Unauthorized()
+    {
+        // Arrange
+        var login = new AutoFaker<LoginQueryRequest>().Generate();
+
+        var content = new StringContent(JsonSerializer.Serialize(login), Encoding.UTF8, "application/json");
+
+        // Act
+        HttpResponseMessage? httpResponse = await _httpClient.PostAsync(url + "login", content);
+        
+        // Assert
+        Assert.NotNull(httpResponse);
+        Assert.Equal(HttpStatusCode.Unauthorized, httpResponse.StatusCode);
     }
 
     /// <summary>
@@ -96,5 +116,6 @@ public class AuthEndpointsTests : IClassFixture<CustomWebAppFixture>, IAsyncLife
     public Task DisposeAsync()
     {
         return Task.CompletedTask;
+        
     }
 }

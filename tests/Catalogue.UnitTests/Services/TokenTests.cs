@@ -1,4 +1,5 @@
-﻿using Catalogue.Application.Services;
+﻿using Bogus;
+using Catalogue.Application.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
@@ -14,28 +15,32 @@ public class TokenTests
     private readonly TokenService _tokenService;
     private readonly Mock<ILogger<TokenService>> _mockedLogger;
     private readonly JwtSecurityTokenHandler _tokenHandler;
+    private readonly string jti = Guid.NewGuid().ToString();
+    private readonly string name;
 
     private IConfiguration configuration;
-    private const string userName = "Test_User";
-    private readonly string jti = Guid.NewGuid().ToString();
 
+ 
     public TokenTests()
     {
         _mockedLogger = new Mock<ILogger<TokenService>>();
+
+        name = new Faker().Name.FirstName();
 
         _tokenService = new TokenService(_mockedLogger.Object);
 
         var inMemorySettings = new Dictionary<string, string>
         {
-            {"Jwt:Secret", "0cc175b9c0f1b6a831c399e269772661" },
-            { "Jwt:ExpireMinutes", "60" }
+            {"Jwt:Secret", "56da82d8b8309d2ae2b649032c90d145" },
+            {"Jwt:ExpireMinutes", "60" }
         };
+
+        _tokenHandler = new JwtSecurityTokenHandler();
+
 
         configuration = new ConfigurationBuilder()
             .AddInMemoryCollection(inMemorySettings)
             .Build();
-
-        _tokenHandler = new JwtSecurityTokenHandler();
     }
 
     /// <summary>
@@ -45,9 +50,10 @@ public class TokenTests
     public void GenerateToken_GivenAuthClaimsAndConfiguration_ReturnWriteTokenValid()
     {
         //Arrange
+
         var authClaims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, userName),
+            new Claim(ClaimTypes.Name, name),
             new Claim(JwtRegisteredClaimNames.Jti, jti)
         };
 
@@ -58,7 +64,7 @@ public class TokenTests
 
         //Assert
         Assert.NotNull(token);
-        Assert.Contains(jwtToken.Claims, claim => claim.Type == "unique_name" && claim.Value == userName);
+        Assert.Contains(jwtToken.Claims, claim => claim.Type == "unique_name" && claim.Value == name);
         Assert.Contains(jwtToken.Claims, claim => claim.Type == JwtRegisteredClaimNames.Jti);
         Assert.True(jwtToken.ValidFrom > DateTime.Now);
     }
@@ -80,12 +86,12 @@ public class TokenTests
         };
 
         configuration = new ConfigurationBuilder()
-            .AddInMemoryCollection(inMemorySettings)
+            .AddInMemoryCollection(inMemorySettings!)
             .Build();
 
         var authClaims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, userName),
+            new Claim(ClaimTypes.Name, name),
             new Claim(JwtRegisteredClaimNames.Jti, jti)
         };
 
@@ -104,7 +110,7 @@ public class TokenTests
 
         var authClaims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, userName),
+            new Claim(ClaimTypes.Name, name),
             new Claim(JwtRegisteredClaimNames.Jti, jti)
         };            
 

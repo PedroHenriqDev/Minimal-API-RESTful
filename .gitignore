@@ -399,3 +399,4 @@ FodyWeavers.xsd
 .env
 src/Catalogue.API/appsettings.json
 .vs
+tests\Catalogue.IntegrationTests\Fixtures\testssettings.json
