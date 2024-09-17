@@ -5,7 +5,6 @@ namespace Catalogue.Application.FluentValidation;
 
 public static class ValidatorExtension 
 {
-
     public static void EnsureValid<T>(this IValidator<T> validator, T request)
     {
         var result = validator.Validate(request);

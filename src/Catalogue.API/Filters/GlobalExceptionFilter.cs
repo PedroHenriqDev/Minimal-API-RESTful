@@ -15,7 +15,6 @@ public class GlobalExceptionFilter : IExceptionFilter
     {
         _logger = logger;
         response = new ErrorResponse();
-
     }
 
     public void OnException(ExceptionContext context)
@@ -28,7 +27,6 @@ public class GlobalExceptionFilter : IExceptionFilter
 
             response = new ErrorResponse(exception.GetMessages());
             context.HttpContext.Response.WriteAsJsonAsync(response);
-            return;
         }
         else 
         {
