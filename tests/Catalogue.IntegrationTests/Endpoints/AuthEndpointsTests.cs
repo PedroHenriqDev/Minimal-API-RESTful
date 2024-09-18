@@ -1,14 +1,19 @@
 using System.Net;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using AutoBogus;
 using Catalogue.Application.DTOs.Responses;
-using Catalogue.Application.Exceptions;
+using Catalogue.Application.Users.Commands.Handlers;
 using Catalogue.Application.Users.Commands.Requests;
 using Catalogue.Application.Users.Commands.Responses;
 using Catalogue.Application.Users.Queries.Requests;
 using Catalogue.Application.Users.Queries.Responses;
+using Catalogue.Domain.Entities;
+using Catalogue.Domain.Enums;
 using Catalogue.IntegrationTests.Fixtures;
+using Microsoft.AspNetCore.Http.Features.Authentication;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
@@ -29,7 +34,6 @@ public class AuthEndpointsTests : IAsyncLifetime
         _fixture = fixture;
         _httpClient = app.CreateClient();
         _options = new JsonSerializerOptions{ PropertyNameCaseInsensitive = true };
-
     }
 
     /// <summary>
@@ -40,7 +44,7 @@ public class AuthEndpointsTests : IAsyncLifetime
     {
         //Arrange
         userRegistered = new AutoFaker<RegisterUserCommandRequest>()
-        .RuleFor(u => u.Password, f => f.Internet.Password()).Generate();
+        .RuleFor(r => r.Password, f => f.Internet.Password()).Generate();
         userRegistered.Password += "1";
 
         var content = new StringContent
@@ -73,7 +77,7 @@ public class AuthEndpointsTests : IAsyncLifetime
     {
         //Arrange
         userRegistered = new AutoFaker<RegisterUserCommandRequest>()
-            .Ignore(u => u.Name);
+            .Ignore(r => r.Name);
 
         var content = new StringContent
         (
@@ -125,6 +129,11 @@ public class AuthEndpointsTests : IAsyncLifetime
 
     /// <summary>
     /// Verifies that 'Login' returns a 401 Unauthorized status when a invalid login request is provided.
+    /// 
+    /// <remarks>
+    /// Note: This test requires that there is least one user in the database with the role 'Admin'.
+    /// If no such user exists, the test will fail.
+    /// </remarks>
     /// </summary>
     [Fact]
     public async Task Login_GivenLoginInvalid_ReturnStatusCodes401Unauthorized()
@@ -140,6 +149,63 @@ public class AuthEndpointsTests : IAsyncLifetime
         // Assert
         Assert.NotNull(httpResponse);
         Assert.Equal(HttpStatusCode.Unauthorized, httpResponse.StatusCode);
+    }
+
+
+    /// <summary>
+    /// Verifies that 'Update Role' returns a 200 OK status when a valid role and user request is provided.
+    /// </summary>
+    [Fact]
+    public async Task UpdateRole_GivenRoleAndUserValid_ReturnStatusCodes200Ok()
+    {
+        // Arrange
+        var login = new LoginQueryRequest
+        {
+            Name = _fixture.Admin.Name,
+            Password = _fixture.Admin.Password
+        };
+
+        var contentLogin = new StringContent(JsonSerializer.Serialize(login), Encoding.UTF8, mediaType);
+        HttpResponseMessage? httpResponseLogin = await _httpClient.PostAsync(url + "login", contentLogin);
+        LoginQueryResponse? responseLogin = await JsonSerializer.DeserializeAsync<LoginQueryResponse>
+        (
+            await httpResponseLogin.Content.ReadAsStreamAsync(),
+             _options
+        );
+
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", responseLogin.Token); 
+
+        User userToUpdate = _fixture.DbContext.Users.First(u => u.Name == userRegistered.Name);
+
+        var requestRole = new UpdateUserRoleCommandRequest
+        {
+            RoleName = "Admin",
+        };
+
+        var contentRole = new StringContent
+        (
+            JsonSerializer.Serialize(requestRole),
+            Encoding.UTF8,
+            mediaType
+        );
+
+        // Act
+        HttpResponseMessage? httpResponseRole = await _httpClient.PutAsync(url + $"role/{userToUpdate.Id}", contentRole);
+
+        UpdateUserRoleCommandResponse? responseRole = await JsonSerializer.DeserializeAsync<UpdateUserRoleCommandResponse>
+        (
+            await httpResponseRole.Content.ReadAsStreamAsync(),
+             _options
+        );
+        User userUpdated = _fixture.DbContext.Users.First(u => u.Name == userRegistered.Name);
+
+        // Arrange
+        Assert.NotNull(httpResponseRole);
+        Assert.Equal(HttpStatusCode.OK, httpResponseRole.StatusCode);
+        Assert.NotNull(responseRole);
+        Assert.NotNull(responseRole.User);
+        Assert.Equal( Role.Admin, responseRole?.User.Role);
+        Assert.Equal("Admin", responseRole.User.RoleName);
     }
 
     /// <summary>

@@ -23,4 +23,14 @@ public static class EndpointConventionBuilderExtension
             Tags = new List<OpenApiTag>{new OpenApiTag() {Name = "Authentication"}}
         });      
     }
+
+    public static void WithPutRoleDoc(this IEndpointConventionBuilder builder)
+    {
+        builder.WithOpenApi(operation => new(operation)
+        {
+            Summary = "Update user role",
+            Description = "Updates the role of a user specified by their ID. This endpoint is restricted to users with the 'AdminOnly' policy.",
+            Tags = new List<OpenApiTag>{new OpenApiTag() {Name = "Authentication"}}
+        });    
+    }
 }
