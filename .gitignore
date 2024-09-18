@@ -395,8 +395,9 @@ FodyWeavers.xsd
 *.msp
 
 # JetBrains Rider
+tests/Catalogue.IntegrationTests/Fixtures/testssettings.json
 *.sln.iml
 .env
 src/Catalogue.API/appsettings.json
 .vs
-tests\Catalogue.IntegrationTests\Fixtures\testssettings.json
+
