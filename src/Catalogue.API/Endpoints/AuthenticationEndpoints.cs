@@ -115,6 +115,19 @@ public static class AuthenticationEndpoints
         .RequireAuthorization()
         .WithPutRoleDoc();
 
+        /// <summary>
+        /// Updates user's informations.
+        /// <summary>
+        /// <param name="request">Object containing the user's update data.</param>
+        /// <param name="mediator">The MediatR service to process the user update command.</param>
+        /// <param name="tokenService">The service responsible for generating JWT tokens.</param>
+        /// <param name="claimService">The service responsible for creating authentication claims.</param>
+        /// <param name="configuration">Application configuration used to handle tokens.</param>
+        /// <returns>Returns the updated user's information and a new JWT token upon success.</returns>
+        /// <remarks>
+        /// A custom endpoint filter, <see cref="InjectNameFilter"/>, is used to inject the current 
+        /// authenticated user's name into the request object before it's processed.
+        /// </remarks>
         endpoints.MapPut("auth/update-user", async ([FromBody] UpdateUserCommandRequest request,
                                                     [FromServices] IMediator mediator,
                                                     [FromServices] ITokenService tokenService,
@@ -134,7 +147,8 @@ public static class AuthenticationEndpoints
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
         .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError)
         .RequireAuthorization()
-        .WithTags(authEndpoint);
+        .WithTags(authEndpoint)
+        .WithPutUserDoc();
      #endregion   
     }
 }

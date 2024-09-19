@@ -33,4 +33,14 @@ public static class EndpointConventionBuilderExtension
             Tags = new List<OpenApiTag>{new OpenApiTag() {Name = "Authentication"}}
         });    
     }
+
+    public static void WithPutUserDoc(this IEndpointConventionBuilder builder)
+    {
+        builder.WithOpenApi(operation => new(operation)
+        {
+            Summary = "Updates user informations.",
+            Description = "Updates the user. This endpoint use a custom endpoint filter, is used to inject the current authenticated user's name into the request object before it's processed.",
+            Tags = new List<OpenApiTag>{new OpenApiTag() {Name = "Authentication"}}
+        });    
+    }
 }

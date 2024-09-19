@@ -19,7 +19,8 @@ namespace Catalogue.IntegrationTests.Fixtures;
 public class CustomWebAppFixture : WebApplicationFactory<Progam>
 {
     public AppDbContext? DbContext {get; private set;} 
-    public User? Admin {get; set;}
+    public User? Admin {get; set;} = null!;
+    public User? UserRandom {get; set;} = null!;
     public ITokenService _TokenService = null!;
     public IClaimService _ClaimService = null!;
     public IConfiguration configuration = null!;
@@ -49,11 +50,44 @@ public class CustomWebAppFixture : WebApplicationFactory<Progam>
             _TokenService = services.BuildServiceProvider().GetRequiredService<ITokenService>();
             _ClaimService = services.BuildServiceProvider().GetRequiredService<IClaimService>();
 
-            Admin = new AutoFaker<User>().RuleFor(u => u.Role, f => Role.Admin).Generate();
-            Admin.Password = Crypto.Encrypt(Admin.Password);
-            DbContext.Users.Add(Admin);
-        
+            AddAdmin(DbContext);
+            SeedDb(DbContext);
         });
+    }
+
+    public void AddAdmin(AppDbContext context)
+    {
+        Admin = new AutoFaker<User>()
+            .RuleFor(u => u.Role, f => Role.Admin)
+            .RuleFor(u => u.Email, f => f.Internet.Email())
+            .RuleFor(u => u.CreatedAt, f => f.Date.Past())
+            .Generate();
+
+        Admin.Password = Crypto.Encrypt(Admin.Password);
+
+        DbContext.Users.Add(Admin);
+        context.SaveChanges();
+    }
+
+    public void SeedDb(AppDbContext context)
+    {
+        List<User> users = new AutoFaker<User>()
+            .RuleFor(u => u.BirthDate, f => f.Date.Past(80))
+            .RuleFor(u => u.Email, f => f.Internet.Email())
+            .RuleFor(u => u.CreatedAt, f => f.Date.Past())
+            .Generate(10);
+
+        foreach(var user in users)
+        {
+            if(UserRandom == null && user.Role == Role.User)
+            {
+                UserRandom = user;
+            }
+            user.Password = Crypto.Encrypt(user.Password);
+        }
+
+        context.Users.AddRange(users);
+        context.SaveChanges();
     }
 
     public string GenerateToken(string name, Role role)

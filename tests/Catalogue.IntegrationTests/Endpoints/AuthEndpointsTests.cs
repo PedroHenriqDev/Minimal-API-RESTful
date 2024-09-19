@@ -224,13 +224,17 @@ public class AuthEndpointsTests : IAsyncLifetime
         Assert.Equal(HttpStatusCode.Forbidden, httpResponse.StatusCode);
     }
 
+    /// <summary>
+    /// Verifies that 'Update User' returns 200 OK Status when a valid user request is provided.
+    /// </summary>
+    /// <returns></returns>
     [Fact]
     public async Task UpdateUser_GivenUserValid_ReturnsStatusCodes200OK()
     {
         string token = _fixture.GenerateToken
         (
-            _fixture.DbContext.Users.First(u => u.Name != userRegistered.Name && u.Name != _fixture.Admin.Name).Name,
-             Role.User
+            _fixture.UserRandom.Name,
+            _fixture.UserRandom.Role
         );
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
