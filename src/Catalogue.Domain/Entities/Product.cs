@@ -11,7 +11,6 @@ public sealed class Product : Entity
     public decimal Price { get; set; }
     public Guid CategoryId { get; set; }
 
-    [JsonIgnore]
     public Category? Category { get; set; }
 
     public Product()

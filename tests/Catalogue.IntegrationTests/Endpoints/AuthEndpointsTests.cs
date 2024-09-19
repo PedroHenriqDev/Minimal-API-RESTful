@@ -11,6 +11,7 @@ using Catalogue.Application.Users.Queries.Responses;
 using Catalogue.Domain.Entities;
 using Catalogue.Domain.Enums;
 using Catalogue.IntegrationTests.Fixtures;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
@@ -25,6 +26,7 @@ public class AuthEndpointsTests : IAsyncLifetime
     private const string url = "https://localhost:7140/api/v1/auth/";
     private const string mediaType = "application/json";
     private RegisterUserCommandRequest userRegistered;
+    private string tokenOfUserRegistered;
     
     public AuthEndpointsTests(CustomWebAppFixture app, CustomWebAppFixture fixture)
     {
@@ -115,7 +117,7 @@ public class AuthEndpointsTests : IAsyncLifetime
 
         Stream contentStream = await httpResponse.Content.ReadAsStreamAsync();
         LoginQueryResponse? loginResponse = await JsonSerializer.DeserializeAsync<LoginQueryResponse>(contentStream, _options);
-        
+
         //Assert
         Assert.NotNull(httpResponse);
         Assert.NotNull(loginResponse);
@@ -144,7 +146,6 @@ public class AuthEndpointsTests : IAsyncLifetime
         Assert.Equal(HttpStatusCode.Unauthorized, httpResponse.StatusCode);
     }
 
-
     /// <summary>
     /// Verifies that 'Update Role' returns a 200 OK status when a valid role and user request is provided.
     /// <remarks>
@@ -156,53 +157,40 @@ public class AuthEndpointsTests : IAsyncLifetime
     public async Task UpdateRole_GivenRoleAndUserValid_ReturnStatusCodes200Ok()
     {
         // Arrange
-        var login = new LoginQueryRequest
-        {
-            Name = _fixture.Admin.Name,
-            Password = _fixture.Admin.Password
-        };
-
-        var contentLogin = new StringContent(JsonSerializer.Serialize(login), Encoding.UTF8, mediaType);
-        HttpResponseMessage? httpResponseLogin = await _httpClient.PostAsync(url + "login", contentLogin);
-        LoginQueryResponse? responseLogin = await JsonSerializer.DeserializeAsync<LoginQueryResponse>
-        (
-            await httpResponseLogin.Content.ReadAsStreamAsync(),
-             _options
-        );
-
-        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", responseLogin.Token); 
+        string token = _fixture.GenerateToken(_fixture.Admin.Name, _fixture.Admin.Role); 
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
         User userToUpdate = _fixture.DbContext.Users.First(u => u.Name == userRegistered.Name);
 
-        var requestRole = new UpdateUserRoleCommandRequest
+        var request = new UpdateUserRoleCommandRequest
         {
             RoleName = "Admin",
         };
 
-        var contentRole = new StringContent
+        var content = new StringContent
         (
-            JsonSerializer.Serialize(requestRole),
+            JsonSerializer.Serialize(request),
             Encoding.UTF8,
             mediaType
         );
 
         // Act
-        HttpResponseMessage? httpResponseRole = await _httpClient.PutAsync(url + $"role/{userToUpdate.Id}", contentRole);
+        HttpResponseMessage? httpResponse = await _httpClient.PutAsync(url + $"role/{userToUpdate.Id}", content);
 
-        UpdateUserRoleCommandResponse? responseRole = await JsonSerializer.DeserializeAsync<UpdateUserRoleCommandResponse>
+        UpdateUserRoleCommandResponse? response = await JsonSerializer.DeserializeAsync<UpdateUserRoleCommandResponse>
         (
-            await httpResponseRole.Content.ReadAsStreamAsync(),
+            await httpResponse.Content.ReadAsStreamAsync(),
              _options
         );
         User userUpdated = _fixture.DbContext.Users.First(u => u.Name == userRegistered.Name);
 
         // Arrange
-        Assert.NotNull(httpResponseRole);
-        Assert.Equal(HttpStatusCode.OK, httpResponseRole.StatusCode);
-        Assert.NotNull(responseRole);
-        Assert.NotNull(responseRole.User);
-        Assert.Equal( Role.Admin, responseRole?.User.Role);
-        Assert.Equal("Admin", responseRole.User.RoleName);
+        Assert.NotNull(httpResponse);
+        Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
+        Assert.NotNull(response);
+        Assert.NotNull(response.User);
+        Assert.Equal( Role.Admin, response?.User.Role);
+        Assert.Equal("Admin", response.User.RoleName);
     }
 
     /// <summary>
@@ -211,42 +199,56 @@ public class AuthEndpointsTests : IAsyncLifetime
     [Fact]
     public async Task UpdateRole_GivenRoleValidAndUserInvalid_ReturnStatusCodes403Forbidden()
     {
-        // Arrange
-        var login = new LoginQueryRequest
-        {
-            Name = userRegistered.Name,
-            Password = userRegistered.Password
-        };
-
-        var contentLogin = new StringContent(JsonSerializer.Serialize(login), Encoding.UTF8, mediaType);
-        HttpResponseMessage? httpResponseLogin = await _httpClient.PostAsync(url + "login", contentLogin);
-        LoginQueryResponse? responseLogin = await JsonSerializer.DeserializeAsync<LoginQueryResponse>
-        (
-            await httpResponseLogin.Content.ReadAsStreamAsync(),
-             _options
-        );
-
-        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", responseLogin.Token); 
+        //Arrange
+        string token = _fixture.GenerateToken(userRegistered.Name, Role.User);
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token); 
 
         User userToUpdate = _fixture.DbContext.Users.First(u => u.Name == userRegistered.Name);
 
-        var requestRole = new UpdateUserRoleCommandRequest
+        var request = new UpdateUserRoleCommandRequest
         {
             RoleName = "Admin",
         };
 
-        var contentRole = new StringContent
+        var content = new StringContent
         (
-            JsonSerializer.Serialize(requestRole),
+            JsonSerializer.Serialize(request),
             Encoding.UTF8,
             mediaType
         );
 
         // Act
-        HttpResponseMessage? httpResponseRole = await _httpClient.PutAsync(url + $"role/{userToUpdate.Id}", contentRole);
+        HttpResponseMessage? httpResponse = await _httpClient.PutAsync(url + $"role/{userToUpdate.Id}", content);
 
         // Arrange
-        Assert.Equal(HttpStatusCode.Forbidden, httpResponseRole.StatusCode);
+        Assert.Equal(HttpStatusCode.Forbidden, httpResponse.StatusCode);
+    }
+
+    [Fact]
+    public async Task UpdateUser_GivenUserValid_ReturnsStatusCodes200OK()
+    {
+        string token = _fixture.GenerateToken
+        (
+            _fixture.DbContext.Users.First(u => u.Name != userRegistered.Name && u.Name != _fixture.Admin.Name).Name,
+             Role.User
+        );
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+        var request = new AutoFaker<UpdateUserCommandRequest>()
+            .Ignore(u => u.Name)
+            .RuleFor(u => u.Email, f => f.Internet.Email())
+            .RuleFor(u => u.BirthDate, f => f.Date.Past(60, new DateTime(2010, 1, 1)))
+            .Generate();
+
+        var content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, mediaType);
+
+        HttpResponseMessage httpResponse = await _httpClient.PutAsync(url + "update-user", content);
+        UpdateUserCommandResponse? response = await JsonSerializer.DeserializeAsync<UpdateUserCommandResponse>(await httpResponse.Content.ReadAsStreamAsync(), _options); 
+
+        Assert.NotNull(httpResponse);
+        Assert.NotNull(response);
+        Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
+        Assert.NotEqual(request.Name, response.User.Name);
     }
 
     /// <summary>
