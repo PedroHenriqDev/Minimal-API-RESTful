@@ -11,7 +11,6 @@ using Catalogue.Application.Users.Queries.Responses;
 using Catalogue.Domain.Entities;
 using Catalogue.Domain.Enums;
 using Catalogue.IntegrationTests.Fixtures;
-using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
@@ -23,15 +22,15 @@ public class AuthEndpointsTests : IAsyncLifetime
     private readonly CustomWebAppFixture _fixture;
     private readonly HttpClient _httpClient;
     private readonly JsonSerializerOptions _options;
-    private const string url = "https://localhost:7140/api/v1/auth/";
+   
     private const string mediaType = "application/json";
     private RegisterUserCommandRequest userRegistered;
-    private string tokenOfUserRegistered;
     
-    public AuthEndpointsTests(CustomWebAppFixture app, CustomWebAppFixture fixture)
+    public AuthEndpointsTests(CustomWebAppFixture fixture)
     {
         _fixture = fixture;
-        _httpClient = app.CreateClient();
+        _httpClient = fixture.CreateClient();
+        _httpClient.BaseAddress = new Uri("https://localhost:7140/api/v1/auth/");
         _options = new JsonSerializerOptions{ PropertyNameCaseInsensitive = true };
     }
 
@@ -54,7 +53,7 @@ public class AuthEndpointsTests : IAsyncLifetime
         );
 
         //Act
-        HttpResponseMessage response = await _httpClient.PostAsync(url + "register", content);
+        HttpResponseMessage response = await _httpClient.PostAsync("register", content);
         Stream contentStream = await response.Content.ReadAsStreamAsync();
         var userCreated = await JsonSerializer.DeserializeAsync<RegisterUserCommandResponse>
         (
@@ -86,7 +85,7 @@ public class AuthEndpointsTests : IAsyncLifetime
         );
 
         //Act 
-        HttpResponseMessage? httpResponse = await _httpClient.PostAsync(url + "register", content);
+        HttpResponseMessage? httpResponse = await _httpClient.PostAsync("register", content);
 
         Stream contentStream = await httpResponse.Content.ReadAsStreamAsync();
         ErrorResponse? response = await JsonSerializer.DeserializeAsync<ErrorResponse>(contentStream, _options);
@@ -113,7 +112,7 @@ public class AuthEndpointsTests : IAsyncLifetime
         var content = new StringContent(JsonSerializer.Serialize(login), Encoding.UTF8, mediaType);
 
         //Act
-        HttpResponseMessage httpResponse = await _httpClient.PostAsync(url + "login", content);
+        HttpResponseMessage httpResponse = await _httpClient.PostAsync("login", content);
 
         Stream contentStream = await httpResponse.Content.ReadAsStreamAsync();
         LoginQueryResponse? loginResponse = await JsonSerializer.DeserializeAsync<LoginQueryResponse>(contentStream, _options);
@@ -139,7 +138,7 @@ public class AuthEndpointsTests : IAsyncLifetime
         var content = new StringContent(JsonSerializer.Serialize(login), Encoding.UTF8, mediaType);
 
         // Act
-        HttpResponseMessage? httpResponse = await _httpClient.PostAsync(url + "login", content);
+        HttpResponseMessage? httpResponse = await _httpClient.PostAsync("login", content);
         
         // Assert
         Assert.NotNull(httpResponse);
@@ -175,7 +174,7 @@ public class AuthEndpointsTests : IAsyncLifetime
         );
 
         // Act
-        HttpResponseMessage? httpResponse = await _httpClient.PutAsync(url + $"role/{userToUpdate.Id}", content);
+        HttpResponseMessage? httpResponse = await _httpClient.PutAsync($"role/{userToUpdate.Id}", content);
 
         UpdateUserRoleCommandResponse? response = await JsonSerializer.DeserializeAsync<UpdateUserRoleCommandResponse>
         (
@@ -218,7 +217,7 @@ public class AuthEndpointsTests : IAsyncLifetime
         );
 
         // Act
-        HttpResponseMessage? httpResponse = await _httpClient.PutAsync(url + $"role/{userToUpdate.Id}", content);
+        HttpResponseMessage? httpResponse = await _httpClient.PutAsync($"role/{userToUpdate.Id}", content);
 
         // Arrange
         Assert.Equal(HttpStatusCode.Forbidden, httpResponse.StatusCode);
@@ -246,7 +245,7 @@ public class AuthEndpointsTests : IAsyncLifetime
 
         var content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, mediaType);
 
-        HttpResponseMessage httpResponse = await _httpClient.PutAsync(url + "update-user", content);
+        HttpResponseMessage httpResponse = await _httpClient.PutAsync( "update-user", content);
         UpdateUserCommandResponse? response = await JsonSerializer.DeserializeAsync<UpdateUserCommandResponse>(await httpResponse.Content.ReadAsStreamAsync(), _options); 
 
         Assert.NotNull(httpResponse);

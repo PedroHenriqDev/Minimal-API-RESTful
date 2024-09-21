@@ -4,7 +4,8 @@ public class PaginationMetadata
 {
     public int PageSize { get; set; }
     public int PageCount { get; set; }
-    public bool HasPrevious {  get; set; }
-    public bool HasNext { get; set; }
-    public int TotalItems { get; set; }
+    public int PageCurrent {get; set;}
+    public bool HasPreviousPage {  get; set; }
+    public bool HasNextPage { get; set; }
+    public int ItemsCount { get; set; }
 }

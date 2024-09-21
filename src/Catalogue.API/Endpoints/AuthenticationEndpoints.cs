@@ -39,7 +39,6 @@ public static class AuthenticationEndpoints
         })
         .Produces<RegisterUserCommandResponse>(StatusCodes.Status201Created)
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
-        .WithTags(authEndpoint)
         .WithRegisterDoc();
 
         /// <summary>
@@ -81,7 +80,6 @@ public static class AuthenticationEndpoints
         })
         .Produces<LoginQueryResponse>(StatusCodes.Status200OK)
         .Produces(StatusCodes.Status401Unauthorized)
-        .WithTags(authEndpoint)
         .WithLoginDoc();
 
         #endregion
@@ -147,7 +145,6 @@ public static class AuthenticationEndpoints
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
         .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError)
         .RequireAuthorization()
-        .WithTags(authEndpoint)
         .WithPutUserDoc();
      #endregion   
     }

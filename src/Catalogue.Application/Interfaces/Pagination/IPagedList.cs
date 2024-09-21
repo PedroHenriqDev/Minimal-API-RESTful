@@ -1,6 +1,6 @@
 ﻿namespace Catalogue.Application.Interfaces;
 
-public interface IPagedList<T>
+public interface IPagedList<T> : IEnumerable<T>
 {
     int PageCurrent { get; set;  }
     int PageCount { get; set; }

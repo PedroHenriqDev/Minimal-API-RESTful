@@ -1,4 +1,5 @@
-﻿using Catalogue.API.Filters;
+﻿using Catalogue.API.Extensions;
+using Catalogue.API.Filters;
 using Catalogue.Application.Categories.Commands.Requests;
 using Catalogue.Application.Categories.Commands.Responses;
 using Catalogue.Application.Categories.Queries.Requests;
@@ -19,6 +20,17 @@ public static class CategoriesEndpoints
     public static void MapCategoriesEndpoints(this IEndpointRouteBuilder endpoints)
     {
         #region Get
+
+        /// <summary>
+        /// The endpoint to retrieve a list of categories with pagination.
+        /// </summary>
+        /// <param name="httpContext">The HTTP context of the request.</param>
+        /// <param name="parameters">The query parameters defining pagination (page number and page size).</param>
+        /// <param name="mediator">The instance of the Mediator to send the request.</param>
+        /// <returns>A result containing a paginated list of categories.</returns>
+        /// <remarks>
+        /// The pagination metadata includes details such as page size, current page, and total item count.
+        /// </remarks>
         endpoints.MapGet("categories", async (HttpContext httpContext,
                                               [AsParameters] QueryParameters parameters,
                                               [FromServices] IMediator mediator) =>
@@ -32,7 +44,7 @@ public static class CategoriesEndpoints
 
         })
           .Produces<PagedList<GetCategoryQueryResponse>>(StatusCodes.Status200OK)
-          .WithTags(categoriesTag);
+          .WithGetCategoriesDoc();
 
         endpoints.MapGet("categories/{id:guid}", async ([FromRoute] Guid id, 
                                                        [FromServices] IMediator mediator) =>

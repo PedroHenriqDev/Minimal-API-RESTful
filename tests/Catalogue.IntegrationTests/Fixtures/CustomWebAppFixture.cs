@@ -1,4 +1,5 @@
 using AutoBogus;
+using Bogus.DataSets;
 using Catalogue.API;
 using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Extensions;
@@ -8,7 +9,6 @@ using Catalogue.Domain.Entities;
 using Catalogue.Domain.Enums;
 using Catalogue.Infrastructure.Context;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -87,6 +87,23 @@ public class CustomWebAppFixture : WebApplicationFactory<Progam>
         }
 
         context.Users.AddRange(users);
+
+        var categories = new List<Category>();
+        var products = new List<Product>();
+
+        categories.AddRange(new AutoFaker<Category>()
+            .RuleFor(c => c.Id, f => Guid.NewGuid())
+            .RuleFor(c => c.CreatedAt, f => DateTime.Now)
+            .Ignore(c => c.Products)  
+            .Generate(50));
+
+        products.AddRange(new AutoFaker<Product>()
+                .RuleFor(p => p.CreatedAt, f => DateTime.Now)
+                .RuleFor(p => p.CategoryId, f => f.PickRandom(categories.Select(c => c.Id)))
+                .Generate(50));
+
+        context.Categories.AddRange(categories);
+        context.Products.AddRange(products);
         context.SaveChanges();
     }
 

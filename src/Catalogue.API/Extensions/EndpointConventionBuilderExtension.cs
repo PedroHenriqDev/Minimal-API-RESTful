@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.OpenApi.Models;
 
 namespace Catalogue.API.Extensions;
@@ -38,9 +39,23 @@ public static class EndpointConventionBuilderExtension
     {
         builder.WithOpenApi(operation => new(operation)
         {
-            Summary = "Updates user informations.",
-            Description = "Updates the user. This endpoint use a custom endpoint filter, is used to inject the current authenticated user's name into the request object before it's processed.",
+            Summary = "Updates user informations",
+            Description = @"Updates the user. This endpoint use a custom endpoint filter,
+            is used to inject the current authenticated user's name into the request object
+            before it's processed.",
             Tags = new List<OpenApiTag>{new OpenApiTag() {Name = "Authentication"}}
         });    
+    }
+
+    public static void WithGetCategoriesDoc(this IEndpointConventionBuilder builder)
+    {
+        builder.WithOpenApi(operation => new(operation)
+        {
+            Summary = "Get categories paged",
+            Description = @"The endpoint to retrieve a list of categories with pagination and,
+            The pagination metadata includes details such as page size, current page, and total
+            item count.",
+            Tags = new List<OpenApiTag>{new OpenApiTag(){Name = "Categories" }}
+        });
     }
 }

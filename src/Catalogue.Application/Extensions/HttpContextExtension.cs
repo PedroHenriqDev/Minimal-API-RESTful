@@ -13,9 +13,10 @@ public static class HttpContextExtension
         {
             PageSize = categoriesPaged?.PageSize ?? 0,
             PageCount = categoriesPaged?.PageCount ?? 0,
-            HasPrevious = categoriesPaged?.HasPreviousPage ?? false,
-            HasNext = categoriesPaged?.HasNextPage ?? false,
-            TotalItems = categoriesPaged?.ItemsCount ?? 0
+            PageCurrent = categoriesPaged?.PageCurrent ?? 0,
+            HasPreviousPage = categoriesPaged?.HasPreviousPage ?? false,
+            HasNextPage = categoriesPaged?.HasNextPage ?? false,
+            ItemsCount = categoriesPaged?.ItemsCount ?? 0
         };
 
         httpContext.Response.Headers.Append("X-Pagination", JsonSerializer.Serialize(metaData));

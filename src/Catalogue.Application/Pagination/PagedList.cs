@@ -17,6 +17,10 @@ public class PagedList<T> : List<T>, IPagedList<T>
     public bool HasNextPage => PageCurrent < PageCount;
     public int PageSize => (pageSize > 0 && pageSize <= MAX_PAGE_SIZE) ? pageSize : MAX_PAGE_SIZE; 
 
+    public PagedList()
+    {
+    }
+
     public PagedList(int pageSize, int pageNumber, IEnumerable<T> source)
     {
         this.pageSize = pageSize;
