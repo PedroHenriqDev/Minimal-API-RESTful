@@ -1,4 +1,4 @@
-﻿using Catalogue.API.Extensions;
+﻿using Catalogue.API.OpenApi;
 using Catalogue.API.Filters;
 using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Extensions;
@@ -24,10 +24,13 @@ public static class AuthenticationEndpoints
         /// <summary>
         /// Registers a new user.
         /// </summary>
-        /// <param name="request">The <see cref="RegisterUserCommandRequest"/> object containing the user's registration data.</param>
-        /// <param name="mediator">The <see cref="IMediator"/> service used to send the registration request to its handler.</param>
+        /// <param name="request">The <see cref="RegisterUserCommandRequest"/> object
+        /// containing the user's registration data.</param>
+        /// <param name="mediator">The <see cref="IMediator"/> service used to send the
+        /// registration request to its handler.</param>
         /// <returns>
-        /// Returns a <see cref="RegisterUserCommandResponse"/> containing the details of the newly registered user, 
+        /// Returns a <see cref="RegisterUserCommandResponse"/> containing the details of
+        /// the newly registered user, 
         /// or an appropriate error response in case of a bad request.
         /// </returns>
         endpoints.MapPost("auth/register", async ([FromBody] RegisterUserCommandRequest request,
@@ -87,7 +90,8 @@ public static class AuthenticationEndpoints
         #region Put
 
        /// <summary>
-       /// Updates the role of a user specified by their ID. This endpoint is restricted to users with the "AdminOnly" policy.
+       /// Updates the role of a user specified by their ID. This endpoint is restricted
+       /// to users with the "AdminOnly" policy.
        /// </summary>
        /// <param name="id">The unique identifier of the user whose role is to be updated.</param>
        /// <param name="request">The request body containing the new role information.</param>
@@ -96,7 +100,8 @@ public static class AuthenticationEndpoints
        /// <response code="200">Returns the updated role information.</response>
        /// <response code="404">If the user is not found.</response>
        /// <remarks>
-       /// Note: This endpoint requires the caller to be authenticated and authorized with the "AdminOnly" policy. It will only function if the authenticated user has administrative privileges.
+       /// Note: This endpoint requires the caller to be authenticated and authorized with the "AdminOnly"
+       /// policy. It will only function if the authenticated user has administrative privileges.
        /// </remarks>
         endpoints.MapPut("auth/role/{id:guid}", [Authorize(Policy = "AdminOnly")]
                  async ([FromRoute] Guid id,

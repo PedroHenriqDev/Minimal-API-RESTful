@@ -1,3 +1,5 @@
+using System.Text;
+using System.Text.Json;
 using AutoBogus;
 using Bogus.DataSets;
 using Catalogue.API;
@@ -9,6 +11,7 @@ using Catalogue.Domain.Entities;
 using Catalogue.Domain.Enums;
 using Catalogue.Infrastructure.Context;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -112,5 +115,17 @@ public class CustomWebAppFixture : WebApplicationFactory<Progam>
         var authClaims = _ClaimService.CreateAuthClaims(new UserResponse{ Name = name });
         authClaims.AddRole(role.ToString());
         return _TokenService.GenerateToken(authClaims, configuration);
+    }
+
+    public async Task<T?> ReadHttpResponseAsync<T>(HttpResponseMessage httpResponse, JsonSerializerOptions options)
+    {
+        Stream stream = await httpResponse.Content.ReadAsStreamAsync();
+
+        return await JsonSerializer.DeserializeAsync<T>(stream, options);
+    }
+
+    public StringContent CreateStringContent<T>(T value)
+    {
+        return new StringContent(JsonSerializer.Serialize(value), Encoding.UTF8, "application/json");
     }
 }

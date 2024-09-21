@@ -4,8 +4,8 @@ using Catalogue.Application.Categories.Queries.Responses;
 using Catalogue.Application.DTOs;
 using Catalogue.Application.Interfaces;
 using Catalogue.Application.Pagination;
+using Catalogue.Domain.Entities;
 using Catalogue.IntegrationTests.Fixtures;
-using NuGet.Frameworks;
 
 namespace Catalogue.IntegrationTests.Endpoints;
 
@@ -26,11 +26,12 @@ public class CategoryEndpointsTests
 
 
     /// <summary>
-    /// Verifies that the 'Get Categories' endpoint returns a 200 OK status 
-    /// and includes valid pagination metadata when provided with a valid query string.
+    /// Verifies that the 'https://localhost:7140/api/v1/categories/' endpoint
+    /// returns a 200 OK status and includes valid pagination metadata when provided
+    /// with a valid query string.
     /// </summary>
     [Fact]
-    public async Task GetCategories_WhenGivenValidQueryString_ReturnStatus200OK()
+    public async Task GetCategories_WithValidQueryString_ShouldReturn200OKAndCategories()
     {
         //Arrange
         int pageNumber = 1;
@@ -59,5 +60,31 @@ public class CategoryEndpointsTests
         Assert.Equal(pageNumber, metadata.PageCurrent);
         Assert.False(metadata.HasPreviousPage);
         Assert.True(metadata.HasNextPage);
+    }
+
+    /// <summary>
+    /// Verifies that the 'https://localhost:7140/api/v1/categories/{id}' endpoint
+    /// returns 200 OK status codes and the expected category.
+    /// </summary>
+    [Fact]
+    public async Task GetCategoryById_WhenExistsCategoryId_ShouldReturn200OKAndCategory()
+    {
+        //Arrange
+        Category? categoryExpected = _fixture?.DbContext?.Categories.First();
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.GetAsync(categoryExpected?.Id.ToString());
+
+        GetCategoryQueryResponse? response =
+            await _fixture.ReadHttpResponseAsync<GetCategoryQueryResponse>
+            (
+                httpResponse,
+                 _options
+            ); 
+
+        //Assert
+        Assert.NotNull(response);
+        Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
+        Assert.Equal(categoryExpected?.Id, response.Id);
     }
 }

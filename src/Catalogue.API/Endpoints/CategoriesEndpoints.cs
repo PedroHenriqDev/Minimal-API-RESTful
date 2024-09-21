@@ -1,4 +1,4 @@
-﻿using Catalogue.API.Extensions;
+﻿using Catalogue.API.OpenApi;
 using Catalogue.API.Filters;
 using Catalogue.Application.Categories.Commands.Requests;
 using Catalogue.Application.Categories.Commands.Responses;
@@ -29,7 +29,8 @@ public static class CategoriesEndpoints
         /// <param name="mediator">The instance of the Mediator to send the request.</param>
         /// <returns>A result containing a paginated list of categories.</returns>
         /// <remarks>
-        /// The pagination metadata includes details such as page size, current page, and total item count.
+        /// The pagination metadata includes details such as page size, current page,
+        /// and total item count.
         /// </remarks>
         endpoints.MapGet("categories", async (HttpContext httpContext,
                                               [AsParameters] QueryParameters parameters,
@@ -43,9 +44,23 @@ public static class CategoriesEndpoints
             return Results.Ok(response.CategoriesPaged);
 
         })
-          .Produces<PagedList<GetCategoryQueryResponse>>(StatusCodes.Status200OK)
-          .WithGetCategoriesDoc();
+        .Produces<PagedList<GetCategoryQueryResponse>>(StatusCodes.Status200OK)
+        .WithGetCategoriesDoc();
 
+        /// <summary>
+        /// Retrieves a category by its unique identifier (GUID).
+        /// </summary>
+        /// <param name="id">The unique identifier of the category (GUID).</param>
+        /// <param name="mediator">The mediator used to handle the request and retrieve
+        /// the category.</param>
+        /// <returns>
+        /// Returns an HTTP 200 OK response with the category details if found. 
+        /// If the category is not found, it returns an HTTP 404 Not Found response with
+        /// an error message.
+        /// </returns>
+        /// <remarks>
+        /// This endpoint uses a `GUID` as a route parameter to identify the category.
+        /// </remarks>
         endpoints.MapGet("categories/{id:guid}", async ([FromRoute] Guid id, 
                                                        [FromServices] IMediator mediator) =>
         {
@@ -55,7 +70,7 @@ public static class CategoriesEndpoints
         })
         .Produces<GetCategoryQueryResponse>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-        .WithTags(categoriesTag)
+        .WithGetCategoryByIdDoc()
         .WithName("GetCategoryById");
 
         endpoints.MapGet("categories/products", async (HttpContext httpContext,

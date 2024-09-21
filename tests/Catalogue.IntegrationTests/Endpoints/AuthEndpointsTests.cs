@@ -12,6 +12,7 @@ using Catalogue.Domain.Entities;
 using Catalogue.Domain.Enums;
 using Catalogue.IntegrationTests.Fixtures;
 using Newtonsoft.Json;
+using Npgsql.Replication;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Catalogue.IntegrationTests.Endpoints;
@@ -22,8 +23,6 @@ public class AuthEndpointsTests : IAsyncLifetime
     private readonly CustomWebAppFixture _fixture;
     private readonly HttpClient _httpClient;
     private readonly JsonSerializerOptions _options;
-   
-    private const string mediaType = "application/json";
     private RegisterUserCommandRequest userRegistered;
     
     public AuthEndpointsTests(CustomWebAppFixture fixture)
@@ -35,72 +34,59 @@ public class AuthEndpointsTests : IAsyncLifetime
     }
 
     /// <summary>
-    /// Verifies that 'RegisterUser' returns a 201 Created status when provided with a valid request.
+    /// Verifies that 'https://localhost:7140/api/v1/auth/register' endpoint
+    /// returns a 201 Created status when provided with a valid request.
     /// </summary>
     [Fact]
-    public async Task RegisterUser_WhenGivenValidUser_ReturnStatusCodes201Created()
+    public async Task RegisterUser_WhenValidUser_ShouldReturnStatusCodes201Created()
     {
         //Arrange
         userRegistered = new AutoFaker<RegisterUserCommandRequest>()
         .RuleFor(r => r.Password, f => f.Internet.Password()).Generate();
         userRegistered.Password += "1";
 
-        var content = new StringContent
-        (
-            JsonConvert.SerializeObject(userRegistered),
-            Encoding.UTF8,
-            mediaType
-        );
-
+        StringContent content = _fixture.CreateStringContent(userRegistered);
+       
         //Act
-        HttpResponseMessage response = await _httpClient.PostAsync("register", content);
-        Stream contentStream = await response.Content.ReadAsStreamAsync();
-        var userCreated = await JsonSerializer.DeserializeAsync<RegisterUserCommandResponse>
-        (
-            contentStream,
-             _options
-        );
+        HttpResponseMessage httpResponse = await _httpClient.PostAsync("register", content);
+
+        RegisterUserCommandResponse? response = await _fixture.ReadHttpResponseAsync<RegisterUserCommandResponse>(httpResponse, _options);
 
         //Assert
+        Assert.NotNull(httpResponse);
         Assert.NotNull(response);
-        Assert.NotNull(userCreated);
-        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+        Assert.Equal(HttpStatusCode.Created, httpResponse.StatusCode);
     }
 
     /// <summary>
-    /// Verifies that 'RegisterUser' returns a 400 Bad Request status when provided invalid request.
+    /// Verifies that 'https://localhost:7140/api/v1/auth/register' endpoint
+    /// returns a 400 Bad Request status when provided invalid request.
     /// </summary> 
     [Fact]
-    public async Task RegisterUser_WhenGivenInvalidUser_ReturnStatusCodes400BadRequest()
+    public async Task RegisterUser_WhenInvalidUser_ShouldReturnStatusCodes400BadRequest()
     {
         //Arrange
         userRegistered = new AutoFaker<RegisterUserCommandRequest>()
             .Ignore(r => r.Name);
 
-        var content = new StringContent
-        (
-           JsonSerializer.Serialize(userRegistered),
-           Encoding.UTF8,
-           mediaType
-        );
+        StringContent content = _fixture.CreateStringContent(userRegistered);
 
         //Act 
-        HttpResponseMessage? httpResponse = await _httpClient.PostAsync("register", content);
+        HttpResponseMessage httpResponse = await _httpClient.PostAsync("register", content);
 
-        Stream contentStream = await httpResponse.Content.ReadAsStreamAsync();
-        ErrorResponse? response = await JsonSerializer.DeserializeAsync<ErrorResponse>(contentStream, _options);
-
+        ErrorResponse? response = await _fixture.ReadHttpResponseAsync<ErrorResponse>(httpResponse, _options);
+      
         Assert.NotNull(httpResponse);
-        Assert.NotNull(contentStream);
         Assert.NotNull(response);
         Assert.Equal(HttpStatusCode.BadRequest, httpResponse.StatusCode);
     }
 
     /// <summary>
-    /// Verifies that 'Login' returns a 200 OK status when a valid login request is provided.
+    /// Verifies that 'https://localhost:7140/api/v1/auth/login' endpoint
+    /// returns a 200 OK status when a valid login request is provided.
     /// </summary>
     [Fact]
-    public async Task Login_WhenGivenValidLogin_ReturnStatusCodes200Ok()
+    public async Task Login_WhenValidLogin_ShouldReturnStatusCodes200Ok()
     {
         //Arrange
         var login = new LoginQueryRequest
@@ -109,33 +95,33 @@ public class AuthEndpointsTests : IAsyncLifetime
             Password = userRegistered.Password
         };
 
-        var content = new StringContent(JsonSerializer.Serialize(login), Encoding.UTF8, mediaType);
+        StringContent content = _fixture.CreateStringContent(login);
 
         //Act
         HttpResponseMessage httpResponse = await _httpClient.PostAsync("login", content);
 
-        Stream contentStream = await httpResponse.Content.ReadAsStreamAsync();
-        LoginQueryResponse? loginResponse = await JsonSerializer.DeserializeAsync<LoginQueryResponse>(contentStream, _options);
+        LoginQueryResponse? response = await _fixture.ReadHttpResponseAsync<LoginQueryResponse>(httpResponse, _options);
 
         //Assert
         Assert.NotNull(httpResponse);
-        Assert.NotNull(loginResponse);
-        Assert.True(loginResponse.Success);
-        Assert.NotNull(loginResponse.Token);
-        Assert.Equal(loginResponse.User.Name, login.Name);
+        Assert.NotNull(response);
+        Assert.True(response.Success);
+        Assert.NotNull(response.Token);
+        Assert.Equal(response.User.Name, login.Name);
     }
 
     /// <summary>
-    /// Verifies that 'Login' returns a 401 Unauthorized status when a invalid login request is provided.
+    /// Verifies that 'https://localhost:7140/api/v1/auth/login' endpoint
+    /// returns a 401 Unauthorized status when a invalid login request is provided.
     /// 
     /// </summary>
     [Fact]
-    public async Task Login_GivenLoginInvalid_ReturnStatusCodes401Unauthorized()
+    public async Task Login_WhenLoginInvalid_ShouldReturnStatusCodes401Unauthorized()
     {
         // Arrange
         var login = new AutoFaker<LoginQueryRequest>().Generate();
 
-        var content = new StringContent(JsonSerializer.Serialize(login), Encoding.UTF8, mediaType);
+        StringContent content = _fixture.CreateStringContent(login);
 
         // Act
         HttpResponseMessage? httpResponse = await _httpClient.PostAsync("login", content);
@@ -146,14 +132,16 @@ public class AuthEndpointsTests : IAsyncLifetime
     }
 
     /// <summary>
-    /// Verifies that 'Update Role' returns a 200 OK status when a valid role and user request is provided.
+    /// Verifies that 'https://localhost:7140/api/v1/auth/role/{id}' endpoint
+    /// returns a 200 OK status when a valid role and user request is provided.
     /// <remarks>
-    /// Note: This test requires that there is least one user in the database with the role 'Admin'.
+    /// Note: This test requires that there is least one user in the database
+    /// with the role 'Admin'.
     /// If no such user exists, the test will fail.
     /// </remarks>
     /// </summary>
     [Fact]
-    public async Task UpdateRole_GivenRoleAndUserValid_ReturnStatusCodes200Ok()
+    public async Task UpdateRole_WhenRoleAndUserValid_ShouldReturnStatusCodes200Ok()
     {
         // Arrange
         string token = _fixture.GenerateToken(_fixture.Admin.Name, _fixture.Admin.Role); 
@@ -166,21 +154,18 @@ public class AuthEndpointsTests : IAsyncLifetime
             RoleName = "Admin",
         };
 
-        var content = new StringContent
-        (
-            JsonSerializer.Serialize(request),
-            Encoding.UTF8,
-            mediaType
-        );
+        StringContent content = _fixture.CreateStringContent(request);
 
         // Act
         HttpResponseMessage? httpResponse = await _httpClient.PutAsync($"role/{userToUpdate.Id}", content);
 
-        UpdateUserRoleCommandResponse? response = await JsonSerializer.DeserializeAsync<UpdateUserRoleCommandResponse>
-        (
-            await httpResponse.Content.ReadAsStreamAsync(),
-             _options
-        );
+        UpdateUserRoleCommandResponse? response = 
+            await _fixture.ReadHttpResponseAsync<UpdateUserRoleCommandResponse>
+            (
+                httpResponse,
+                 _options
+            );
+
         User userUpdated = _fixture.DbContext.Users.First(u => u.Name == userRegistered.Name);
 
         // Arrange
@@ -193,10 +178,11 @@ public class AuthEndpointsTests : IAsyncLifetime
     }
 
     /// <summary>
-    /// Verifies that 'Update Role' returns a 403 Forbidden status when a valid role and invalid user request is provided.
+    /// Verifies that 'https://localhost:7140/api/v1/auth/role/{id}' endpoint
+    /// returns a 403 Forbidden status when a valid role and invalid user request is provided.
     /// </summary>
     [Fact]
-    public async Task UpdateRole_GivenRoleValidAndUserInvalid_ReturnStatusCodes403Forbidden()
+    public async Task UpdateRole_WhenRoleValidAndUserInvalid_ShouldReturnStatusCodes403Forbidden()
     {
         //Arrange
         string token = _fixture.GenerateToken(userRegistered.Name, Role.User);
@@ -209,12 +195,7 @@ public class AuthEndpointsTests : IAsyncLifetime
             RoleName = "Admin",
         };
 
-        var content = new StringContent
-        (
-            JsonSerializer.Serialize(request),
-            Encoding.UTF8,
-            mediaType
-        );
+        StringContent content = _fixture.CreateStringContent(request);
 
         // Act
         HttpResponseMessage? httpResponse = await _httpClient.PutAsync($"role/{userToUpdate.Id}", content);
@@ -224,17 +205,19 @@ public class AuthEndpointsTests : IAsyncLifetime
     }
 
     /// <summary>
-    /// Verifies that 'Update User' returns 200 OK Status when a valid user request is provided.
+    /// Verifies that 'https://localhost:7140/api/v1/auth/update-user' endpoint 
+    /// returns 200 OK Status when a valid user request is provided.
     /// </summary>
     /// <returns></returns>
     [Fact]
-    public async Task UpdateUser_GivenUserValid_ReturnsStatusCodes200OK()
+    public async Task UpdateUser_WhenUserValid_ShouldReturnsStatusCodes200OK()
     {
         string token = _fixture.GenerateToken
         (
             _fixture.UserRandom.Name,
             _fixture.UserRandom.Role
         );
+
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
         var request = new AutoFaker<UpdateUserCommandRequest>()
@@ -243,10 +226,10 @@ public class AuthEndpointsTests : IAsyncLifetime
             .RuleFor(u => u.BirthDate, f => f.Date.Past(60, new DateTime(2010, 1, 1)))
             .Generate();
 
-        var content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, mediaType);
+        StringContent content = _fixture.CreateStringContent(request);
 
         HttpResponseMessage httpResponse = await _httpClient.PutAsync( "update-user", content);
-        UpdateUserCommandResponse? response = await JsonSerializer.DeserializeAsync<UpdateUserCommandResponse>(await httpResponse.Content.ReadAsStreamAsync(), _options); 
+        UpdateUserCommandResponse? response = await _fixture.ReadHttpResponseAsync<UpdateUserCommandResponse>(httpResponse, _options);
 
         Assert.NotNull(httpResponse);
         Assert.NotNull(response);
@@ -259,7 +242,7 @@ public class AuthEndpointsTests : IAsyncLifetime
     /// </summary>
     public async Task InitializeAsync()
     {
-        await RegisterUser_WhenGivenValidUser_ReturnStatusCodes201Created();
+        await RegisterUser_WhenValidUser_ShouldReturnStatusCodes201Created();
     }
 
     public Task DisposeAsync()
