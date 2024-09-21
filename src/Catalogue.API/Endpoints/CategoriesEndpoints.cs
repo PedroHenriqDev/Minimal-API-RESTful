@@ -70,8 +70,8 @@ public static class CategoriesEndpoints
         })
         .Produces<GetCategoryQueryResponse>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-        .WithGetCategoryByIdDoc()
-        .WithName("GetCategoryById");
+        .WithName("GetCategoryById")
+        .WithGetCategoryByIdDoc();
 
         endpoints.MapGet("categories/products", async (HttpContext httpContext,
                                                        [AsParameters] QueryParameters parameters,

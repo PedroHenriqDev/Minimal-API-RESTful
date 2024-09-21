@@ -1,6 +1,6 @@
 using Asp.Versioning;
 
-namespace Catalogue.API.Extensions;
+namespace Catalogue.API.OpenApi;
 
 public static class EndpointRouteBuilderExtension
 {

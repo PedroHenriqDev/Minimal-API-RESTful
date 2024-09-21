@@ -1,6 +1,5 @@
 using System.Net;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Text.Json;
 using AutoBogus;
 using Catalogue.Application.DTOs.Responses;
@@ -11,9 +10,6 @@ using Catalogue.Application.Users.Queries.Responses;
 using Catalogue.Domain.Entities;
 using Catalogue.Domain.Enums;
 using Catalogue.IntegrationTests.Fixtures;
-using Newtonsoft.Json;
-using Npgsql.Replication;
-using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Catalogue.IntegrationTests.Endpoints;
 
