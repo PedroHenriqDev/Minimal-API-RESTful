@@ -12,18 +12,15 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
     protected readonly DbSet<TEntity> entities;
 
     public Repository(AppDbContext context)
-    {
-        entities = context.Set<TEntity>();
-    }
+        => entities = context.Set<TEntity>();
+    
 
     /// <summary>
     /// Retrives all entities from specified table of type 'TEntity'.
     /// </summary>
     /// <returns>An <see cref="IQueryable{TEntity}"> containg all entities from the table.</returns>
     public IQueryable<TEntity> GetAll()
-    {
-        return entities;
-    }
+       => entities;
 
     /// <summary>
     /// Retrieves the entity of type 'TEntity' whose ID matches the specified parameter.
@@ -31,9 +28,7 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
     /// <param name="id">The ID of the entity to retrieve.</param>
     /// <returns>The entity with the matching ID, or null if not found.</returns>
     public async Task<TEntity?> GetByIdAsync(Guid id)
-    {
-        return await entities.FindAsync(id);
-    }
+        => await entities.FindAsync(id);
 
     /// <summary>
     /// Retrieves the first entity of type 'TEntity' that satisfies the specified expression.
@@ -42,39 +37,31 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
     /// <returns>The first entity that matches the predicate, or null if no match is found.</returns>
     /// <summary>
     public async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate)
-    {
-        return await entities.FirstOrDefaultAsync(predicate);
-    }
+        => await entities.FirstOrDefaultAsync(predicate);
 
     public async Task<TEntity?> GetAsNoTrackingAsync(Expression<Func<TEntity, bool>> predicate)
-    {
-        return await entities.AsNoTracking().FirstOrDefaultAsync(predicate);
-    }
+        => await entities.AsNoTracking().FirstOrDefaultAsync(predicate);
+    
 
     /// <summary>
     /// Add a new entity to the database context.
     /// </summary>
     /// <param name="entity">The entity to be added to the database.</param>
     public async Task AddAsync(TEntity entity)
-    {
-        await entities.AddAsync(entity);
-    }
+        => await entities.AddAsync(entity);
+    
 
     /// <summary>
     /// Removes the specified entity from the database.
     /// </summary>
     /// <param name="entity">The entity to be removed from the database.</param>
     public void Delete(TEntity entity)
-    {
-        entities.Remove(entity);
-    }
+      => entities.Remove(entity);
 
     /// <summary>
     /// Update the specifies entity from the database.
     /// </summary>
     /// <param name="entity">The entity to be update to the database.</param>
     public void Update(TEntity entity)
-    {
-        entities.Update(entity);
-    }
+       => entities.Update(entity);
 }

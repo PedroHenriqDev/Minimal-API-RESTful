@@ -7,7 +7,6 @@ public class GetCategoriesQueryResponse
     public IPagedList<GetCategoryQueryResponse>? CategoriesPaged { get; set; }
 
     public GetCategoriesQueryResponse(IPagedList<GetCategoryQueryResponse> categoriesPaged)
-    {
-        CategoriesPaged = categoriesPaged;
-    }
+        => CategoriesPaged = categoriesPaged;
+    
 }

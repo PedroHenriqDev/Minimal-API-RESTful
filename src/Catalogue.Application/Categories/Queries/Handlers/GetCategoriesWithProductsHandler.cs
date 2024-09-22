@@ -6,7 +6,6 @@ using Catalogue.Application.Pagination;
 using Catalogue.Domain.Entities;
 using Catalogue.Domain.Interfaces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Catalogue.Application.Categories.Queries.Handlers;
 
@@ -24,7 +23,7 @@ public class GetCategoriesWithProductsHandler : IRequestHandler<GetCategoriesWit
     public async Task<GetCategoriesWithProdsQueryResponse> Handle(GetCategoriesWithProdsQueryRequest request,
                                                                      CancellationToken cancellationToken) 
     {
-        IQueryable<Category>? categories = _unitOfWork.CategoryRepository.GetAll().Include(c => c.Products);
+        IQueryable<Category>? categories = await _unitOfWork.CategoryRepository.GetWithProductsAsync();
 
         var categoriesPaged = await PagedList<GetCategoryWithProdsQueryResponse>
             .ToPagedListAsync(request.Parameters.PageNumber,

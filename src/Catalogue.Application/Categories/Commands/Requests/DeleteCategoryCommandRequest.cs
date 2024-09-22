@@ -8,7 +8,6 @@ public sealed class DeleteCategoryCommandRequest : IRequest<DeleteCategoryComman
     public Guid Id { get; set; }
 
     public DeleteCategoryCommandRequest(Guid id)
-    {
-        Id = id;
-    }
+        => Id = id;
+    
 }

@@ -5,6 +5,7 @@ using Catalogue.IntegrationTests.Fixtures;
 
 namespace Catalogue.IntegrationTests.Repositories;
 
+[Collection(nameof(DatabaseFixture))]
 public class ProductRepositoryTests : IClassFixture<DatabaseFixture>
 {
     private readonly DatabaseFixture _dbFixture;
@@ -24,14 +25,14 @@ public class ProductRepositoryTests : IClassFixture<DatabaseFixture>
     public async Task GetByIdProductWithCategory_WhenProductIdExists_ReturnProductWithExpectedCategory()
     {
         //Arrange
-        Product productExists = _productRepository.GetAll().First(); 
+        Product? productExpected = await _productRepository.GetAsNoTrackingAsync(p => p != null);
 
         //Act
-        Product? product = await _productRepository.GetByIdWithCategoryAsync(productExists.Id);
+        Product? product = await _productRepository.GetByIdWithCategoryAsync(productExpected.Id);
 
         //Assert
         Assert.NotNull(product);
-        Assert.NotNull(product.Category);
-        Assert.Equal(product.Category.Name, productExists.Category.Name);
+        Assert.Equal(productExpected.Id, product.Id);
+        Assert.Equal(product?.Category?.Id, productExpected.CategoryId);
     }
 }

@@ -106,7 +106,7 @@ public class RepositoryTests
         Assert.Contains(entity, entities);
     }
 
- /// <summary>
+    /// <summary>
     /// Verifies that the 'Update' method successfully updates an entity in the database.
     /// </summary>
     /// <typeparam name="T">The type of entity being operetaed on by the repository</typeparam>

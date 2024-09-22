@@ -36,7 +36,7 @@ public static class AuthenticationEndpoints
         #region Put
 
         endpoints
-        .MapPut("auth/role/{id:guid}",  UpdateRole)
+        .MapPut("auth/role/{id:guid}", UpdateRole)
         .AddEndpointFilter<InjectIdFilter>()
         .Produces<UpdateUserRoleCommandRequest>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
@@ -51,7 +51,7 @@ public static class AuthenticationEndpoints
         .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError)
         .RequireAuthorization()
         .WithPutUserDoc();
-     #endregion   
+        #endregion   
     }
 
     /// <summary>
@@ -107,7 +107,7 @@ public static class AuthenticationEndpoints
 
         if (!response.Success)
         {
-                return Results.Unauthorized();
+            return Results.Unauthorized();
         }
 
         var authClaims = claimService.CreateAuthClaims(response.User!);
@@ -116,7 +116,7 @@ public static class AuthenticationEndpoints
 
         return Results.Ok(response);
     }
-    
+
     /// <summary>
     /// Updates the role of a user specified by their ID. This endpoint is restricted
     /// to users with the "AdminOnly" policy.
@@ -124,7 +124,7 @@ public static class AuthenticationEndpoints
     /// <param name="id">The unique identifier of the user whose role is to be updated.</param>
     /// <param name="request">The request body containing the new role information.</param>
     /// <param name="mediator">The mediator to handle the command for updating the user role.</param>
-       /// <returns>An <see cref="IResult"/> indicating the outcome of the update operation.</returns>
+    /// <returns>An <see cref="IResult"/> indicating the outcome of the update operation.</returns>
     /// <response code="200">Returns the updated role information.</response>
     /// <response code="404">If the user is not found.</response>
     /// <remarks>
@@ -141,9 +141,9 @@ public static class AuthenticationEndpoints
     {
         UpdateUserRoleCommandResponse response = await mediator.Send(request);
         return Results.Ok(response);
-    } 
+    }
 
-    
+
     /// <summary>
     /// Updates user's informations.
     /// <summary>

@@ -5,7 +5,8 @@ using Catalogue.IntegrationTests.Fixtures;
 
 namespace Catalogue.IntegrationTests.Repositories;
 
-public class CategoryRepositoryTests : IClassFixture<DatabaseFixture>
+[Collection(nameof(DatabaseFixture))]
+public class CategoryRepositoryTests
 {
     private readonly DatabaseFixture _dbFixture;
     private readonly ICategoryRepository _categoryRepository;

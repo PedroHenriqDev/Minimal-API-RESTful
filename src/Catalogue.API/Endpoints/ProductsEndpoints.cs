@@ -15,7 +15,7 @@ namespace Catalogue.API.Endpoints;
 public static class ProductsEndpoints
 {
     private const string productsTag = "Products";
-
+    
     public static void MapProductsEndpoints(this IEndpointRouteBuilder endpoints)
     {
         #region Get

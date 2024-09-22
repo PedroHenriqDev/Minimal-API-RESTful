@@ -61,7 +61,7 @@ public static class CategoriesEndpoints
         /// <remarks>
         /// This endpoint uses a `GUID` as a route parameter to identify the category.
         /// </remarks>
-        endpoints.MapGet("categories/{id:guid}", async ([FromRoute] Guid id, 
+        endpoints.MapGet("categories/{id:guid}", async ([FromRoute] Guid id,
                                                        [FromServices] IMediator mediator) =>
         {
             GetCategoryQueryResponse response = await mediator.Send(new GetCategoryQueryRequest(id));
@@ -72,23 +72,35 @@ public static class CategoriesEndpoints
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
         .WithName("GetCategoryById")
         .WithGetCategoryByIdDoc();
-
+        
+        /// <summary>
+        /// Endpoint to retrieve a paginated list of categories along with their associated products.
+        /// </summary>
+        /// <param name="httpContext">The HTTP context containing information about the request and response.</param>
+        /// <param name="parameters">Pagination parameters, such as page number and page size.</param>
+        /// <param name="mediator">The MediatR instance used to send the request and retrieve the result.</param>
+        /// <returns>
+        /// Returns a paginated list of categories with their associated products, along with pagination
+        /// metadata in the response header.
+        /// </returns>
+        /// <response code="200">Returns a paginated list of categories with products.</response>
+        /// <response code="400">Returns an error response if there is an issue with the request.</response>
         endpoints.MapGet("categories/products", async (HttpContext httpContext,
                                                        [AsParameters] QueryParameters parameters,
                                                        [FromServices] IMediator mediator) =>
         {
-            GetCategoriesWithProdsQueryResponse response = 
+            GetCategoriesWithProdsQueryResponse response =
                            await mediator.Send(new GetCategoriesWithProdsQueryRequest(parameters));
+
             httpContext.AppendCategoriesMetaData(response.CategoriesPaged);
 
             return Results.Ok(response.CategoriesPaged);
-
         })
         .Produces<PagedList<GetCategoryWithProdsQueryResponse>>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
-        .WithTags(categoriesTag);
+        .WithGetCategoriesWithProductsDoc();
 
-        endpoints.MapGet("categories/{id:Guid}/products", async ([FromRoute] Guid id,
+        endpoints.MapGet("categories/products/{id:Guid}", async ([FromRoute] Guid id,
                                                                 [FromServices] IMediator mediator) =>
         {
             GetCategoryWithProdsQueryResponse response =
@@ -107,10 +119,10 @@ public static class CategoriesEndpoints
                                                [FromServices] IMediator mediator) =>
         {
             CreateCategoryCommandResponse response = await mediator.Send(request);
-            
+
             return Results.CreatedAtRoute(
               routeName: "GetCategoryById",
-              routeValues: new {id = response.Id},
+              routeValues: new { id = response.Id },
               value: response);
 
         })
@@ -147,7 +159,7 @@ public static class CategoriesEndpoints
         .WithTags(categoriesTag);
 
         #endregion
-       
+
         #region Delete
         endpoints.MapDelete("categories/{id:Guid}", async ([FromRoute] Guid id,
                                                           [FromServices] IMediator mediator) =>

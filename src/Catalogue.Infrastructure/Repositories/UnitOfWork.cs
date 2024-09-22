@@ -24,12 +24,9 @@ public class UnitOfWork : IUnitOfWork
         => userRepository ?? new UserRepository(_context);
 
     public async Task CommitAsync()
-    {
-        await _context.SaveChangesAsync();
-    }
+        => await _context.SaveChangesAsync();
+    
 
     public async Task<TTransaction> BeginTransactionAsync<TTransaction>()
-    {
-        return (TTransaction)await _context.Database.BeginTransactionAsync();
-    }
+        => (TTransaction)await _context.Database.BeginTransactionAsync();
 }

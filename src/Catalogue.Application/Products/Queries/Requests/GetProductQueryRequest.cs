@@ -8,7 +8,5 @@ public sealed class GetProductQueryRequest : IRequest<GetProductQueryResponse>
     public Guid Id { get; set; }
     
     public GetProductQueryRequest(Guid id)
-    {
-        Id = id;
-    }
+        => Id = id;
 }

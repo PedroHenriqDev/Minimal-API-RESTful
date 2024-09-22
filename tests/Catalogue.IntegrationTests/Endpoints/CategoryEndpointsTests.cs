@@ -1,4 +1,5 @@
 using System.Net;
+using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
 using Catalogue.Application.Categories.Queries.Responses;
 using Catalogue.Application.DTOs;
@@ -10,7 +11,7 @@ using Catalogue.IntegrationTests.Fixtures;
 namespace Catalogue.IntegrationTests.Endpoints;
 
 [Collection(nameof(CustomWebAppFixture))]
-public class CategoryEndpointsTests 
+public class CategoryEndpointsTests
 {
     private readonly CustomWebAppFixture _fixture;
     private readonly HttpClient _httpClient;
@@ -31,7 +32,7 @@ public class CategoryEndpointsTests
     /// with a valid query string.
     /// </summary>
     [Fact]
-    public async Task GetCategories_WithValidQueryString_ShouldReturn200OKAndCategories()
+    public async Task GetCategories_WhenValidQueryString_ShouldReturn200OKAndCategories()
     {
         //Arrange
         int pageNumber = 1;
@@ -40,7 +41,7 @@ public class CategoryEndpointsTests
 
         //Act
         HttpResponseMessage httpResponse = await _httpClient.GetAsync(queryString);
-        
+
         var stream = await httpResponse.Content.ReadAsStreamAsync();
 
         IPagedList<GetCategoryQueryResponse>? response =
@@ -50,8 +51,7 @@ public class CategoryEndpointsTests
                 _options
             );
 
-        string? header = httpResponse.Headers.GetValues("X-Pagination").FirstOrDefault();
-        PaginationMetadata? metadata = JsonSerializer.Deserialize<PaginationMetadata>(header);
+        PaginationMetadata? metadata = _fixture.GetHeaderPagination(httpResponse); 
 
         //Assert
         Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
@@ -80,11 +80,40 @@ public class CategoryEndpointsTests
             (
                 httpResponse,
                  _options
-            ); 
+            );
 
         //Assert
         Assert.NotNull(response);
         Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
         Assert.Equal(categoryExpected?.Id, response.Id);
+    }
+
+    
+    /// <summary>
+    /// Verifies that the 'https://localhost:7140/api/v1/categories/products}' endpoint
+    /// returns 200 OK status codes and the categories with products.
+    /// </summary>
+    [Fact]
+    public async Task GetCategoriesWithProducts_WhenValidQueryString_ShouldReturn200OKAndCategoriesWithProducts()
+    {
+        //Arrange
+        int pageNumber = 1;
+        int pageSize = 15;
+        string queryString = $"?pageNumber={pageNumber}&pageSize={pageSize}";
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.GetAsync($"products/{queryString}"); 
+
+        IPagedList<GetCategoryWithProdsQueryResponse>? response = await _fixture.ReadHttpResponseAsync<PagedList<GetCategoryWithProdsQueryResponse>>(httpResponse, _options);
+        
+        PaginationMetadata? metadata = _fixture.GetHeaderPagination(httpResponse);
+
+        //Assert
+        Assert.NotEmpty(response.Select(c => c.Products));
+        Assert.True(response?.Any(c => c.Products != null));
+        Assert.Equal(metadata.PageCurrent, pageNumber);
+        Assert.Equal(metadata.PageSize, pageSize);
+        Assert.False(metadata.HasPreviousPage);
+        Assert.True(metadata.HasNextPage);
     }
 }

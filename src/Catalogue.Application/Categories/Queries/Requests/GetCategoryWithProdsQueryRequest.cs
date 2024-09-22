@@ -9,7 +9,6 @@ public class GetCategoryWithProdsQueryRequest : IRequest<GetCategoryWithProdsQue
     public Guid Id { get; set; }
 
     public GetCategoryWithProdsQueryRequest(Guid id)
-    {
-        Id = id;
-    }
+        => Id = id;
+    
 }

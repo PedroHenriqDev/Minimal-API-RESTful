@@ -9,7 +9,6 @@ public class GetCategoriesWithProdsQueryRequest : IRequest<GetCategoriesWithProd
     public QueryParameters? Parameters { get; set; }
 
     public GetCategoriesWithProdsQueryRequest(QueryParameters parameters)
-    {
-        Parameters = parameters;
-    }
+        => Parameters = parameters;
+    
 }

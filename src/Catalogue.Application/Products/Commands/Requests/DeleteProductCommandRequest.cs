@@ -10,7 +10,6 @@ public class DeleteProductCommandRequest : IRequest<DeleteProductCommandResponse
     public Guid Id { get; set; }
 
     public DeleteProductCommandRequest(Guid id)
-    {
-        Id = id;
-    }
+        => Id = id;
+    
 }

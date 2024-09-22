@@ -8,7 +8,5 @@ public sealed class GetProductWithCatQueryRequest : IRequest<GetProductWithCatQu
     public Guid Id { get; set; }
 
     public GetProductWithCatQueryRequest(Guid id)
-    {
-        Id = id;
-    }
+        => Id = id;
 }

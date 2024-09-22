@@ -9,7 +9,5 @@ public sealed class GetProductsWithCatQueryRequest : IRequest<GetProductsWithCat
     public QueryParameters? Parameters { get; set; }
 
     public GetProductsWithCatQueryRequest(QueryParameters parameters)
-    {
-        Parameters = parameters;
-    }
+        => Parameters = parameters;
 }

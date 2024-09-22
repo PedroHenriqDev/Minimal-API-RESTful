@@ -1,8 +1,8 @@
 using System.Text;
 using System.Text.Json;
 using AutoBogus;
-using Bogus.DataSets;
 using Catalogue.API;
+using Catalogue.Application.DTOs;
 using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Extensions;
 using Catalogue.Application.Interfaces.Services;
@@ -11,7 +11,6 @@ using Catalogue.Domain.Entities;
 using Catalogue.Domain.Enums;
 using Catalogue.Infrastructure.Context;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -21,9 +20,9 @@ namespace Catalogue.IntegrationTests.Fixtures;
 
 public class CustomWebAppFixture : WebApplicationFactory<Progam>
 {
-    public AppDbContext? DbContext {get; private set;} 
-    public User? Admin {get; set;} = null!;
-    public User? UserRandom {get; set;} = null!;
+    public AppDbContext? DbContext { get; private set; }
+    public User? Admin { get; set; } = null!;
+    public User? UserRandom { get; set; } = null!;
     public ITokenService _TokenService = null!;
     public IClaimService _ClaimService = null!;
     public IConfiguration configuration = null!;
@@ -46,9 +45,9 @@ public class CustomWebAppFixture : WebApplicationFactory<Progam>
 
             configuration = services.BuildServiceProvider().GetRequiredService<IConfiguration>();
             string? connectionString = configuration.GetConnectionString("TestConnection");
-            
+
             services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("TestDatabase"));
-           
+
             DbContext = services.BuildServiceProvider().GetRequiredService<AppDbContext>();
             _TokenService = services.BuildServiceProvider().GetRequiredService<ITokenService>();
             _ClaimService = services.BuildServiceProvider().GetRequiredService<IClaimService>();
@@ -80,9 +79,9 @@ public class CustomWebAppFixture : WebApplicationFactory<Progam>
             .RuleFor(u => u.CreatedAt, f => f.Date.Past())
             .Generate(10);
 
-        foreach(var user in users)
+        foreach (var user in users)
         {
-            if(UserRandom == null && user.Role == Role.User)
+            if (UserRandom == null && user.Role == Role.User)
             {
                 UserRandom = user;
             }
@@ -97,7 +96,6 @@ public class CustomWebAppFixture : WebApplicationFactory<Progam>
         categories.AddRange(new AutoFaker<Category>()
             .RuleFor(c => c.Id, f => Guid.NewGuid())
             .RuleFor(c => c.CreatedAt, f => DateTime.Now)
-            .Ignore(c => c.Products)  
             .Generate(50));
 
         products.AddRange(new AutoFaker<Product>()
@@ -112,9 +110,15 @@ public class CustomWebAppFixture : WebApplicationFactory<Progam>
 
     public string GenerateToken(string name, Role role)
     {
-        var authClaims = _ClaimService.CreateAuthClaims(new UserResponse{ Name = name });
+        var authClaims = _ClaimService.CreateAuthClaims(new UserResponse { Name = name });
         authClaims.AddRole(role.ToString());
         return _TokenService.GenerateToken(authClaims, configuration);
+    }
+
+    public PaginationMetadata? GetHeaderPagination(HttpResponseMessage httpResponse)
+    {
+        string? header = httpResponse.Headers.GetValues("X-Pagination").FirstOrDefault();
+        return JsonSerializer.Deserialize<PaginationMetadata>(header);
     }
 
     public async Task<T?> ReadHttpResponseAsync<T>(HttpResponseMessage httpResponse, JsonSerializerOptions options)
@@ -122,6 +126,11 @@ public class CustomWebAppFixture : WebApplicationFactory<Progam>
         Stream stream = await httpResponse.Content.ReadAsStreamAsync();
 
         return await JsonSerializer.DeserializeAsync<T>(stream, options);
+    }
+
+    public async Task<string> ReadRawHttpResponseAsync(HttpResponseMessage httpResponse)
+   {
+        return await httpResponse.Content.ReadAsStringAsync();
     }
 
     public StringContent CreateStringContent<T>(T value)

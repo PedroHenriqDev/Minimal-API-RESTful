@@ -20,13 +20,13 @@ public class AuthEndpointsTests : IAsyncLifetime
     private readonly HttpClient _httpClient;
     private readonly JsonSerializerOptions _options;
     private RegisterUserCommandRequest userRegistered;
-    
+
     public AuthEndpointsTests(CustomWebAppFixture fixture)
     {
         _fixture = fixture;
         _httpClient = fixture.CreateClient();
         _httpClient.BaseAddress = new Uri("https://localhost:7140/api/v1/auth/");
-        _options = new JsonSerializerOptions{ PropertyNameCaseInsensitive = true };
+        _options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
     }
 
     /// <summary>
@@ -42,7 +42,7 @@ public class AuthEndpointsTests : IAsyncLifetime
         userRegistered.Password += "1";
 
         StringContent content = _fixture.CreateStringContent(userRegistered);
-       
+
         //Act
         HttpResponseMessage httpResponse = await _httpClient.PostAsync("register", content);
 
@@ -71,7 +71,7 @@ public class AuthEndpointsTests : IAsyncLifetime
         HttpResponseMessage httpResponse = await _httpClient.PostAsync("register", content);
 
         ErrorResponse? response = await _fixture.ReadHttpResponseAsync<ErrorResponse>(httpResponse, _options);
-      
+
         Assert.NotNull(httpResponse);
         Assert.NotNull(response);
         Assert.Equal(HttpStatusCode.BadRequest, httpResponse.StatusCode);
@@ -121,7 +121,7 @@ public class AuthEndpointsTests : IAsyncLifetime
 
         // Act
         HttpResponseMessage? httpResponse = await _httpClient.PostAsync("login", content);
-        
+
         // Assert
         Assert.NotNull(httpResponse);
         Assert.Equal(HttpStatusCode.Unauthorized, httpResponse.StatusCode);
@@ -140,7 +140,7 @@ public class AuthEndpointsTests : IAsyncLifetime
     public async Task UpdateRole_WhenRoleAndUserValid_ShouldReturnStatusCodes200Ok()
     {
         // Arrange
-        string token = _fixture.GenerateToken(_fixture.Admin.Name, _fixture.Admin.Role); 
+        string token = _fixture.GenerateToken(_fixture.Admin.Name, _fixture.Admin.Role);
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
         User userToUpdate = _fixture.DbContext.Users.First(u => u.Name == userRegistered.Name);
@@ -155,7 +155,7 @@ public class AuthEndpointsTests : IAsyncLifetime
         // Act
         HttpResponseMessage? httpResponse = await _httpClient.PutAsync($"role/{userToUpdate.Id}", content);
 
-        UpdateUserRoleCommandResponse? response = 
+        UpdateUserRoleCommandResponse? response =
             await _fixture.ReadHttpResponseAsync<UpdateUserRoleCommandResponse>
             (
                 httpResponse,
@@ -169,7 +169,7 @@ public class AuthEndpointsTests : IAsyncLifetime
         Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
         Assert.NotNull(response);
         Assert.NotNull(response.User);
-        Assert.Equal( Role.Admin, response?.User.Role);
+        Assert.Equal(Role.Admin, response?.User.Role);
         Assert.Equal("Admin", response.User.RoleName);
     }
 
@@ -182,7 +182,7 @@ public class AuthEndpointsTests : IAsyncLifetime
     {
         //Arrange
         string token = _fixture.GenerateToken(userRegistered.Name, Role.User);
-        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token); 
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
         User userToUpdate = _fixture.DbContext.Users.First(u => u.Name == userRegistered.Name);
 
@@ -224,7 +224,7 @@ public class AuthEndpointsTests : IAsyncLifetime
 
         StringContent content = _fixture.CreateStringContent(request);
 
-        HttpResponseMessage httpResponse = await _httpClient.PutAsync( "update-user", content);
+        HttpResponseMessage httpResponse = await _httpClient.PutAsync("update-user", content);
         UpdateUserCommandResponse? response = await _fixture.ReadHttpResponseAsync<UpdateUserCommandResponse>(httpResponse, _options);
 
         Assert.NotNull(httpResponse);
