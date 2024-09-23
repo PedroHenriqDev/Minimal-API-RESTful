@@ -14,7 +14,6 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
     public Repository(AppDbContext context)
         => entities = context.Set<TEntity>();
     
-
     /// <summary>
     /// Retrives all entities from specified table of type 'TEntity'.
     /// </summary>

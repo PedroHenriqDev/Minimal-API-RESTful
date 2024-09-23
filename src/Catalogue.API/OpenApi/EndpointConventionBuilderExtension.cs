@@ -1,17 +1,19 @@
-using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.OpenApi.Models;
 
 namespace Catalogue.API.OpenApi;
 
 public static class EndpointConventionBuilderExtension
 {
+    private static string authTag = "Authentication";
+    private static string categoriesTag = "Categories"; 
+
     public static void WithLoginDoc(this IEndpointConventionBuilder builder)
     {
         builder.WithOpenApi(operation => new(operation)
         {
             Summary = "Login User",
             Description = "Authenticates a user and generates a JWT token if the login is successful.",
-            Tags = new List<OpenApiTag> { new OpenApiTag() {Name = "Authentication"}}
+            Tags = new List<OpenApiTag> { new OpenApiTag() {Name = authTag}}
         });
     }
 
@@ -21,7 +23,7 @@ public static class EndpointConventionBuilderExtension
         {
             Summary = "Register User",
             Description = "Registers a new user.",
-            Tags = new List<OpenApiTag>{new OpenApiTag() {Name = "Authentication"}}
+            Tags = new List<OpenApiTag>{new OpenApiTag() {Name = authTag}}
         });      
     }
 
@@ -33,7 +35,7 @@ public static class EndpointConventionBuilderExtension
 
             Description = "Updates the role of a user specified by their ID. This endpoint is restricted to users with the 'AdminOnly' policy.",
 
-            Tags = new List<OpenApiTag>{new OpenApiTag() {Name = "Authentication"}}
+            Tags = new List<OpenApiTag>{new OpenApiTag() {Name = authTag}}
         });    
     }
 
@@ -47,7 +49,7 @@ public static class EndpointConventionBuilderExtension
             is used to inject the current authenticated user's name into the request object
             before it's processed.",
 
-            Tags = new List<OpenApiTag>{new OpenApiTag() {Name = "Authentication"}}
+            Tags = new List<OpenApiTag>{new OpenApiTag() {Name = authTag}}
         });    
     }
 
@@ -61,7 +63,7 @@ public static class EndpointConventionBuilderExtension
             The pagination metadata includes details such as page size, current page, and total
             item count.",
 
-            Tags = new List<OpenApiTag>{new OpenApiTag(){Name = "Categories" }}
+            Tags = new List<OpenApiTag>{new OpenApiTag(){Name = categoriesTag}}
         });
     }
 
@@ -74,7 +76,7 @@ public static class EndpointConventionBuilderExtension
             Description = @"This endpoint uses a `GUID` as a route parameter to
                             identify the category.",
 
-            Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = "Categories"}}
+            Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = categoriesTag}}
         });
     }
 
@@ -86,7 +88,28 @@ public static class EndpointConventionBuilderExtension
             Description = @"This endpoint Returns a paginated list of
                             categories with their associated products, along with pagination
                             metadata in the response header.",
-            Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = "Categories"}}
+            Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = categoriesTag}}
+        });
+    }
+    
+    /// <summary>
+    /// Retrieves a category and its associated products based on the category ID.
+    /// </summary>
+    /// <param name="id">The unique identifier (Guid) of the category.</param>
+    /// <param name="mediator">The MediatR instance to handle the query request.</param>
+    /// <returns>
+    /// Returns the category along with its products if found.
+    /// If the category or products are not found, it returns a 404 Not Found response.
+    /// </returns>
+    /// <response code="200">Category and associated products successfully retrieved.</response>
+    public static void WithGetCategoryIncludingProductsDoc(this IEndpointConventionBuilder builder)
+    {
+        builder.WithOpenApi(operation => new(operation)
+        {
+            Summary = "Get a category and its associated products based on the category ID.",
+            Description = "Get from the unique identifier (Guid) of the category.",
+
+            Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = categoriesTag}}
         });
     }
 }

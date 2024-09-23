@@ -11,9 +11,8 @@ public class UnitOfWork : IUnitOfWork
     private IUserRepository? userRepository;
 
     public UnitOfWork(AppDbContext context)
-    {
-        _context = context;
-    }
+        => _context = context;
+    
 
     public ICategoryRepository CategoryRepository =>
         categoryRepository ?? new CategoryRepository(_context);

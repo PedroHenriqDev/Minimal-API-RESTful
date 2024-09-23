@@ -62,7 +62,7 @@ public static class CategoriesEndpoints
         /// This endpoint uses a `GUID` as a route parameter to identify the category.
         /// </remarks>
         endpoints.MapGet("categories/{id:guid}", async ([FromRoute] Guid id,
-                                                       [FromServices] IMediator mediator) =>
+                                                        [FromServices] IMediator mediator) =>
         {
             GetCategoryQueryResponse response = await mediator.Send(new GetCategoryQueryRequest(id));
             return Results.Ok(response);
@@ -100,6 +100,16 @@ public static class CategoriesEndpoints
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
         .WithGetCategoriesWithProductsDoc();
 
+        /// <summary>
+        /// Retrieves a category and its associated products based on the category ID.
+        /// </summary>
+        /// <param name="id">The unique identifier (Guid) of the category.</param>
+        /// <param name="mediator">The MediatR instance to handle the query request.</param>
+        /// <returns>
+        /// Returns the category along with its products if found.
+        /// If the category or products are not found, it returns a 404 Not Found response.
+        /// </returns>
+        /// <response code="200">Category and associated products successfully retrieved.</response>
         endpoints.MapGet("categories/products/{id:Guid}", async ([FromRoute] Guid id,
                                                                 [FromServices] IMediator mediator) =>
         {
@@ -111,7 +121,7 @@ public static class CategoriesEndpoints
         })
         .Produces<GetCategoryWithProdsQueryResponse>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-        .WithTags(categoriesTag);
+        .WithGetCategoryIncludingProductsDoc();
         #endregion
 
         #region Post

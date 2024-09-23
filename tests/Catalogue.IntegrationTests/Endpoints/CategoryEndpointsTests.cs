@@ -1,5 +1,4 @@
 using System.Net;
-using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
 using Catalogue.Application.Categories.Queries.Responses;
 using Catalogue.Application.DTOs;
@@ -7,6 +6,7 @@ using Catalogue.Application.Interfaces;
 using Catalogue.Application.Pagination;
 using Catalogue.Domain.Entities;
 using Catalogue.IntegrationTests.Fixtures;
+using Microsoft.EntityFrameworkCore;
 
 namespace Catalogue.IntegrationTests.Endpoints;
 
@@ -25,9 +25,8 @@ public class CategoryEndpointsTests
         _options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
     }
 
-
     /// <summary>
-    /// Verifies that the 'https://localhost:7140/api/v1/categories/' endpoint
+    /// Verifies that the 'https://api/v1/categories/' endpoint
     /// returns a 200 OK status and includes valid pagination metadata when provided
     /// with a valid query string.
     /// </summary>
@@ -63,7 +62,7 @@ public class CategoryEndpointsTests
     }
 
     /// <summary>
-    /// Verifies that the 'https://localhost:7140/api/v1/categories/{id}' endpoint
+    /// Verifies that the 'https://api/v1/categories/{id}' endpoint
     /// returns 200 OK status codes and the expected category.
     /// </summary>
     [Fact]
@@ -87,10 +86,9 @@ public class CategoryEndpointsTests
         Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
         Assert.Equal(categoryExpected?.Id, response.Id);
     }
-
     
     /// <summary>
-    /// Verifies that the 'https://localhost:7140/api/v1/categories/products}' endpoint
+    /// Verifies that the 'https://api/v1/categories/products' endpoint
     /// returns 200 OK status codes and the categories with products.
     /// </summary>
     [Fact]
@@ -115,5 +113,32 @@ public class CategoryEndpointsTests
         Assert.Equal(metadata.PageSize, pageSize);
         Assert.False(metadata.HasPreviousPage);
         Assert.True(metadata.HasNextPage);
+    }
+
+    /// <summary>
+    /// Verifies that https://api/categories/products/{id} endpoint returns
+    /// 200 OK and category with products.
+    /// </summary>
+    [Fact]
+    public async Task GetCategoryWithProducts_WhenExistsCategory_ShouldReturn200OKAndCategoryWithProductsExpected()
+    {
+        //Arrange
+        Category categoryExpected = await _fixture.DbContext.Categories.FirstAsync(c => c.Products != null && c.Products.Any());
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.GetAsync($"products/{categoryExpected.Id}");
+
+        GetCategoryWithProdsQueryResponse? response = 
+            await _fixture.ReadHttpResponseAsync<GetCategoryWithProdsQueryResponse>
+            (
+                httpResponse,
+                 _options
+            );
+
+        //Assert   
+        Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
+        Assert.Equal(response.Id, categoryExpected.Id);
+        Assert.NotEmpty(response.Products);
+        Assert.Equal(categoryExpected.Products.Count(), response.Products.Count());
     }
 }
