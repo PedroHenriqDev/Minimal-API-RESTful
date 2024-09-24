@@ -5,6 +5,7 @@ using Catalogue.Application.Categories.Commands.Requests;
 using Catalogue.Application.Categories.Commands.Responses;
 using Catalogue.Application.Categories.Queries.Responses;
 using Catalogue.Application.DTOs;
+using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Interfaces;
 using Catalogue.Application.Pagination;
 using Catalogue.Domain.Entities;
@@ -179,5 +180,28 @@ public class CategoryEndpointsTests
         Assert.Equal(HttpStatusCode.Created, httpResponse.StatusCode);
         Assert.NotNull(response);
         Assert.Equal(request.Name, response.Name);
+    }
+
+    /// <summary>
+    /// Tests that a 'post' request to the https://api/categories/ endpoint returns 400 created when
+    /// request is invalid. 
+    /// </summary>
+    [Fact]
+    public async Task PostCategory_WhenCategoryInvalid_ShouldReturn400BadRequest()
+    {
+        //Arrange
+        var request = new AutoFaker<CreateCategoryCommandRequest>()
+            .Ignore(c => c.Name)
+            .Generate();
+
+        StringContent content = _fixture.CreateStringContent(request); 
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.PostAsync("", content);
+        ErrorResponse? response = await _fixture.ReadHttpResponseAsync<ErrorResponse>(httpResponse, _options);
+
+        //Assert
+        Assert.Equal(HttpStatusCode.BadRequest, httpResponse.StatusCode);
+        Assert.NotNull(response);
     }
 }

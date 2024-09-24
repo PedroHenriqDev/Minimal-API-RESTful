@@ -128,8 +128,14 @@ public class CustomWebAppFixture : WebApplicationFactory<Progam>
         return await JsonSerializer.DeserializeAsync<T>(stream, options);
     }
 
+    public async Task<T?> ReadHttpResponseAsync<T>(HttpResponseMessage httpResponse)
+    {
+        string value = await httpResponse.Content.ReadAsStringAsync(); 
+        return JsonSerializer.Deserialize<T>(value);
+    }
+
     public async Task<string> ReadRawHttpResponseAsync(HttpResponseMessage httpResponse)
-   {
+    {
         return await httpResponse.Content.ReadAsStringAsync();
     }
 

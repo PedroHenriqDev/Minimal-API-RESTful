@@ -1,5 +1,4 @@
 ﻿using Catalogue.API.Resources;
-using Catalogue.Application.Exceptions;
 using Catalogue.Application.Extensions;
 using MediatR;
 using System.Reflection;

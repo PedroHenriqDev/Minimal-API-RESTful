@@ -171,8 +171,8 @@ public static class CategoriesEndpoints
         #region Put
 
         endpoints.MapPut("categories/{id:Guid}", async ([FromBody] UpdateCategoryCommandRequest request,
-                                                       [FromRoute] Guid id,
-                                                       [FromServices] IMediator mediator) =>
+                                                        [FromRoute] Guid id,
+                                                        [FromServices] IMediator mediator) =>
         {
             UpdateCategoryCommandResponse response = await mediator.Send(request);
             return Results.Ok(response);
