@@ -30,7 +30,7 @@ public class AuthEndpointsTests : IAsyncLifetime
     }
 
     /// <summary>
-    /// Verifies that 'https://api/v1/auth/register' endpoint
+    /// Tests that a 'post' request to the 'https://api/v1/auth/register' endpoint
     /// returns a 201 Created status when provided with a valid request.
     /// </summary>
     [Fact]
@@ -55,7 +55,7 @@ public class AuthEndpointsTests : IAsyncLifetime
     }
 
     /// <summary>
-    /// Verifies that 'https://api/v1/auth/register' endpoint
+    /// Tests that a 'post' request to the 'https://api/v1/auth/register' endpoint
     /// returns a 400 Bad Request status when provided invalid request.
     /// </summary> 
     [Fact]
@@ -78,7 +78,7 @@ public class AuthEndpointsTests : IAsyncLifetime
     }
 
     /// <summary>
-    /// Verifies that 'https://api/v1/auth/login' endpoint
+    /// Tests that a 'post' request to the 'https://api/v1/auth/login' endpoint
     /// returns a 200 OK status when a valid login request is provided.
     /// </summary>
     [Fact]
@@ -107,7 +107,7 @@ public class AuthEndpointsTests : IAsyncLifetime
     }
 
     /// <summary>
-    /// Verifies that 'https://api/v1/auth/login' endpoint
+    ///  Tests that a 'post' request to the 'https://api/v1/auth/login' endpoint
     /// returns a 401 Unauthorized status when a invalid login request is provided.
     /// 
     /// </summary>
@@ -128,7 +128,7 @@ public class AuthEndpointsTests : IAsyncLifetime
     }
 
     /// <summary>
-    /// Verifies that 'https://api/v1/auth/role/{id}' endpoint
+    /// Tests that a 'put' request to the 'https://api/v1/auth/role/{id}' endpoint
     /// returns a 200 OK status when a valid role and user request is provided.
     /// <remarks>
     /// Note: This test requires that there is least one user in the database
@@ -174,7 +174,7 @@ public class AuthEndpointsTests : IAsyncLifetime
     }
 
     /// <summary>
-    /// Verifies that 'https://api/v1/auth/role/{id}' endpoint
+    ///  Tests that a 'put' request to the 'https://api/v1/auth/role/{id}' endpoint
     /// returns a 403 Forbidden status when a valid role and invalid user request is provided.
     /// </summary>
     [Fact]
@@ -201,7 +201,7 @@ public class AuthEndpointsTests : IAsyncLifetime
     }
 
     /// <summary>
-    /// Verifies that 'https://api/v1/auth/update-user' endpoint 
+    /// Tests that a 'put' request to the 'https://api/v1/auth/update-user' endpoint 
     /// returns 200 OK Status when a valid user request is provided.
     /// </summary>
     /// <returns></returns>

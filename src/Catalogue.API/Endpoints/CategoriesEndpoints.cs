@@ -122,30 +122,45 @@ public static class CategoriesEndpoints
         })
         .Produces<GetCategoryWithProdsQueryResponse>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+        .WithName("GetByIdCategoryWithProducts")
         .WithGetCategoryIncludingProductsDoc();
         #endregion
 
         #region Post
+
+        /// <summary>
+        /// Create a new category.
+        /// </summary>
+        /// <param name="request">An object containing the necessary data to create the category.</param>
+        /// <param name="mediator">The MediatR instance responsible for handling the request.</param>
+        /// <response code="201">Returns the created category along with its generated 'id' of type <see cref="Guid"/>.</response>
+        /// <response code="400">Returns 400 Bad Request if the category data is invalid.</response>
         endpoints.MapPost("categories", async ([FromBody] CreateCategoryCommandRequest request,
                                                [FromServices] IMediator mediator) =>
         {
             CreateCategoryCommandResponse response = await mediator.Send(request);
 
-            return Results.CreatedAtRoute(
+            return Results.CreatedAtRoute
+            (
               routeName: "GetCategoryById",
               routeValues: new { id = response.Id },
-              value: response);
+              value: response
+            );
 
         })
         .Produces<CreateCategoryCommandResponse>(StatusCodes.Status201Created)
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
-        .WithTags(categoriesTag);
+        .WithPostCategoryDoc();
 
         endpoints.MapPost("categories/products", async ([FromBody] CreateCategoryWithProdsCommandRequest request,
                                                         [FromServices] IMediator mediator) =>
         {
             CreateCategoryWithProdsCommandResponse response = await mediator.Send(request);
-            return Results.Created(string.Empty, response);
+            return Results.CreatedAtRoute
+            (
+                routeName: "GetByIdCategoryWithProducts", 
+                routeValues: new {id = response.Id}, value: response
+            );
 
         })
         .Produces<CreateCategoryWithProdsCommandResponse>(StatusCodes.Status201Created)

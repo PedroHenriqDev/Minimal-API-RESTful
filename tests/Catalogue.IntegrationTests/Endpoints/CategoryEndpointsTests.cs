@@ -1,5 +1,8 @@
 using System.Net;
 using System.Text.Json;
+using AutoBogus;
+using Catalogue.Application.Categories.Commands.Requests;
+using Catalogue.Application.Categories.Commands.Responses;
 using Catalogue.Application.Categories.Queries.Responses;
 using Catalogue.Application.DTOs;
 using Catalogue.Application.Interfaces;
@@ -26,7 +29,7 @@ public class CategoryEndpointsTests
     }
 
     /// <summary>
-    /// Verifies that the 'https://api/v1/categories/' endpoint
+    ///Tests that a 'get' request to the 'https://api/v1/categories/' endpoint
     /// returns a 200 OK status and includes valid pagination metadata when provided
     /// with a valid query string.
     /// </summary>
@@ -62,7 +65,7 @@ public class CategoryEndpointsTests
     }
 
     /// <summary>
-    /// Verifies that the 'https://api/v1/categories/{id}' endpoint
+    /// Tests that a 'get' request to the 'https://api/v1/categories/{id}' endpoint
     /// returns 200 OK status codes and the expected category.
     /// </summary>
     [Fact]
@@ -88,7 +91,7 @@ public class CategoryEndpointsTests
     }
     
     /// <summary>
-    /// Verifies that the 'https://api/v1/categories/products' endpoint
+    /// Tests that a 'get' request to the 'https://api/v1/categories/products' endpoint
     /// returns 200 OK status codes and the categories with products.
     /// </summary>
     [Fact]
@@ -102,7 +105,12 @@ public class CategoryEndpointsTests
         //Act
         HttpResponseMessage httpResponse = await _httpClient.GetAsync($"products/{queryString}"); 
 
-        IPagedList<GetCategoryWithProdsQueryResponse>? response = await _fixture.ReadHttpResponseAsync<PagedList<GetCategoryWithProdsQueryResponse>>(httpResponse, _options);
+        IPagedList<GetCategoryWithProdsQueryResponse>? response =
+         await _fixture.ReadHttpResponseAsync<PagedList<GetCategoryWithProdsQueryResponse>>
+         (
+            httpResponse,
+             _options
+         );
         
         PaginationMetadata? metadata = _fixture.GetHeaderPagination(httpResponse);
 
@@ -116,14 +124,15 @@ public class CategoryEndpointsTests
     }
 
     /// <summary>
-    /// Verifies that https://api/categories/products/{id} endpoint returns
+    /// Tests that a 'get' request to the https://api/categories/products/{id} endpoint returns
     /// 200 OK and category with products.
     /// </summary>
     [Fact]
     public async Task GetCategoryWithProducts_WhenExistsCategory_ShouldReturn200OKAndCategoryWithProductsExpected()
     {
         //Arrange
-        Category categoryExpected = await _fixture.DbContext.Categories.FirstAsync(c => c.Products != null && c.Products.Any());
+        Category categoryExpected = await _fixture.DbContext.Categories
+            .FirstAsync(c => c.Products != null && c.Products.Any());
 
         //Act
         HttpResponseMessage httpResponse = await _httpClient.GetAsync($"products/{categoryExpected.Id}");
@@ -140,5 +149,35 @@ public class CategoryEndpointsTests
         Assert.Equal(response.Id, categoryExpected.Id);
         Assert.NotEmpty(response.Products);
         Assert.Equal(categoryExpected.Products.Count(), response.Products.Count());
+    }
+
+    /// <summary>
+    /// Tests that a 'post' request to the https://api/categories/ endpoint returns 201 created when
+    /// request is valid. 
+    /// </summary>
+    [Fact]
+    public async Task PostCategory_WhenCategoryValid_ShouldReturn201Created()
+    {
+        //Arrange
+        var request = new AutoFaker<CreateCategoryCommandRequest>()
+            .Ignore(c => c.CreatedAt)
+            .Generate();
+
+        StringContent content = _fixture.CreateStringContent(request);
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.PostAsync("", content: content);
+
+        CreateCategoryCommandResponse? response =
+            await _fixture.ReadHttpResponseAsync<CreateCategoryCommandResponse>
+            (
+                httpResponse,
+                 _options
+            );
+
+        //Assert
+        Assert.Equal(HttpStatusCode.Created, httpResponse.StatusCode);
+        Assert.NotNull(response);
+        Assert.Equal(request.Name, response.Name);
     }
 }
