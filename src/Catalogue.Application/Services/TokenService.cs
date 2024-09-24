@@ -25,12 +25,11 @@ public class TokenService : ITokenService
     /// This method is responsible for generating a token based on the user's authentication
     /// claims.
     /// </summary>
-    /// <param name="authClaims">A list of claims representing the user's authentication info
-    /// rmation.</param>
-    /// <param name="configuration">The configuration settings used to generate the token, in
-    /// cluding signing keys and expiration details.</param>
-    /// <returns> A JWT token as a string, which is generated and ready to be used in authent
-    /// ication header.</returns>
+    /// <param name="authClaims">A list of claims representing the user's authentication information.</param>
+    /// <param name="configuration">The configuration settings used to generate the token, including
+    /// signing keys and expiration details.</param>
+    /// <returns> A JWT token as a string, which is generated and ready to be used in authentication
+    /// header.</returns>
     public string GenerateToken(IEnumerable<Claim> authClaims, IConfiguration configuration)
     {
         byte[] secretKey = GetSecretKey(configuration);

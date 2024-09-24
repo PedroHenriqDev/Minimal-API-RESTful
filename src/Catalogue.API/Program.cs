@@ -14,16 +14,18 @@ public class Progam
 
         cfg.LoadEnv();
 
-        builder.Services.AddApiSwagger()
-                        .ConfigureApiOptions()
-                        .AddPersistence(cfg)
-                        .AddApiAuthentication(cfg)
-                        .AddApiAuthorization()
-                        .AddDependencies()
-                        .AddApiDefaultCors()
-                        .AddApiServicesScoped()
-                        .AddEndpointsApiExplorer()
-                        .AddVersioning();
+        builder.Services
+            .AddApiSwagger()
+            .AddGzipResponseCompression()
+            .ConfigureApiOptions()
+            .AddPersistence(cfg)
+            .AddApiAuthentication(cfg)
+            .AddApiAuthorization()
+            .AddDependencies()
+            .AddApiDefaultCors()
+            .AddApiServicesScoped()
+            .AddEndpointsApiExplorer()
+            .AddVersioning();
 
         WebApplication app = builder.Build();
         RouteGroupBuilder appVersioned = app.UseApiVersioned();
@@ -38,6 +40,7 @@ public class Progam
 
         //Middlewares
         app.UseSwaggerMiddleware()
+           .UseCompressionMiddleware()
            .UseExceptionHandling(builder.Environment)
            .UseCors()
            .UseAuthentication()

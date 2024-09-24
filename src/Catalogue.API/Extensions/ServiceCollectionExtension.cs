@@ -4,6 +4,7 @@ using Catalogue.API.OpenApi;
 using Catalogue.Domain.Enums;
 using Catalogue.Infrastructure.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -99,6 +100,15 @@ public static class ServiceCollectionExtension
         .EnableApiVersionBinding();
 
         return services;
+    }
+
+    public static IServiceCollection AddGzipResponseCompression(this IServiceCollection services)
+    {
+        return services.AddResponseCompression(options =>
+        {
+            options.Providers.Add<GzipCompressionProvider>();
+            options.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[]{"application/json"});
+        });
     }
 
     public static IServiceCollection AddApiAuthorization(this IServiceCollection services)

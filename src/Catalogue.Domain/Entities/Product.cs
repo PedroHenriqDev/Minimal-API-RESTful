@@ -1,6 +1,5 @@
 ﻿using Catalogue.Domain.Abstractions;
 using Catalogue.Domain.Validation;
-using System.Text.Json.Serialization;
 
 namespace Catalogue.Domain.Entities;
 

@@ -29,8 +29,7 @@ public static class CategoriesEndpoints
         /// <param name="mediator">The instance of the Mediator to send the request.</param>
         /// <returns>A result containing a paginated list of categories.</returns>
         /// <remarks>
-        /// The pagination metadata includes details such as page size, current page,
-        /// and total item count.
+        /// The pagination metadata includes details such as page size, current page, and total item count.
         /// </remarks>
         endpoints.MapGet("categories", async (HttpContext httpContext,
                                               [AsParameters] QueryParameters parameters,
@@ -76,9 +75,11 @@ public static class CategoriesEndpoints
         /// <summary>
         /// Endpoint to retrieve a paginated list of categories along with their associated products.
         /// </summary>
-        /// <param name="httpContext">The HTTP context containing information about the request and response.</param>
+        /// <param name="httpContext">The HTTP context containing information about the request and
+        /// response.</param>
         /// <param name="parameters">Pagination parameters, such as page number and page size.</param>
-        /// <param name="mediator">The MediatR instance used to send the request and retrieve the result.</param>
+        /// <param name="mediator">The MediatR instance used to send the request and retrieve the
+        /// result.</param>
         /// <returns>
         /// Returns a paginated list of categories with their associated products, along with pagination
         /// metadata in the response header.

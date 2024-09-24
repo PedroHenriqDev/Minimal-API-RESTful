@@ -74,4 +74,9 @@ public static class ApplicationBuilderExtension
 
         return app;
     }
+
+    public static IApplicationBuilder UseCompressionMiddleware(this IApplicationBuilder app)
+    {
+        return app.UseResponseCompression();
+    }
 }

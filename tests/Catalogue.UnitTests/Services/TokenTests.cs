@@ -14,15 +14,14 @@ namespace Catalogue.Tests.UnitTests;
 
 public class TokenTests
 {
-    private readonly TokenService _tokenService;
     private readonly Mock<ILogger<TokenService>> _mockedLogger;
-    private readonly JwtSecurityTokenHandler _tokenHandler;
-    private readonly string jti = Guid.NewGuid().ToString();
     private readonly string name;
+    private readonly TokenService _tokenService;
+    private readonly JwtSecurityTokenHandler _tokenHandler;
+    private readonly string jti;
 
     private IConfiguration configuration;
 
- 
     public TokenTests()
     {
         _mockedLogger = new Mock<ILogger<TokenService>>();
@@ -39,6 +38,7 @@ public class TokenTests
 
         _tokenHandler = new JwtSecurityTokenHandler();
 
+        jti = Guid.NewGuid().ToString();
 
         configuration = new ConfigurationBuilder()
             .AddInMemoryCollection(inMemorySettings)
