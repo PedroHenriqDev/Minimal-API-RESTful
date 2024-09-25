@@ -20,13 +20,13 @@ public static class AuthenticationEndpoints
     {
         #region Post
         endpoints
-        .MapPost("auth/register", Register)
+        .MapPost("auth/register", RegisterAsync)
         .Produces<RegisterUserCommandResponse>(StatusCodes.Status201Created)
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
         .WithRegisterDoc();
 
         endpoints
-        .MapPost("auth/login", Login)
+        .MapPost("auth/login", LoginAsync)
         .Produces<LoginQueryResponse>(StatusCodes.Status200OK)
         .Produces(StatusCodes.Status401Unauthorized)
         .WithLoginDoc();
@@ -36,7 +36,7 @@ public static class AuthenticationEndpoints
         #region Put
 
         endpoints
-        .MapPut("auth/role/{id:guid}", UpdateRole)
+        .MapPut("auth/role/{id:guid}", UpdateRoleAsync)
         .AddEndpointFilter<InjectIdFilter>()
         .Produces<UpdateUserRoleCommandRequest>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
@@ -44,7 +44,7 @@ public static class AuthenticationEndpoints
         .WithPutRoleDoc();
 
         endpoints
-        .MapPut("auth/update-user", UpdateUser)
+        .MapPut("auth/update-user", UpdateUserAsync)
         .AddEndpointFilter<InjectNameFilter>()
         .Produces<UpdateUserRoleCommandRequest>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
@@ -66,7 +66,7 @@ public static class AuthenticationEndpoints
     /// the newly registered user, 
     /// or an appropriate error response in case of a bad request.
     /// </returns>
-    private static async Task<IResult> Register
+    private static async Task<IResult> RegisterAsync
     (
         [FromBody] RegisterUserCommandRequest request,
         [FromServices] IMediator mediator
@@ -94,7 +94,7 @@ public static class AuthenticationEndpoints
     /// containing the authentication details, including the JWT token,
     /// or a 401 Unauthorized response if the login credentials are invalid.
     /// </returns>     
-    private static async Task<IResult> Login
+    private static async Task<IResult> LoginAsync
     (
         [FromBody] LoginQueryRequest request,
         [FromServices] IMediator mediator,
@@ -132,7 +132,7 @@ public static class AuthenticationEndpoints
     /// policy. It will only function if the authenticated user has administrative privileges.
     /// </remarks>
     [Authorize(Policy = "AdminOnly")]
-    private static async Task<IResult> UpdateRole
+    private static async Task<IResult> UpdateRoleAsync
     (
         [FromRoute] Guid id,
         [FromBody] UpdateUserRoleCommandRequest request,
@@ -157,7 +157,7 @@ public static class AuthenticationEndpoints
     /// A custom endpoint filter, <see cref="InjectNameFilter"/>, is used to inject the current 
     /// authenticated user's name into the request object before it's processed.
     /// </remarks>
-    private static async Task<IResult> UpdateUser
+    private static async Task<IResult> UpdateUserAsync
     (
         [FromBody] UpdateUserCommandRequest request,
         [FromServices] IMediator mediator,

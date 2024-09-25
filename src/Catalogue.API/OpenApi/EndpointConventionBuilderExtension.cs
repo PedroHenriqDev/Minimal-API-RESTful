@@ -146,4 +146,16 @@ public static class EndpointConventionBuilderExtension
             Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = categoriesTag}}
         });
     }
+    
+    public static void WithDeleteCategoryDoc(this IEndpointConventionBuilder builder)
+    {
+        builder.WithOpenApi(operation => new(operation)
+        {
+            Summary = "Deletes a category",
+
+            Description = "Deletes a category using its unique identifier `GUID`.",
+
+            Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = categoriesTag}}
+        });
+    }
 }

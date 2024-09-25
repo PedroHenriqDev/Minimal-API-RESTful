@@ -418,4 +418,55 @@ public class CategoryEndpointsTests
         Assert.Equal(HttpStatusCode.NotFound, httpResponse.StatusCode);
         Assert.NotNull(response);
     }
+
+    /// <summary>
+    /// Tests that a 'delete' request to the https://api/categories/{id} endpoint returns 200 OK when
+    /// category id exists. 
+    /// </summary>
+    [Fact]
+    public async Task DeleteCategory_WhenCategoryIdNotExist_ShouldReturn404NotFound()
+    {
+        //Arrange
+        Guid id = _fixture.DbContext.Categories.AsNoTracking().First().Id;
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.DeleteAsync(id.ToString());
+
+        DeleteCategoryCommandResponse? response =
+            await _fixture.ReadHttpResponseAsync<DeleteCategoryCommandResponse>
+            (
+                httpResponse,
+                 _options
+            );
+
+        //Assert
+        Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
+        Assert.NotNull(response);
+        Assert.Equal(id, response.Id);
+    }
+    
+    /// <summary>
+    /// Tests that a 'delete' request to the https://api/categories/{id} endpoint returns 404 Not Found when
+    /// category id not exists. 
+    /// </summary>
+    [Fact]
+    public async Task DeleteCategory_WhenCategoryIdNotExists_ShouldReturn404NotFound()
+    {
+        //Arrange
+        Guid id = Guid.NewGuid();
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.DeleteAsync(id.ToString());
+
+        ErrorResponse? response =
+            await _fixture.ReadHttpResponseAsync<ErrorResponse>
+            (
+                httpResponse,
+                 _options
+            );
+
+        //Assert
+        Assert.Equal(HttpStatusCode.NotFound, httpResponse.StatusCode);
+        Assert.NotNull(response);
+    }
 }
