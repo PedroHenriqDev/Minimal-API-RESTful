@@ -154,7 +154,7 @@ public class CategoryEndpointsTests
     /// 200 OK and category with products.
     /// </summary>
     [Fact]
-    public async Task GetCategoryWithProducts_WhenExistsCategory_ShouldReturn200OKAndCategoryWithProductsExpected()
+    public async Task GetByIdCategoryWithProducts_WhenExistsCategoryId_ShouldReturn200OKAndCategoryWithProductsExpected()
     {
         //Arrange
         Category categoryExpected = await _fixture.DbContext.Categories
@@ -175,6 +175,31 @@ public class CategoryEndpointsTests
         Assert.Equal(response.Id, categoryExpected.Id);
         Assert.NotEmpty(response.Products);
         Assert.Equal(categoryExpected.Products.Count(), response.Products.Count());
+    }
+
+    /// <summary>
+    /// Tests that a 'get' request when id not exists to the https://api/categories/products/{id} endpoint returns
+    /// 404 OK.
+    /// </summary>
+    [Fact]
+    public async Task GetByIdCategoryWithProducts_WhenNotExistsCategoryId_ShouldReturn404NotFoundAndErrorResponse()
+    {
+        //Arrange
+        Guid id = Guid.NewGuid();
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.GetAsync($"products/{id}");
+
+        ErrorResponse? response = 
+            await _fixture.ReadHttpResponseAsync<ErrorResponse>
+            (
+                httpResponse,
+                 _options
+            );
+
+        //Assert   
+        Assert.Equal(HttpStatusCode.NotFound, httpResponse.StatusCode);
+        Assert.NotNull(response);
     }
 
     /// <summary>
