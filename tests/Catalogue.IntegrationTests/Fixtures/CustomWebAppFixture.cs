@@ -1,6 +1,6 @@
+using AutoBogus;
 using System.Text;
 using System.Text.Json;
-using AutoBogus;
 using Catalogue.API;
 using Catalogue.Application.DTOs;
 using Catalogue.Application.DTOs.Responses;

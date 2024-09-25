@@ -181,7 +181,7 @@ public class AuthEndpointsTests : IAsyncLifetime
     public async Task UpdateRole_WhenRoleValidAndUserInvalid_ShouldReturnStatusCodes403Forbidden()
     {
         //Arrange
-        string token = _fixture.GenerateToken(userRegistered.Name, Role.User);
+         string token = _fixture.GenerateToken(userRegistered.Name, Role.User);
         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
         User userToUpdate = _fixture.DbContext.Users.First(u => u.Name == userRegistered.Name);

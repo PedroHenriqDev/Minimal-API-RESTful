@@ -36,7 +36,6 @@ public class InjectIdFilter : IEndpointFilter
         }
 
         // Try set property in request 
-
         if (idProperty!.PropertyType != typeof(Guid))
         {
             string message = string.Format

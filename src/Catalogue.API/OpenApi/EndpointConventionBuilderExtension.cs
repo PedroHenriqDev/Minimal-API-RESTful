@@ -7,6 +7,7 @@ public static class EndpointConventionBuilderExtension
 {
     private static string authTag = "Authentication";
     private static string categoriesTag = "Categories"; 
+    private const string productsTag = "Products";
 
     public static void WithLoginDoc(this IEndpointConventionBuilder builder)
     {
@@ -156,6 +157,18 @@ public static class EndpointConventionBuilderExtension
             Description = "Deletes a category using its unique identifier `GUID`.",
 
             Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = categoriesTag}}
+        });
+    }
+
+    public static void WithGetProductsDoc(this IEndpointConventionBuilder builder)
+    {
+        builder.WithOpenApi(operation => new(operation)
+        {
+            Summary = "Get products Paged",
+
+            Description = "Get a list of products with pagination",
+            
+            Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = productsTag}}
         });
     }
 }
