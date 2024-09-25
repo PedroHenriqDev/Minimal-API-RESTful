@@ -214,6 +214,7 @@ public class CategoryEndpointsTests
         var request = new AutoFaker<CreateCategoryCommandRequest>()
             .Ignore(c => c.CreatedAt)
             .Generate();
+        request.Name += Guid.NewGuid().ToString();
 
         StringContent content = _fixture.CreateStringContent(request);
 
@@ -271,6 +272,8 @@ public class CategoryEndpointsTests
             .RuleFor(p => p.ImageUrl, f => f.Internet.Url())
             .Generate(10))
             .Generate();
+        request.Name += Guid.NewGuid().ToString();
+
 
         StringContent content = _fixture.CreateStringContent(request); 
 
@@ -323,6 +326,96 @@ public class CategoryEndpointsTests
 
         //Assert
         Assert.Equal(HttpStatusCode.BadRequest, httpResponse.StatusCode);
+        Assert.NotNull(response);
+    }
+
+    /// <summary>
+    /// Tests that a 'put' request to the https://api/categories/{id} endpoint returns 200 OK when
+    /// request is valid. 
+    /// </summary>
+    [Fact]
+    public async Task PutCategory_WhenCategoryIsValid_ShouldReturn200OK()
+    {
+        //Arrange
+        Category category = _fixture.DbContext.Categories.AsNoTracking().First();
+
+        var request = new AutoFaker<UpdateCategoryCommandRequest>().Generate();
+
+        StringContent content = _fixture.CreateStringContent(request);
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.PutAsync(category.Id.ToString(), content);
+
+        UpdateCategoryCommandResponse? response =
+            await _fixture.ReadHttpResponseAsync<UpdateCategoryCommandResponse>
+            (
+                httpResponse,
+                 _options
+            );
+
+        //Assert
+        Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
+        Assert.NotNull(response);
+        Assert.Equal(category.Id, response.Id);
+        Assert.NotEqual(category.Name, response.Name);
+        Assert.NotEqual(category.Description, response.Description);
+    }
+
+    /// <summary>
+    /// Tests that a 'put' request to the https://api/categories/{id} endpoint returns 400 Bad Request when
+    /// request is invalid. 
+    /// </summary>
+    [Fact]
+    public async Task PutCategory_WhenCategoryIsInvalid_ShouldReturn400BadRequest()
+    {
+        //Arrange
+        Category category = _fixture.DbContext.Categories.AsNoTracking().First();
+
+        var request = new AutoFaker<UpdateCategoryCommandRequest>().Ignore(c => c.Name).Generate();
+
+        StringContent content = _fixture.CreateStringContent(request);
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.PutAsync(category.Id.ToString(), content);
+
+        ErrorResponse? response =
+            await _fixture.ReadHttpResponseAsync<ErrorResponse>
+            (
+                httpResponse,
+                 _options
+            );
+
+        //Assert
+        Assert.Equal(HttpStatusCode.BadRequest, httpResponse.StatusCode);
+        Assert.NotNull(response);
+    }
+
+    /// <summary>
+    /// Tests that a 'put' request to the https://api/categories/{id} endpoint returns 404 Not Found when
+    /// category id not exist. 
+    /// </summary>
+    [Fact]
+    public async Task PutCategory_WhenCategoryIdNotExist_ShouldReturn404NotFound()
+    {
+        //Arrange
+        Guid id = Guid.NewGuid(); 
+
+        var request = new AutoFaker<UpdateCategoryCommandRequest>().Generate();
+
+        StringContent content = _fixture.CreateStringContent(request);
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.PutAsync(id.ToString(), content);
+
+        ErrorResponse? response =
+            await _fixture.ReadHttpResponseAsync<ErrorResponse>
+            (
+                httpResponse,
+                 _options
+            );
+
+        //Assert
+        Assert.Equal(HttpStatusCode.NotFound, httpResponse.StatusCode);
         Assert.NotNull(response);
     }
 }

@@ -177,6 +177,15 @@ public static class CategoriesEndpoints
 
         #region Put
 
+        /// <summary>
+        /// Updates a category by its unique identifier.
+        /// </summary>
+        /// <param name="request">An object containing the necessary data to update the category.</param>
+        /// <param name="id">The unique identifier (Guid) of the category to be updated.</param>
+        /// <param name="mediator">The MediatR instance responsible for processing the update request.</param>
+        /// <response code="200">Returns 200 Ok if the category data is valid and successfully updated.</response>
+        /// <response code="400">Returns 400 Bad Request if the provided category data is invalid.</response>
+        /// <response code="404">Returns 404 Not Found if the specified category id does not exist.</response>
         endpoints.MapPut("categories/{id:Guid}", async ([FromBody] UpdateCategoryCommandRequest request,
                                                         [FromRoute] Guid id,
                                                         [FromServices] IMediator mediator) =>
@@ -189,7 +198,7 @@ public static class CategoriesEndpoints
         .Produces<UpdateCategoryCommandResponse>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
-        .WithTags(categoriesTag);
+        .WithPutCategoryDoc();
 
         #endregion
 

@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.OpenApi.Models;
 
 namespace Catalogue.API.OpenApi;
@@ -33,7 +34,8 @@ public static class EndpointConventionBuilderExtension
         {
             Summary = "Update user role",
 
-            Description = "Updates the role of a user specified by their ID. This endpoint is restricted to users with the 'AdminOnly' policy.",
+            Description = @"Updates the role of a user specified by their ID. This endpoint is restricted
+            to users with the 'AdminOnly' policy.",
 
             Tags = new List<OpenApiTag>{new OpenApiTag() {Name = authTag}}
         });    
@@ -99,7 +101,7 @@ public static class EndpointConventionBuilderExtension
         builder.WithOpenApi(operation => new(operation)
         {
             Summary = "Get a category and its associated products based on the category ID",
-            Description = "Get from the unique identifier (Guid) of the category.",
+            Description = "Get from the unique identifier ``Guid` of the category.",
 
             Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = categoriesTag}}
         });
@@ -129,6 +131,19 @@ public static class EndpointConventionBuilderExtension
                             and a list of products.",
 
             Tags = new List<OpenApiTag>(){new OpenApiTag(){ Name = categoriesTag}}
+        });
+    }
+
+    public static void WithPutCategoryDoc(this IEndpointConventionBuilder builder)
+    {
+        builder.WithOpenApi(operation => new(operation)
+        {
+            Summary =  "Updates a category by its unique identifier",
+
+            Description = @"This endpoint allows for the updating of an existing category
+                            in the system by providing its unique identifier `GUID`.",
+
+            Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = categoriesTag}}
         });
     }
 }
