@@ -90,6 +90,31 @@ public class CategoryEndpointsTests
         Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
         Assert.Equal(categoryExpected?.Id, response.Id);
     }
+
+    /// <summary>
+    /// Tests that a 'get' request to the 'https://api/v1/categories/{id}' endpoint
+    /// returns 404 OK status codes.
+    /// </summary>
+    [Fact]
+    public async Task GetCategoryById_WhenNotExistsCategoryId_ShouldReturn404NotFoundAndErrorResponse()
+    {
+        //Arrange
+        Guid id = Guid.NewGuid();
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.GetAsync(id.ToString());
+
+        ErrorResponse? response =
+            await _fixture.ReadHttpResponseAsync<ErrorResponse>
+            (
+                httpResponse,
+                 _options
+            );
+
+        //Assert]
+        Assert.Equal(HttpStatusCode.NotFound, httpResponse.StatusCode);
+        Assert.NotNull(response);
+    }
     
     /// <summary>
     /// Tests that a 'get' request to the 'https://api/v1/categories/products' endpoint
