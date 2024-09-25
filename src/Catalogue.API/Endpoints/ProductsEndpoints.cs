@@ -16,34 +16,50 @@ namespace Catalogue.API.Endpoints;
 public static class ProductsEndpoints
 {
     private const string productsTag = "Products";
-    
-    /// <summary>
-    /// Get a list products with pagination.
-    /// </summary>
-    /// <param name="httpContext">The current HTTP context used to access request and response metadata, including headers.</param>
-    /// <param name="parameters">An object containing the query parameters for pagination, sorting, and filtering the list of products.</param>
-    /// <param name="mediator">The MediatR instance responsible for sending the query to get a paginated list of products.</param>
-    /// <returns>A paginated list of products.</returns>
-    /// <response code="200">Returns a 200 OK status along with the paginated list of products.</response>
-    /// <response code="401">Returns a 401 Unauthorized status if the user is not authenticated.</response>
-    /// <response code="403">Returns a 403 Forbidden status if the user does not have the necessary permissions.</response>
+  
     public static void MapProductsEndpoints(this IEndpointRouteBuilder endpoints)
     {
         #region Get
-        endpoints.MapGet("products", async (HttpContext httpContext,
-                                            [AsParameters] QueryParameters parameters,
-                                            [FromServices] IMediator mediator) =>
-        {
+        /// <summary>
+        /// Get a list products with pagination.
+        /// </summary>
+        /// <param name="httpContext">The current HTTP context used to access request and response metadata,
+        /// including headers.</param>
+        /// <param name="parameters">An object containing the query parameters for pagination, sorting, and
+        /// filtering the list of products.</param>
+        /// <param name="mediator">The MediatR instance responsible for sending the query to get a paginated
+        /// list of products.</param>
+        /// <returns>A paginated list of products.</returns>
+        /// <response code="200">Returns a 200 OK status along with the paginated list of products.</response>
+        /// <response code="401">Returns a 401 Unauthorized status if the user is not authenticated.</response>
+        /// <response code="403">Returns a 403 Forbidden status if the user does not have the necessary
+        /// permissions.</response>
+         endpoints.MapGet("products", async 
+         (  HttpContext httpContext,
+            [AsParameters] QueryParameters parameters,
+            [FromServices] IMediator mediator
+         ) =>
+         {
             GetProductsQueryResponse response =
-                        await mediator.Send(new GetProductsQueryRequest(parameters));
+            await mediator.Send(new GetProductsQueryRequest(parameters));
+
             httpContext.AppendCategoriesMetaData(response.ProductsPaged);
 
             return Results.Ok(response.ProductsPaged);
-        })
+         })
         .Produces<PagedList<GetProductQueryResponse>>(StatusCodes.Status200OK)
         .RequireAuthorization()
         .WithGetProductsDoc();
 
+        /// <summary>
+        /// Retrieves a product by its unique identifier (GUID).
+        /// </summary>
+        /// <param name="id">The GUID of the product to retrieve.</param>
+        /// <param name="mediator">The MediatR instance responsible for handling the request to get
+        /// the product.</param>
+        /// <returns>The product details if found; otherwise, a 404 Not Found response.</returns>
+        /// <response code="200">Returns the product details when found.</response>
+        /// <response code="404">Returns a 404 Not Found error if the product does not exist.</response>
         endpoints.MapGet("products/{id:Guid}", async ([FromRoute] Guid id,
                                                [FromServices] IMediator mediator) =>
         {
@@ -54,8 +70,8 @@ public static class ProductsEndpoints
         .Produces<GetProductQueryResponse>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
         .RequireAuthorization()
-        .WithTags(productsTag)
-        .WithName("GetProductById");
+        .WithName("GetProductById")
+        .WithGetByIdProductDoc();
 
         endpoints.MapGet("products/category", async (HttpContext httpContext,
                                                [AsParameters] QueryParameters parameters,
@@ -154,5 +170,44 @@ public static class ProductsEndpoints
         .WithTags(productsTag);
 
         #endregion
+    }
+
+      
+    /// <summary>
+    /// Get a list products with pagination.
+    /// </summary>
+    /// <param name="httpContext">The current HTTP context used to access request and response metadata,
+    /// including headers.</param>
+    /// <param name="parameters">An object containing the query parameters for pagination, sorting, and
+    /// filtering the list of products.</param>
+    /// <param name="mediator">The MediatR instance responsible for sending the query to get a paginated
+    /// list of products.</param>
+    /// <returns>A paginated list of products.</returns>
+    /// <response code="200">Returns a 200 OK status along with the paginated list of products.</response>
+    /// <response code="401">Returns a 401 Unauthorized status if the user is not authenticated.</response>
+    /// <response code="403">Returns a 403 Forbidden status if the user does not have the necessary
+    /// permissions.</response>
+    public static async Task<IResult> GetProductsAsync
+    (
+        HttpContext httpContext,
+        [AsParameters] QueryParameters parameters,
+        [FromServices] IMediator mediator
+    ) 
+    {
+        GetProductsQueryResponse response =
+                        await mediator.Send(new GetProductsQueryRequest(parameters));
+
+        httpContext.AppendCategoriesMetaData(response.ProductsPaged);
+
+        return Results.Ok(response.ProductsPaged);
+    }
+
+    public static async Task<IResult> GetProductByIdAsync 
+    (
+        [FromRoute] Guid id,
+        [FromServices] IMediator mediator)
+    {
+        GetProductQueryResponse response = await mediator.Send(new GetProductQueryRequest(id));
+        return Results.Ok(response);
     }
 }

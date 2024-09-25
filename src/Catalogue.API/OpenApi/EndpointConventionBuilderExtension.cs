@@ -171,4 +171,16 @@ public static class EndpointConventionBuilderExtension
             Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = productsTag}}
         });
     }
+
+    public static void WithGetByIdProductDoc(this IEndpointConventionBuilder builder)
+    {
+        builder.WithOpenApi(operation => new(operation)
+        {
+            Summary = "Get product by id",
+
+            Description = "Retrieves a product by its unique identifier `GUID`.",
+
+            Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = productsTag}}
+        });
+    }
 }

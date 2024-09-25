@@ -1,4 +1,5 @@
 using Catalogue.Application.DTOs;
+using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Interfaces;
 using Catalogue.Application.Pagination;
 using Catalogue.Application.Products.Queries.Responses;
@@ -59,6 +60,61 @@ namespace Catalogue.IntegrationTests.Endpoints
             Assert.Equal(pageSize, metadata.PageSize);
             Assert.False(metadata.HasPreviousPage);
             Assert.True(metadata.HasNextPage);
+        }
+
+        /// <summary>
+        /// Tests that 'get' request to the 'https://localhost:7140/api/v1/products/{id}' endpoint when product
+        /// id exists, should returns a 200 OK the expected products.
+        /// </summary>
+        [Fact]
+        public async Task GetByIdProduct_WhenProductIdExists_ShouldReturn200OKAndProductExpected()
+        {
+            // Arrange
+            string token = _fixture.GenerateToken(_fixture.Admin.Name, _fixture.Admin.Role);
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            Guid id = _fixture.DbContext.Products.First().Id;
+
+            // Act
+            HttpResponseMessage httpResponse = await _httpClient.GetAsync(id.ToString());
+
+            GetProductQueryResponse? response = 
+                await _fixture.ReadHttpResponseAsync<GetProductQueryResponse>
+                (
+                    httpResponse,
+                     _options
+                );
+            
+            // Assert 
+            Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
+            Assert.NotNull(response);
+            Assert.Equal(id, response.Id);
+        }
+
+        /// <summary>
+        /// Tests that 'get' request to the 'https://localhost:7140/api/v1/products/{id}' endpoint when product
+        /// id not exists, should returns a 404 Not Found status code..
+        /// </summary>
+        [Fact]
+        public async Task GetByIdProduct_WhenProductIdNotExists_ShouldReturn404NotFound()
+        {
+            // Arrange
+            string token = _fixture.GenerateToken(_fixture.Admin.Name, _fixture.Admin.Role);
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            Guid id = Guid.NewGuid();
+
+            // Act
+            HttpResponseMessage httpResponse = await _httpClient.GetAsync(id.ToString());
+
+            ErrorResponse? response = 
+                await _fixture.ReadHttpResponseAsync<ErrorResponse>
+                (
+                    httpResponse,
+                     _options
+                );
+            
+            // Assert 
+            Assert.Equal(HttpStatusCode.NotFound, httpResponse.StatusCode);
+            Assert.NotNull(response);
         }
     }
 }
