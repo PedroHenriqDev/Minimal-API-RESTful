@@ -152,6 +152,13 @@ public static class CategoriesEndpoints
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
         .WithPostCategoryDoc();
 
+        /// <summary>
+        /// Create a new category along with associated products.
+        /// </summary>
+        /// <param name="request">An object containing the necessary data to create the category and its products.</param>
+        /// <param name="mediator">The MediatR instance responsible for handling the request.</param>
+        /// <response code="201">Returns 2OO Ok and the created category along with associated products.</response>
+        /// <response code="400">Returns 400 Bad Request if the category data is invalid.</response>
         endpoints.MapPost("categories/products", async ([FromBody] CreateCategoryWithProdsCommandRequest request,
                                                         [FromServices] IMediator mediator) =>
         {
@@ -165,7 +172,7 @@ public static class CategoriesEndpoints
         })
         .Produces<CreateCategoryWithProdsCommandResponse>(StatusCodes.Status201Created)
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
-        .WithTags(categoriesTag);
+        .WithPostCategoryWithProductsDoc();
         #endregion
 
         #region Put

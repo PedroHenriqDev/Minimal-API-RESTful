@@ -9,5 +9,5 @@ public class ProductRequest : ProductBase
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     [JsonIgnore]
-    public int CategoryId { get; set; }
+    public Guid CategoryId { get; set; }
 }

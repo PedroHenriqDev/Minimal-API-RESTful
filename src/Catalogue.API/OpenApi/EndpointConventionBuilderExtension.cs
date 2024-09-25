@@ -71,7 +71,7 @@ public static class EndpointConventionBuilderExtension
     {
         builder.WithOpenApi(operation => new(operation)
         {
-            Summary = "Retrieves a category by its unique identifier (GUID).",
+            Summary = "Retrieves a category by its unique identifier (GUID)",
 
             Description = @"This endpoint uses a `GUID` as a route parameter to
                             identify the category.",
@@ -84,7 +84,7 @@ public static class EndpointConventionBuilderExtension
     {
         builder.WithOpenApi(operation => new(operation)
         {
-            Summary = "Get categories with their associated products.",
+            Summary = "Get categories with their associated products",
 
             Description = @"This endpoint Returns a paginated list of
                             categories with their associated products, along with pagination
@@ -94,21 +94,11 @@ public static class EndpointConventionBuilderExtension
         });
     }
     
-    /// <summary>
-    /// Retrieves a category and its associated products based on the category ID.
-    /// </summary>
-    /// <param name="id">The unique identifier (Guid) of the category.</param>
-    /// <param name="mediator">The MediatR instance to handle the query request.</param>
-    /// <returns>
-    /// Returns the category along with its products if found.
-    /// If the category or products are not found, it returns a 404 Not Found response.
-    /// </returns>
-    /// <response code="200">Category and associated products successfully retrieved.</response>
     public static void WithGetCategoryIncludingProductsDoc(this IEndpointConventionBuilder builder)
     {
         builder.WithOpenApi(operation => new(operation)
         {
-            Summary = "Get a category and its associated products based on the category ID.",
+            Summary = "Get a category and its associated products based on the category ID",
             Description = "Get from the unique identifier (Guid) of the category.",
 
             Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = categoriesTag}}
@@ -119,12 +109,26 @@ public static class EndpointConventionBuilderExtension
     {
         builder.WithOpenApi(operation => new(operation)
         {
-            Summary = "Create a new category.",
+            Summary = "Create a new category",
 
             Description = @"Creates a new category along based on 
                             the request body data.",
 
             Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = categoriesTag}}
+        });
+    }
+
+    public static void WithPostCategoryWithProductsDoc(this IEndpointConventionBuilder builder)
+    {
+        builder.WithOpenApi(operation => new(operation)
+        {
+            Summary = "Create a new category along with associated products",
+
+            Description = @"This endpoint allows the creation of a new category and its associated products. 
+                            provide a request body containing the category details, including its name  
+                            and a list of products.",
+
+            Tags = new List<OpenApiTag>(){new OpenApiTag(){ Name = categoriesTag}}
         });
     }
 }

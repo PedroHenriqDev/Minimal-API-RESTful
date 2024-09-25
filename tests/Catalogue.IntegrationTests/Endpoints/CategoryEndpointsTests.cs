@@ -5,6 +5,7 @@ using Catalogue.Application.Categories.Commands.Requests;
 using Catalogue.Application.Categories.Commands.Responses;
 using Catalogue.Application.Categories.Queries.Responses;
 using Catalogue.Application.DTOs;
+using Catalogue.Application.DTOs.Requests;
 using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Interfaces;
 using Catalogue.Application.Pagination;
@@ -93,7 +94,7 @@ public class CategoryEndpointsTests
 
     /// <summary>
     /// Tests that a 'get' request to the 'https://api/v1/categories/{id}' endpoint
-    /// returns 404 OK status codes.
+    /// returns 404 Not Found status codes.
     /// </summary>
     [Fact]
     public async Task GetCategoryById_WhenNotExistsCategoryId_ShouldReturn404NotFoundAndErrorResponse()
@@ -179,7 +180,7 @@ public class CategoryEndpointsTests
 
     /// <summary>
     /// Tests that a 'get' request when id not exists to the https://api/categories/products/{id} endpoint returns
-    /// 404 OK.
+    /// 404 Not Found.
     /// </summary>
     [Fact]
     public async Task GetByIdCategoryWithProducts_WhenNotExistsCategoryId_ShouldReturn404NotFoundAndErrorResponse()
@@ -228,12 +229,13 @@ public class CategoryEndpointsTests
 
         //Assert
         Assert.Equal(HttpStatusCode.Created, httpResponse.StatusCode);
+        Assert.Contains(response.Id, _fixture.DbContext.Categories.Select(c => c.Id).ToList());
         Assert.NotNull(response);
         Assert.Equal(request.Name, response.Name);
     }
 
     /// <summary>
-    /// Tests that a 'post' request to the https://api/categories/ endpoint returns 400 created when
+    /// Tests that a 'post' request to the https://api/categories/ endpoint returns 400 Bad Request when
     /// request is invalid. 
     /// </summary>
     [Fact]
@@ -249,6 +251,75 @@ public class CategoryEndpointsTests
         //Act
         HttpResponseMessage httpResponse = await _httpClient.PostAsync("", content);
         ErrorResponse? response = await _fixture.ReadHttpResponseAsync<ErrorResponse>(httpResponse, _options);
+
+        //Assert
+        Assert.Equal(HttpStatusCode.BadRequest, httpResponse.StatusCode);
+        Assert.NotNull(response);
+    }
+
+    /// <summary>
+    /// Tests that a 'post' request to the https://api/categories/products endpoint returns 201 created when
+    /// request is valid and the category with products created. 
+    /// </summary>
+    [Fact]
+    public async Task PostCategoryWithProducts_WhenCategoryValid_ShouldReturn201Created()
+    {
+        //Arrange
+        var request = new AutoFaker<CreateCategoryWithProdsCommandRequest>()
+            .RuleFor(c => c.Products, f => new AutoFaker<ProductRequest>()
+            .Ignore(p => p.CategoryId)
+            .RuleFor(p => p.ImageUrl, f => f.Internet.Url())
+            .Generate(10))
+            .Generate();
+
+        StringContent content = _fixture.CreateStringContent(request); 
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.PostAsync("products", content);
+        CreateCategoryWithProdsCommandResponse? response = 
+            await _fixture.ReadHttpResponseAsync<CreateCategoryWithProdsCommandResponse>
+            (
+                httpResponse,
+                 _options
+            );
+
+        //Assert
+        Assert.Equal(HttpStatusCode.Created, httpResponse.StatusCode);
+        Assert.Contains(response.Id, _fixture.DbContext.Categories.Select(c => c.Id).ToList());
+        Assert.All(response.Products, product => Assert.Contains
+        (
+            product.Name,
+            _fixture.DbContext.Products.Select(p => p.Name).ToList()
+        ));
+        Assert.NotNull(response);
+    }
+
+    /// <summary>
+    /// Tests that a 'post' request to the https://api/categories/products endpoint returns 400 Bad Request when
+    /// request is invalid. 
+    /// </summary>
+    [Fact]
+    public async Task PostCategoryWithProducts_WhenCategoryInvalid_ShouldReturn400BadRequest()
+    {
+        //Arrange
+        var request = new AutoFaker<CreateCategoryWithProdsCommandRequest>()
+            .Ignore(c => c.Name)
+            .RuleFor(c => c.Products, f => new AutoFaker<ProductRequest>()
+            .Ignore(p => p.CategoryId)
+            .RuleFor(p => p.ImageUrl, f => f.Internet.Url())
+            .Generate(10))
+            .Generate();
+
+        StringContent content = _fixture.CreateStringContent(request); 
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.PostAsync("products", content);
+        ErrorResponse? response = 
+            await _fixture.ReadHttpResponseAsync<ErrorResponse>
+            (
+                httpResponse,
+                 _options
+            );
 
         //Assert
         Assert.Equal(HttpStatusCode.BadRequest, httpResponse.StatusCode);

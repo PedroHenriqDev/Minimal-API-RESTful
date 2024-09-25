@@ -8,5 +8,5 @@ public sealed class ProductResponse : ProductBase
     public DateTime CreatedAt { get; set; }
 
     [JsonIgnore]
-    public int CategoryId { get; set; }
+    public Guid CategoryId { get; set; }
 }
