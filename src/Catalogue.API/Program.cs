@@ -1,5 +1,6 @@
 using Catalogue.API.Endpoints;
 using Catalogue.API.Extensions;
+using Catalogue.API.Middlewares;
 using Catalogue.CrossCutting.AppDependencies;
 
 namespace Catalogue.API;
@@ -23,7 +24,7 @@ public class Progam
             .AddApiAuthorization()
             .AddDependencies()
             .AddApiDefaultCors()
-            .AddApiServicesScoped()
+            .AddGlobalException()
             .AddEndpointsApiExplorer()
             .AddVersioning();
 
@@ -45,8 +46,8 @@ public class Progam
            .UseCors()
            .UseAuthentication()
            .UseAuthorization()
-           .UseGlobalExceptionFilter()
-           .UseHttpsRedirection();
+           .UseHttpsRedirection()
+           .UseGlobalExceptionMiddleware();
 
         return app;
     }

@@ -3,6 +3,7 @@ using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Interfaces;
 using Catalogue.Application.Pagination;
 using Catalogue.Application.Products.Queries.Responses;
+using Catalogue.Domain.Entities;
 using Catalogue.IntegrationTests.Fixtures;
 using System.Net;
 using System.Net.Http.Headers;
@@ -27,7 +28,7 @@ namespace Catalogue.IntegrationTests.Endpoints
 
         /// <summary>
         /// Tests that 'get' request to the 'https://localhost:7140/api/v1/products/' endpoint
-        /// returns a 200 OK and the products paginated.
+        /// returns a 200 OK status code response and the products paginated.
         /// </summary>
         [Fact]
         public async Task GetAllProducts_WhenQueryStringIsValid_ShouldReturn200OKAndProductsPaginated()
@@ -37,7 +38,7 @@ namespace Catalogue.IntegrationTests.Endpoints
             int pageSize = 10;
 
             string queryString = $"?pageNumber={pageNumber}&pageSize={pageSize}";
-            string token = _fixture.GenerateToken(_fixture.Admin.Name, _fixture.Admin.Role);
+            string token = _fixture.GenerateTokenAdmin();
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             // Act
@@ -64,13 +65,13 @@ namespace Catalogue.IntegrationTests.Endpoints
 
         /// <summary>
         /// Tests that 'get' request to the 'https://localhost:7140/api/v1/products/{id}' endpoint when product
-        /// id exists, should returns a 200 OK the expected products.
+        /// id exists, should returns a 200 OK status code response the expected products.
         /// </summary>
         [Fact]
         public async Task GetByIdProduct_WhenProductIdExists_ShouldReturn200OKAndProductExpected()
         {
             // Arrange
-            string token = _fixture.GenerateToken(_fixture.Admin.Name, _fixture.Admin.Role);
+            string token = _fixture.GenerateTokenAdmin();
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             Guid id = _fixture.DbContext.Products.First().Id;
 
@@ -92,13 +93,13 @@ namespace Catalogue.IntegrationTests.Endpoints
 
         /// <summary>
         /// Tests that 'get' request to the 'https://localhost:7140/api/v1/products/{id}' endpoint when product
-        /// id not exists, should returns a 404 Not Found status code..
+        /// id not exists, should returns a 404 Not Found status code response.
         /// </summary>
         [Fact]
         public async Task GetByIdProduct_WhenProductIdNotExists_ShouldReturn404NotFound()
         {
             // Arrange
-            string token = _fixture.GenerateToken(_fixture.Admin.Name, _fixture.Admin.Role);
+            string token = _fixture.GenerateTokenAdmin();
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             Guid id = Guid.NewGuid();
 
@@ -113,6 +114,62 @@ namespace Catalogue.IntegrationTests.Endpoints
                 );
             
             // Assert 
+            Assert.Equal(HttpStatusCode.NotFound, httpResponse.StatusCode);
+            Assert.NotNull(response);
+        }
+
+        /// <summary>
+        /// Tests that 'get' request to the 'https://localhost:7140/api/v1/products/category/{id}' endpoint when product
+        /// id exists, should returns a 200 OK status code response and product with your category.
+        /// </summary>
+        [Fact]
+        public async Task GetByIdProductWithCategory_WhenProductIdExists_ShouldReturn200OK()
+        {
+            //Arrange
+            string token = _fixture.GenerateTokenAdmin();
+            Product productExpected = _fixture.DbContext.Products.First();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            //Act
+            HttpResponseMessage httpResponse = await _httpClient.GetAsync("category/" + productExpected.Id);
+            GetProductWithCatQueryResponse? response =
+                await _fixture.ReadHttpResponseAsync<GetProductWithCatQueryResponse>
+                (
+                    httpResponse,
+                     _options
+                );
+
+            //Assert
+            Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
+            Assert.NotNull(response);
+            Assert.NotNull(response.Category);
+            Assert.Equal(productExpected.Id, response.Id);
+            Assert.Equal(productExpected.Category.Name, response.Category.Name);
+        }
+
+        /// <summary>
+        /// Tests that 'get' request to the 'https://localhost:7140/api/v1/products/category/{id}' endpoint when product
+        /// id exists, should returns a 404 Not Found status code response.
+        /// </summary>
+        [Fact]
+        public async Task GetByIdProductWithCategory_WhenProductIdNotExists_ShouldReturn404NotFound()
+        {
+            //Arrange
+            string token = _fixture.GenerateTokenAdmin();
+            Guid id = Guid.NewGuid();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            //Act
+            HttpResponseMessage httpResponse = await _httpClient.GetAsync("category/" + id);
+
+            ErrorResponse? response =
+                await _fixture.ReadHttpResponseAsync<ErrorResponse>
+                (
+                    httpResponse,
+                     _options
+                );
+
+            //Assert
             Assert.Equal(HttpStatusCode.NotFound, httpResponse.StatusCode);
             Assert.NotNull(response);
         }

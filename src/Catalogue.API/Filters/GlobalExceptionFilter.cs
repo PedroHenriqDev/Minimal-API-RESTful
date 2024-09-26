@@ -26,7 +26,6 @@ public class GlobalExceptionFilter : IExceptionFilter
             context.HttpContext.Response.StatusCode = (int)exception.GetStatusCodes();
 
             response = new ErrorResponse(exception.GetMessages());
-            context.Result = new ObjectResult(response);
             context.HttpContext.Response.WriteAsJsonAsync(response);
         }
         else 
@@ -38,7 +37,6 @@ public class GlobalExceptionFilter : IExceptionFilter
                 ErrorMessagesResource.SERVER_ERROR_MESSAGE
             });
 
-            context.Result = new ObjectResult(response);
             context.HttpContext.Response.WriteAsJsonAsync(response);
         }
     }

@@ -115,6 +115,15 @@ public class CustomWebAppFixture : WebApplicationFactory<Progam>
         return _TokenService.GenerateToken(authClaims, configuration);
     }
 
+    
+    public string GenerateTokenAdmin()
+    {
+        var authClaims = _ClaimService.CreateAuthClaims(new UserResponse { Name = Admin.Name });
+        authClaims.AddRole(Admin.Role.ToString());
+        return _TokenService.GenerateToken(authClaims, configuration);
+    }
+
+
     public PaginationMetadata? GetHeaderPagination(HttpResponseMessage httpResponse)
     {
         string? header = httpResponse.Headers.GetValues("X-Pagination").FirstOrDefault();

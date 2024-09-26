@@ -1,5 +1,6 @@
 ﻿using Asp.Versioning;
 using Catalogue.API.Filters;
+using Catalogue.API.Middlewares;
 using Catalogue.API.OpenApi;
 using Catalogue.Domain.Enums;
 using Catalogue.Infrastructure.Context;
@@ -133,8 +134,10 @@ public static class ServiceCollectionExtension
         });
     }
 
-    public static IServiceCollection AddApiServicesScoped(this IServiceCollection services) 
+    public static IServiceCollection AddGlobalException(this IServiceCollection services)
     {
-        return services.AddScoped<GlobalExceptionFilter>();
+        services.AddSingleton<GlobalExceptionFilter>();
+        services.AddSingleton<GlobalExceptionMiddleware>();
+        return services;
     }
 }
