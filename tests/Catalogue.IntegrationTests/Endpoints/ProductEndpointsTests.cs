@@ -173,5 +173,43 @@ namespace Catalogue.IntegrationTests.Endpoints
             Assert.Equal(HttpStatusCode.NotFound, httpResponse.StatusCode);
             Assert.NotNull(response);
         }
+
+        /// <summary>
+        /// Tests that 'get' request to the 'https://localhost:7140/api/v1/products/category' endpoint when exists
+        /// products, should returns a 200 OK status code response and products with your associated categories.
+        /// </summary>
+        [Fact]
+        public async Task GetProductsWithCategories_WhenQueryStringValid_ShouldReturn200OK()
+        {
+            //Arrange
+            string token = _fixture.GenerateTokenAdmin();
+            int pageNumber = 1;
+            int pageSize = 10;
+
+            string queryString = $"?pageNumber={pageNumber}&pageSize={pageSize}";
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            //Act
+            HttpResponseMessage httpResponse = await _httpClient.GetAsync("category" + queryString);
+            
+            IPagedList<GetProductWithCatQueryResponse>? response =
+                await _fixture.ReadHttpResponseAsync<PagedList<GetProductWithCatQueryResponse>>
+                (
+                    httpResponse,
+                     _options
+                );
+
+            PaginationMetadata? metadata = _fixture.GetHeaderPagination(httpResponse);
+
+            //Assert
+            Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
+            Assert.NotNull(response);
+            Assert.NotEmpty(response);
+            Assert.Equal(response.Count(), response.Select(p => p.Category != null).Count());
+            Assert.Equal(pageNumber, metadata.PageCurrent);
+            Assert.Equal(pageSize, metadata.PageSize);
+            Assert.False(metadata.HasPreviousPage);
+            Assert.True(metadata.HasNextPage);
+        }
     }
 }

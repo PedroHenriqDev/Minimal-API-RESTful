@@ -142,6 +142,7 @@ public class CategoryEndpointsTests
         PaginationMetadata? metadata = _fixture.GetHeaderPagination(httpResponse);
 
         //Assert
+        Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
         Assert.NotEmpty(response.Select(c => c.Products));
         Assert.True(response?.Any(c => c.Products != null));
         Assert.Equal(metadata.PageCurrent, pageNumber);

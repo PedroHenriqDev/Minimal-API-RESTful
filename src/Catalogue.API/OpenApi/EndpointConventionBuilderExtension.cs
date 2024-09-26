@@ -196,4 +196,16 @@ public static class EndpointConventionBuilderExtension
             Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = productsTag}}
         });
     }
+
+    public static void WithGetProductsWithCategoryDoc(this IEndpointConventionBuilder builder)
+    {
+        builder.WithOpenApi(operation => new(operation)
+        {
+            Summary = "Get products with category",
+
+            Description = "Retrieves a paginated list of along with their associated categories.",
+            
+            Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = productsTag}}
+        });
+    }
 }

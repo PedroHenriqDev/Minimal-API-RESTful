@@ -61,7 +61,7 @@ public static class ProductsEndpoints
         /// <response code="200">Returns the product details when found.</response>
         /// <response code="404">Returns a 404 Not Found error if the product does not exist.</response>
         endpoints.MapGet("products/{id:Guid}", async ([FromRoute] Guid id,
-                                               [FromServices] IMediator mediator) =>
+                                                      [FromServices] IMediator mediator) =>
         {
             GetProductQueryResponse response = await mediator.Send(new GetProductQueryRequest(id));
             return Results.Ok(response);
@@ -73,6 +73,14 @@ public static class ProductsEndpoints
         .WithName("GetProductById")
         .WithGetByIdProductDoc();
 
+        /// <summary>
+        /// Retrieves a paginated list of along with their associated categories.
+        /// </summary>
+        /// <param name="httpContext">The HTTP context of request.</param>
+        /// <param name="parameters">The parameters, such as page number and page size.</param>
+        /// <param name="mediator">The MediatR instance responsible for handling the request to get
+        /// the product.</param>
+        /// <response code="200">Returns a paginated list of products with categories.</response>
         endpoints.MapGet("products/category", async (HttpContext httpContext,
                                                [AsParameters] QueryParameters parameters,
                                                [FromServices] IMediator mediator) =>
@@ -82,11 +90,10 @@ public static class ProductsEndpoints
             httpContext.AppendCategoriesMetaData(response.ProductsPaged);
 
             return Results.Ok(response.ProductsPaged);
-
         })
         .Produces<PagedList<GetProductWithCatQueryResponse>>(StatusCodes.Status200OK)
         .RequireAuthorization()
-        .WithTags(productsTag);
+        .WithGetProductsWithCategoryDoc();
 
         /// <summary>
         /// Retrieves a product along with its category details based on the provided product ID.
