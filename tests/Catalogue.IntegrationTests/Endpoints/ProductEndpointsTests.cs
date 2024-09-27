@@ -11,6 +11,7 @@ using Catalogue.Domain.Entities;
 using Catalogue.IntegrationTests.Fixtures;
 using System.Net;
 using System.Net.Http.Headers;
+using System.Reflection.Metadata;
 using System.Text.Json;
 
 namespace Catalogue.IntegrationTests.Endpoints
@@ -229,6 +230,7 @@ namespace Catalogue.IntegrationTests.Endpoints
 
             CreateProductCommandRequest product = new AutoFaker<CreateProductCommandRequest>()
             .Ignore(p => p.CategoryId)
+            .RuleFor(p => p.ImageUrl, f => f.Internet.Url())
             .RuleFor(p => p.CategoryId, f => f
                 .PickRandom(_fixture.DbContext.Categories
                     .Select(c => c.Id)
@@ -263,6 +265,7 @@ namespace Catalogue.IntegrationTests.Endpoints
             CreateProductCommandRequest product = new AutoFaker<CreateProductCommandRequest>()
             .Ignore(p => p.CategoryId)
             .Ignore(p => p.Name)
+            .RuleFor(p => p.ImageUrl, f => f.Internet.Url())
             .RuleFor(p => p.CategoryId, f => f
                 .PickRandom(_fixture.DbContext.Categories
                     .Select(c => c.Id)
@@ -294,6 +297,7 @@ namespace Catalogue.IntegrationTests.Endpoints
 
             CreateProductByCatNameCommandRequest product = new AutoFaker<CreateProductByCatNameCommandRequest>()
             .Ignore(p => p.CategoryId)
+            .RuleFor(p => p.ImageUrl, f => f.Internet.Url())
             .RuleFor(p => p.CategoryName, f => f
                 .PickRandom(_fixture.DbContext.Categories
                     .Select(c => c.Name)
@@ -327,6 +331,7 @@ namespace Catalogue.IntegrationTests.Endpoints
             CreateProductByCatNameCommandRequest product = new AutoFaker<CreateProductByCatNameCommandRequest>()
             .Ignore(p => p.CategoryId)
             .Ignore(p => p.Name)
+            .RuleFor(p => p.ImageUrl, f => f.Internet.Url())
             .RuleFor(p => p.CategoryName, f => f
                 .PickRandom(_fixture.DbContext.Categories
                     .Select(c => c.Name)
@@ -342,6 +347,97 @@ namespace Catalogue.IntegrationTests.Endpoints
 
             //Assert
             Assert.Equal(HttpStatusCode.BadRequest, httpResponse.StatusCode);
+            Assert.NotNull(response);
+        }
+
+        /// <summary>
+        /// Tests that 'put' request to the 'https://localhost:7140/api/v1/products/{id}' endpoint when product 
+        /// is valid, should returns a 200 OK status code response.
+        /// </summary>
+        [Fact]
+        public async Task PutProduct_WhenProductIsValid_ShouldReturn200OK()
+        {
+            //Arrange
+            string token = _fixture.GenerateTokenAdmin();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue
+            (
+                scheme: "Bearer",
+                parameter: token
+            );
+
+            Guid id = _fixture.DbContext.Products.First().Id;
+            UpdateProductCommandRequest request = new AutoFaker<UpdateProductCommandRequest>().RuleFor(p => p.ImageUrl, f => f.Internet.Url());
+
+            StringContent content = _fixture.CreateStringContent(request);
+            
+            //Act
+            HttpResponseMessage httpResponse = await _httpClient.PutAsync(id.ToString(), content);
+            UpdateProductCommandResponse? response = await _fixture.ReadHttpResponseAsync<UpdateProductCommandResponse>(httpResponse, _options); 
+
+            //Assert
+            Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
+            Assert.NotNull(response);
+            Assert.Equal(id, response.Id);
+            Assert.Equal(request.Name, response.Name);
+        }
+
+        /// <summary>
+        /// Tests that 'put' request to the 'https://localhost:7140/api/v1/products/{id}' endpoint when product 
+        /// is invalid, should returns a 400 Bad Request status code response.
+        /// </summary>
+        [Fact]
+        public async Task PutProduct_WhenProductIsInvalid_ShouldReturn400BadRequest()
+        {
+            //Arrange
+            string token = _fixture.GenerateTokenAdmin();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue
+            (
+                scheme: "Bearer",
+                parameter: token
+            );
+
+            Guid id = _fixture.DbContext.Products.First().Id;
+            UpdateProductCommandRequest request = new AutoFaker<UpdateProductCommandRequest>()
+            .Ignore(p => p.Name)
+            .RuleFor(p => p.ImageUrl, f => f.Internet.Url());
+
+            StringContent content = _fixture.CreateStringContent(request);
+            
+            //Act
+            HttpResponseMessage httpResponse = await _httpClient.PutAsync(id.ToString(), content);
+            ErrorResponse? response = await _fixture.ReadHttpResponseAsync<ErrorResponse>(httpResponse, _options); 
+
+            //Assert
+            Assert.Equal(HttpStatusCode.BadRequest, httpResponse.StatusCode);
+            Assert.NotNull(response);
+        }
+    
+        /// <summary>
+        /// Tests that 'put' request to the 'https://localhost:7140/api/v1/products/{id}' endpoint when product 
+        /// is valid, but product id not exists, should returns a 404 Not Found status code response.
+        /// </summary>
+        [Fact]
+        public async Task PutProduct_WhenProductIdNotExists_ShouldReturn404NotFound()
+        {
+            //Arrange
+            string token = _fixture.GenerateTokenAdmin();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue
+            (
+                scheme: "Bearer",
+                parameter: token
+            );
+
+            Guid id = Guid.NewGuid();
+            UpdateProductCommandRequest request = new AutoFaker<UpdateProductCommandRequest>().RuleFor(p => p.ImageUrl, f => f.Internet.Url());
+
+            StringContent content = _fixture.CreateStringContent(request);
+            
+            //Act
+            HttpResponseMessage httpResponse = await _httpClient.PutAsync(id.ToString(), content);
+            ErrorResponse? response = await _fixture.ReadHttpResponseAsync<ErrorResponse>(httpResponse, _options); 
+
+            //Assert
+            Assert.Equal(HttpStatusCode.NotFound, httpResponse.StatusCode);
             Assert.NotNull(response);
         }
     }

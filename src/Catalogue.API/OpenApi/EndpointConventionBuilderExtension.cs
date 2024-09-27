@@ -215,21 +215,36 @@ public static class EndpointConventionBuilderExtension
         {
             Summary = "Create a new product.",
 
-            Description = "Creates a new product and returns its details. Requires authorization.",
+            Description = @"Creates a new product and returns its details.",
 
             Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = productsTag}}
         });
     }
 
-    public static void WithPostProductByCategoryName(this IEndpointConventionBuilder builder)
+    public static void WithPostProductByCategoryNameDoc(this IEndpointConventionBuilder builder)
     {
          builder.WithOpenApi(operation => new(operation)
          {
             Summary = "Create a new product.",
 
-            Description = "Creates a new product and returns its details. The category relationship is established using the category name.",
+            Description = @"Creates a new product and returns its details.
+                            The category relationship is established using the
+                            category name.",
 
             Tags = new List<OpenApiTag>(){ new OpenApiTag(){Name = productsTag }}
          });
+    }
+
+    public static void WithPutProductDoc(this IEndpointConventionBuilder builder)
+    {
+        builder.WithOpenApi(operation => new(operation)
+        {
+            Summary = "Update product by id",
+            
+            Description = @"Updates a product and returns its details.
+                             A `GUID` representing the product ID is required for the update.",
+
+            Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = productsTag}}
+        });
     }
 }

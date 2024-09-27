@@ -111,7 +111,7 @@ public static class ProductsEndpoints
           .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
           .RequireAuthorization()
-          .WithPostProductByCategoryName();
+          .WithPostProductByCategoryNameDoc();
 
         #endregion
 
@@ -129,9 +129,8 @@ public static class ProductsEndpoints
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
         .RequireAuthorization()
-        .WithTags(productsTag);
+        .WithPutProductDoc();
 
-  
         endpoints.MapDelete("products/{id:Guid}", async ([FromRoute] Guid id,
                                                   [FromServices] IMediator mediator) =>
         {
