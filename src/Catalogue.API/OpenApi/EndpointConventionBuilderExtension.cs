@@ -241,8 +241,21 @@ public static class EndpointConventionBuilderExtension
         {
             Summary = "Update product by id",
             
-            Description = @"Updates a product and returns its details.
-                             A `GUID` representing the product ID is required for the update.",
+            Description = @"Updates a product and returns its details. A `GUID` representing the
+                            product ID is required for the update.",
+
+            Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = productsTag}}
+        });
+    }
+
+    public static void WithDeleteProductDoc(this IEndpointConventionBuilder builder)
+    {
+        builder.WithOpenApi(operation => new(operation)
+        {
+            Summary = "Delete product",
+
+            Description = @"Delete a product by a `GUID` respresenting the product ID is required for
+                            the delete.",
 
             Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = productsTag}}
         });

@@ -44,7 +44,7 @@ public static class AuthenticationEndpoints
         .WithPutRoleDoc();
 
         endpoints
-        .MapPut("auth/update-user", UpdateUserAsync)
+        .MapPut("auth/update-user", UpdateAsync)
         .AddEndpointFilter<InjectNameFilter>()
         .Produces<UpdateUserRoleCommandRequest>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
@@ -99,7 +99,7 @@ public static class AuthenticationEndpoints
         return Results.Ok(response);
     }
 
-    private static async Task<IResult> UpdateUserAsync
+    private static async Task<IResult> UpdateAsync
     (
         [FromBody] UpdateUserCommandRequest request,
         [FromServices] IMediator mediator,

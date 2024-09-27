@@ -20,12 +20,12 @@ public static class CategoriesEndpoints
         #region Get
 
         endpoints
-        .MapGet("categories", GetCategoriesAsync)
+        .MapGet("categories", GetAllAsync)
         .Produces<PagedList<GetCategoryQueryResponse>>(StatusCodes.Status200OK)
         .WithGetCategoriesDoc();
       
         endpoints
-        .MapGet("categories/{id:guid}", GetCategoryByIdAsync)
+        .MapGet("categories/{id:guid}", GetByIdAsync)
         .Produces<GetCategoryQueryResponse>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
         .WithName("GetCategoryById")
@@ -33,13 +33,13 @@ public static class CategoriesEndpoints
         
        
         endpoints
-        .MapGet("categories/products", GetCategoriesWithProductsAsync)
+        .MapGet("categories/products", GetAllWithProductsAsync)
         .Produces<PagedList<GetCategoryWithProdsQueryResponse>>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
         .WithGetCategoriesWithProductsDoc();
 
         endpoints
-        .MapGet("categories/products/{id:Guid}", GetByIdCategoryWithProductsAsync)
+        .MapGet("categories/products/{id:Guid}", GetByIdWithProductsAsync)
         .Produces<GetCategoryWithProdsQueryResponse>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
         .WithName("GetByIdCategoryWithProducts")
@@ -49,13 +49,13 @@ public static class CategoriesEndpoints
         #region Post
 
         endpoints
-        .MapPost("categories", CreateCategoryAsync)
+        .MapPost("categories", CreateAsync)
         .Produces<CreateCategoryCommandResponse>(StatusCodes.Status201Created)
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
         .WithPostCategoryDoc();
         
         endpoints
-        .MapPost("categories/products", CreateCategoryWithProductsAsync)
+        .MapPost("categories/products", CreateWithProductsAsync)
         .Produces<CreateCategoryWithProdsCommandResponse>(StatusCodes.Status201Created)
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
         .WithPostCategoryWithProductsDoc();
@@ -64,7 +64,7 @@ public static class CategoriesEndpoints
         #region Put
 
         endpoints
-        .MapPut("categories/{id:Guid}", UpdateCategoryAsync)
+        .MapPut("categories/{id:Guid}", UpdateAsync)
         .AddEndpointFilter<InjectIdFilter>()
         .Produces<UpdateCategoryCommandResponse>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
@@ -82,7 +82,7 @@ public static class CategoriesEndpoints
         #endregion
     }
 
-    private static async Task<IResult> GetCategoriesAsync
+    private static async Task<IResult> GetAllAsync
     (
         HttpContext httpContext,
         [AsParameters] QueryParameters parameters,
@@ -97,13 +97,13 @@ public static class CategoriesEndpoints
         return Results.Ok(response.CategoriesPaged);
     }
 
-    private static async Task<IResult> GetCategoryByIdAsync([FromRoute] Guid id, [FromServices] IMediator mediator)
+    private static async Task<IResult> GetByIdAsync([FromRoute] Guid id, [FromServices] IMediator mediator)
     {
         GetCategoryQueryResponse response = await mediator.Send(new GetCategoryQueryRequest(id));
         return Results.Ok(response);
     }
     
-    private static async Task<IResult> GetCategoriesWithProductsAsync
+    private static async Task<IResult> GetAllWithProductsAsync
     (   HttpContext httpContext,
         [AsParameters] QueryParameters parameters,
         [FromServices] IMediator mediator
@@ -117,7 +117,7 @@ public static class CategoriesEndpoints
         return Results.Ok(response.CategoriesPaged);
     }
 
-    private static async Task<IResult> GetByIdCategoryWithProductsAsync
+    private static async Task<IResult> GetByIdWithProductsAsync
     (
         [FromRoute] Guid id,
         [FromServices] IMediator mediator
@@ -129,7 +129,7 @@ public static class CategoriesEndpoints
         return Results.Ok(response);
     }
 
-    private static async Task<IResult> CreateCategoryAsync
+    private static async Task<IResult> CreateAsync
     (
         [FromBody] CreateCategoryCommandRequest request,
         [FromServices] IMediator mediator
@@ -145,7 +145,7 @@ public static class CategoriesEndpoints
         );
     }
 
-    private static async Task<IResult> CreateCategoryWithProductsAsync
+    private static async Task<IResult> CreateWithProductsAsync
     (
         [FromBody] CreateCategoryWithProdsCommandRequest request,
         [FromServices] IMediator mediator
@@ -159,7 +159,7 @@ public static class CategoriesEndpoints
         );
     }
 
-    private static async Task<IResult> UpdateCategoryAsync
+    private static async Task<IResult> UpdateAsync
     (
         [FromBody] UpdateCategoryCommandRequest request,
         [FromRoute] Guid id,
