@@ -220,4 +220,16 @@ public static class EndpointConventionBuilderExtension
             Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = productsTag}}
         });
     }
+
+    public static void WithPostProductByCategoryName(this IEndpointConventionBuilder builder)
+    {
+         builder.WithOpenApi(operation => new(operation)
+         {
+            Summary = "Create a new product.",
+
+            Description = "Creates a new product and returns its details. The category relationship is established using the category name.",
+
+            Tags = new List<OpenApiTag>(){ new OpenApiTag(){Name = productsTag }}
+         });
+    }
 }

@@ -111,7 +111,7 @@ public static class ProductsEndpoints
           .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
           .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
           .RequireAuthorization()
-          .WithTags(productsTag);
+          .WithPostProductByCategoryName();
 
         #endregion
 

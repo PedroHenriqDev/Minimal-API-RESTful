@@ -6,6 +6,7 @@ using Catalogue.Application.Pagination;
 using Catalogue.Application.Products.Commands.Requests;
 using Catalogue.Application.Products.Commands.Responses;
 using Catalogue.Application.Products.Queries.Responses;
+using Catalogue.Application.Validators.Products;
 using Catalogue.Domain.Entities;
 using Catalogue.IntegrationTests.Fixtures;
 using System.Net;
@@ -215,7 +216,6 @@ namespace Catalogue.IntegrationTests.Endpoints
             Assert.True(metadata.HasNextPage);
         }
 
-
         /// <summary>
         /// Tests that 'post' request to the 'https://localhost:7140/api/v1/products' endpoint when product 
         /// is valid, should returns a 201 Created status code response.
@@ -246,6 +246,103 @@ namespace Catalogue.IntegrationTests.Endpoints
             Assert.Equal(HttpStatusCode.Created, httpResponse.StatusCode);
             Assert.NotNull(response);
             Assert.Equal(product.Name, response.Name);
+        }
+
+        
+        /// <summary>
+        /// Tests that 'post' request to the 'https://localhost:7140/api/v1/products' endpoint when product 
+        /// is invalid, should returns a 400 Bad Request status code response.
+        /// </summary>
+        [Fact]
+        public async Task PostProduct_WhenProductIsInvalid_ShouldReturn400BadRequest()
+        {
+            //Arrange
+            string token = _fixture.GenerateTokenAdmin();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            CreateProductCommandRequest product = new AutoFaker<CreateProductCommandRequest>()
+            .Ignore(p => p.CategoryId)
+            .Ignore(p => p.Name)
+            .RuleFor(p => p.CategoryId, f => f
+                .PickRandom(_fixture.DbContext.Categories
+                    .Select(c => c.Id)
+                    .ToList())).Generate();
+
+            StringContent content = _fixture.CreateStringContent(product);
+
+            //Act
+            HttpResponseMessage httpResponse = await _httpClient.PostAsync("", content);
+
+            ErrorResponse? response =
+                await _fixture.ReadHttpResponseAsync<ErrorResponse>(httpResponse, _options);
+
+            //Assert
+            Assert.Equal(HttpStatusCode.BadRequest, httpResponse.StatusCode);
+            Assert.NotNull(response);
+        }
+        
+        /// <summary>
+        /// Tests that 'post' request to the 'https://localhost:7140/api/v1/products/category-name' endpoint when product 
+        /// is valid, should returns a 201 Created status code response.
+        /// </summary>
+        [Fact]
+        public async Task PostProductByCategoryName_WhenProductIsValid_ShouldReturn201Created()
+        {
+            //Arrange
+            string token = _fixture.GenerateTokenAdmin();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            CreateProductByCatNameCommandRequest product = new AutoFaker<CreateProductByCatNameCommandRequest>()
+            .Ignore(p => p.CategoryId)
+            .RuleFor(p => p.CategoryName, f => f
+                .PickRandom(_fixture.DbContext.Categories
+                    .Select(c => c.Name)
+                    .ToList())).Generate();
+
+            StringContent content = _fixture.CreateStringContent(product);
+
+            //Act
+            HttpResponseMessage httpResponse = await _httpClient.PostAsync("category-name", content);
+
+            CreateProductCommandResponse? response =
+                await _fixture.ReadHttpResponseAsync<CreateProductCommandResponse>(httpResponse, _options);
+
+            //Assert
+            Assert.Equal(HttpStatusCode.Created, httpResponse.StatusCode);
+            Assert.NotNull(response);
+            Assert.Equal(product.Name, response.Name);
+        }
+
+        /// <summary>
+        /// Tests that 'post' request to the 'https://localhost:7140/api/v1/products/category-name' endpoint when product 
+        /// is invalid, should returns a 400 Bad Request status code response.
+        /// </summary>
+        [Fact]
+        public async Task PostProductByCategoryName_WhenProductIsInvalid_ShouldReturn400BadRequest()
+        {
+            //Arrange
+            string token = _fixture.GenerateTokenAdmin();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            CreateProductByCatNameCommandRequest product = new AutoFaker<CreateProductByCatNameCommandRequest>()
+            .Ignore(p => p.CategoryId)
+            .Ignore(p => p.Name)
+            .RuleFor(p => p.CategoryName, f => f
+                .PickRandom(_fixture.DbContext.Categories
+                    .Select(c => c.Name)
+                    .ToList())).Generate();
+
+            StringContent content = _fixture.CreateStringContent(product);
+
+            //Act
+            HttpResponseMessage httpResponse = await _httpClient.PostAsync("category-name", content);
+
+            ErrorResponse? response =
+                await _fixture.ReadHttpResponseAsync<ErrorResponse>(httpResponse, _options);
+
+            //Assert
+            Assert.Equal(HttpStatusCode.BadRequest, httpResponse.StatusCode);
+            Assert.NotNull(response);
         }
     }
 }
