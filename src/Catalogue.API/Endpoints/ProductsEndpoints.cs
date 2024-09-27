@@ -20,20 +20,6 @@ public static class ProductsEndpoints
     public static void MapProductsEndpoints(this IEndpointRouteBuilder endpoints)
     {
         #region Get
-        /// <summary>
-        /// Get a list products with pagination.
-        /// </summary>
-        /// <param name="httpContext">The current HTTP context used to access request and response metadata,
-        /// including headers.</param>
-        /// <param name="parameters">An object containing the query parameters for pagination, sorting, and
-        /// filtering the list of products.</param>
-        /// <param name="mediator">The MediatR instance responsible for sending the query to get a paginated
-        /// list of products.</param>
-        /// <returns>A paginated list of products.</returns>
-        /// <response code="200">Returns a 200 OK status along with the paginated list of products.</response>
-        /// <response code="401">Returns a 401 Unauthorized status if the user is not authenticated.</response>
-        /// <response code="403">Returns a 403 Forbidden status if the user does not have the necessary
-        /// permissions.</response>
          endpoints.MapGet("products", async 
          (  HttpContext httpContext,
             [AsParameters] QueryParameters parameters,
@@ -51,15 +37,6 @@ public static class ProductsEndpoints
         .RequireAuthorization()
         .WithGetProductsDoc();
 
-        /// <summary>
-        /// Retrieves a product by its unique identifier (GUID).
-        /// </summary>
-        /// <param name="id">The GUID of the product to retrieve.</param>
-        /// <param name="mediator">The MediatR instance responsible for handling the request to get
-        /// the product.</param>
-        /// <returns>The product details if found; otherwise, a 404 Not Found response.</returns>
-        /// <response code="200">Returns the product details when found.</response>
-        /// <response code="404">Returns a 404 Not Found error if the product does not exist.</response>
         endpoints.MapGet("products/{id:Guid}", async ([FromRoute] Guid id,
                                                       [FromServices] IMediator mediator) =>
         {
@@ -73,14 +50,6 @@ public static class ProductsEndpoints
         .WithName("GetProductById")
         .WithGetByIdProductDoc();
 
-        /// <summary>
-        /// Retrieves a paginated list of along with their associated categories.
-        /// </summary>
-        /// <param name="httpContext">The HTTP context of request.</param>
-        /// <param name="parameters">The parameters, such as page number and page size.</param>
-        /// <param name="mediator">The MediatR instance responsible for handling the request to get
-        /// the product.</param>
-        /// <response code="200">Returns a paginated list of products with categories.</response>
         endpoints.MapGet("products/category", async (HttpContext httpContext,
                                                [AsParameters] QueryParameters parameters,
                                                [FromServices] IMediator mediator) =>
@@ -95,13 +64,6 @@ public static class ProductsEndpoints
         .RequireAuthorization()
         .WithGetProductsWithCategoryDoc();
 
-        /// <summary>
-        /// Retrieves a product along with its category details based on the provided product ID.
-        /// </summary>
-        /// <param name="id">The ID of the product to retrieve along with its category.</param>
-        /// <param name="mediator">The MediatR instance responsible for processing the request.</param>
-        /// <response code="200">Returns the product with its associated category details.</response>
-        /// <response code="404">If the product with the specified ID is not found.</response>
         endpoints.MapGet("products/category/{id:Guid}", async ([FromRoute] Guid id,
                                                                [FromServices] IMediator mediator) => 
         {
@@ -132,7 +94,7 @@ public static class ProductsEndpoints
         .Produces<ErrorResponse>(StatusCodes.Status400BadRequest)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
         .RequireAuthorization()
-        .WithTags(productsTag);
+        .WithPostProductDoc();
 
         endpoints.MapPost("products/category-name", async ([FromBody] CreateProductByCatNameCommandRequest request,
                                                       [FromServices] IMediator mediator) =>

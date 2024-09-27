@@ -1,7 +1,10 @@
+using AutoBogus;
 using Catalogue.Application.DTOs;
 using Catalogue.Application.DTOs.Responses;
 using Catalogue.Application.Interfaces;
 using Catalogue.Application.Pagination;
+using Catalogue.Application.Products.Commands.Requests;
+using Catalogue.Application.Products.Commands.Responses;
 using Catalogue.Application.Products.Queries.Responses;
 using Catalogue.Domain.Entities;
 using Catalogue.IntegrationTests.Fixtures;
@@ -210,6 +213,39 @@ namespace Catalogue.IntegrationTests.Endpoints
             Assert.Equal(pageSize, metadata.PageSize);
             Assert.False(metadata.HasPreviousPage);
             Assert.True(metadata.HasNextPage);
+        }
+
+
+        /// <summary>
+        /// Tests that 'post' request to the 'https://localhost:7140/api/v1/products' endpoint when product 
+        /// is valid, should returns a 201 Created status code response.
+        /// </summary>
+        [Fact]
+        public async Task PostProduct_WhenProductIsValid_ShouldReturn201Created()
+        {
+            //Arrange
+            string token = _fixture.GenerateTokenAdmin();
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            CreateProductCommandRequest product = new AutoFaker<CreateProductCommandRequest>()
+            .Ignore(p => p.CategoryId)
+            .RuleFor(p => p.CategoryId, f => f
+                .PickRandom(_fixture.DbContext.Categories
+                    .Select(c => c.Id)
+                    .ToList())).Generate();
+
+            StringContent content = _fixture.CreateStringContent(product);
+
+            //Act
+            HttpResponseMessage httpResponse = await _httpClient.PostAsync("", content);
+
+            CreateProductCommandResponse? response =
+                await _fixture.ReadHttpResponseAsync<CreateProductCommandResponse>(httpResponse, _options);
+
+            //Assert
+            Assert.Equal(HttpStatusCode.Created, httpResponse.StatusCode);
+            Assert.NotNull(response);
+            Assert.Equal(product.Name, response.Name);
         }
     }
 }

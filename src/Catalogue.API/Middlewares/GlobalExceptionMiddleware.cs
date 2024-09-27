@@ -9,7 +9,8 @@ public class GlobalExceptionMiddleware : IMiddleware
 {
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
-        GlobalExceptionFilter expectionFilter = context.RequestServices.GetRequiredService<GlobalExceptionFilter>();
+        GlobalExceptionFilter expectionFilter =
+            context.RequestServices.GetRequiredService<GlobalExceptionFilter>();
 
         try
         {

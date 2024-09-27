@@ -275,7 +275,6 @@ public class CategoryEndpointsTests
             .Generate();
         request.Name += Guid.NewGuid().ToString();
 
-
         StringContent content = _fixture.CreateStringContent(request); 
 
         //Act
