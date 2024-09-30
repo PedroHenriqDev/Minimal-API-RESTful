@@ -16,6 +16,11 @@ public class PagedListConverter<TSource, TDestination> : ITypeConverter<PagedLis
     {
         var items = _mapper.Map<IEnumerable<TDestination>>(source);
 
-        return PagedList<TDestination>.ToPagedList(source.PageCurrent, source.PageSize, items.AsQueryable());
+        return PagedList<TDestination>.ToPagedList
+        (
+            source.PageCurrent,
+            source.PageSize,
+            items.AsQueryable()
+        );
     }
 }

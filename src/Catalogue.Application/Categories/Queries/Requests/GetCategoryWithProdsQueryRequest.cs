@@ -1,5 +1,4 @@
 ﻿using Catalogue.Application.Categories.Queries.Responses;
-using Catalogue.Domain.Entities;
 using MediatR;
 
 namespace Catalogue.Application.Categories.Queries.Requests;

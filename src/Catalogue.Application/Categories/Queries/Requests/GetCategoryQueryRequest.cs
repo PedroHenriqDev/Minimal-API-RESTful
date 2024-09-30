@@ -9,5 +9,4 @@ public class GetCategoryQueryRequest : IRequest<GetCategoryQueryResponse>
 
     public GetCategoryQueryRequest(Guid id)
         => Id = id;
-    
 }

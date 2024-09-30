@@ -44,6 +44,12 @@ public static class CategoriesEndpoints
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
         .WithName("GetByIdCategoryWithProducts")
         .WithGetCategoryIncludingProductsDoc();
+
+        endpoints
+        .MapGet("categories/products/stats/{id:guid}", GetStatsAsync)
+        .Produces<GetCategoryWithProdsQueryRequest>(StatusCodes.Status200OK)
+        .Produces<ErrorResponse>(StatusCodes.Status404NotFound);
+
         #endregion
 
         #region Post
@@ -126,6 +132,12 @@ public static class CategoriesEndpoints
         GetCategoryWithProdsQueryResponse response =
                            await mediator.Send(new GetCategoryWithProdsQueryRequest(id));
 
+        return Results.Ok(response);
+    }
+
+    private static async Task<IResult> GetStatsAsync([FromRoute] Guid id, [FromServices] IMediator mediator)
+    {
+        GetCategoryStatisticsCommandResponse response = await mediator.Send(new GetCategoryStatisticsCommandRequest(id));
         return Results.Ok(response);
     }
 

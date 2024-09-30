@@ -170,7 +170,11 @@ public static class ProductsEndpoints
         return Results.Ok(response);
     }
 
-    private static async Task<IResult> DeleteAsync([FromRoute] Guid id, [FromServices] IMediator mediator)
+    private static async Task<IResult> DeleteAsync
+    (
+        [FromRoute] Guid id,
+        [FromServices] IMediator mediator
+    )
     {
         DeleteProductCommandResponse response = await mediator.Send(new DeleteProductCommandRequest(id));
         return Results.Ok(response);
