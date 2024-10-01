@@ -8,7 +8,6 @@ namespace Catalogue.Application.Users.Commands.Requests;
 public sealed class UpdateUserCommandRequest :  IRequest<UpdateUserCommandResponse>
 {
     [JsonIgnore]
-    //Current Name
     public string Name { get; set; } = string.Empty;
 
     [Required]

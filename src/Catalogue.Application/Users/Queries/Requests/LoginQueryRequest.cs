@@ -3,8 +3,8 @@ using MediatR;
 
 namespace Catalogue.Application.Users.Queries.Requests;
 
-public class LoginQueryRequest : IRequest<LoginQueryResponse>
+public sealed class LoginQueryRequest : IRequest<LoginQueryResponse>
 {
-    public string? Name { get; set; }
-    public string? Password { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty;
 }

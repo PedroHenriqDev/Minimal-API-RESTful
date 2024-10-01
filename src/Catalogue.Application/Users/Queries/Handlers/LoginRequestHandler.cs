@@ -8,7 +8,7 @@ using MediatR;
 
 namespace Catalogue.Application.Users.Queries.Handlers;
 
-public class LoginRequestHandler : IRequestHandler<LoginQueryRequest, LoginQueryResponse>
+public sealed class LoginRequestHandler : IRequestHandler<LoginQueryRequest, LoginQueryResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;

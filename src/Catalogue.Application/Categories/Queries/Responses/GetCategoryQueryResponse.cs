@@ -1,9 +1,9 @@
-﻿namespace Catalogue.Application.Categories.Queries.Responses;
+﻿using Catalogue.Application.Abstractions;
 
-public class GetCategoryQueryResponse
+namespace Catalogue.Application.Categories.Queries.Responses;
+
+public sealed class GetCategoryQueryResponse : CategoryBase
 {
     public Guid Id { get; set; }
-    public string? Name { get; set; }
     public DateTime CreatedAt { get; set; }
-    public string? Description { get; set; }
 }

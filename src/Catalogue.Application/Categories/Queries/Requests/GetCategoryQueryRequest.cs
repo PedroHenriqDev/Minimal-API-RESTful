@@ -1,12 +1,13 @@
-﻿using Catalogue.Application.Categories.Queries.Responses;
+﻿using Catalogue.Application.Abstractions.Requests;
+using Catalogue.Application.Categories.Queries.Responses;
 using MediatR;
 
 namespace Catalogue.Application.Categories.Queries.Requests;
 
-public class GetCategoryQueryRequest : IRequest<GetCategoryQueryResponse>
+public sealed class GetCategoryQueryRequest : 
+    GetCategoryQueryRequestBase, IRequest<GetCategoryQueryResponse>
 {
-    public Guid Id { get; set; }
-
-    public GetCategoryQueryRequest(Guid id)
-        => Id = id;
+    public GetCategoryQueryRequest(Guid id) : base (id)
+    {
+    } 
 }

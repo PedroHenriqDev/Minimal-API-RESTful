@@ -137,7 +137,8 @@ public static class CategoriesEndpoints
 
     private static async Task<IResult> GetStatsAsync([FromRoute] Guid id, [FromServices] IMediator mediator)
     {
-        GetCategoryStatisticsCommandResponse response = await mediator.Send(new GetCategoryStatisticsCommandRequest(id));
+        GetCategoryStatisticsQueryResponse response = 
+            await mediator.Send(new GetCategoryStatisticsQueryRequest(id));
         return Results.Ok(response);
     }
 

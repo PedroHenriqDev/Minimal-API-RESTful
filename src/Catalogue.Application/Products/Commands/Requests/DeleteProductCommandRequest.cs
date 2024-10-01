@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Catalogue.Application.Products.Commands.Requests;
 
-public class DeleteProductCommandRequest : IRequest<DeleteProductCommandResponse>
+public sealed class DeleteProductCommandRequest : IRequest<DeleteProductCommandResponse>
 {
     [JsonIgnore]
     public Guid Id { get; set; }

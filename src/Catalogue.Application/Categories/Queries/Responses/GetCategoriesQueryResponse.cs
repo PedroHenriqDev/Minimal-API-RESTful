@@ -2,11 +2,10 @@
 
 namespace Catalogue.Application.Categories.Queries.Responses;
 
-public class GetCategoriesQueryResponse
+public sealed class GetCategoriesQueryResponse
 {
     public IPagedList<GetCategoryQueryResponse>? CategoriesPaged { get; set; }
 
     public GetCategoriesQueryResponse(IPagedList<GetCategoryQueryResponse> categoriesPaged)
         => CategoriesPaged = categoriesPaged;
-    
 }

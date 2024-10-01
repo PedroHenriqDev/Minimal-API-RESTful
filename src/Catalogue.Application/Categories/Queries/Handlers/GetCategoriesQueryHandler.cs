@@ -8,7 +8,7 @@ using Catalogue.Domain.Interfaces;
 using MediatR;
 
 namespace Catalogue.Application.Categories.Queries.Handlers;
-public class GetCategoriesQueryHandler
+public sealed class GetCategoriesQueryHandler
     : IRequestHandler<GetCategoriesQueryRequest, GetCategoriesQueryResponse>
 {
     private readonly IUnitOfWork _unitOfWork;

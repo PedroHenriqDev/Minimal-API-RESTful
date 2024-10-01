@@ -12,7 +12,7 @@ using MediatR;
 
 namespace Catalogue.Application.Categories.Queries.Handlers;
 
-public class GetCategoryStatisticsHandler : IRequestHandler<GetCategoryStatisticsCommandRequest, GetCategoryStatisticsCommandResponse>
+public sealed class GetCategoryStatisticsHandler : IRequestHandler<GetCategoryStatisticsQueryRequest, GetCategoryStatisticsQueryResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
@@ -24,7 +24,7 @@ public class GetCategoryStatisticsHandler : IRequestHandler<GetCategoryStatistic
         _mapper = mapper;
     }
 
-    public async Task<GetCategoryStatisticsCommandResponse> Handle(GetCategoryStatisticsCommandRequest request,
+    public async Task<GetCategoryStatisticsQueryResponse> Handle(GetCategoryStatisticsQueryRequest request,
                                                                    CancellationToken cancellationToken)
     {
         if(await _unitOfWork.CategoryRepository.GetByIdWithProductsAsync(request.Id) is Category category)
@@ -43,7 +43,7 @@ public class GetCategoryStatisticsHandler : IRequestHandler<GetCategoryStatistic
                 Quantity = _statsService.Quantity
             };
 
-            return new GetCategoryStatisticsCommandResponse(categoryResponse, statsResponse);
+            return new GetCategoryStatisticsQueryResponse(categoryResponse, statsResponse);
         }
 
         string notFoundMessage =

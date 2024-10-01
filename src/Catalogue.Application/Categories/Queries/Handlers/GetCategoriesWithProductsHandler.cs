@@ -9,7 +9,7 @@ using MediatR;
 
 namespace Catalogue.Application.Categories.Queries.Handlers;
 
-public class GetCategoriesWithProductsHandler : IRequestHandler<GetCategoriesWithProdsQueryRequest, GetCategoriesWithProdsQueryResponse>
+public sealed class GetCategoriesWithProductsHandler : IRequestHandler<GetCategoriesWithProdsQueryRequest, GetCategoriesWithProdsQueryResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;

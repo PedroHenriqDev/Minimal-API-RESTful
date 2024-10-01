@@ -2,9 +2,9 @@
 
 namespace Catalogue.Application.Users.Queries.Responses;
 
-public class LoginQueryResponse
+public sealed class LoginQueryResponse
 {
     public bool Success { get; set; }
     public UserResponse? User { get; set; }
-    public string? Token { get; set; }
+    public string Token { get; set; } = string.Empty;
 }

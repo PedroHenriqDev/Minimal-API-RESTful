@@ -2,18 +2,18 @@ using Catalogue.Application.DTOs.Responses;
 
 namespace Catalogue.Application.Categories.Queries.Responses;
                             
-public class GetCategoryStatisticsCommandResponse
+public sealed class GetCategoryStatisticsQueryResponse
 {
     public GetCategoryWithProdsQueryResponse Category { get; set; }
     public StatsResponse Stats { get; set; }
 
-    public GetCategoryStatisticsCommandResponse(GetCategoryWithProdsQueryResponse category, StatsResponse stats)
+    public GetCategoryStatisticsQueryResponse(GetCategoryWithProdsQueryResponse category, StatsResponse stats)
     {
         Category = category;
         Stats = stats;
     }
 
-    public GetCategoryStatisticsCommandResponse()
+    public GetCategoryStatisticsQueryResponse()
     {
     }
 }
