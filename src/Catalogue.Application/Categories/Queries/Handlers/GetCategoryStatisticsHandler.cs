@@ -17,20 +17,21 @@ public sealed class GetCategoryStatisticsHandler :
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
-    private IStatisticsService _statsService;
+    private readonly IStatisticsService _statsService;
 
-    public GetCategoryStatisticsHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    public GetCategoryStatisticsHandler(IUnitOfWork unitOfWork, IMapper mapper, IStatisticsService statsService)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _statsService = statsService;
     }
 
     public async Task<GetCategoryStatisticsQueryResponse> Handle(GetCategoryStatisticsQueryRequest request,
-                                                                   CancellationToken cancellationToken)
+                                                                 CancellationToken cancellationToken)
     {
         if(await _unitOfWork.CategoryRepository.GetByIdWithProductsAsync(request.Id) is Category category)
         {
-            _statsService = new StatisticsService(category.Products.Select(p => p.Price));
+            _statsService.Numbers = category.Products.Select(p => p.Price);
 
             GetCategoryWithProdsQueryResponse categoryResponse =
                 _mapper.Map<GetCategoryWithProdsQueryResponse>(category);

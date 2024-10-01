@@ -6,7 +6,7 @@ using Catalogue.Domain.Interfaces;
 using Catalogue.Infrastructure.Repositories;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 namespace Catalogue.CrossCutting.AppDependencies;
 
@@ -17,6 +17,7 @@ public static class DependencyInjection
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IClaimService, ClaimService>();
+        services.AddScoped<IStatisticsService, StatisticsService>();
 
         services.AddFluentValidationAutoValidation();
         services.AddValidatorsFromAssemblyContaining<CreateCategoryCommandRequest>();

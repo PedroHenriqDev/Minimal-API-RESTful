@@ -4,13 +4,16 @@ namespace Catalogue.Application.Services;
 
 public class StatisticsService : IStatisticsService
 {
-    public IEnumerable<decimal> Numbers {get; private set;}  
-    public int Quantity {get; private set;}
+    public IEnumerable<decimal> Numbers {get; set;}  
+    public int Quantity => Numbers.Count();
 
     public StatisticsService(IEnumerable<decimal> numbers)
     {
         Numbers = numbers;
-        Quantity = numbers.Count();
+    }
+
+    public StatisticsService()
+    {
     }
 
     public decimal Average()
@@ -71,7 +74,7 @@ public class StatisticsService : IStatisticsService
         {
             if(dict.TryGetValue(num, out int value))
             {
-                dict[num] = value++;
+                dict[num] = value + 1; 
             }
             else
             {

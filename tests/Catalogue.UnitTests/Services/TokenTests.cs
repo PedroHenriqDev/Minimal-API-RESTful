@@ -1,7 +1,5 @@
 ﻿using Bogus;
-using Catalogue.Application.Extensions;
 using Catalogue.Application.Services;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
