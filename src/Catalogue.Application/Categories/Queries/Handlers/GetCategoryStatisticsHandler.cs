@@ -12,7 +12,8 @@ using MediatR;
 
 namespace Catalogue.Application.Categories.Queries.Handlers;
 
-public sealed class GetCategoryStatisticsHandler : IRequestHandler<GetCategoryStatisticsQueryRequest, GetCategoryStatisticsQueryResponse>
+public sealed class GetCategoryStatisticsHandler :
+    IRequestHandler<GetCategoryStatisticsQueryRequest, GetCategoryStatisticsQueryResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;

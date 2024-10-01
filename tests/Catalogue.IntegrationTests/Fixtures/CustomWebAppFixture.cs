@@ -25,7 +25,7 @@ public class CustomWebAppFixture : WebApplicationFactory<Progam>
     public User? UserRandom { get; set; } = null!;
     public ITokenService _TokenService = null!;
     public IClaimService _ClaimService = null!;
-    public IConfiguration configuration = null!;
+    public IConfiguration configuration = null!; 
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {

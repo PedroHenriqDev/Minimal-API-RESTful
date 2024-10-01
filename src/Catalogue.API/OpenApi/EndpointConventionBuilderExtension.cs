@@ -102,7 +102,20 @@ public static class EndpointConventionBuilderExtension
         builder.WithOpenApi(operation => new(operation)
         {
             Summary = "Get a category and its associated products based on the category ID",
-            Description = "Get from the unique identifier ``Guid` of the category.",
+            Description = "Get from the unique identifier `Guid` of the category.",
+
+            Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = categoriesTag}}
+        });
+    }
+
+    public static void WithGetCategoryStatsDoc(this IEndpointConventionBuilder builder)
+    {
+        builder.WithOpenApi(operation => new(operation)
+        {
+            Summary = "Get category statistics",
+
+            Description = @"Fetch the category's statistics using its unique identifier (Guid), 
+                            including product-related statistics.",
 
             Tags = new List<OpenApiTag>(){new OpenApiTag(){Name = categoriesTag}}
         });

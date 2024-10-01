@@ -48,7 +48,8 @@ public static class CategoriesEndpoints
         endpoints
         .MapGet("categories/products/stats/{id:guid}", GetStatsAsync)
         .Produces<GetCategoryWithProdsQueryRequest>(StatusCodes.Status200OK)
-        .Produces<ErrorResponse>(StatusCodes.Status404NotFound);
+        .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
+        .WithGetCategoryStatsDoc();
 
         #endregion
 

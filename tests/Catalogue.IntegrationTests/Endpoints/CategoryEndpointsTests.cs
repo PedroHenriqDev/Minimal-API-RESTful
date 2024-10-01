@@ -205,6 +205,48 @@ public class CategoryEndpointsTests
     }
 
     /// <summary>
+    /// Tests that a 'get' request to the https://api/categories/products/stats 
+    /// endpoint returns 200 OK when category id exists. 
+    /// </summary>
+    [Fact]
+    public async Task GetCategoryStats_WhenCategoryIdExists_ShouldReturn200OK()
+    {
+        //Arrange
+        Guid id = _fixture.DbContext.Categories.Include(c => c.Products).First().Id;
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.GetAsync("products/stats/" + id);
+
+        GetCategoryStatisticsQueryResponse? response = 
+           await _fixture.ReadHttpResponseAsync<GetCategoryStatisticsQueryResponse>(httpResponse);
+
+        //Assert
+        Assert.Equal(HttpStatusCode.OK, httpResponse.StatusCode);
+        Assert.NotNull(response);
+    }
+
+    /// <summary>
+    /// Tests that a 'get' request to the https://api/categories/products/stats 
+    /// endpoint returns 404 Not Found when category id not exists. 
+    /// </summary>
+    [Fact]
+    public async Task GetCategoryStats_WhenCategoryIdNotExists_ShouldReturn404NotFound()
+    {
+        //Arrange
+        Guid id = Guid.NewGuid();
+
+        //Act
+        HttpResponseMessage httpResponse = await _httpClient.GetAsync("products/stats/" + id);
+
+        ErrorResponse? response = 
+           await _fixture.ReadHttpResponseAsync<ErrorResponse>(httpResponse);
+
+        //Assert
+        Assert.Equal(HttpStatusCode.NotFound, httpResponse.StatusCode);
+        Assert.NotNull(response);
+    }
+
+    /// <summary>
     /// Tests that a 'post' request to the https://api/categories/ endpoint returns 201 created when
     /// request is valid. 
     /// </summary>
@@ -215,6 +257,7 @@ public class CategoryEndpointsTests
         var request = new AutoFaker<CreateCategoryCommandRequest>()
             .Ignore(c => c.CreatedAt)
             .Generate();
+
         request.Name += Guid.NewGuid().ToString();
 
         StringContent content = _fixture.CreateStringContent(request);
