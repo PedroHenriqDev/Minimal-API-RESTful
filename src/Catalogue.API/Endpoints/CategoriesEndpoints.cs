@@ -39,14 +39,14 @@ public static class CategoriesEndpoints
         .WithGetCategoriesWithProductsDoc();
 
         endpoints
-        .MapGet("categories/products/{id:Guid}", GetByIdWithProductsAsync)
+        .MapGet("categories/{id:Guid}/products", GetByIdWithProductsAsync)
         .Produces<GetCategoryWithProdsQueryResponse>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
         .WithName("GetByIdCategoryWithProducts")
         .WithGetCategoryIncludingProductsDoc();
 
         endpoints
-        .MapGet("categories/products/stats/{id:guid}", GetStatsAsync)
+        .MapGet("categories/{id:guid}/products/stats", GetStatsAsync)
         .Produces<GetCategoryWithProdsQueryRequest>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
         .WithGetCategoryStatsDoc();

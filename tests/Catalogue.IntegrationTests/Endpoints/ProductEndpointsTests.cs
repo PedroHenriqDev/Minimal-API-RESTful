@@ -168,7 +168,7 @@ namespace Catalogue.IntegrationTests.Endpoints
             Product productExpected = _fixture.DbContext.Products.First();
 
             //Act
-            HttpResponseMessage httpResponse = await _httpClient.GetAsync("category/" + productExpected.Id);
+            HttpResponseMessage httpResponse = await _httpClient.GetAsync($"{productExpected.Id}/category");
 
             //Assert
             Assert.Equal(HttpStatusCode.Unauthorized, httpResponse.StatusCode);
@@ -187,7 +187,7 @@ namespace Catalogue.IntegrationTests.Endpoints
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             //Act
-            HttpResponseMessage httpResponse = await _httpClient.GetAsync("category/" + productExpected.Id);
+            HttpResponseMessage httpResponse = await _httpClient.GetAsync($"{productExpected.Id}/category");
             GetProductWithCatQueryResponse? response =
                 await _fixture.ReadHttpResponseAsync<GetProductWithCatQueryResponse>
                 (
@@ -216,7 +216,7 @@ namespace Catalogue.IntegrationTests.Endpoints
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             //Act
-            HttpResponseMessage httpResponse = await _httpClient.GetAsync("category/" + id);
+            HttpResponseMessage httpResponse = await _httpClient.GetAsync($"{id}/category");
 
             ErrorResponse? response =
                 await _fixture.ReadHttpResponseAsync<ErrorResponse>

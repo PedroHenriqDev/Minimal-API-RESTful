@@ -163,7 +163,7 @@ public class CategoryEndpointsTests
             .FirstAsync(c => c.Products != null && c.Products.Any());
 
         //Act
-        HttpResponseMessage httpResponse = await _httpClient.GetAsync($"products/{categoryExpected.Id}");
+        HttpResponseMessage httpResponse = await _httpClient.GetAsync($"{categoryExpected.Id}/products");
 
         GetCategoryWithProdsQueryResponse? response = 
             await _fixture.ReadHttpResponseAsync<GetCategoryWithProdsQueryResponse>
@@ -190,7 +190,7 @@ public class CategoryEndpointsTests
         Guid id = Guid.NewGuid();
 
         //Act
-        HttpResponseMessage httpResponse = await _httpClient.GetAsync($"products/{id}");
+        HttpResponseMessage httpResponse = await _httpClient.GetAsync($"{id}/products");
 
         ErrorResponse? response = 
             await _fixture.ReadHttpResponseAsync<ErrorResponse>
@@ -215,7 +215,7 @@ public class CategoryEndpointsTests
         Guid id = _fixture.DbContext.Categories.Include(c => c.Products).First().Id;
 
         //Act
-        HttpResponseMessage httpResponse = await _httpClient.GetAsync("products/stats/" + id);
+        HttpResponseMessage httpResponse = await _httpClient.GetAsync($"{id}/products/stats/");
 
         GetCategoryStatisticsQueryResponse? response = 
            await _fixture.ReadHttpResponseAsync<GetCategoryStatisticsQueryResponse>(httpResponse);
@@ -236,7 +236,7 @@ public class CategoryEndpointsTests
         Guid id = Guid.NewGuid();
 
         //Act
-        HttpResponseMessage httpResponse = await _httpClient.GetAsync("products/stats/" + id);
+        HttpResponseMessage httpResponse = await _httpClient.GetAsync($"{id}/products/stats/");
 
         ErrorResponse? response = 
            await _fixture.ReadHttpResponseAsync<ErrorResponse>(httpResponse);

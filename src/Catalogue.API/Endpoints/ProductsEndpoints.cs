@@ -39,7 +39,7 @@ public static class ProductsEndpoints
         .WithGetProductsWithCategoryDoc();
 
         endpoints
-        .MapGet("products/category/{id:Guid}", GetByIdWithCategoryAsync)
+        .MapGet("products/{id:Guid}/category", GetByIdWithCategoryAsync)
         .Produces<GetProductWithCatQueryResponse>(StatusCodes.Status200OK)
         .Produces<ErrorResponse>(StatusCodes.Status404NotFound)
         .RequireAuthorization()
